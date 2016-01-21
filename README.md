@@ -1,14 +1,15 @@
 # punajut
+Grupo de trabajo de la clase de Desarrollo de Software en Equipo 2016-1.
 ##Miembros:
-* Ricardo Andres Angel Villadiego
-* Julio Andrés Poveda Gómez
-* Juan Pablo Gonzalez P.
-* Sofia Hernandez
-* Maria Isabel Arevalo
+* Ricardo Andres Angel Villadiego - código:
+* Julio Andrés Poveda Gómez - código: 201424179
+* Juan Pablo Gonzalez P. - código:
+* Sofia Hernandez - código:
+* Maria Isabel Arevalo - código:
  
 
 #Reglas del Grupo
-_*Se permite la desnudez*_
+* El respeto hacia los demás integrantes del grupo es fundamental
 
 #Tabla De Tareas SEMANA 1
 Actividades |Viernes | Sabado | Domingo | Lunes | Martes | Miercoles 
