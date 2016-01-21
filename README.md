@@ -13,9 +13,9 @@ _*Se permite la desnudez*_
 #Tabla De Tareas SEMANA 1
 Actividades |Viernes | Sabado | Domingo | Lunes | Martes | Miercoles 
 ------------|--------|--------|---------|-------|--------|----------
-UML      |        | Ricardo, Juan P., Sofía|         |       |        |          
-Talleres Html CSS |       | Juan P., Sofía | Ricardo |         |       |        
+UML      |        | Ricardo, Juan P., Sofía|Maria 1hr         |       |        |          
+Talleres Html CSS |       | Juan P., Sofía | Ricardo, María 1hr |         |       |        
 Consolidación UML |       |        |         | Todos (1-3)|       |        
-Casos de uso |       |        |         | | Individual (Todos)|
+Casos de uso |       |        |         |María 1hr | Individual (Todos)|
 Consolidación casos de Uso |       |        |         |    Sofía  |       |Todos (1-3)
 Subir el trabajo |       |        |         |          |       | Juan P.
