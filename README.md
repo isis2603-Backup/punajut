@@ -3,7 +3,7 @@ Grupo de trabajo de la clase de Desarrollo de Software en Equipo 2016-1.
 ##Miembros:
 * Ricardo Andres Angel Villadiego - código:
 * Julio Andrés Poveda Gómez - código: 201424179
-* Juan Pablo Gonzalez P. - código:
+* Juan Pablo Gonzalez P. - código:201424703
 * Sofia Hernandez - código: 201414100
 * Maria Isabel Arevalo - código:201415326
  
