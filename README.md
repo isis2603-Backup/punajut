@@ -1,10 +1,21 @@
 # punajut
+##Miembros:
+* Ricardo Andres Angel Villadiego
+* Julip Andres Poveda Gomez
+* Juan Pablo Gonzalez P.
+* Sofia Hernandez
+* Maria Isabel Arevalo
+ 
+
+#Reglas del Grupo
+_*Se permite la desnudez*_
+
 #Tabla De Tareas SEMANA 1
-Integrantes |Viernes | Sabado | Domingo | Lunes | Martes | Miercoles 
+Actividades |Viernes | Sabado | Domingo | Lunes | Martes | Miercoles 
 ------------|--------|--------|---------|-------|--------|----------
-Juan Pablo| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
-Ricardo| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
-sofia| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
-Maria Isabel| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
-Rafael| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
-Julio| uml y talleres | uml y talleres | uml y talleres | reunion 1-3 waira uml| casos de uso individual con formato| reunios casos de uso 2-3
+UML      |        | Ricardo, Juan P.|         |       |        |          
+Talleres Html CSS |       | Juan P. | Ricardo |         |       |        
+Consolidación UML |       |        |         | Todos (1-3)|       |        
+Casos de uso |       |        |         | | Individual (Todos)|
+Consolidación casos de Uso |       |        |         |        |       |Todos (1-3)
+Subir el trabajo |       |        |         |          |       | Juan P.
