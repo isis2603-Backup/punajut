@@ -1,7 +1,7 @@
 # punajut
 ##Miembros:
 * Ricardo Andres Angel Villadiego
-* Julip Andres Poveda Gomez
+* Julio Andrés Poveda Gómez
 * Juan Pablo Gonzalez P.
 * Sofia Hernandez
 * Maria Isabel Arevalo
