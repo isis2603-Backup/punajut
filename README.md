@@ -19,7 +19,7 @@ Actividades                | Duración | Viernes | Sabado | Domingo | Lunes | Ma
 :-------------------------:|:--------:|:-------:|:------:|:-------:|:-----:|:------:|:---------:|:--------:
 UML                        |          | Ricardo, Juan P., Sofía, Julio, Rafael | Maria 1hr | | | | |   
 Talleres Html CSS          |          | Juan P., Sofía | Ricardo, María, Julio, Rafael | | | | |
-Consolidación UML          |          |         |        | Todos (1-3)| | | |
+Consolidación UML          | 2H (1-3) |         |        | Todos   | | | |
 Casos de uso               |   1H     |         |        | María   |  Individual (Todos)| | |                  
-Consolidación casos de Uso |2H (1-3)  |         |        | Sofía   |       | Todos      | |
+Consolidación casos de Uso | 2H (1-3) |         |        | Sofía   |       | Todos      | |
 Subir el trabajo           |          |         |        |         |       | Juan P. | |
