@@ -17,9 +17,10 @@ Grupo de trabajo de la clase de Desarrollo de Software en Equipo 2016-1.
 #Tabla De Tareas SEMANA 1
 Actividades                | Duración | Viernes | Sabado | Domingo | Lunes | Martes | Miercoles | Jueves
 :-------------------------:|:--------:|:-------:|:------:|:-------:|:-----:|:------:|:---------:|:--------:
-UML                        |          | Ricardo, Juan P., Sofía, Julio, Rafael | Maria 1hr | | | | |   
+UML                        |     1H   | Ricardo, Juan P., Sofía, Julio, Rafael | Maria | | | | |   
 Talleres Html CSS          |          | Juan P., Sofía | Ricardo, María, Julio, Rafael | | | | |
 Consolidación UML          | 2H (1-3) |         |        | Todos   | | | |
 Casos de uso               |   1H     |         |        | María   |  Individual (Todos)| | |                  
-Consolidación casos de Uso | 2H (1-3) |         |        | Sofía   |       | Todos      | |
-Subir el trabajo           |          |         |        |         |       |        | Juan P. |
+Consolidación casos de Uso | 2H (1-3) |         |        | Sofía   |       | Todos  | |
+Subir el trabajo           |          |         |        |         |       |        | Juan P.   |
+Planear siguiente semana   |    1H    |         |        |         |       |        |           | Todos
