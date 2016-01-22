@@ -22,4 +22,4 @@ Talleres Html CSS          |          | Juan P., Sofía | Ricardo, María, Julio
 Consolidación UML          | 2H (1-3) |         |        | Todos   | | | |
 Casos de uso               |   1H     |         |        | María   |  Individual (Todos)| | |                  
 Consolidación casos de Uso | 2H (1-3) |         |        | Sofía   |       | Todos      | |
-Subir el trabajo           |          |         |        |         |       | Juan P. | |
+Subir el trabajo           |          |         |        |         |       |        | Juan P. |
