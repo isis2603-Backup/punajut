@@ -7,7 +7,6 @@
 -  [book.tpl.html](#booktplhtml)
 -  [Cambiando app.js](#cambiando-appjs)
 -  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
--  [Cambiando index.html](#cambiando-indexhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
 
@@ -191,9 +190,9 @@ deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa com
 
 
 ## Comportamiento dinámico en el template book.tpl.html
-Ahora se procedera a modificar el archivo con el fin de adaptarlo al funcionamiento de AngularJS y los datos reales que maneja la aplicación por medio de su backend.
+Ahora usted debe modificar el archivo book.tpl.html con el fin de adaptarlo al funcionamiento de AngularJS y así manejar los datos de la aplicación.
 
-En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual. Estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
+Book.tpl.html empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menú del apartado de libros, en donde se encuentran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual. Estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
 
 A continuación se hace uso de la directiva ```<alert>``` de ui-boostrap ([Alert-ui-bootstrap](https://angular-ui.github.io/bootstrap/)) mediante el cual se despliegan mensajes de información relevante para el usuario, como la recepción exitosa del formulario que ha enviado y validaciones de campos.
 Usted pueded agregar la directiva alert en cualquier parte de su plantilla book.tpl.html. Para el ejemplo se aconseja la parte superior de la plantilla.
@@ -202,7 +201,7 @@ Usted pueded agregar la directiva alert en cualquier parte de su plantilla book.
 ```
 Donde *alerts* es el arreglo definido en el controlador **bookCtrl** , de esta manera en el DOM se graficarán solamente las alertas almacenadas en dicho arreglo gracias al comando de AngularJS [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) el cual repite una porción de código html de acuerdo a la cantidad de registros presentes en el arreglo **alerts**.
 
-Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra la información de los libros como: el nombre, una descripción, autor,Isbn y fecha de publicación cuando la variable **ctrl.editMode** es falsa. Seguido hay otro tag ```<div ng-show="ctrl.editMode" class="well">``` el cuál es el formulario usado para la creación o edición de libros y sólo estará visible si la variable *crtl.editMode* es verdadera. Observe que según la anterior lógica nunca van a estar los anteriores **tag** visibles al mismo tiempo.
+Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra la información de los libros como: el nombre, una descripción, autor,Isbn y fecha de publicación cuando la variable **ctrl.editMode** es falsa. Seguido hay otro tag ```<div ng-show="ctrl.editMode" class="well">``` el cuál muestra el formulario usado para la creación o edición de libros y sólo estará visible si la variable *crtl.editMode* es verdadera. Observe que según la anterior lógica nunca van a estar los anteriores **tag** visibles al mismo tiempo. El formulario consta de una alerta personalizada que despliega un mensaje si los campos requeridos aún no están completos. Para la implementación de esta alerta se usa el módulo ngMessages de angular el cual lo puede descargar [aquí](https://code.angularjs.org/1.4.8/). **Nota:** Descargar el archivo minificado angular-messages.min.js, copiarlo al directorio resources/js/*, registrarlo en el index.html e inyectar la dependencia en el modulo principal archivo app.js.   
 
 ## Configuración del módulo bookModule en el app.js
 
@@ -400,3 +399,5 @@ https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/master/bookstore-w
   <script src="src/modules/mocks/mock.js" type="text/javascript"></script>
   </head>
   ```
+Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios y un template dinámico.
+
