@@ -6,9 +6,9 @@
 -  [book.svc.js](#booksvcjs)
 -  [book.tpl.html](#booktplhtml)
 -  [Cambiando app.js](#cambiando-appjs)
--  [Agregando comportamiento dinámico al book.tpl.html](#agregando-comportamiento-dinámico-al-book.tpl.html)
+-  [Agregando comportamiento dinámico al book.tpl.html](#agregando-comportamiento-dinámico-al-booktplhtml)
 -  [Cambiando index.html](#cambiando-indexhtml)
--  [Módulo mockModule para Book](#módulo-mockModule-para-Book)
+-  [Módulo mockModule para Book](#módulo-mockModule-para-book)
 
 ## Módulo Inicial Book
 Para la creación de un módulo se deben definir una serie de archivos que cumplen unas funciones basicas:
