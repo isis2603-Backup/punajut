@@ -4,7 +4,6 @@
 -  [book.mod.js](#bookmodjs)
 -  [book.ctrl.js](#bookctrljs)
 -  [book.svc.js](#booksvcjs)
--  [book.tpl.html](#booktplhtml)
 -  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
