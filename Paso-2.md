@@ -1,13 +1,14 @@
 # Paso 2: Módulos AngularJS (Controlador, Servicios)
 
 -  [Modulo Inicial](#módulo-inicial-book)
-
 -  [book.mod.js](#bookmodjs)
 -  [book.ctrl.js](#bookctrljs)
 -  [book.svc.js](#booksvcjs)
 -  [book.tpl.html](#booktplhtml)
 -  [Cambiando app.js](#cambiando-appjs)
+-  [Agregando comportamiento dinámico al book.tpl.html](#agregando-comportamiento-dinámico-al-book.tpl.html)
 -  [Cambiando index.html](#cambiando-indexhtml)
+-  [Módulo mockModule para Book](#módulo-mockModule-para-Book)
 
 ## Módulo Inicial Book
 Para la creación de un módulo se deben definir una serie de archivos que cumplen unas funciones basicas:
@@ -224,7 +225,7 @@ De igual manera se agregan dos líneas al provider encargado de establecer la na
               controllerAs: alias})
 ```
 
-## Agregando módulo mockModule para Book.
+## Módulo mockModule para Book.
 
 Los mocks son objetos en javascript que nos permiten simular el comportamiento de un api. Esto con el fin de trabajar en el frontEnd independientemente de que todos los servicios del api en JavaEE estén desarrollados o no. En éste caso se realizará la implementación de un mock para el módulo Book y haciendo uso del módulo de AngularJS **ngMockE2E**. Para activar los mocks en su aplicación AngularJS realice los siguientes pasos:
 
