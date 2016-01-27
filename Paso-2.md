@@ -12,7 +12,7 @@
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
 
 ## Módulo Inicial Book
-Para la creación de un módulo se deben definir una serie de archivos que cumplen unas funciones basicas:
+Para la creación de un módulo en AngularJS, se deben definir una serie de archivos los cuales cumplen unas funciones específicas:
 
 Nombre  | Función
 ------- | -------------
@@ -21,7 +21,7 @@ book.mod.js     | Definición del módulo
 book.svc.js     | Servicios del módulo
 book.tpl.html   | Template del módulo
 
-Usted debe crear los anteriores archivos en la ruta "src/modules/book". A continuación se explica con mayor detalle el funcionamiento de cada uno.
+Usted debe crear los anteriores archivos en la ruta "src/modules/book". A continuación se explica con mayor detalle el funcionamiento de cada archivo.
 
 ## book.mod.js
 En este archivo se declara por primera vez el módulo "bookModule" y las dependencias que requiere. Para este caso tiene definido el módulo de "ui-bootstrap" y la declaración de la constante "bookContext" que contiene la Información del **api** del backend.
