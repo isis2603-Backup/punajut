@@ -1,8 +1,8 @@
 # Tabla de contenidos
 
 - [Introducción](#introducción)
-- [Configuración de Bootstrap](#configurando-bootstrap)
-- [Configuración de AngularJS](#configurando-angularjs)
+- [Configuración de Bootstrap](#configuración-de-bootstrap)
+- [Configuración de AngularJS](#configuración-de-angularjs)
   - [Configuración de ui-router](#configuración-de-ui-router)
   - [Creación de módulo principal](#creación-de-módulo-principal)
   - [Configuración de log de debug](#configuración-de-log-de-debug)
