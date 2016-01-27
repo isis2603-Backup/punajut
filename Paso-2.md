@@ -1,4 +1,4 @@
-# Paso 2: Módulos AngularJS (Controlador, Servicios)
+# Tabla de Contenidos
 
 -  [Modulo Inicial](#módulo-inicial-book)
 -  [book.mod.js](#bookmodjs)
