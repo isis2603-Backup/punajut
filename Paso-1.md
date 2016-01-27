@@ -4,7 +4,7 @@
 - [Configuración de Bootstrap](#configuración-de-bootstrap)
 - [Configuración de AngularJS](#configuración-de-angularjs)
   - [Configuración de ui-router](#configuración-de-ui-router)
-  - [Creación de módulo principal](#creación-de-módulo-principal)
+  - [Creación del módulo principal](#creación-del-módulo-principal)
   - [Configuración de log de debug](#configuración-de-log-de-debug)
   - [Configuración template principal](#configuración-template-principal)
   - [Creación de plantillas](#creación-de-plantillas)
