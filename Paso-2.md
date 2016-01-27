@@ -31,6 +31,8 @@ En este archivo se declara por primera vez el módulo "bookModule" y las depende
 
 })(window.angular);
 ```
+[Ir a book.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.mod.js)
+
 ### Agregar archivo book.mod.js al index.html.
 
 Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de código dentro del tag <head> del archivo index.html.
@@ -166,6 +168,9 @@ Al final de la definición de los métodos que se comunican con los servicios, s
 
 **Nota:** Recuerde agregar el archivo book.ctrl.js al index.html respetando el orden de importación. *Por ejemplo:* El script del controlador debe estar después del script que carga el archivo **book.mod.js**.
 
+[Ir a book.ctrl.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.ctrl.js)
+
+
 ## book.svc.js
 En este archivo se define el componente de servicio "bookService" en el cual se crean los métodos de la tabla 2. Estos métodos serán los encargados de realizar las peticiones HTTP(GET-POST-DELETE-PUT) al api. **Nota:** *Cuando se ha registado el módulo mocksModule en la aplicación principal, los siguientes métodos son ignorados.*
 
@@ -185,7 +190,7 @@ deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa com
 <script src="src/modules/book/book.ctrl.js"></script>
 <script src="src/modules/book/book.svc.js"></script>
 ```
-
+[Ir a book.svc.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.svc.js)
 
 ## Comportamiento dinámico en el template book.tpl.html
 Ahora usted debe modificar el archivo book.tpl.html con el fin de adaptarlo al funcionamiento de AngularJS y así manejar los datos de la aplicación.
@@ -197,9 +202,11 @@ Usted pueded agregar la directiva alert en cualquier parte de su plantilla book.
 ```HTML
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
 ```
-Donde *alerts* es el arreglo definido en el controlador **bookCtrl** , de esta manera en el DOM se graficarán solamente las alertas almacenadas en dicho arreglo gracias al comando de AngularJS [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) el cual repite una porción de código html de acuerdo a la cantidad de registros presentes en el arreglo **alerts**.
+Donde *alerts* es el arreglo definido en el controlador **bookCtrl** , de esta manera en el DOM se graficarán solamente las alertas almacenadas en dicho arreglo gracias al comando de AngularJS [ng-repeat](https://docs.angularjs.org/api/ng/directive/ngRepeat) el cual repite una porción de código html de acuerdo a la cantidad de registros presentes en el arreglo **alerts**. Por defecto el controlador carga una alerta de tipo información con un mensaje de bienvenida.
 
 Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra la información de los libros como: el nombre, una descripción, autor,Isbn y fecha de publicación cuando la variable **ctrl.editMode** es falsa. Seguido hay otro tag ```<div ng-show="ctrl.editMode" class="well">``` el cuál muestra el formulario usado para la creación o edición de libros y sólo estará visible si la variable *crtl.editMode* es verdadera. Observe que según la anterior lógica nunca van a estar los anteriores **tag** visibles al mismo tiempo. El formulario consta de una alerta personalizada que despliega un mensaje si los campos requeridos aún no están completos. Para la implementación de esta alerta se usa el módulo ngMessages de angular el cual lo puede descargar [aquí](https://code.angularjs.org/1.4.8/). **Nota:** Descargar el archivo minificado angular-messages.min.js, copiarlo al directorio resources/js/*, registrarlo en el index.html e inyectar la dependencia en el modulo principal archivo app.js.   
+
+[Ir a book.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.tpl.html)
 
 ## Configuración del módulo bookModule en el app.js
 
@@ -377,8 +384,7 @@ Los mocks son objetos en javascript que nos permiten simular el comportamiento d
 
   ```
 El archivo completo lo puede encontrar en la siguiente ruta:
-
-https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/master/bookstore-web/src/main/webapp/src/modules/mocks/book.mock.js
+[Ir a book.mocks.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/mocks/book.mock.js)
 
   - Inyectar módulo "mockModule" en el módulo principal. Archivo app.js.
 
@@ -398,4 +404,3 @@ https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/master/bookstore-w
   </head>
   ```
 Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios y un template dinámico.
-
