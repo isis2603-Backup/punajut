@@ -11,6 +11,9 @@
   - [Configuración de estados](#configuración-de-estados)
 
 # Introducción
+
+Este ejemplo puede verse desplegado en [este link](http://uniandes-isis2603-201520.github.io/ejemplo-book)
+
 Para la aplicación que está creando se utilizarán dos frameworks web:
 
 * [AngularJS](https://angularjs.org/): Framework que facilita la creación de *SPA (Single Page Application)* con javascript.
@@ -30,7 +33,7 @@ Las siguientes secciones del ejemplo se basan en que el directorio de trabajo es
 
 El código fuente resultante de este ejemplo se encuentra en [este link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/tree/paso1).
 
-Este ejemplo puede verse desplegado en [este link](http://uniandes-isis2603-201520.github.io/ejemplo-book)
+
 
 # Configuración de Bootstrap
 Inicialmente, para que la aplicación pueda hacer uso de bootstrap, se debe seguir los pasos indicados en [Getting Started](http://getbootstrap.com/getting-started/#template)
