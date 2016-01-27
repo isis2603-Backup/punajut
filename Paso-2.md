@@ -6,7 +6,7 @@
 -  [book.svc.js](#booksvcjs)
 -  [book.tpl.html](#booktplhtml)
 -  [Cambiando app.js](#cambiando-appjs)
--  [Agregando comportamiento dinámico al book.tpl.html](#agregando-comportamiento-dinámico-al-booktplhtml)
+-  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
 -  [Cambiando index.html](#cambiando-indexhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
@@ -190,7 +190,7 @@ deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa com
 ```
 
 
-## Agregando comportamiento dinámico al book.tpl.html
+## Comportamiento dinámico en el template book.tpl.html
 Ahora se procedera a modificar el archivo con el fin de adaptarlo al funcionamiento de AngularJS y los datos reales que maneja la aplicación por medio de su backend.
 
 En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual. Estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
