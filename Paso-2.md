@@ -403,4 +403,5 @@ El archivo completo lo puede encontrar en la siguiente ruta:
   <script src="src/modules/mocks/mock.js" type="text/javascript"></script>
   </head>
   ```
-Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios y un template dinámico.
+ 
+Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios, un archivo de mocks y un template dinámico. Usted debe poder crear, editar, leer y borrar en memoria libros de la aplicación.
