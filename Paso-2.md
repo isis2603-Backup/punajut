@@ -1,9 +1,9 @@
 # Tabla de Contenidos
 
 -  [Modulo Inicial Book](#módulo-inicial-book)
--  [book.mod.js](#bookmodjs)
--  [book.ctrl.js](#bookctrljs)
--  [book.svc.js](#booksvcjs)
+-  [Archivo book.mod.js](#bookmodjs)
+-  [Archivo book.ctrl.js](#bookctrljs)
+-  [Archivo book.svc.js](#booksvcjs)
 -  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
