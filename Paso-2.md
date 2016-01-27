@@ -182,9 +182,57 @@ saveRecord      | Si el registro definido como parámetro a la función "saveRec
 saveRecord      | En caso de que el registro definido como parámetro a la función "saveRecord" se procede a crear un nuevo book haciendo una petición de creación de registro.                                                                           | POST
 deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parámetro      | DELETE
 
-Para solicitar datos al backend usted debe utilizar el servicio de angular $http, el cuál ofrece una serie de métodos enfocados en realizar las operaciones típicas implementadas dentro del protocolo HTTP. Por ejemplo, para enviar datos post disponemos de $http.post(). En ese método se puede enviar como parámetro, aparte de la URL del servicio, un objeto con los datos que se desean enviar a éste. Se recomienda leer la documentación del servicio $http. [Ir a documentación de $http](https://docs.angularjs.org/api/ng/service/$http)
+Para solicitar datos al backend usted debe utilizar el servicio de angular $http, el cuál ofrece una serie de métodos enfocados en realizar las operaciones típicas implementadas dentro del protocolo HTTP. Por ejemplo, para enviar datos post disponemos de $http.post(). En ese método se puede enviar como parámetro, aparte de la URL del servicio, un objeto con los datos que se desean enviar a éste. Se recomienda leer la documentación del servicio $http. [Ir a documentación de $http.](https://docs.angularjs.org/api/ng/service/$http)
 
+A continuación, se describen los métodos implementados en el archivo book.svc.js para realizar peticiones al backend.
 
+```javascript
+
+        this.fetchRecords = function () {
+            return $http.get(context);
+        };
+
+        /**
+         * Obtener un registro de books.
+         * Hace una petición GET a /books/:id para obtener
+         * los datos de un registro específico de books
+         * @param {number} id del registro a obtener
+         * @returns {promise} promise para leer la respuesta del servidor
+         * Devuelve un objeto de books con sus atributos y reviews
+         */
+        this.fetchRecord = function (id) {
+            return $http.get(context + "/" + id);
+        };
+
+        /**
+         * Guardar un registro de books.
+         * Si currentRecord tiene la propiedad id, hace un PUT a /books/:id con los
+         * nuevos datos de la instancia de books.
+         * Si currentRecord no tiene la propiedad id, se hace un POST a /books
+         * para crear el nuevo registro de books
+         * @param {object} currentRecord instancia de book a guardar/actualizar
+         * @returns {promise} promise para leer la respuesta del servidor
+         * Devuelve un objeto de books con sus datos incluyendo el id
+         */
+        this.saveRecord = function (currentRecord) {
+            if (currentRecord.id) {
+                return $http.put(context + "/" + currentRecord.id, currentRecord);
+            } else {
+                return $http.post(context, currentRecord);
+            }
+        };
+
+        /**
+         * Hace una petición DELETE a /books/:id para eliminar un book
+         * @param {number} id identificador de la instancia de book a eliminar
+         * @returns {promise} promise para leer la respuesta del servidor
+         * No devuelve datos.
+         */
+        this.deleteRecord = function (id) {
+            return $http.delete(context + "/" + id);
+        };
+
+```
 **Nota:** Recuerde agregar el archivo book.svc.js al index.html respetando el orden de importación. *Por ejemplo:* El script del servicio debe estar después del script que carga el archivo **book.ctrl.js**. De esta manera el index.html debe lucir muy parecido a:
 
 ```HTML
