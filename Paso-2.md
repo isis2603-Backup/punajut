@@ -1,6 +1,6 @@
 # Paso 2: Módulos AngularJS (Controlador, Servicios)
 
--  [Modulo Inicial](#modulo-inicial)
+-  [Modulo Inicial](#modulo-inicial-book)
 -  [book.ctrl.js](#bookctrljs)
 -  [book.mod.js](#bookmodjs)
 -  [book.svc.js](#booksvcjs)
