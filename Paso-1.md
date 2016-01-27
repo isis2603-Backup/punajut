@@ -28,7 +28,7 @@ Para el desarrollo de este ejemplo es necesario crear un proyecto *Maven Web App
 
 Las siguientes secciones del ejemplo se basan en que el directorio de trabajo es aquel en el cual se creó el archivo `index.html`, el cual debió ser generado automáticamente al crear el proyecto Maven Web Application.
 
-El resultado final de este ejemplo se encuentra en [este link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/tree/0.1.0).
+El resultado final de este ejemplo se encuentra en [este link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/tree/paso1).
 
 # Configuración de Bootstrap
 Inicialmente, para que la aplicación pueda hacer uso de bootstrap, se debe seguir los pasos indicados en [Getting Started](http://getbootstrap.com/getting-started/#template)
