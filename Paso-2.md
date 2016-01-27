@@ -8,7 +8,8 @@
 -  [Cambiando app.js](#cambiando-appjs)
 -  [Agregando comportamiento dinámico al book.tpl.html](#agregando-comportamiento-dinámico-al-booktplhtml)
 -  [Cambiando index.html](#cambiando-indexhtml)
--  [Módulo mockModule para Book](#módulo-mockModule-para-book)
+-  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
+-  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
 
 ## Módulo Inicial Book
 Para la creación de un módulo se deben definir una serie de archivos que cumplen unas funciones basicas:
@@ -203,7 +204,7 @@ Donde *alerts* es el arreglo definido en el controlador **bookCtrl** , de esta m
 
 Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra la información de los libros como: el nombre, una descripción, autor,Isbn y fecha de publicación cuando la variable **ctrl.editMode** es falsa. Seguido hay otro tag ```<div ng-show="ctrl.editMode" class="well">``` el cuál es el formulario usado para la creación o edición de libros y sólo estará visible si la variable *crtl.editMode* es verdadera. Observe que según la anterior lógica nunca van a estar los anteriores **tag** visibles al mismo tiempo.
 
-## Agregando módulo bookModule al app.js
+## Configuración del módulo bookModule en el app.js
 
 En el archivo *app.js* se debe cargar el modulo *bookModule* (definido anteriormente), para ello se modifica la variable *mainApp* para incluir *bookModule* en su colección.
 
