@@ -1,14 +1,15 @@
 # Paso 2: Módulos AngularJS (Controlador, Servicios)
 
--  [Modulo Inicial](#modulo-inicial-book)
--  [book.ctrl.js](#bookctrljs)
+-  [Modulo Inicial](#módulo-inicial-book)
+
 -  [book.mod.js](#bookmodjs)
+-  [book.ctrl.js](#bookctrljs)
 -  [book.svc.js](#booksvcjs)
 -  [book.tpl.html](#booktplhtml)
 -  [Cambiando app.js](#cambiando-appjs)
 -  [Cambiando index.html](#cambiando-indexhtml)
 
-## Módulo Inicial - Book
+## Módulo Inicial Book
 Para la creación de un módulo se deben definir una serie de archivos que cumplen unas funciones basicas:
 
 Nombre  | Función
