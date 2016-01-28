@@ -11,7 +11,7 @@
 
 ## Introducción
 Al finalizar este paso el estudiante debe estar en capacidad de crear módulos de AngularJS, asociar controladores, servicios y templates con contenido dinámico. 
-Las siguientes instrucciones muestran el paso a paso bien detallado para la construcción del módulo **bookModule** (controlador, servicios y templates). Luego, usted debe replicar los mismos pasos para los módulos **authorModule** y **editorialModule**.
+Las siguientes instrucciones muestran el paso a paso para la construcción del módulo **bookModule** (controlador, servicios y templates). Luego, usted debe replicar los mismos pasos para los módulos **authorModule** y **editorialModule**.
 
 ## Módulo Inicial Book
 Para la creación de un módulo en AngularJS, se deben definir una serie de archivos los cuales cumplen unas funciones específicas:
