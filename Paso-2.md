@@ -290,20 +290,23 @@ Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muest
 
 Usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un template para cada módulo. Cada template es diferente a los otros. Por ejemplo: el módulo book tiene asociado un modelo de datos con nombre, isbn y fecha de publicación mientras el author tiene asociado los atributos de nombre y fecha de nacimiento; por lo tanto, cada template debe estar acorde al modelo de datos del módulo.
 
+[Ir a author.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.tpl.html), [Ir a editorial.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.tpl.html).
 
 ## Configuración del módulo bookModule en el app.js
 
-En el archivo *app.js* se debe cargar el modulo *bookModule* (definido anteriormente), para ello se modifica la variable *mainApp* para incluir *bookModule* en su colección.
+En el archivo *app.js* se debe cargar los módulos creados *bookModule*, *authorModule* y *editorialModule* (definidos anteriormente), para ello se modifica la variable *mainApp* para incluir los módulos en su colección.
 
 ```javascript
 var mainApp = ng.module('mainApp', [
     //'ngCrudMock',
     'bookModule',
+    'authorModule',
+    'editorialModule',
     'ui.router'
 ]);
 ```
 
-De igual manera se agregan dos líneas al provider encargado de establecer la navegación con ui-router ($stateProvider) y se agrega un nuevo estado "book" ```state("book")``` con el fin de introducir el nuevo estado "book" en la navegación.
+De igual manera se agregan dos líneas al provider encargado de establecer la navegación con ui-router ($stateProvider) y usted debe agregar un nuevo estado "book" ```state("book")``` con el fin de introducir el nuevo estado "book" en la navegación.
 
 ```javascript
 .state('book', {
@@ -312,6 +315,24 @@ De igual manera se agregan dos líneas al provider encargado de establecer la na
               controller: 'bookCtrl',
               controllerAs: alias})
 ```
+
+Cree los estados 'editorial' y 'author' en el provider ui-router.
+
+```javascript
+.state('editorial', {
+                        url: '/editorial',
+                        controller: "editorialCtrl",
+                        controllerAs: "ctrl",
+                        templateUrl: "src/modules/editorial/editorial.tpl.html"
+                    })
+                    .state('author', {
+                        url: '/author',
+                        controller: "authorCtrl",
+                        controllerAs: "ctrl",
+                        templateUrl: "src/modules/author/author.tpl.html"
+                    });
+```
+
 
 ## Módulo mockModule para Book.
 
@@ -337,7 +358,7 @@ Los mocks son objetos en javascript que nos permiten simular el comportamiento d
         * api/(cualquierpalabra)/(numero)
         * ej: api/books/1
         */
-       var recordUrl = new RegExp('api/(\\w+)/([0-9]+)');
+       var recordUrl = new RegExp('api/books/([0-9]+)');
        /*
         * @type Array
         * records: Array con un libro por defecto
