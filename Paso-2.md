@@ -1,5 +1,6 @@
 # Tabla de Contenidos
 
+-  [Introducción](#introducción)
 -  [Modulo Inicial Book](#módulo-inicial-book)
 -  [Archivo book.mod.js](#bookmodjs)
 -  [Archivo book.ctrl.js](#bookctrljs)
@@ -7,6 +8,10 @@
 -  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
 -  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
+
+## Introducción
+Al finalizar este paso el estudiante debe estar en capacidad de crear módulos de AngularJS, asociar controladores, servicios y templates con contenido dinámico. 
+Las siguientes instrucciones muestran el paso a paso bien detallado para la construcción del módulo **bookModule** (controlador, servicios y templates). Luego, usted debe replicar los mismos pasos para los módulos **authorModule** y **editorialModule**.
 
 ## Módulo Inicial Book
 Para la creación de un módulo en AngularJS, se deben definir una serie de archivos los cuales cumplen unas funciones específicas:
