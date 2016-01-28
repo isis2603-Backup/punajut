@@ -18,15 +18,17 @@ Para la creación de un módulo en AngularJS, se deben definir una serie de arch
 
 Nombre  | Función
 ------- | -------------
-book.ctrl.js    | Controlador del módulo
-book.mod.js     | Definición del módulo
-book.svc.js     | Servicios del módulo
-book.tpl.html   | Template del módulo
+book.ctrl.js    | Controlador del módulo Book
+book.mod.js     | Definición del módulo Book
+book.svc.js     | Servicios del módulo Book
+book.tpl.html   | Template del módulo Book
 
-Usted debe crear los anteriores archivos en la ruta "src/modules/book". A continuación se explica con mayor detalle el funcionamiento de cada archivo.
+Usted debe crear los anteriores archivos del módulo **bookModule** en la ruta "src/modules/book". De igual manera cree los archivos para los módulos **authorModule** ruta "src/modules/author" y **editorialModule** ruta "src/modules/editorials". 
+
+A continuación se explica con mayor detalle el funcionamiento de cada archivo.
 
 ## book.mod.js
-En este archivo se declara por primera vez el módulo "bookModule" y las dependencias que requiere. Para este caso tiene definido el módulo de "ui-bootstrap" y la declaración de la constante "bookContext" que contiene la Información del **api** del backend.
+En este archivo se declara por primera vez el módulo "bookModule" y las dependencias que requiere. Para este caso tiene definido el módulo de "ui-bootstrap" y la declaración de la constante "bookContext" que contiene la Información del **api** del backend, en este caso es un String con la ruta "api/books".
 
 ```javascript
 (function (ng) {
@@ -36,7 +38,12 @@ En este archivo se declara por primera vez el módulo "bookModule" y las depende
 
 })(window.angular);
 ```
-[Ir a book.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.mod.js)
+[Ir a book.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.mod.js).
+
+De igual manera cree los archivos editorial.mod.js y author.mod.js.
+
+[Ir a author.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.mod.js).
+[Ir a editorial.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.mod.js).
 
 ### Agregar archivo book.mod.js al index.html.
 
@@ -463,3 +470,5 @@ El archivo completo lo puede encontrar en la siguiente ruta:
   ```
  
 Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios, un archivo de mocks y un template dinámico. Usted debe poder crear, editar, leer y borrar en memoria libros de la aplicación.
+
+
