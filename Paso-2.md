@@ -40,10 +40,9 @@ En este archivo se declara por primera vez el módulo "bookModule" y las depende
 ```
 [Ir a book.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.mod.js).
 
-De igual manera cree los archivos editorial.mod.js y author.mod.js.
+De igual manera cree los archivos **editorial.mod.js** y **author.mod.js**. Tenga en cuenta el cambio del nombre de la constante que tiene la información de la url del api del módulo. Por ejemplo: Para autores ```mod.constant("authorContext", "  api/authors"); ```.
 
-[Ir a author.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.mod.js).
-[Ir a editorial.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.mod.js).
+[Ir a author.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.mod.js),  [Ir a editorial.mod.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.mod.js).
 
 ### Agregar archivo book.mod.js al index.html.
 
@@ -53,9 +52,13 @@ Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de c�
 <script src="src/modules/book/book.mod.js" type="text/javascript"></script>
 ```
 
-**Para todos los archivos .js que usted cree, recuerde registrarlos en el *index.html* tal como el ejemplo anterior**
+**Para todos los archivos.js que usted cree, recuerde registrarlos en el *index.html* tal como se muestra en el siguiente ejemplo**
 
-
+```HTML
+<script src="src/modules/book/book.mod.js" type="text/javascript"></script>
+<script src="src/modules/author/author.mod.js" type="text/javascript"></script>
+<script src="src/modules/editorial/editorial.mod.js" type="text/javascript"></script>
+```
 
 ### Agregar librería ui.bootstrap
 
@@ -65,6 +68,7 @@ https://github.com/angular-ui/bootstrap#manual-download) y descargar el archivo 
 ```HTML
 <script src="resources/js/ui-bootstrap-tpls-0.13.4.min.js" type="text/javascript"></script>
 ```
+**Nota:** El anterior paso se realiza sólo una vez.
 
 ## book.ctrl.js
 Este archivo define el controlador del módulo, el controlador es un objeto Javascript encargado de gestionar el flujo de los datos de la vista y manejar los eventos. Entre los conceptos más importantes dentro de un controlador está el *scope*. El scope es un gran contenedor de datos, que transporta y hace visible la información necesaria para implementar la aplicación, desde el controlador a la vista y desde la vista al controlador. Para más información ir a [Documentación AngularJS- Controlador](https://docs.angularjs.org/tutorial/step_02).
@@ -182,7 +186,12 @@ Al final de la definición de los métodos que se comunican con los servicios, s
 
 **Nota:** Recuerde agregar el archivo book.ctrl.js al index.html respetando el orden de importación. *Por ejemplo:* El script del controlador debe estar después del script que carga el archivo **book.mod.js**.
 
-[Ir a book.ctrl.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.ctrl.js)
+[Ir a book.ctrl.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.ctrl.js).
+
+
+Una vez definido el controlador para el módulo Book, usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un controlador para cada módulo. Como los controladores en éste momento tienen las misma lógica los archivos book.ctrl, author.ctrl y editorial.ctrl van ser muy parecidos.
+
+[Ir a author.ctrl.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.ctrl.js),  [Ir a editorial.ctrl.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.ctrl.js)
 
 
 ## book.svc.js
@@ -195,6 +204,7 @@ fetchRecord     | Retorna el libro que se pasa como parámetro.                 
 saveRecord      | Si el registro definido como parámetro a la función "saveRecord" existe, la función actualiza la información del libro ya existente.                                        | PUT
 saveRecord      | En caso de que el registro definido como parámetro a la función "saveRecord" se procede a crear un nuevo book haciendo una petición de creación de registro.                                                                           | POST
 deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parámetro      | DELETE
+**Tabla 2.**
 
 Para solicitar datos al backend usted debe utilizar el servicio de angular $http, el cuál ofrece una serie de métodos enfocados en realizar las operaciones típicas implementadas dentro del protocolo HTTP. Por ejemplo, para enviar datos post disponemos de $http.post(). En ese método se puede enviar como parámetro, aparte de la URL del servicio, un objeto con los datos que se desean enviar a éste. Se recomienda leer la documentación del servicio $http. [Ir a documentación de $http.](https://docs.angularjs.org/api/ng/service/$http)
 
@@ -257,6 +267,10 @@ A continuación, se describen los métodos implementados en el archivo book.svc.
 ```
 [Ir a book.svc.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.svc.js)
 
+Usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un servicio para cada módulo. Como los servicios en éste momento tienen las misma lógica los archivos book.svc, author.svc y editorial.svc van ser muy parecidos.
+
+[Ir a author.svc.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.svc.js), [Ir a editorial.svc.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.svc.js).
+
 ## Comportamiento dinámico en el template book.tpl.html
 Ahora usted debe modificar el archivo book.tpl.html con el fin de adaptarlo al funcionamiento de AngularJS y así manejar los datos de la aplicación.
 
@@ -271,7 +285,11 @@ Donde *alerts* es el arreglo definido en el controlador **bookCtrl** , de esta m
 
 Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra la información de los libros como: el nombre, una descripción, autor,Isbn y fecha de publicación cuando la variable **ctrl.editMode** es falsa. Seguido hay otro tag ```<div ng-show="ctrl.editMode" class="well">``` el cuál muestra el formulario usado para la creación o edición de libros y sólo estará visible si la variable *crtl.editMode* es verdadera. Observe que según la anterior lógica nunca van a estar los anteriores **tag** visibles al mismo tiempo. El formulario consta de una alerta personalizada que despliega un mensaje si los campos requeridos aún no están completos. Para la implementación de esta alerta se usa el módulo ngMessages de angular el cual lo puede descargar [aquí](https://code.angularjs.org/1.4.8/). **Nota:** Descargar el archivo minificado angular-messages.min.js, copiarlo al directorio resources/js/*, registrarlo en el index.html e inyectar la dependencia en el modulo principal archivo app.js.   
 
-[Ir a book.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.tpl.html)
+[Ir a book.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.tpl.html).
+
+
+Usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un template para cada módulo. Cada template es diferente a los otros. Por ejemplo: el módulo book tiene asociado un modelo de datos con nombre, isbn y fecha de publicación mientras el author tiene asociado los atributos de nombre y fecha de nacimiento; por lo tanto, cada template debe estar acorde al modelo de datos del módulo.
+
 
 ## Configuración del módulo bookModule en el app.js
 
