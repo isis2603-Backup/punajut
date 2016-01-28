@@ -46,7 +46,9 @@ Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de c�
 <script src="src/modules/book/book.mod.js" type="text/javascript"></script>
 ```
 
-**Para todos los archivos .js que usted cree, recuerde registrarlos en el *index.html* tal como el ejemplo anterior.**
+**Para todos los archivos .js que usted cree, recuerde registrarlos en el *index.html* tal como el ejemplo anterior**
+
+
 
 ### Agregar librería ui.bootstrap
 
