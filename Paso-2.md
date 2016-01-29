@@ -508,11 +508,11 @@ El archivo completo lo puede encontrar en la siguiente ruta:
   </head>
   ```
  
-Repita los anteriores pasos para definir un módulo mock para author y editorial. Tenga en cuenta que cada mock tiene la declaración de urls según la entidad y los atributos de cada mock  cambian respecto al módelo. Por ejemplo: el mock de author debe tener la url definida así: 
+Repita los anteriores pasos para definir un módulo mock para author y editorial. Tenga en cuenta que cada mock tiene una única declaración de url y los atributos de la variable **records** de cada mock  cambian respecto al módelo. Por ejemplo: el mock de author debe tener la la url **recordUrl** definida así: 
 ```javascript
 var recordUrl = new RegExp('api/authors/([0-9]+)');
 ``` 
-y los atributos para author son:
+y los atributos de cada elemento del array **record** son:
 ```javascript
         /*
          * @type Array
