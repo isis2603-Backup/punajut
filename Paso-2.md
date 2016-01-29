@@ -7,7 +7,7 @@
 -  [Archivo book.svc.js](#booksvcjs)
 -  [Comportamiento dinámico en el template book.tpl.html](#comportamiento-dinámico-en-el-template-booktplhtml)
 -  [Configuración del módulo bookModule en el app.js](#configuración-del-módulo-bookmodule-en-el-appjs)
--  [Módulo mockModule para Book](#módulo-mockmodule-para-book)
+-  [Módulos mocks](#módulos-mocks)
 
 ## Introducción
 Al finalizar este paso el estudiante debe estar en capacidad de crear módulos de AngularJS, asociar controladores, servicios y templates con contenido dinámico. 
@@ -288,7 +288,7 @@ Posteriormente,  existe un tag ```<div ng-hide="ctrl.editMode">``` el cual muest
 [Ir a book.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/book/book.tpl.html).
 
 
-Usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un template para cada módulo. Cada template es diferente a los otros. Por ejemplo: el módulo book tiene asociado un modelo de datos con nombre, isbn y fecha de publicación mientras el author tiene asociado los atributos de nombre y fecha de nacimiento; por lo tanto, cada template debe estar acorde al modelo de datos del módulo.
+Usted debe replicar los anteriores pasos con los módulos author y editorial con el fin de crear un template para cada módulo. Cada template es diferente a los otros. Por ejemplo: el módulo book tiene asociado un modelo de datos con nombre, isbn y fecha de publicación mientras el author tiene asociado los atributos de nombre y fecha de nacimiento; por lo tanto, cada template debe estar acorde al modelo de datos del módulo. Ver archivos **author.tpl.html** y **editorial.tpl.html**.
 
 [Ir a author.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/author/author.tpl.html), [Ir a editorial.tpl.html](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso2/bookstore-web/src/main/webapp/src/modules/editorial/editorial.tpl.html).
 
@@ -306,7 +306,7 @@ var mainApp = ng.module('mainApp', [
 ]);
 ```
 
-De igual manera se agregan dos líneas al provider encargado de establecer la navegación con ui-router ($stateProvider) y usted debe agregar un nuevo estado "book" ```state("book")``` con el fin de introducir el nuevo estado "book" en la navegación.
+Luego, configure el provider encargado de establecer la navegación con ui-router ($stateProvider) y agregue un nuevo estado "book" ```state("book")``` con el fin de introducir el nuevo estado "book" en la navegación de la aplicación. Observe que en cada estado usted debe definir la url, la url del template a desplegar, el contralador asociado y un alias del mismo. Ver ejemplo:
 
 ```javascript
 .state('book', {
@@ -316,7 +316,7 @@ De igual manera se agregan dos líneas al provider encargado de establecer la na
               controllerAs: alias})
 ```
 
-Cree los estados 'editorial' y 'author' en el provider ui-router.
+De igual manera, cree los estados 'editorial' y 'author' en el provider ui-router definiendo sus características.
 
 ```javascript
 .state('editorial', {
@@ -334,12 +334,12 @@ Cree los estados 'editorial' y 'author' en el provider ui-router.
 ```
 
 
-## Módulo mockModule para Book.
+## Módulos mocks.
 
-Los mocks son objetos en javascript que nos permiten simular el comportamiento de un api. Esto con el fin de trabajar en el frontEnd independientemente de que todos los servicios del api en JavaEE estén desarrollados o no. En éste caso se realizará la implementación de un mock para el módulo Book y haciendo uso del módulo de AngularJS **ngMockE2E**. Para activar los mocks en su aplicación AngularJS realice los siguientes pasos:
+Los mocks son objetos en javascript que nos permiten simular el comportamiento de un api. Esto con el fin de trabajar en el frontEnd independientemente de que todos los servicios del api en JavaEE estén desarrollados o no. En éste caso se realizará la implementación de varios mocks para los módulos Book, author y editorial haciendo uso del módulo de AngularJS **ngMockE2E**. Para activar los mocks en su aplicación AngularJS realice los siguientes pasos:
 
 - Descargar el módulo o libreria **ngMockE2E** en el directorio /resources/js/angular-mocks.js. Al igual que la libreria ui.bootstrap. [Link de descarga](https://code.angularjs.org/1.4.9/angular-mocks.js). **Nota:** No olvide registrarlo en el index.html.
-- Crear un directorio en la ubicación src/modules/mocks y en éste crear el archivo book.mock.js
+- Crear el archivo book.mock.js en la ubicación src/modules/book/
 - En el archivo:
   - Crear módulo mockModule e inyectar módulo ngMockE2E.
 
@@ -496,18 +496,34 @@ El archivo completo lo puede encontrar en la siguiente ruta:
   var mod = ng.module("mainApp", [
       "ui.router",
       "bookModule",
-      "mockModule"
+      "bookMock"
     ]);
   ```
-  Nota: Recuerde que usted debe registrar el archivo mocks.js en el index.html de su proyecto.
+  Nota: Recuerde que usted debe registrar el archivo book.mock.js en el index.html de su proyecto.
 
   ```javascript
   <head>
   ...
-  <script src="src/modules/mocks/mock.js" type="text/javascript"></script>
+  <script src="src/modules/book/book.mock.js" type="text/javascript"></script>
   </head>
   ```
  
-Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios, un archivo de mocks y un template dinámico. Usted debe poder crear, editar, leer y borrar en memoria libros de la aplicación.
+Repita los anteriores pasos para definir un módulo mock para author y editorial. Tenga en cuenta que cada mock tiene la declaración de urls según la entidad y los atributos de cada mock  cambian respecto al módelo. Por ejemplo: el mock de author debe tener la url definida así: 
+```javascript
+var recordUrl = new RegExp('api/authors/([0-9]+)');
+``` 
+y los atributos para author son:
+```javascript
+        /*
+         * @type Array
+         * records: Array con un Author por defecto
+         */
+        var records = [{
+                id: 1,
+                name: 'Alvaro Mutis',
+                birthDate: '1940-01-22'
+            }];
+```
 
+Al terminar la anterior guía usted debe tener una aplicación de AngularJS con un controlador, un módulo, un archivo de servicios, un archivo de mocks y un template dinámico para los módulos book, editorial y author. Usted debe poder crear, editar, leer y borrar en memoria libros, autores y editoriales de la aplicación.
 
