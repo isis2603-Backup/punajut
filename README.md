@@ -13,15 +13,9 @@ Grupo de trabajo de la clase de Desarrollo de Software en Equipo 2016-1.
 * El respeto hacia los demás integrantes del grupo es fundamental.
 * Realizar las actividades semanales.
 * Estar enterado sobre el trabajo realizado.
-* **NO** asistir sin ropa a la reuniones del grupo.
 
-#Tabla De Tareas SEMANA 1
+#Tabla De Tareas SEMANA 2
 Actividades                | Duración | Viernes | Sabado | Domingo | Lunes | Martes | Miercoles | Jueves
 :-------------------------:|:--------:|:-------:|:------:|:-------:|:-----:|:------:|:---------:|:--------:
 UML                        |     1H   | Ricardo, Juan P., Sofía, Julio, Rafael | Maria | | | | |   
-Talleres Html CSS          |          | Juan P., Sofía | Ricardo, María, Julio, Rafael | | | | |
-Consolidación UML          | 2H (1-3) |         |        | Todos   | | | |
-Casos de uso               |   1H     |         |        | María   |  Individual (Todos)| | |                  
-Consolidación casos de Uso | 2H (1-3) |         |        | Sofía   |       | Todos  | |
-Subir el trabajo           |          |         |        |         |       |        | Juan P.   |
 Planear siguiente semana   |    1H    |         |        |         |       |        |           | Todos
