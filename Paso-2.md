@@ -338,7 +338,7 @@ De igual manera, cree los estados 'editorial' y 'author' en el provider ui-route
 
 Los mocks son objetos en javascript que nos permiten simular el comportamiento de un api. Esto con el fin de trabajar en el frontEnd independientemente de que todos los servicios del api en JavaEE estén desarrollados o no. En éste caso se realizará la implementación de varios mocks para los módulos Book, author y editorial haciendo uso del módulo de AngularJS **ngMockE2E**. Para activar los mocks en su aplicación AngularJS realice los siguientes pasos:
 
-- Descargar el módulo o libreria **ngMockE2E** en el directorio /resources/js/angular-mocks.js. Al igual que la libreria ui.bootstrap. [Link de descarga](https://code.angularjs.org/1.4.9/angular-mocks.js). **Nota:** No olvide registrarlo en el index.html.
+- Descargar el módulo o libreria **ngMockE2E** en el directorio /resources/js/angular-mocks.js al igual que la libreria ui.bootstrap. [Link de descarga](https://code.angularjs.org/1.4.9/angular-mocks.js). **Nota:** No olvide registrarlo en el index.html.
 - Crear el archivo book.mock.js en la ubicación src/modules/book/
 - En el archivo:
   - Crear módulo mockModule e inyectar módulo ngMockE2E.
