@@ -70,7 +70,7 @@ Finalmente, es necesario añadir en el elemento `<head>` la referencia a los arc
 ```
 
 # Configuración de AngularJS
-Primero que todo, para poder utilizar *AngularJS*, al igual que *Bootstrap* (y cualquier otra librería Javascript o CSS), es necesario incluir una referencia a los fuentes en `index.html`. En este caso, se debe descar los [fuentes de AngularJS](https://angularjs.org/) y ubicarlos en la ruta `resources/js`. Seguido añadimos una referencia a estos fuentes en `index.html`
+Primero que todo, para poder utilizar *AngularJS*, al igual que *Bootstrap* (y cualquier otra librería Javascript o CSS), es necesario incluir una referencia a los fuentes en `index.html`. En este caso, se debe descargar los [fuentes de AngularJS](https://angularjs.org/) y ubicarlos en la ruta `resources/js`. Seguido añadimos una referencia a estos fuentes en `index.html`
 
 ```html
 <script src="resources/js/angular.min.js" type="text/javascript"></script>
