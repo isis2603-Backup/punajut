@@ -42,6 +42,9 @@ var mod = ng.module("mainApp", [
 
 Nota: Tenga en cuenta el orden de importación de las librerias descargadas. Un ejemplo de registro de las librerías en el archivo index.html es:
 ```javascript
+        <script src="resources/js/checklist-model.js" type="text/javascript"></script>
+        <script src="resources/js/angular-cookies.min.js" type="text/javascript"></script>        
+        <script src="resources/js/csw-ng-auth.min.js" type="text/javascript"></script>
 ```
 
 - Para el buen funcionamiento del módulo de seguridad es necesario configurar los roles asociados a la aplicación y los menús respectivos para cada rol. Mediante el siguiente ejemplo se configura el provider de seguridad dentro del archivo app.js:
