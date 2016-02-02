@@ -39,6 +39,7 @@ var mod = ng.module("mainApp", [
 
  - [Link de descarga ngCookies](https://code.angularjs.org/1.4.8/angular-cookies.min.js)
  - [Link de descarga checklist-model](http://vitalets.github.io/checklist-model/checklist-model.js)
+
 Nota: Tenga en cuenta el orden de importación de las librerias descargadas. Un ejemplo de registro de las librerías en el archivo index.html es:
 ```javascript
 ```
