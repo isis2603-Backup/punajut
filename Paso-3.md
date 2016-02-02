@@ -62,7 +62,7 @@ mod.config(['authServiceProvider', function (auth) {
 
 ```
 
-- Finalmente, usted debe agregar la directiva que despliega el botón de login al index.html. Se recomienda colocarla en el toolbar superior, tal como se muestra a continuación:
+- Finalmente, usted debe agregar la directiva que despliega el botón de login ```<login-button></login-button>``` al index.html. Se recomienda colocarla en el toolbar superior, tal como se muestra a continuación:
 
 ```html
 <div class="col-md-12">
@@ -96,5 +96,4 @@ mod.config(['authServiceProvider', function (auth) {
                 </nav>
             </div>
 ```
-
 
