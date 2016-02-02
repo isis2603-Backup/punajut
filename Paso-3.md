@@ -39,7 +39,7 @@ var mod = ng.module("mainApp", [
 - Para el buen funcionamiento del módulo de seguridad es necesario configurar los roles asociados a la aplicación y los menús respectivos para cada rol. Mediante el siguiente ejemplo se configura el provider de seguridad dentro del archivo app.js:
 
 ```javascript
-
+...
 mod.config(['authServiceProvider', function (auth) {
             auth.setValues({
                 apiUrl: 'api/users/',
