@@ -32,7 +32,7 @@ var mod = ng.module("mainApp", [
         "editorialMock",
         "authorMock",
         "ngMessages",
-        "authModule"
+        "authModule" // Módulo de seguridad
     ]);
 ```
 
