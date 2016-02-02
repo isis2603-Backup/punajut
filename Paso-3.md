@@ -97,3 +97,14 @@ mod.config(['authServiceProvider', function (auth) {
             </div>
 ```
 
+# Configuración de Mock para Módulo AuthModule
+
+El módulo de seguridad anteriormente configurado necesita para su funcionamiento la comunicación con servicios de backedn que permitan la autenticación y autorización de usuarios. Por lo tanto, usted debe crear un archivo mock para simular las respuestas del servidor. A continuación se muestra los pasos para crear el archivo **authMock.js**.
+
+
+
+
+
+
+
+
