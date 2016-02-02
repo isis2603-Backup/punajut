@@ -15,7 +15,7 @@ El módulo **ng-crud-auth** tiene como finalidad asociar los *templates* de regi
 ## Configuración Módulo de Seguridad
 Realice los siguientes pasos para configurar el módulo de seguridad
 
-- Usted debe descargar la librería javascript del módulo de seguridad. Para esto descargue el archivo **csw-ng-auth.min.js** del siguiente [link](https://github.com/recursosCSWuniandes/ng-crud-auth/blob/master/dist/csw-ng-auth.min.js) y copielo dentro de la carpeta *resources/js/*. Se recomienda descargar todo el repositorio en su máquina virtual y copiar el archivo **csw-ng-auth.min.js**  ubicado en la ruta dist/*. Nota: No olvide registrar el archivo **csw-ng-auth.min.js** dentro del index.html. Ver ejemplo:
+- Usted debe descargar la librería javascript del módulo de seguridad. Para esto descargue el archivo **csw-ng-auth.min.js** del siguiente [link](https://github.com/recursosCSWuniandes/ng-crud-auth/blob/master/dist/csw-ng-auth.min.js) y copielo dentro de la carpeta *resources/js/*. Se recomienda descargar todo el repositorio en su máquina virtual y copiar el archivo **csw-ng-auth.min.js**  ubicado en la ruta dist/*. *Nota:* No olvide registrar el archivo **csw-ng-auth.min.js** dentro del index.html. Ver ejemplo:
 
 ```HTML
 <script src="resources/js/csw-ng-auth.min.js" type="text/javascript"></script>
