@@ -35,6 +35,13 @@ var mod = ng.module("mainApp", [
         "authModule" // Módulo de seguridad
     ]);
 ```
+- El módulo authModule requiere para su funcionamiento las librerias **ngCookies** y **Checklist-model**. Para descargarlas haga click en cada link, guarde los archivos como archivos javascript dentro de la carpeta *resources/js*.
+
+ - [Link de descarga ngCookies](https://code.angularjs.org/1.4.8/angular-cookies.min.js)
+ - [Link de descarga checklist-model](http://vitalets.github.io/checklist-model/checklist-model.js)
+Nota: Tenga en cuenta el orden de importación de las librerias descargadas. Un ejemplo de registro de las librerías en el archivo index.html es:
+```javascript
+```
 
 - Para el buen funcionamiento del módulo de seguridad es necesario configurar los roles asociados a la aplicación y los menús respectivos para cada rol. Mediante el siguiente ejemplo se configura el provider de seguridad dentro del archivo app.js:
 
