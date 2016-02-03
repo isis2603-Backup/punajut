@@ -132,7 +132,7 @@ Los siguientes métodos describen la lógica necesaria para desplegar mensajes d
 
 ### Métodos del controlador para invocar servicios
 
-Los siguientes métodos describen la lógica necesaria para comunicarse con el componente de servicio para book. Como se puede ver en el siguiente código, los métodos hacen referencia a operaciones CRUD (Create, Read, Update, Delete) las cuales hacen invocaciones al componente de servicios **"BookServce - svc"** encargado de realizar el llamado al api.
+Los siguientes métodos describen la lógica necesaria para comunicarse con el componente de servicio para book. Como se puede ver en el siguiente código, los métodos hacen referencia a operaciones CRUD (Create, Read, Update, Delete) las cuales hacen invocaciones al componente de servicios **"BookService - svc"** encargado de realizar el llamado al api.
 
 ```javascript
 //Variables para el controlador
