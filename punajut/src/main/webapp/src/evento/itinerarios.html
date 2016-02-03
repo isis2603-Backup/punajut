@@ -140,7 +140,12 @@
 
 <script>
 function nuevaPagina1() {
-    alert("¿Quieres cargar el itinerario 1?");
+    var opcion=prompt("¿Qué quieres hacer con el itinerario 1? Editar:0, Eliminar:1");
+
+    if(opcion==1)
+    {
+        document.getElementById("itinerario1").innerHTML("BLANK");
+    }
 }
 
 function nuevaPagina2() {
