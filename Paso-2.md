@@ -95,11 +95,10 @@ Para esta aplicación, el controlador se registra como "bookCtrl" y hace llamado
 Los siguientes métodos describen la lógica necesaria para desplegar mensajes de alerta en el template "book.tpl.html". Recuerde que el módulo "BookModule". La lógica se compone de las siguientes variables y métodos o funciones:
 
 - Variables para las alertas: Usted debe declarar la variable **$scope.alert** como un array. Aqui se almacena todas las alertas.
-
-- Función showMessage: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
-- Función showError: Recibe un mensaje en String e invoca la función showMessage agregando el tipo "error" cómo parámetro.
-- Función showSuccess: Recibe un mensaje en String e invoca la función showMessage agregando el tipo "success" cómo parámetro.
-- Función closeAlert: Elimina una alerta de la colección de alertas disponibles.
+- Función **showMessage**: Recibe el mensaje en String y su tipo con el fin de almacenarlo en el array $scope.alerts.
+- Función **showError**: Recibe un mensaje en String e invoca la función showMessage agregando el tipo "error" cómo parámetro.
+- Función **showSuccess**: Recibe un mensaje en String e invoca la función showMessage agregando el tipo "success" cómo parámetro.
+- Función **closeAlert**: Elimina una alerta de la colección de alertas disponibles.
 
 ```javascript
 //Alertas
