@@ -46,7 +46,7 @@ De igual manera cree los archivos **editorial.mod.js** y **author.mod.js**. Teng
 
 ### Agregar archivo book.mod.js al index.html.
 
-Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de código dentro del tag <head> del archivo index.html.
+Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de código dentro del tag ```<head>``` del archivo index.html.
 
 ```HTML
 <script src="src/modules/book/book.mod.js" type="text/javascript"></script>
