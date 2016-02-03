@@ -1,59 +1,258 @@
 <!DOCTYPE html>
-<html ng-app="mainApp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Book Store</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <title>Gotravel</title>
 
-        <script src="resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="resources/js/angular.min.js" type="text/javascript"></script>
-        <script src="resources/js/angular-ui-router.min.js" type="text/javascript"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 
-        <script src="src/app.js" type="text/javascript"></script>
+    <!-- Custom styles for this template -->
+    <link href="./resources/css/carousel.css" rel="stylesheet">
 
-    </head>
-    <body style="padding-top: 60px;">
-        <div class="container-fluid">
-            <div class="col-md-12">
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-bar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href>Mis Vacaciones</a>
-                        </div>
+    <!-- Custom styles for this template -->
+    <link href="./resources/css/starter-template.css" rel="stylesheet">
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="evento">Ayuda</a></li>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="evento">Registrarse</a></li>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="evento"></a>Iniciar Sesion</li>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
-                    </div> <!-- /.container-fluid -->
-                </nav>
+    <!-- Custom styles for this template -->
+    <link href="./resources/css/signin.css" rel="stylesheet">
+
+  </head>
+  <body background="w3s.png">
+
+
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <a href="#" class="navbar-brand">GoTravel</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#myCarousel">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#resumen">Descripción</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#viaja">Viaja</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#crea">Crea</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#comparte">Comparte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#signin">Sign in</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="first-slide" src="https://www.facua.org/es/images/noticia9515h.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption text-xs-left">
+              <h1>¡Bienvenido!</h1>
+              <p>¿Que estas esperando? ¡Únete ya y crea experiencias inolvidables!</p>
+              <p><a class="btn btn-lg btn-primary" href="#signup" role="button">Sign up today</a></p>
             </div>
-            <div ui-view></div>
+          </div>
         </div>
-    </body>
+        <div class="carousel-item">
+          <img class="second-slide" src="http://www.getex.com/blog/wp-content/uploads/2015/07/discount.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>WOW</h1>
+              <p>Wow es la palabra indicada ya que podras encontrar descuentos en todo el mundo!</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="third-slide" src="http://www.lafamiliacristiana.com.mx/lfc/media/k2/items/cache/e7a6f6b910c37abcb54adf404e3a392a_XL.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption text-xs-right">
+              <h1>Comienza tu experiencia ahora!</h1>
+              <p>Viajando te conoceras a ti mismo lo que te permitira ser tu mejor YO!</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="container marketing" id="resumen">
+        <div class="row">
+              <div class="col-lg-4">
+                <center>
+                  <img class="img-circle" src="http://mariajoseongayesquivel.com/wp-content/uploads/2014/11/Mar%C3%ADa-Jos%C3%A9-Ongay-Esquivel1.jpg" alt="Generic placeholder image" width="200" height="200">
+                </center>
+                <h2 align="center">Viaja</h2>
+                <p align="center">El turismo favorece el contacto del hombre con la  naturaleza y con las culturas, promueve la valorización de los recursos ambientales y presenta las bellezas de la creación como una herencia común de toda la familia humana. Te invitamos a que explores el mundo!</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div>
+              <div class="col-lg-4">
+                <center>
+                  <img class="img-circle" src="http://empresariados.com/wp-content/2011/12/tips-para-crear-tu-marca-personal-en-el-trabajo.jpg" alt="Generic placeholder image" width="200" height="200">
+                </center>
+                <h2 align="center">Crea</h2>
+                <p align="center">Planifica tu viaje creando tu Itinerario. En el podra organizar tus hoeteles, transporte, comida, citios de interes, etc. Ademas, por medio de nuestra aplicacion, podras subir fotos y videos para que tus viajes nunca ueden en el olvido!</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div>
+              <div class="col-lg-4">
+                <center>
+                  <img class="img-circle" src="http://files.matematicasvdg.webnode.es/200000446-38cdb39c7f/SMO.jpg" alt="Generic placeholder image" width="200" height="200">
+                </center>
+                <h2 align="center">Comparte</h2>
+                <p align="center">Comparte tus creacionas con la comunidad. De esta forma otros podran tener experiencias inolvidables.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+              </div>
+          </div>
+
+                <hr class="featurette-divider">
+      <div class="row featurette"  id="viaja">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Viajar <span class="text-muted">It'll blow your mind.</span></h2>
+          <p align="justify" class="lead">En esta pagina podras reservar tus tiquetes de avion, hoteles, transporte, restaurantes, etc. Lo que te permitira conocer nuvos lugares y culturas que te llenaran de experiencia inigualables</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid center-block" src="http://noworriestravels.com/wp-content/uploads/2015/08/Travel-Insurance.jpg" alt="Generic placeholder image" width="350" height="350">
+        </div>
+      </div>
+
+            <hr class="featurette-divider">
+      <div class="row featurette"  id="crea">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Crea! <span class="text-muted">See for yourself.</span></h2>
+          <p align="justify" class="lead">Te ayudamos a crear tus itinerarios de viaje y albuns de recuerdos. El itinerario lo podras ver como un timeline de tu viaje y asi podras organizar de manera rapida, facil y didactica tus vajes. por otro lado estan los albuns donde podras guardar todas las cosas maravillosas que veas en tus experiencias de viaje!</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-fluid center-block" src="http://media.idownloadblog.com/wp-content/uploads/2015/07/Google-Maps-Your-Timeline-Mac-screenshot-001.png" alt="Generic placeholder image" width="350" height="350">
+        </div>
+      </div>
+
+            <hr class="featurette-divider">
+      <div class="row featurette" id="comparte">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Comparte <span class="text-muted">Checkmate.</span></h2>
+          <p align="justify" class="lead">Comparte tus itinerarios! Asi mas personas podran experimentar la experiencia que tuviste, tambien podras ver itinerario de otras personas en todo el mundo! ¿no te parece increible?</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-fluid center-block" src="http://ctrl-x.com.mx/wp-content/uploads/2015/05/redessociales.jpg" alt="Generic placeholder image" width="350" height="350">
+        </div>
+      </div>
+
+            <hr class="featurette-divider">
+
+      <div data-role="footer">
+          <footer>
+            <p class="pull-xs-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2016 GoTravel, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </footer>
+      </div>
+    </div><!-- /.container -->
+
+
+
+    <div class="container" id="signup">
+
+        <form class="form-signin">
+          <h2 class="form-signin-heading">Please Sign Up</h2>
+
+          <label for="inputNickname" class="sr-only">nickname</label>
+          <input type="text" id="inputNickname" class="form-control" placeholder="nickname" required>
+
+          <label for="inputname" class="sr-only">name</label>
+          <input type="text" id="inputname" class="form-control" placeholder="name" required>
+
+          <label for="inputlastname" class="sr-only">lastname</label>
+          <input type="text" id="inputlastname" class="form-control" placeholder="lastname" required>
+
+          <label for="inputinfo" class="sr-only">info</label>
+          <input type="text" id="inputinfo" class="form-control" placeholder="tell us something about you" required>
+
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <label for="inputPassword2" class="sr-only">Password</label>
+          <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" required>
+
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+
+      </div> <!-- /container -->
+      <hr class="featurette-divider">
+    <div data-role="footer">
+          <footer>
+            <p class="pull-xs-right"><a href="#pageone">Back to Home</a></p>
+            <p>&copy; 2016 GoTravel, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </footer>
+      </div>
+
+    <div class="container" id="signin">
+    <center>
+          <form class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+           <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            </form>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <form class="form-signin">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+    </center>
+        </div> <!-- /container -->
+      <hr class="featurette-divider">
+    <div data-role="footer">
+          <footer>
+            <p class="pull-xs-right"><a href="#pageone">Back to Home</a></p>
+            <p>&copy; 2016 GoTravel, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </footer>
+      </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
 </html>
