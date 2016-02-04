@@ -103,7 +103,7 @@ mod.config(['authServiceProvider', function (auth) {
 
 El módulo de seguridad anteriormente configurado necesita para su funcionamiento la comunicación con servicios de backend que permitan la autenticación y autorización de usuarios. Por lo tanto, usted debe crear un archivo mock para simular las respuestas del servidor. A continuación se muestra los pasos para crear el archivo **authMock.js**.
 
-- ### Crear módulo auth.mock.js
+- Crear módulo auth.mock.js
 Usted debe crear el archivo auth.mock.js dentro del directorio *src/modules/auth/*. Este archivo debe declarar el módulo authMock, agregar la librería de ngMockE2E y configurar las peticiones o servicios a simular del backend. Las urls a simular son:
 
 Acción          | Url                | Descripción                               | Tipo de petición
@@ -114,7 +114,7 @@ Me              | api/users/me       | Obtiene el actual usuario conectado      
 Forgot          | api/users/forgot   | Envía correo para restablecer contraseña  | POST
 Logout          | api/users/logout   | Elimina la sesión del usuario conectado   | GET
 
-En el siguiente archivo usted puede observar la declaración de cada petición dentro del módulo authMock. Tenga en cuenta que cada método ```$httpBackend.whenXXX``` intercepta las solicitudes realizadas desde los módulos de servicios, tales como: "bookService", "authorService" y en este caso "authService", si desea recordar la creación de los mocks para book, author, review y editorial vaya al siguiente [link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/wiki/Paso-2#m%C3%B3dulos-mocks). *Nota:* Como puede observar el módulo "authService" no se encuentra dentro de la aplicación *bookstore-web* sino ya está declarada dentro de la librería *ng-crud-auth*.
+En el siguiente archivo usted puede observar la declaración de cada petición dentro del módulo authMock. Tenga en cuenta que cada método ```$httpBackend.whenXXX``` intercepta las solicitudes realizadas desde los módulos de servicios, tales como: "bookService", "authorService" y en este caso "authService", si desea recordar la creación de los mocks para book, author, review y editorial vaya al siguiente [link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/wiki/Paso-2#m%C3%B3dulos-mocks). *Nota:* Como puede observar el módulo "authService" no se encuentra dentro de la aplicación *bookstore-web* sino está declarada dentro de la librería *ng-crud-auth*.
 
 
 
