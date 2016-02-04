@@ -114,7 +114,113 @@ Me              | api/users/me       | Obtiene el actual usuario conectado      
 Forgot          | api/users/forgot   | Envía correo para restablecer contraseña  | POST
 Logout          | api/users/logout   | Elimina la sesión del usuario conectado   | GET
 
-En el siguiente archivo usted puede observar la declaración de cada petición dentro del módulo authMock. Tenga en cuenta que cada método ```$httpBackend.whenXXX``` intercepta las solicitudes realizadas desde los módulos de servicios, tales como: "bookService", "authorService" y en este caso "authService", si desea recordar la creación de los mocks para book, author, review y editorial vaya al siguiente [link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/wiki/Paso-2#m%C3%B3dulos-mocks). *Nota:* Como puede observar el módulo "authService" no se encuentra dentro de la aplicación *bookstore-web* sino está declarado dentro de la librería *ng-crud-auth*.
+De igual manera, en el archivo auth.mock.js se observa la declaración de cada petición dentro del módulo authMock. Tenga en cuenta que cada método ```$httpBackend.whenXXX``` intercepta las solicitudes realizadas desde los módulos de servicios, tales como: "bookService", "authorService" y en este caso "authService", si desea recordar la creación de los mocks para book, author, review y editorial vaya al siguiente [link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/wiki/Paso-2#m%C3%B3dulos-mocks). *Nota:* Como puede observar el módulo "authService" no se encuentra dentro de la aplicación *bookstore-web* sino está declarado dentro de la librería *ng-crud-auth*.
+
+A continuación se muestra el contenido del archivo auth.mock.js junto con comentarios para cáda método.
+
+```javascript
+(function (ng) {
+
+    var mod = ng.module('authMock', ['ngMockE2E']);
+
+
+    mod.run(['$httpBackend', function ($httpBackend) {
+            var ignore_regexp = new RegExp('^((?!api).)*$');
+
+            /*
+             * @type Array
+             * users: Array con Usuarios por defecto
+             */
+            var users = [{
+                    userName: "User",
+                    password: "Uni123",
+                    surName: "SurName",
+                    email: "test@uniandes.edu.co",
+                    givenName: "GivenName",
+                    roles: ['user', 'admin'],
+                    customData: {id: 1}
+                }];
+
+            var userConnected = "";
+
+            var forgotPassEmails = [];
+            /*
+             * Ignora las peticiones GET, no contempladas en la Exp regular ignore_regexp
+             */
+            $httpBackend.whenGET(ignore_regexp).passThrough();
+
+            /*
+             * Esta funcion se ejecuta al invocar una solicitud GET a la url "api/users/me"
+             * Retorna el usuario conectado actualmente.
+             * Response: 200 -> Status ok, record -> usuario conectado y ningún header.
+             */
+            $httpBackend.whenGET('api/users/me').respond(function (method, url) {
+                if (userConnected === "") {
+                    return [204, userConnected, {}];
+                }else{
+                    return [200, userConnected, {}];
+                }
+            });
+            /*
+             * Esta funcion se ejecuta al invocar una solicitud POST a la url "api/users/register"
+             * Guarda en memoria (Array users) el usuario registrado
+             * Response: 201 -> Status created, record -> usuario registrado y ningún header.
+             */
+            $httpBackend.whenPOST('api/users/register').respond(function (method, url, data) {
+                var record = ng.fromJson(data);
+                record.customData = {};
+                record.customData.id = Math.floor(Math.random() * 10000);
+                users.push(record);
+                return [201, record, {}];
+            });
+            /*
+             * Esta funcion se ejecuta al invocar una solicitud POST a la url "api/user/login"
+             * Inicia sesion en la aplicacion, valida respecto al Array users 
+             * Response: 200 -> Status ok, record -> usuario y nungun header.
+             */
+            $httpBackend.whenPOST('api/users/login').respond(function (method, url, data) {
+                var record = ng.fromJson(data);
+                var state = 401;
+                var response = "The Password you've entered is incorrect!";
+                ng.forEach(users, function (value) {
+                    if (value.userName === record.userName && value.password === record.password) {
+                        response = ng.copy(value);
+                        state = 200;
+                    }
+                });
+                return [state, response];
+            });
+            
+            
+            /*
+             * Esta funcion se ejecuta al invocar una solicitud POST a la url "api/users/forgot"
+             * Guarda en un array las direcciones de correo de los usuarios que olvidaron el password
+             * Response: 204, no retorna ningun dato ni headers.
+             */
+            
+            
+            $httpBackend.whenPOST('api/users/forgot').respond(function (method, url, data) {
+                var response = ng.fromJson(data);
+                forgotPassEmails.push(response);                
+                return [204, null];
+            });
+            
+            /*
+             * Esta funcion se ejecuta al invocar una solicitud GET a la url "api/users/logout"
+             * Elimina la información del usuario conectado
+             * Response: 204, no retorna ningun dato ni headers.
+             */
+
+            $httpBackend.whenGET('api/users/logout').respond(function (method, url) {
+                userConnected = "";
+                return [204, null, {}];
+            });
+
+
+        }]);
+})(window.angular);
+
+```
 
 
 
