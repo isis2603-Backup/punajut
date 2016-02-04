@@ -3,6 +3,7 @@
 -  [Introducción](#introducción)
 -  [Módulo Ng Auth](#módulo-ng-auth)
 -  [Configuración Módulo de Seguridad](#configuración-módulo-de-seguridad)
+-  [Configuración de Mock para Módulo AuthModule](#configuración-de-mock-para-modulo-authmodule)
 
 
 ## Introducción
@@ -223,7 +224,6 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
 ```
 
 Al finalizar esta guía usted debe tener una aplicación con un template para realizar login , registro y para enviar un correo de restauración de contraseña. El módulo de autenticación debe permite la navegación y el manejo de menús personalizados en el botón de login y/o usuario. 
-
 
 
 
