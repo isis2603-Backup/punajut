@@ -222,7 +222,7 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
 })(window.angular);
 
 ```
-** Nota: Recuerde inyectar módulo "authModule" en el módulo principal Archivo app.js y registrarlo en el archivo index.html. **
+**Nota: Recuerde inyectar módulo "authModule" en el módulo principal Archivo app.js y registrarlo en el archivo index.html.**
 
 Al finalizar esta guía usted debe tener una aplicación con un template para realizar login , registro y para enviar un correo de restauración de contraseña. El módulo de autenticación debe permite la navegación y el manejo de menús personalizados en el botón de login o de usuario. 
 
