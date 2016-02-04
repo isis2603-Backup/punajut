@@ -12,6 +12,11 @@
                     .state('evento', {
                         url: '/evento',
                         templateUrl: "src/modules/book/book.tpl.html"
+                    })
+
+                    .state('recuerdos', {
+                        url: '/recuerdo',
+                        templateUrl: "src/recuerdo/recuerdo.tpl.html"
                     });
         }]);
 })(window.angular);
