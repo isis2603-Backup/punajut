@@ -28,9 +28,11 @@ var mod = ng.module("mainApp", [
         "bookModule",
         "editorialModule",
         "authorModule",
+        "reviewModule",
         "bookMock",
         "editorialMock",
         "authorMock",
+        "reviewMock",
         "ngMessages",
         "authModule" // Módulo de seguridad
     ]);
@@ -99,8 +101,18 @@ mod.config(['authServiceProvider', function (auth) {
 
 # Configuración de Mock para Módulo AuthModule
 
-El módulo de seguridad anteriormente configurado necesita para su funcionamiento la comunicación con servicios de backedn que permitan la autenticación y autorización de usuarios. Por lo tanto, usted debe crear un archivo mock para simular las respuestas del servidor. A continuación se muestra los pasos para crear el archivo **authMock.js**.
+El módulo de seguridad anteriormente configurado necesita para su funcionamiento la comunicación con servicios de backend que permitan la autenticación y autorización de usuarios. Por lo tanto, usted debe crear un archivo mock para simular las respuestas del servidor. A continuación se muestra los pasos para crear el archivo **authMock.js**.
 
+- ### Crear módulo auth.mock.js
+Usted debe crear el archivo auth.mock.js dentro del directorio *src/modules/auth/*. Este archivo debe declarar el módulo authMock, agregar la librería de ngMockE2E y configurar las peticiones o servicios a simular del backend. Las urls a simular son:
+
+Acción          | Url                | Descripción                               | Tipo de petición
+--------------- |--------------------|-------------------------------------------|-------------------
+Login           | api/users/login    | Inicio de sesión en la aplicación         | POST
+Register        | api/users/register | Registro de usuarios en la aplicación     | POST
+Me              | api/users/me       | Obtiene el actual usuario conectado       | GET
+Forgot          | api/users/forgot   | Envía correo para restablecer contraseña  | POST
+Logout          | api/users/logout   | Elimina la sesión del usuario conectado   | GET
 
 
 
