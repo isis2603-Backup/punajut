@@ -3,7 +3,7 @@
 -  [Introducción](#introducción)
 -  [Módulo Ng Auth](#módulo-ng-auth)
 -  [Configuración Módulo de Seguridad](#configuración-módulo-de-seguridad)
--  [Configuración de Mock para Módulo AuthModule](#configuración-de-mock-para-modulo-authmodule)
+-  [Configuración de Mock para Módulo AuthModule](#configuración-de-mock-para-módulo-authmodule)
 
 
 ## Introducción
