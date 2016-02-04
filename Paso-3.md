@@ -114,6 +114,8 @@ Me              | api/users/me       | Obtiene el actual usuario conectado      
 Forgot          | api/users/forgot   | Envía correo para restablecer contraseña  | POST
 Logout          | api/users/logout   | Elimina la sesión del usuario conectado   | GET
 
+En el siguiente archivo usted puede observar la declaración de cada petición dentro del módulo authMock. Tenga en cuenta que cada método ```$httpBackend.whenXXX``` intercepta las solicitudes realizadas desde los módulos de servicios, tales como: "bookService", "authorService" y en este caso "authService", si desea recordar la creación de los mocks para book, author, review y editorial vaya al siguiente [link](https://github.com/Uniandes-isis2603-201520/ejemplo-book/wiki/Paso-2#m%C3%B3dulos-mocks). *Nota:* Como puede observar el módulo "authService" no se encuentra dentro de la aplicación *bookstore-web* sino ya está declarada dentro de la librería *ng-crud-auth*.
+
 
 
 
