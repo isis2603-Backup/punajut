@@ -264,6 +264,6 @@ Uncaught Error: [$injector:modulerr] ...errors.angularjs.org/1.4.8/$injector/mod
 
 El error se debe a que no se ha inyectado "auth.mock.js" en el archivo index.html
 
-* ¿Cómo soluciono que al dar clic en Login, no muestra nada?
+* Hasta el momento tenemos un conflicto entre los estados de la aplicación y de la librería _csw-ng-auth.min.js_ para solucionarlo por favor realice el siguiente paso.
 
-Se verifica por la consola del navegador que muestra un mensaje como este "You Called api/users/me". Entonces para habilitar el Login se debe ir al archivo app.js y comentar la siguiente linea de código ```$urlRouterProvider.otherwise("/book"); ```
+Ir al archivo app.js y comentar la siguiente linea de código ```$urlRouterProvider.otherwise("/book"); ```
