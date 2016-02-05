@@ -225,7 +225,7 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
 
 [Ir a auth.mock.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso3/bookstore-web/src/main/webapp/src/modules/auth/auth.mock.js).
 
-**Nota: Recuerde inyectar módulo "authModule" en el módulo principal Archivo app.js y registrarlo en el archivo index.html.**
+**Nota: Recuerde que ya debió inyectar el módulo "authModule" en el módulo principal archivo app.js y registrarlo en el archivo index.html como se indico anteriormente**
 
 Finalmente, usted debe explorar la aplicación web abriendo la consola del navegador. En la consola deben aparecer mensajes de log de las solicitudes que se realizan, en este caso, al authMock. Para conocer más acerca de cómo crear mensajes de $log en angular diríjase al siguiente [link](https://docs.angularjs.org/api/ng/service/$log). Por recomendación usted debe agregar mensajes tipo **logs** cuando se acceda a las urls para author, book, editorial y review.
 
