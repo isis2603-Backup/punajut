@@ -5,15 +5,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="estilo.css">
+  <link rel="stylesheet" type="text/css" href="./resources/css/estilo.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<h2>Comunidad<br><small>¡Explora lo que han hecho los demás!</small></h2>
-	<hr>
+
+    <div class="container">
+                <div class="row profile">
+                    <div class="col-md-3">
+                        <div class="profile-sidebar">
+                            <!-- SIDEBAR USERPIC -->
+                            <div class="profile-userpic">
+                                <img src="http://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/images/profile-img.jpg" class="img-responsive" alt="">
+                            </div>
+                            <!-- END SIDEBAR USERPIC -->
+                            <!-- SIDEBAR USER TITLE -->
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name">
+                                    Nombre
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END SIDEBAR USER TITLE -->
+                        <!-- SIDEBAR BUTTONS -->
+                        <div class="profile-userbuttons">
+                            <button type="button" class="btn btn-success btn-sm">Follow</button>
+                            <button type="button" class="btn btn-danger btn-sm">Message</button>
+                        </div>
+                        <!-- END SIDEBAR BUTTONS -->
+                        <!-- SIDEBAR MENU -->
+                        <div class="profile-usermenu">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-home"></i>
+                                        Home </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Account Settings </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        Itinerarios </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-flag"></i>
+                                        Help </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- END MENU -->
+                    </div>
+                </div>
+            </div>
+
 	<div class="col-md-6 showcase">
+            <h2>Comunidad<br><small>¡Explora lo que han hecho los demás!</small></h2>
+            <hr>
 	  	<div id="slideshow" class="carousel slide col-md-6" data-ride="carousel" data-interval="3500">
 	  	<!--Indicadores -->
 	  		<ol class="carousel-indicators">
@@ -25,28 +79,28 @@
 	  	<!-- Wrappers for sliders-->
 	  	<div class="carousel-inner" role="listbox">
 	  		<div class="item active">
-	  			<img class="itershow" src="images/paris.jpg" alt="Paris" align="middle">
+	  			<img class="itershow" src=".\Web Pages\resources\imagenes\img_comunidad\paris.jpg" alt="Paris" align="middle">
 	  			<div class="carousel-caption">
 	  				<h4 class="city">París</h4>
 	  			</div>
 	  		</div>
 
 	  		<div class="item">
-	  			<img class="itershow" src="images/london.jpg" alt="Paris" align="middle">
+	  			<img class="itershow" src="./Web Pages/resources/imagenes/img_comunidad/london.jpg" alt="Paris" align="middle">
 	  			<div class="carousel-caption">
 	  				<h4 class="city">Londres</h4>
 	  			</div>
 	  		</div>
 
 	  		<div class="item">
-	  			<img class="itershow" src="images/chile.jpg" alt="Chile ctm" align="middle">
+	  			<img class="itershow" src="./Web Pages/resources/imagenes/img_comunidad/chile.jpg" alt="Chile ctm" align="middle">
 	  			<div class="carousel-caption">
 	  				<h4 class="city">Chile CTM!</h4>
 	  			</div>
 	  		</div>
 
 	  		<div class="item">
-	  			<img class="itershow" src="images/bronx.jpg" alt="Bronx" align="middle">
+	  			<img class="itershow" src="./Web Pages/resources/imagenes/img_comunidad/bronx.jpg" alt="Bronx" align="middle">
 	  			<div class="carousel-caption">
 	  				<h4 class="city">Bronx</h4>
 	  			</div>
@@ -61,7 +115,7 @@
 	  		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	  		<span class="sr-only">Next</span>
 	  	</a>
-	  	</div>	
+	  	</div>
 	  	<div id="userinfo" class="col-md-4">
 	  		<img id="userphoto" src="images/user.png" align="left" alt="User" width="100" height="100">
 	  		<div id="options">
@@ -119,6 +173,6 @@
 
 	</div>
 
-	
+
 </body>
 </html>
