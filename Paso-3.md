@@ -4,7 +4,7 @@
 -  [Módulo Ng Auth](#módulo-ng-auth)
 -  [Configuración Módulo de Seguridad](#configuración-módulo-de-seguridad)
 -  [Configuración de Mock para Módulo AuthModule](#configuración-de-mock-para-módulo-authmodule)
--  [Preguntas](#preguntas)
+-  [FAQ](#faq)
 
 
 ## Introducción
@@ -121,14 +121,21 @@ De igual manera, en el archivo auth.mock.js se observa la declaración de cada p
 A continuación se muestra el contenido del archivo auth.mock.js junto con comentarios para cáda método.
 
 ```javascript
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 (function (ng) {
 
-    var mod = ng.module('authMock', ['ngMockE2E']);
+    var mod = ng.module('authMock', ['ngMockE2E', 'ngCookies']);
 
-
-    mod.run(['$httpBackend', function ($httpBackend) {
+    mod.run(['$httpBackend', '$log', '$cookies', function ($httpBackend, $log, $cookies) {
             var ignore_regexp = new RegExp('^((?!api).)*$');
-
+            var messages =  { debug: "You Called ", 
+                              wrong_pass: "The Password you've entered is incorrect!",
+                              email_info: "The message was sent!!"
+                            };
             /*
              * @type Array
              * users: Array con Usuarios por defecto
@@ -144,8 +151,12 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
                 }];
 
             var userConnected = "";
-
             var forgotPassEmails = [];
+            var urls = {me: "api/users/me", 
+                        login: "api/users/login",
+                        register: "api/users/register",
+                        logout: "api/users/logout", 
+                        forgot: "api/users/forgot"};
             /*
              * Ignora las peticiones GET, no contempladas en la Exp regular ignore_regexp
              */
@@ -156,10 +167,11 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
              * Retorna el usuario conectado actualmente.
              * Response: 200 -> Status ok, record -> usuario conectado y ningún header.
              */
-            $httpBackend.whenGET('api/users/me').respond(function (method, url) {
+            $httpBackend.whenGET(urls.me).respond(function (method, url) {
+                $log.debug(messages.debug + urls.me);
                 if (userConnected === "") {
                     return [204, userConnected, {}];
-                }else{
+                } else {
                     return [200, userConnected, {}];
                 }
             });
@@ -168,7 +180,8 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
              * Guarda en memoria (Array users) el usuario registrado
              * Response: 201 -> Status created, record -> usuario registrado y ningún header.
              */
-            $httpBackend.whenPOST('api/users/register').respond(function (method, url, data) {
+            $httpBackend.whenPOST(urls.register).respond(function (method, url, data) {
+                $log.debug(messages.debug + urls.register);
                 var record = ng.fromJson(data);
                 record.customData = {};
                 record.customData.id = Math.floor(Math.random() * 10000);
@@ -180,48 +193,53 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
              * Inicia sesion en la aplicacion, valida respecto al Array users 
              * Response: 200 -> Status ok, record -> usuario y nungun header.
              */
-            $httpBackend.whenPOST('api/users/login').respond(function (method, url, data) {
+            $httpBackend.whenPOST(urls.login).respond(function (method, url, data) {
+                $log.debug(messages.debug + urls.login);
                 var record = ng.fromJson(data);
                 var state = 401;
-                var response = "The Password you've entered is incorrect!";
+                var response = messages.wrong_pass;
                 ng.forEach(users, function (value) {
                     if (value.userName === record.userName && value.password === record.password) {
                         response = ng.copy(value);
                         state = 200;
+                        $cookies.put("Token","UN14ND3S");
                     }
                 });
                 return [state, response];
             });
-            
-            
+
+
             /*
              * Esta funcion se ejecuta al invocar una solicitud POST a la url "api/users/forgot"
              * Guarda en un array las direcciones de correo de los usuarios que olvidaron el password
              * Response: 204, no retorna ningun dato ni headers.
              */
-            
-            
-            $httpBackend.whenPOST('api/users/forgot').respond(function (method, url, data) {
+
+
+            $httpBackend.whenPOST(urls.forgot).respond(function (method, url, data) {
+                $log.debug(messages.debug + urls.forgot);
                 var response = ng.fromJson(data);
-                forgotPassEmails.push(response);                
+                forgotPassEmails.push(response);
+                $log.info(messages.email_info);
                 return [204, null];
             });
-            
+
             /*
              * Esta funcion se ejecuta al invocar una solicitud GET a la url "api/users/logout"
              * Elimina la información del usuario conectado
              * Response: 204, no retorna ningun dato ni headers.
              */
 
-            $httpBackend.whenGET('api/users/logout').respond(function (method, url) {
+            $httpBackend.whenGET(urls.logout).respond(function (method, url) {
+                $log.debug(messages.debug + urls.logout);
                 userConnected = "";
+                $cookies.remove("Token");
                 return [204, null, {}];
             });
-
+            
 
         }]);
 })(window.angular);
-
 ```
 
 [Ir a auth.mock.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso3/bookstore-web/src/main/webapp/src/modules/auth/auth.mock.js).
@@ -232,7 +250,7 @@ Finalmente, usted debe explorar la aplicación web abriendo la consola del naveg
 
 Al finalizar esta guía usted debe tener una aplicación con un template para realizar login , registro y para enviar un correo de restauración de contraseña. El módulo de autenticación debe permite la navegación y el manejo de menús personalizados en el botón de login o de usuario. 
 
-# Preguntas
+# FAQ
 
 * ¿Tengo el siguiente error 
 Error: Unexpected request: GET api/users/me
