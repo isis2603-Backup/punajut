@@ -225,9 +225,22 @@ A continuación se muestra el contenido del archivo auth.mock.js junto con comen
 
 [Ir a auth.mock.js](https://github.com/Uniandes-isis2603-201520/ejemplo-book/blob/paso3/bookstore-web/src/main/webapp/src/modules/auth/auth.mock.js).
 
-**Nota: Recuerde que ya debió inyectar el módulo "authModule" en el módulo principal archivo app.js y registrarlo en el archivo index.html como se indico anteriormente**
+**Nota: Recuerde que inyectar el módulo "authModule" y el "authMock" en el módulo principal archivo app.js y registrarlos en el archivo index.html**
 
 Finalmente, usted debe explorar la aplicación web abriendo la consola del navegador. En la consola deben aparecer mensajes de log de las solicitudes que se realizan, en este caso, al authMock. Para conocer más acerca de cómo crear mensajes de $log en angular diríjase al siguiente [link](https://docs.angularjs.org/api/ng/service/$log). Por recomendación usted debe agregar mensajes tipo **logs** cuando se acceda a las urls para author, book, editorial y review.
 
 Al finalizar esta guía usted debe tener una aplicación con un template para realizar login , registro y para enviar un correo de restauración de contraseña. El módulo de autenticación debe permite la navegación y el manejo de menús personalizados en el botón de login o de usuario. 
 
+**Preguntas**
+
+¿Tengo el siguiente error 
+Error: Unexpected request: GET api/users/me
+No more request expected
+    at $httpBackend (angular-mocks.js:1322) ?
+
+El error se debe a que no se ha inyectado "authMock" en el archivo app.js
+
+¿Tengo el siguiente error 
+Uncaught Error: [$injector:modulerr] http://errors.angularjs.org/1.4.8/$injector/modulerr?p0=mainApp&p1=Error%3A…alhost%3A8080%2Fbookstore-web%2Fresources%2Fjs%2Fangular.min.js%3A19%3A463) ?
+
+El error se debe a que no se ha inyectado "auth.mock.js" en el archivo index.html
