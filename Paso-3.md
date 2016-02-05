@@ -4,6 +4,7 @@
 -  [Módulo Ng Auth](#módulo-ng-auth)
 -  [Configuración Módulo de Seguridad](#configuración-módulo-de-seguridad)
 -  [Configuración de Mock para Módulo AuthModule](#configuración-de-mock-para-módulo-authmodule)
+-  [Preguntas](#preguntas)
 
 
 ## Introducción
@@ -233,14 +234,14 @@ Al finalizar esta guía usted debe tener una aplicación con un template para re
 
 **Preguntas**
 
-¿Tengo el siguiente error 
+* ¿Tengo el siguiente error 
 Error: Unexpected request: GET api/users/me
 No more request expected
     at $httpBackend (angular-mocks.js:1322) ?
 
 El error se debe a que no se ha inyectado "authMock" en el archivo app.js
 
-¿Tengo el siguiente error 
-Uncaught Error: [$injector:modulerr] http://errors.angularjs.org/1.4.8/$injector/modulerr?p0=mainApp&p1=Error%3A…alhost%3A8080%2Fbookstore-web%2Fresources%2Fjs%2Fangular.min.js%3A19%3A463) ?
+* ¿Tengo el siguiente error 
+Uncaught Error: [$injector:modulerr] ...errors.angularjs.org/1.4.8/$injector/modulerr?p0=mainApp&p1=Error%3A…alhost%3A8080%2Fbookstore-web%2Fresources%2Fjs%2Fangular.min.js%3A19%3A463 ?
 
 El error se debe a que no se ha inyectado "auth.mock.js" en el archivo index.html
