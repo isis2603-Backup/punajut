@@ -232,7 +232,7 @@ Finalmente, usted debe explorar la aplicación web abriendo la consola del naveg
 
 Al finalizar esta guía usted debe tener una aplicación con un template para realizar login , registro y para enviar un correo de restauración de contraseña. El módulo de autenticación debe permite la navegación y el manejo de menús personalizados en el botón de login o de usuario. 
 
-**Preguntas**
+# Preguntas
 
 * ¿Tengo el siguiente error 
 Error: Unexpected request: GET api/users/me
