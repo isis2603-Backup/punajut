@@ -263,3 +263,7 @@ El error se debe a que no se ha inyectado "authMock" en el archivo app.js
 Uncaught Error: [$injector:modulerr] ...errors.angularjs.org/1.4.8/$injector/modulerr?p0=mainApp&p1=Error%3A…alhost%3A8080%2Fbookstore-web%2Fresources%2Fjs%2Fangular.min.js%3A19%3A463 ?
 
 El error se debe a que no se ha inyectado "auth.mock.js" en el archivo index.html
+
+* ¿Cómo soluciono que al dar clic en Login, no muestra nada?
+
+Se verifica por la consola del navegador que muestra un mensaje como este "You Called api/users/me". Entonces para habilitar el Login se debe ir al archivo app.js y comentar la siguiente linea de código ```$urlRouterProvider.otherwise("/book"); ```
