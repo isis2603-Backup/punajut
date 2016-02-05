@@ -34,6 +34,7 @@ pre {
 	width: 980px;
 	height: 500px;
 	margin: 30px;
+        display: block;
 }
 
 #slideshow {
