@@ -2,6 +2,8 @@
 
     var mod = ng.module("mainApp", ["ui.router"]);
 
+    mod.controller('MainController', ['$scope', function($scope) { $scope.title = 'Top Sellers in Books'; }]);
+
     mod.config(['$logProvider', function ($logProvider) {
             $logProvider.debugEnabled(true);
         }]);
