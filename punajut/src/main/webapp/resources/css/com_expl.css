@@ -1,0 +1,103 @@
+
+pre {
+	background-color: rgba(255, 255, 255, 0.8);
+	color: rgb(0,0,0);
+	width: 300px;
+}
+
+.iter {
+	margin: 10px;
+	width: 300px;
+	height: 200px;
+	align-items: center;
+}
+
+.iterphoto {
+	width: 300px;
+	height: 200px;
+}
+
+.iter:hover {
+	opacity: 0.5;
+}
+
+.row {
+	display: inline-block;
+}
+
+.city {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.showcase {
+	background-color: rgba(200, 200 ,200, 0.6 );
+	width: 980px;
+	height: 500px;
+	margin: 30px;
+        display: block;
+}
+
+#slideshow {
+	margin: 10px;
+	width: 500px;
+	height: 340px;
+	align-items: center;
+}
+
+#userinfo {
+	display: table-row;
+	margin-right: 10px;
+
+	width: 500px;
+	height: 100px;
+
+}
+
+#options {
+	display: inline-block;
+	width: 100px;
+}
+
+#userphoto {
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+}
+
+.usercomment {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	padding: 0.5px;
+}
+.textcomment {
+	display: table-cell;
+	width: 100px;
+}
+
+.comment {
+	display: table-row-group;
+
+}
+
+
+#comments {
+	display: inline-block;
+	width: 350px;
+	/*border: 1px solid red;*/
+}
+
+.usernameComment {
+	display: table-row;
+}
+
+.userimageComment {
+	display: table-cell;
+	width: 50px;
+	height: 50px;
+}
+
+.explore {
+	width: 500px;
+	height: 1000px;
+}
