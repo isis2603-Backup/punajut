@@ -25,7 +25,7 @@ book.tpl.html   | Template del módulo Book
 
 Usted debe crear los anteriores archivos del módulo **bookModule** en la ruta "src/modules/book". De igual manera cree los archivos para los módulos **authorModule** ruta "src/modules/author" y **editorialModule** ruta "src/modules/editorials". 
 
-A continuación se explica con mayor detalle el funcionamiento de cada archivo.
+A continuación se explica con mayor detalle el funcionamiento de cada archivo, para este caso se hará con Book.
 
 ## book.mod.js
 En este archivo se declara por primera vez el módulo "bookModule" y las dependencias que requiere. Para este caso tiene definido el módulo de "ui-bootstrap" y la declaración de la constante "bookContext" que contiene la Información del **api** del backend, en este caso es un String con la ruta "api/books".
