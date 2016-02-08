@@ -88,11 +88,11 @@ Igual que con las librerías anteriores, es necesario descargar los fuentes, ubi
 ## Creación del módulo principal
 Para el uso de AngularJS, es necesaria la creación de módulos. Los módulos son conjuntos de componentes y configuraciones que permiten una organización más eficiente del código fuente, además de facilitar la *inyección de dependencias* (https://docs.angularjs.org/guide/di).
 
-En toda aplicación de *AngularJS*, existe un módulo principal encargado de coordinar los otros. Como convención para este ejemplo, dicho módulo principal se encontrará en la ruta `src/app.js`.
+En toda aplicación de *AngularJS*, existe un módulo principal encargado de coordinar los otros. Como convención para este ejemplo, dicho módulo principal se encontrará en la ruta `src/app.js` así que debe crear un archivo Javascript con el nombre _app.js_ para iniciar con el módulo principal.
 
 En este archivo, se hará la creación del módulo principal, el cual llamaremos `mainApp`. `mainApp` será el punto de entrada para *AngularJS* para poder identificar las dependencias a otros módulos y poder cargar la configuración de cada uno de éstos. Adicionalmente, en `mainApp` definiremos los estados en los cuales puede encontrarse la aplicación, los cuales permiten configurar la navegación entre las diferentes vistas de la aplicación.
 
-Todo el contenido de `app.js` se hará dentro de un [closure](http://www.w3schools.com/js/js_function_closures.asp) con el fin de poder crear variables privadas.
+Todo el contenido de `app.js` se hará dentro de un [closure](http://www.w3schools.com/js/js_function_closures.asp) con el fin de poder crear variables privadas, a continuación veamos el ejemplo.
 
 ```javascript
 (function (ng) {
