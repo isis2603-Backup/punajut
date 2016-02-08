@@ -46,7 +46,7 @@ En resumen se debe agregar las siguientes etiquetas dentro del elemento `<head>`
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-Adicionalmente, es necesario cargar las dependencias de Bootstrap. Para esto, descargamos la versión 3.3.6 desde la [página](http://getbootstrap.com/getting-started/#download). Una vez descargados, descomprimir los archivos y ubicarlos en un nuevo directorio `resources`, el cual debe ir ubicado junto a `index.html`.
+Adicionalmente, es necesario cargar las dependencias de Bootstrap. Para esto, descargamos la versión 3.3.6 desde la [página](http://getbootstrap.com/getting-started/#download). Una vez descargados, descomprimir los archivos y ubicarlos en un nuevo directorio `resources`, el cual debe ir ubicado junto a `index.html`. Se deben copiar las 3 carpetas encontradas en el archivo que descomprimió. 
 
 ```
 /
@@ -60,7 +60,7 @@ Adicionalmente, es necesario cargar las dependencias de Bootstrap. Para esto, de
 
 Dado que *Bootstrap* depende de *JQuery*, es necesario descargarlo desde su [página oficial](https://jquery.com/download/) y ubicar el archivo minificado (https://en.wikipedia.org/wiki/Minification_(programming) ) en la ruta `resources/js`.
 
-Finalmente, es necesario añadir en el elemento `<head>` la referencia a los archivos de *Bootstrap* y *JQuery* para que estos sean cargados por el navegador. Tener en cuenta que dado que bootstrap depende de JQuery, es necesario cargar JQuery antes que el archivo Javascript de Bootstrap:
+Finalmente, es necesario añadir en el elemento `<head>` la referencia a los archivos de *Bootstrap* y *JQuery* para que estos sean cargados por el navegador. Tener en cuenta que dado que Bootstrap depende de JQuery, es necesario cargar JQuery antes que el archivo Javascript de Bootstrap para esto es importante mantener el orden como se muestra en a continuación:
 
 ```html
 <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
