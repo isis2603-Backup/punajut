@@ -52,7 +52,7 @@ Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de c�
 <script src="src/modules/book/book.mod.js" type="text/javascript"></script>
 ```
 
-**Para todos los archivos.js que usted cree, recuerde registrarlos en el *index.html* tal como se muestra en el siguiente ejemplo**
+**Nota:** Para todos los _archivos.js_ que usted cree, recuerde registrarlos en el *index.html* tal como se muestra en el siguiente ejemplo:
 
 ```HTML
 <script src="src/modules/book/book.mod.js" type="text/javascript"></script>
@@ -63,7 +63,7 @@ Para agregar el archivo book.mod.js usted debe agregar la siguiente línea de c�
 ### Agregar librería ui.bootstrap
 
 Para agregar la librería usted debe descargarla y agregarla en el directorio *resources/js*. Link de instrucciones: [Manual](
-https://github.com/angular-ui/bootstrap#manual-download) y descargar el archivo **ui-bootstrap-tpls-0.13.4.min.js** y agregarlo al index.html.
+https://github.com/angular-ui/bootstrap#manual-download) y descargar el archivo **ui-bootstrap-tpls-0.13.4.min.js** para agregarlo en la carpeta js y referenciarlo en el index.html.
 
 ```HTML
 <script src="resources/js/ui-bootstrap-tpls-0.13.4.min.js" type="text/javascript"></script>
