@@ -103,7 +103,7 @@ Todo el contenido de `app.js` se hará dentro de un [closure](http://www.w3schoo
 })(window.angular);
 ```
 
-Lo primero que hay que hacer para crear el módulo `mainApp` es invocar la función `ng.module`, la cual permite crear módulos, o instanciar un módulo ya existente, dependiendo de la cantidad de parámetros que se pasen a la función:
+Lo primero que hay que hacer para crear el módulo `mainApp` es invocar la función `ng.module`, la cual permite crear módulos, o instanciar un módulo ya existente, dependiendo de la cantidad de parámetros que se pasen a la función, en este caso recibe dos paramentos:
 
 1. Nombre del módulo a crear o instanciar.
 2. Array con dependencias para el módulo a crear. Si este parámetro es omitido, la función buscará un módulo ya existente, de lo contrario, creará uno nuevo (si ya existe anteriormente lo sobreescribe).
@@ -115,7 +115,7 @@ Lo primero que hay que hacer para crear el módulo `mainApp` es invocar la funci
 })(window.angular);
 ```
 
-Siempre que se desee usar un módulo, debe haberse invocado su creación anteriormente. De lo contrario, la aplicación no desplegará correctamente.
+Se puede apreciar en el anterior fragmento de código el Array con la dependencia _ui.router_ que usará el modulo _mainApp_. Es importante resaltar también que siempre que se desee usar un módulo, debe haberse invocado su creación anteriormente. De lo contrario, la aplicación no desplegará correctamente.
 
 Para poder utilizar el módulo recién creado, es necesario incluir en `index.html` una referencia al archivo que lo crea igual que con las librerías anteriores (y con todos los archivos javascript que se utilizarán en la aplicación).
 
