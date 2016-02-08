@@ -184,9 +184,11 @@ En el bloque anterior vemos el uso de la [directiva](https://docs.angularjs.org/
 Adicionalmente encontramos la directiva [`ui-view`](http://angular-ui.github.io/ui-router/site/#/api/ui.router.state.directive:ui-view) que permite definir en qué sección de la plantilla se llevará a cabo la actualización dinámica de la aplicación. Es decir, dentro del elemento con esta directiva es donde se cargarán las plantillas correspondientes a los estados.
 
 ## Creación de plantillas
-En este momento la aplicación se encuentra lista para crear las plantillas que definirán la interfaz de la aplicación. Para facilitar el mantenimiento de la aplicación conforme a su crecimiento, se sugiere crear todos los módulos de la aplicación en la ruta `src/modules`, en la cual cada módulo tendrá su respectiva carpeta, con el fin de mantener separados los fuentes de cada uno. por ejemplo, el módulo **book** se encontraría en `src/modules/book`.
+En este momento la aplicación se encuentra lista para crear las plantillas que definirán la interfaz de la aplicación. Para facilitar el mantenimiento de la aplicación conforme a su crecimiento, se sugiere crear todos los módulos de la aplicación en la ruta `src/modules`, en la cual cada módulo tendrá su respectiva carpeta, con el fin de mantener separados los fuentes de cada uno. por ejemplo, el módulo **book** se encontraría en `src/modules/book`. Así que teniendo eso en cuenta cree la carpeta _modules_ y dentro de ella la carpeta _book_ y _editorial_.
 
 A continuación crearemos una plantilla para el módulo **book** llamada `book.tpl.html`, la cual será visible cuando se solicite el estado `book`. En este momento, la plantilla a crear tendrá sólo contenido estático, sin embargo más adelante en este tutorial se cambiará este comportamiento para implementar contenido dinámico.
+
+Para crear la plantilla haga clic derecho sobre la carpeta _book_ y cree un nuevo archivo HTML, al cual le pondrá el nombre de `book.tpl` una vez creado podrá ver que el archivo quedo nombrado como `book.tpl.html`. En el archivo ingrese el siguiente fragmento de código. 
 
 ```html
 <div class="col-sm-12">
