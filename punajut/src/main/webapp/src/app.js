@@ -19,6 +19,10 @@
                     .state('recuerdos', {
                         url: '/recuerdo',
                         templateUrl: "src/recuerdo/recuerdo.tpl.html"
+                    })
+                     .state('continentes', {
+                        url: '/itinerario',
+                        templateUrl: "src/itinerario/verContinentes.tpl.html"
                     });
         }]);
 })(window.angular);

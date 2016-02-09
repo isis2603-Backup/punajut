@@ -7,16 +7,15 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Book Store</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
+        <script src="resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
         <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="resources/js/angular.min.js" type="text/javascript"></script>
         <script src="resources/js/angular-ui-router.min.js" type="text/javascript"></script>
-
         <script src="src/app.js" type="text/javascript"></script>
-
+        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
     </head>
     <body style="padding-top: 60px;">
         <div class="container-fluid">
@@ -37,20 +36,12 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="main-bar">
                             <ul class="nav navbar-nav">
-                                <li><a ui-sref="evento">Ayuda</a></li>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul class="nav navbar-nav">
+                                <li><a ui-sref="verContinentes">Ayuda</a></li>
+                                <li><a ui-sref="evento">Registrarse</a></li>
                                 <li><a ui-sref="evento">Registrarse</a></li>
                             </ul>
-                        </div> <!-- /.navbar-collapse -->
-                        <div class="collapse navbar-collapse" id="main-bar">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="evento"></a>Iniciar Sesion</li>
-                            </ul>
-                        </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
+                    </div>
                 </nav>
             </div>
             <div ui-view></div>
