@@ -73,7 +73,7 @@ Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, 
 ``` 
 **Nota:Tenga en cuenta el nombre de las funciones para cada botón del modal, para este caso son las funciones ok() y cancel() las cuales se deben implementar en el controlador del modal**
 
-- **Modificar el template book.tpl.html:** En el template book.tpl.html usted debe adicionar un **Tab** para Authors, este tab debe desplegar un toolbar de navegación con un botón con el nombre "Select" para abrir el modal.
+- **Modificar el template book.tpl.html:** En el template book.tpl.html usted debe adicionar un **Tab** para Authors, este tab debe desplegar un toolbar de navegación con un botón con el nombre "Select" para abrir el modal. Al oprimir el botón select se invoca la función **showList()** del controlador authorsCtrl retornando los autores en memoria.
 
 ```html
 <div id="childs" ng-show="ctrl.editMode" class="col-md-6">
@@ -126,7 +126,16 @@ Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, 
 </div>
 ```
 
-- Implementar la lógica de comunicación en el controlador BookCtrl
+- **Implementar la lógica de comunicación en el controlador BookCtrl:** Inyecte el servicio **$modal** de ui.bootstrap al controlador *BookCtrl*, los servicios de editorial y author, editorialService y authorService respectivamente, tal como se muestra en el siguiente ejemplo:
+````javascript
+mod.controller("bookCtrl", ["$scope", "bookService", "editorialService", "authorService", "$modal", function ($scope, svc, editorialSvc, authorSvc, $modal) {
+...
+}]);
+``` 
+
+
+
+
 - Implementar la lógica de comunicación del template con el controlador authorsCtrl
 - Agregar métodos en el servicio BookService para añadir y leer listas de authores.
 - Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
