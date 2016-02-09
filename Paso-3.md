@@ -1,7 +1,7 @@
 # Tabla de Contenidos
 
 -  [Introducción](#introducción)
--  [Relaciones simples uno a muchos](#)
+-  [Relaciones simples uno a muchos](#relaciones-simples-uno-a-muchos)
 -  [Relaciones de agregación muchos a muchos](#)
 -  [Relaciones de composición](#)
 -  [Manejo de eventos con AngularJS](#)
@@ -35,5 +35,12 @@ editorialSvc.fetchRecords().then(function (response) {
 ...
 }]);
 ```
+Para verificar el correcto funcionamiento, usted debe observar la ventana para crear o editar books y debe aparecer un select con todas las opciones para editorial. 
+
+## Relaciones de agregación muchos a muchos
+
+Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items al un módulo específico.
+
+
 
 ## FAQ
