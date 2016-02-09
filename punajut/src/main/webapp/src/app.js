@@ -20,7 +20,7 @@
                         url: '/recuerdo',
                         templateUrl: "src/recuerdo/recuerdo.tpl.html"
                     })
-                     .state('continentes', {
+                     .state('itinerario', {
                         url: '/itinerario',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
                     });
