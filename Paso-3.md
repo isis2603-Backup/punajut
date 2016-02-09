@@ -75,6 +75,57 @@ Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, 
 
 - **Modificar el template book.tpl.html:** En el template book.tpl.html usted debe adicionar un **Tab** para Authors, este tab debe desplegar un toolbar de navegación con un botón con el nombre "Select" para abrir el modal.
 
+```html
+<div id="childs" ng-show="ctrl.editMode" class="col-md-6">
+    <ul class="nav nav-tabs">
+        <li ng-show="currentRecord.id" role="presentation" ng-class="{active: tab === 'authors'}">
+            <a href ng-click="ctrl.changeTab('authors')">Authors</a>
+        </li>
+    </ul>
+    <!-- Aqui se necesita el template de la seleccion de los autores al libro -->
+    <div ng-show="tab === 'authors' && refId" ng-controller="authorsCtrl as ctrl">
+        <div id="authors-header">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#authors-navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand">Authors</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="authors-navbar">
+                        <button id="select-authors" class="btn btn-default navbar-btn" ng-click="ctrl.showList()"><span class="glyphicon glyphicon-check"></span> Select</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in records">
+                        <td>{{record.name}}</td>
+                        <td><button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.removeAuthor($index)"><span class="glyphicon glyphicon-minus"></span> Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+```
+
 - Implementar la lógica de comunicación en el controlador BookCtrl
 - Implementar la lógica de comunicación del template con el controlador authorsCtrl
 - Agregar métodos en el servicio BookService para añadir y leer listas de authores.
