@@ -39,7 +39,7 @@ Para verificar el correcto funcionamiento, usted debe observar la ventana para c
 
 ## Relaciones de agregación muchos a muchos
 
-Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico. En este caso, existe una relación muchos a muchos entre Book y Authors lo que significa que "un libro tiene asociado varios autores y autor tiene asociado varios libros". Para implementar la interfaz gráfica se utiliza la directiva [ui.bootstrap.modal](https://angular-ui.github.io/bootstrap/) que crea un modal para seleccionar las opciones correspondientes para book y author. **Usted debe revisar la documentación del link ui.bootstrap.modal antes de continuar con la implementación.**
+Para implementar las relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico. En este caso, existe una relación muchos a muchos entre Book y Authors lo que significa que "un libro tiene asociado varios autores y autor tiene asociado varios libros". Para implementar la interfaz gráfica se utiliza la directiva [ui.bootstrap.modal](https://angular-ui.github.io/bootstrap/) que crea un modal para seleccionar las opciones correspondientes para book y author. **Usted debe revisar la documentación de la directiva ui.bootstrap.modal antes de continuar con la implementación.**
 
 ### Implementación de la directiva *ui.bootstrap.modal*
 
@@ -47,6 +47,16 @@ Para implementar la relaciones muchos a muchos se dispone a crear un modal que a
 - Modificar el template book.tpl.html
 - Implementar la lógica de comunicación en el controlador BookCtrl
 - Implementar la lógica de comunicación del template con el controlador authorsCtrl
+- Agregar métodos en el servicio BookService para guardar, editar, leer y remover listas de authores.
+- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
+
+## Relaciones de composición Uno a Muchos.
+
+Para implementar las relaciones de composición *Uno a Muchos* se dispone a crear un **Tab** adicional en la interfaz del  módulo dueño de la relación, donde se puede realizar todas las operaciones CRUD al módulo hijo. Es importante resaltar que una relación de composición establece una fuerte relación entre el dueño de la relación y sus hijos, por ejemplo un hijo sólo puede ser creado y asociado a un módulo padre, *No puede existir hijos sin tener un padre*, de igual manera si el módulo padre desaparece todos sus hijos también eliminados.
+
+
+
+
 
 
 
