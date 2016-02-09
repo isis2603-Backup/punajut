@@ -39,7 +39,7 @@ Para verificar el correcto funcionamiento, usted debe observar la ventana para c
 
 ## Relaciones de agregación muchos a muchos
 
-Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items al un módulo específico.
+Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico.
 
 
 
