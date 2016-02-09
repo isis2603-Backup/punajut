@@ -43,7 +43,37 @@ Para implementar las relaciones muchos a muchos se dispone a crear un modal que 
 
 ### Implementación de la directiva *ui.bootstrap.modal* para relaciones Muchos a Muchos
 
-- Crear template html para modal de authores authorModal.tpl.html.
+- Crear template html para modal de authores authorModal.tpl.html:
+Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, este template es el encargado de mostrar al usuario los autores disponibles para seleccionar y asociar a un libro. **Nota: Los autores ya deben estar creados y guardados en memoria**. El siguiente código html muestra una lista de los autores disponibles con un check-box para seleccionarlos.
+
+```html 
+<div class="modal-header">
+    <h3 class="modal-title">Authors</h3>
+</div>
+<div class="modal-body">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th id="check-all"><input type="checkbox" ng-model="allChecked" ng-click="checkAll(allChecked)"/></th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-selected"><input type="checkbox" ng-model="record.selected"/></td>
+                <td>{{record.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default btn-sm" ng-click="ok()"><span class="glyphicon glyphicon-ok"></span> Save</button>
+    <button class="btn btn-default btn-sm" ng-click="cancel()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+</div>
+
+**Nota:Tenga en cuenta el nombre de las funciones para cada botón del modal, para este caso son las funciones ok() y cancel() las cuales se deben implementar en el controlador del modal**
+
+```
 - Modificar el template book.tpl.html
 - Implementar la lógica de comunicación en el controlador BookCtrl
 - Implementar la lógica de comunicación del template con el controlador authorsCtrl
