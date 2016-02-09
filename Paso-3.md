@@ -41,7 +41,12 @@ Para verificar el correcto funcionamiento, usted debe observar la ventana para c
 
 Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico. En este caso, existe una relación muchos a muchos entre Book y Authors lo que significa que "un libro tiene asociado varios autores y autor tiene asociado varios libros". Para implementar la interfaz gráfica se utiliza la directiva [ui.bootstrap.modal](https://angular-ui.github.io/bootstrap/) que crea un modal para seleccionar las opciones correspondientes para book y author. **Usted debe revisar la documentación del link ui.bootstrap.modal antes de continuar con la implementación.**
 
-Implem
+### Implementación de la directiva *ui.bootstrap.modal*
+
+- Crear template html para modal de authores authorModal.tpl.html.
+- Modificar el template book.tpl.html
+- Implementar la lógica de comunicación en el controlador BookCtrl
+- Implementar la lógica de comunicación del template con el controlador authorsCtrl
 
 
 
