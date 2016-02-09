@@ -39,7 +39,9 @@ Para verificar el correcto funcionamiento, usted debe observar la ventana para c
 
 ## Relaciones de agregación muchos a muchos
 
-Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico.
+Para implementar la relaciones muchos a muchos se dispone a crear un modal que aparecerá en la pantalla con el fin de asociar o no varios items a un módulo específico. En este caso, existe una relación muchos a muchos entre Book y Authors lo que significa que "un libro tiene asociado varios autores y autor tiene asociado varios libros". Para implementar la interfaz gráfica se utiliza la directiva [ui.bootstrap.modal](https://angular-ui.github.io/bootstrap/) que crea un modal para seleccionar las opciones correspondientes para book y author. **Usted debe revisar la documentación del link ui.bootstrap.modal antes de continuar con la implementación.**
+
+Implem
 
 
 
