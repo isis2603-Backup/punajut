@@ -126,18 +126,96 @@ Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, 
 </div>
 ```
 
-- **Implementar la lógica de comunicación en el controlador BookCtrl:** Inyecte el servicio **$modal** de ui.bootstrap al controlador *BookCtrl*, del mismo modo inyecte los servicios de editorial y author, editorialService y authorService respectivamente, tal como se muestra en el siguiente ejemplo:
-````javascript
-mod.controller("bookCtrl", ["$scope", "bookService", "editorialService", "authorService", "$modal", function ($scope, svc, editorialSvc, authorSvc, $modal) {
+- **Implementar la lógica de comunicación en el controlador BookCtrl:** Inyecte los servicios de book y editorial, bookService y editorialService respectivamente, tal como se muestra en el siguiente ejemplo:
+```javascript
+mod.controller("bookCtrl", ["$scope", "bookService", "editorialService", function ($scope, svc, editorialSvc) {
 ...
 }]);
-``` 
+```
+ 
+- **Implementar la lógica de comunicación del template con el controlador authorsCtrl:**  ** Inyecte el servicio **$modal** de ui.bootstrap al controlador *BookCtrl*, del mismo modo inyecte los servicios de author y book, authorService y bookService respectivamente, tal como se muestra en el siguiente ejemplo:
+```javascript
+ mod.controller("authorsCtrl", ["$scope", "authorService", "$modal", "bookService", function ($scope, svc, $modal, bookSvc) {
+...
+}]);
+```
+En el anterior controlador usted debe instanciar el modal definiendo si tiene animación, el template asociado, el controlador de la instancia y los parámetros que se van a pasar una vez se cree la instancia del modal. Para instanciar el modal usted debe hacer uso del método $modal.open(), tal como se muestra en el siguiente ejemplo. **Nota:** Observe que la declaración del modal está dentro de la función this.showList() ésta se llama al presionar el botón **Select** de la barra de Authors.
+
+```javascript
+            this.showList = function () {
+                var modal = $modal.open({
+                    animation: true,
+                    templateUrl: "src/modules/book/authorModal.tpl.html",
+                    controller: ["$scope", "$modalInstance", "items", "currentItems", function ($scope, $modalInstance, items, currentItems) {
+                            $scope.records = items.data;
+                            $scope.allChecked = false;
+
+                            function loadSelected(list, selected) {
+                                ng.forEach(selected, function (selectedValue) {
+                                    ng.forEach(list, function (listValue) {
+                                        if (listValue.id === selectedValue.id) {
+                                            listValue.selected = true;
+                                        }
+                                    });
+                                });
+                            }
+
+                            $scope.checkAll = function (flag) {
+                                this.records.forEach(function (item) {
+                                    item.selected = flag;
+                                });
+                            };
+
+                            loadSelected($scope.records, currentItems);
+
+                            function getSelectedItems() {
+                                return $scope.records.filter(function (item) {
+                                    return !!item.selected;
+                                });
+                            }
+
+                            $scope.ok = function () {
+                                $modalInstance.close(getSelectedItems());
+                            };
+
+                            $scope.cancel = function () {
+                                $modalInstance.dismiss("cancel");
+                            };
+                        }],
+                    resolve: {
+                        items: function () {
+                            return svc.fetchRecords();
+                        },
+                        currentItems: function () {
+                            return $scope.records;
+                        }
+                    }
+                });
+                modal.result.then(function (data) {
+                    bookSvc.replaceAuthors($scope.refId, data).then(function (response) {
+                        $scope.records.splice(0, $scope.records.length);
+                        $scope.records.push.apply($scope.records, response.data);
+                        $scope.$emit("updateAuthors", $scope.records);
+                    }, responseError);
+                });
+            };
+```
+### Métodos para el manejo de acciones del modal
+
+|Método|Descripción|
+|------|-----------|
+|**ok()** | Cierra el modal y retorna los items seleccionados |
+|**cancel()**| Cierra el modal y cancela las acciones anteriores|
+|**getSelectedItems()**|Obtiene los items seleccionados y los guarda en el $scope|
+|**$scope.checkAll**| Permite seleccionar todos los items del modal |
+|**loadSelected()**|Carga los elementos seleccionados con anterioridad para que aparezcan en el modal|
+
+La propiedad **resolve** establece los elementos a transferir o inyectar a cada instancia del modal, en este caso se envían los parámetros **items** y **currentItems** los cuales contienen la consulta de todos los autores y los autores seleccionados actualmente.
+Luego, el método modal.open() retorna un objeto con varias propiedades ([Ver Link](https://angular-ui.github.io/bootstrap/)) entre estas la propiedad result de tipo promesa, mediante la cual se le pasa una función que toma los actuales autores seleccionados y los envía al servicio **bookSvc.replaceAuthors** el cual se encargará de enviar la petición al servicio del backend o en este caso al mock.
+ 
 
 
 
-
-
-- Implementar la lógica de comunicación del template con el controlador authorsCtrl
 - Agregar métodos en el servicio BookService para añadir y leer listas de authores.
 - Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
 
