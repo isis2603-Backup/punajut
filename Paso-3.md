@@ -126,12 +126,13 @@ Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, 
 </div>
 ```
 
-- **Implementar la lógica de comunicación en el controlador BookCtrl:** Inyecte el servicio **$modal** de ui.bootstrap al controlador *BookCtrl*, los servicios de editorial y author, editorialService y authorService respectivamente, tal como se muestra en el siguiente ejemplo:
+- **Implementar la lógica de comunicación en el controlador BookCtrl:** Inyecte el servicio **$modal** de ui.bootstrap al controlador *BookCtrl*, del mismo modo inyecte los servicios de editorial y author, editorialService y authorService respectivamente, tal como se muestra en el siguiente ejemplo:
 ````javascript
 mod.controller("bookCtrl", ["$scope", "bookService", "editorialService", "authorService", "$modal", function ($scope, svc, editorialSvc, authorSvc, $modal) {
 ...
 }]);
 ``` 
+
 
 
 
