@@ -9,5 +9,7 @@
 
 
 ## Introducción
+Al finalizar este paso el estudiante estará en la capacidad representar relaciones de composición, agregación y simples en una aplicación web de AngularJS. A continuación se muestra el paso a paso para implementar las relaciones modeladas en cada módulo de la aplicación.
+
 
 ## FAQ
