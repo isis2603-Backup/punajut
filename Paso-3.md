@@ -43,7 +43,7 @@ Para implementar las relaciones muchos a muchos se dispone a crear un modal que 
 
 ### Implementación de la directiva *ui.bootstrap.modal* para relaciones Muchos a Muchos
 
-- Crear template html para modal de authores authorModal.tpl.html:
+- **Crear template html para modal de authores authorModal.tpl.html:**
 Usted debe crear el template authorModal.tpl.html en la url *src/modules/book*, este template es el encargado de mostrar al usuario los autores disponibles para seleccionar y asociar a un libro. **Nota: Los autores ya deben estar creados y guardados en memoria**. El siguiente código html muestra una lista de los autores disponibles con un check-box para seleccionarlos.
 
 ```html 
