@@ -22,7 +22,7 @@ Teniendo en cuenta el módelo de clases para el proyecto, se observa que existe 
                 </div>
             </div>
 ```
-- Agregar la lógica en el controlador para consultar las editoriales existentes.Para esto usted debe inyectar el servicio editorialService en el controlador de book y realizar la petición tal como se muestra en el siguiente ejemplo.
+- Agregar la lógica en el controlador para consultar las editoriales existentes.Para esto usted debe inyectar el servicio editorialService en el controlador de book y realizar la petición para consultar las editoriales tal como se muestra en el siguiente ejemplo.
 
 ```javascript
 
