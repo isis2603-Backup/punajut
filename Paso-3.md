@@ -60,6 +60,7 @@ Para implementar las relaciones de composición *Uno a Muchos* se dispone a crea
 - Modificar el template book.tpl.html
 - Implementar el controlador de Reviews acorde a la relación de composición
 - Agregar métodos en el servicio BookService para crear, editar, leer y remover listas de reviews.
+- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
 
 
 ## Manejo de eventos con AngularJS
