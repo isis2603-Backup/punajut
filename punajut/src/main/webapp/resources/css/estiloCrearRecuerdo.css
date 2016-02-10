@@ -1,0 +1,19 @@
+ .cuadro{
+                position: relative;
+                padding: 20px;
+                margin: 20px;
+            }
+            .cuadroInt{
+                position: relative;
+                padding: 0px;
+                display: inline-block;
+                top:0px;
+            }
+            .btnplus{
+                position: relative;
+                left: 240px;
+                top: 30px;
+                width: 150px;
+                height: 150px;
+                border: none;
+            }

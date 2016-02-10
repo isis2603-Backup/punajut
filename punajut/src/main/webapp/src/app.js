@@ -11,13 +11,24 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise("/itinerario");
             $stateProvider
+                    .state('evento', {
+                        url: '/evento',
+                        templateUrl: "src/modules/book/book.tpl.html"
+                    })
+                    .state('crearRecuerdo', {
+                        url: '/crearRecuerdo',
+                        templateUrl: "src/crearRecuerdo/crearRecuerdo.tpl.html"
+
+                    })
                     .state('recuerdos', {
                         url: '/recuerdo',
                         templateUrl: "src/recuerdo/recuerdo.tpl.html"
+
                     })
                     .state('verContinentes', {
                         url: '/verContinentes',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
-                    });
+            });
         }]);
+
 })(window.angular);
