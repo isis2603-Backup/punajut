@@ -20,8 +20,8 @@
                         url: '/recuerdo',
                         templateUrl: "src/recuerdo/recuerdo.tpl.html"
                     })
-                     .state('itinerario', {
-                        url: '/itinerario',
+                    .state('verContinentes', {
+                        url: '/verContinentes',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
                     });
         }]);
