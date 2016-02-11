@@ -2,7 +2,7 @@
 
     var mod = ng.module("mainApp", ["ui.router"]);
 
-    mod.controller('MainController', ['$scope', function($scope) { $scope.title = 'Top Sellers in Books'; }]);
+    //mod.controller('MainController', ['$scope', function($scope) { $scope.title = 'Top Sellers in Books'; }]);
 
     mod.config(['$logProvider', function ($logProvider) {
             $logProvider.debugEnabled(true);
@@ -16,9 +16,9 @@
                         templateUrl: "src/modules/book/book.tpl.html"
                     })
 
-                    .state('recuerdos', {
-                        url: '/recuerdo',
-                        templateUrl: "src/recuerdo/recuerdo.tpl.html"
+                    .state('crearRecuerdo', {
+                        url: '/crearRecuerdo',
+                        templateUrl: "src/crearRecuerdo/crearRecuerdo.tpl.html"
                     })
                     .state('verContinentes', {
                         url: '/verContinentes',
