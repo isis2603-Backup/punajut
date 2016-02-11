@@ -17,10 +17,10 @@
                     })
                     .state('crearRecuerdo', {
                         url: '/crearRecuerdo',
-                        templateUrl: "src/crearRecuerdo/crearRecuerdo.tpl.html"
+                        templateUrl: "src/recuerdo/crearRecuerdo.tpl.html"
 
                     })
-                    .state('recuerdos', {
+                    .state('recuerdo', {
                         url: '/recuerdo',
                         templateUrl: "src/recuerdo/recuerdo.tpl.html"
 
