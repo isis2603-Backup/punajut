@@ -7,50 +7,54 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <title>GoTravel</title>
-        <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script data-require="bootstrap@3.3.6" data-semver="3.3.6" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- jquery 2.1.4 -->
+        <script data-require="jquery@*" data-semver="2.1.4" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
         <!--Bootstrap-->
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link data-require="bootstrap-css@3.3.6" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <!--Google fonts-->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" property='stylesheet' type="text/css"/>
 
         <!-- font awesome-->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"  property='stylesheet' rel="stylesheet"/>
 
         <!--Dependencias bootstrap-->
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- bootstrap js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+        <!--<script src="resources/js/bootstrap.min.js" type="text/javascript"></script>-->
 
         <!-- gallery-->
-        <link href="resources/assets/gallery/blueimp-gallery.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/assets/gallery/blueimp-gallery.min.css"  property='stylesheet'  rel="stylesheet" type="text/css"/>
 
         <!-- animate-->
-        <link href="resources/assets/animate/animate.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/assets/animate/animate.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
 
         <!-- animate set -->
-        <link href="resources/assets/animate/set.css" rel="stylesheet" type="text/css"/>
-
+        <link href="resources/assets/animate/set.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
 
         <!--AngularJS-->
         <script src="resources/js/angular.min.js" type="text/javascript"></script>
+
+        <!-- ui-router-->
         <script src="resources/js/angular-ui-router.min.js" type="text/javascript"></script>
 
         <!--Carga el modulo creado-->
         <script src="src/app.js" type="text/javascript"></script>
 
+        <!--Carousel-->
+        <link href="resources/css/carousel.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
+
+        <!-- Recursos para sign in-->
+        <link href="resources/css/signin.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
+
+        <!--Starter template-->
+        <link href="resources/css/starter-template.css"  property='stylesheet' rel="stylesheet" type="text/css"/>
+
         <!--Recuerdos-->
         <script src="resources/js/traffic.js"></script>
         <script src="resources/js/imgcrr.js"></script>
-        <!--Crea la barra vertical de navegción del slider en Recuerdos-->
-
-        <link href="resources/css/sliderBarra.css" rel="stylesheet" type="text/css"/>
-
-        <script type="text/javascript" src="resources/js/jssor.slider.min.js"></script>
-        <script src="resources/assets/jquery.js"></script>
-        <script src = "resources/assets/bootstrap/js/bootstrap.js"></script>
-
 
     </head>
     <body>
@@ -66,24 +70,30 @@
                                 <span class="icon-bar"></span>
                             </button>
                         </div>
-
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
+                                <li><a ui-sref="paginaDeInicio">Home</a></li>
+                                <li><a ui-sref="Login">Sign in</a></li>
+                                <li><a ui-sref="Sign up">Sign up</a></li>
                                 <li><a ui-sref="verContinentes">Itinerarios</a></li>
-                                <li><a ui-sref="evento">Recordatorios</a></li>
-                                <li><a ui-sref="evento">Ajustes</a></li>
-                                <li><a ui-sref="recuerdo">Recuerdos</a></li>
+                                <li><a ui-sref="crearRecuerdo">Recuerdos</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
                             </ul>
                         </div>
                     </div>
-                            </nav>
+                </nav>
 
             </div>
             <div ui-view></div>
-    </div>
+        </div>
 
-</body>
+        <!-- Esto sobra ya que se importó arriba con un link, y esta importacion debe ir arriba-->
+        <!--<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>-->
+
+        <!-- Se intentó importar con url pero no sirvió-->
+        <script src="resources/js/holder.min.js" type="text/javascript"></script>
+        <script src="resources/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+    </body>
 </html>

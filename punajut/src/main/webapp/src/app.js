@@ -9,12 +9,22 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise("/itinerario");
+            $urlRouterProvider.otherwise("/paginaInicio");
             $stateProvider
-                    .state('evento', {
-                        url: '/evento',
-                        templateUrl: "src/modules/book/book.tpl.html"
+
+                    .state('paginaDeInicio', {
+                        url: '/paginaDeInicio',
+                        templateUrl: "src/Pagina de inicio/paginaDeInicio.tpl.html"
                     })
+                    .state('Sign up', {
+                        url: '/Sing up',
+                        templateUrl: "src/Pagina de inicio/SignUp.tpl.html"
+                    })
+                     .state('Login', {
+                        url: '/Login',
+                        templateUrl: "src/Pagina de inicio/Login.tpl.html"
+                    })
+
                     .state('crearRecuerdo', {
                         url: '/crearRecuerdo',
                         templateUrl: "src/recuerdo/crearRecuerdo.tpl.html"
