@@ -1,8 +1,8 @@
 
 <div id="visualization"></div>
+ <script type="text/javascript">
 
-<script type="text/javascript">
-  // DOM element where the Timeline will be attached
+      // DOM element where the Timeline will be attached
   var container = document.getElementById('visualization');
   var it = 1;
   var cont = 1;
@@ -25,7 +25,18 @@
 
           item.className = 'it'+it;
           it++;
-          item.content = 'Evento'+cont;
+
+          //html
+          var i = document.createElement('div');
+          i.appendChild(document.createTextNode('Evento'+cont));
+          i.appendChild(document.createElement('br'));
+          var img = document.createElement('img');
+          img.src = 'http://www.datosgratis.net/wp-content/uploads/2010/12/turismo-en-australia.jpg';
+          img.style.width = '68px';
+          img.style.height = '68px';
+          i.appendChild(img);
+
+          item.content= i;
           cont++;
           callback(item);
       },
@@ -38,14 +49,27 @@
               it--;
           callback(item);
       }
+
 };
 
   // Create a Timeline
   var timeline = new vis.Timeline(container, items, options);
-  </script>
+</script>
 
-  <div class="sweet-alert hideSweetAlert" data-custom-class data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false"  data-has-done-function="true"  data-animation="pop"  data-timer="null"  style="display: block; margin-top: -154px;">
-        <div class="sa-icon sa-custom" style="display: none;">
+  <!--fondo cuando se muestra la ventana de información del evento-->
+  <div class="sweet-overlay" tabindex="-1" style="opacity: 0; display: none;"></div>
+
+  <!--ventana de información del evento-->
+ <div class="sweet-alert show-input hideSweetAlert" data-custom-class data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false"  data-has-done-function="true"  data-animation="pop"  data-timer="null"  style="display: none; margin-top: -155px; opacity: -0.03;">
+     <div class="sa-icon sa-error" style="display: none;">
+         <span class="sa-x-mark">
+             <span class="sa-line sa-left"></span>
+             <span class="sa-line sa-right"></span>
+         </span>
+     </div>
+
+     <!--cuadro-->
+    <div class="sa-icon sa-custom" style="display: none;">
       <h2>Evento</h2>
   </div>
   <div class="sa-confirm-button-container">
@@ -57,4 +81,5 @@
           <div></div>
         </div>
   </div>
+
 
