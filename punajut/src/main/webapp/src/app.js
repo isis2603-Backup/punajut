@@ -25,14 +25,9 @@
                         templateUrl: "src/Pagina de inicio/Login.tpl.html"
                     })
 
-                    .state('crearRecuerdo', {
-                        url: '/crearRecuerdo',
-                        templateUrl: "src/recuerdo/crearRecuerdo.tpl.html"
-
-                    })
-                    .state('recuerdo', {
-                        url: '/recuerdo',
-                        templateUrl: "src/recuerdo/recuerdo.tpl.html"
+                    .state('timeline', {
+                        url: '/timeline',
+                        templateUrl: "src/timeline/timeline2.tpl.html"
 
                     })
                     .state('verContinentes', {
