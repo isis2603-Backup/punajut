@@ -1,8 +1,4 @@
-
-<div id="visualization"></div>
-
-<script type="text/javascript">
-  // DOM element where the Timeline will be attached
+ // DOM element where the Timeline will be attached
   var container = document.getElementById('visualization');
 
   // Create a DataSet (allows two way data-binding)

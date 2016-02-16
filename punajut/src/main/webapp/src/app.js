@@ -27,7 +27,7 @@
 
                     .state('timeline', {
                         url: '/timeline',
-                        templateUrl: "src/timeline/timeline2.tpl.html"
+                        templateUrl: "src/timeline/timeline.tpl.html"
 
                     })
                     .state('verContinentes', {
