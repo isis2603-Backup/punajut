@@ -40,6 +40,28 @@
                     .state('crearItinerario', {
                         url: '/crearItinerario',
                         templateUrl: "src/itinerario/crearItinerario.tpl.html"
+
+                    })
+
+
+                      .state('seleccionaFecha', {
+                        url: '/seleccionaFecha',
+                        views: {
+                            'PerfilInicio': {
+                                url: "",
+                                controller: 'perfil',
+                                templateUrl: 'src/Pagina de inicio/PerfilInicio.tpl.html'
+                            },
+                            'crearItinerario': {
+                                url: "",
+                                controller: 'loQueEstaAlLado',
+                                templateUrl: 'src/itinerario/crearItinerario.tpl.html'
+                            }
+                        },
+                    })
+                    .state('verContinentes', {
+                        url: '/verContinentes',
+                        templateUrl: "src/itinerario/verContinentes.tpl.html"
             });
         }]);
 
