@@ -16,14 +16,6 @@
                         url: '/paginaDeInicio',
                         templateUrl: "src/Pagina de inicio/paginaDeInicio.tpl.html"
                     })
-                    .state('Sign up', {
-                        url: '/Sing up',
-                        templateUrl: "src/Pagina de inicio/SignUp.tpl.html"
-                    })
-                     .state('Login', {
-                        url: '/Login',
-                        templateUrl: "src/Pagina de inicio/Login.tpl.html"
-                    })
 
                     .state('timeline', {
                         url: '/timeline',
