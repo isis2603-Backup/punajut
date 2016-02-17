@@ -37,9 +37,9 @@
                         templateUrl: "src/Pagina de inicio/PerfilInicio.tpl.html"
 
                     })
-                    .state('verContinentes', {
-                        url: '/verContinentes',
-                        templateUrl: "src/itinerario/verContinentes.tpl.html"
+                    .state('crearItinerario', {
+                        url: '/crearItinerario',
+                        templateUrl: "src/itinerario/crearItinerario.tpl.html"
             });
         }]);
 

@@ -5,12 +5,12 @@
             <div class='col-sm-5'>
                 <div class="form-group">
                     <h2>Escoge tu fecha de inicio</h2>
-                    <div class='input-group date'  id='from'/>
+                    <div class='input-group date'  id='from'>
                     <input type='text' class="form-control" required>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                </div>
+                    </div>
                 <h2>Escoge tu fecha fin</h2>
                 <div class='input-group date' id='to'>
                     <input type='text' class="form-control" required>
@@ -21,9 +21,15 @@
                 <button type="submit" class="btn btn-success" aria-label="Right Align">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </button>
+                </div>
             </div>
-
+        </form>
     </div>
-</form>
-</div>
+     <script type="text/javascript">
+       $( document ).ready(function(){ $(function () {
+            $('#from').datetimepicker({datepicker: true});
+            $('#to').datetimepicker();
+        });
+        });
+    </script>
 </div>
