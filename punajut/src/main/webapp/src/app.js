@@ -9,7 +9,7 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise("/paginaInicio");
+            $urlRouterProvider.otherwise("/paginaDeInicio");
             $stateProvider
 
                     .state('paginaDeInicio', {
@@ -37,6 +37,7 @@
                         templateUrl: "src/Pagina de inicio/PerfilInicio.tpl.html"
 
                     })
+
 
                     .state('configurarCuenta', {
                         url: '/configurarCuenta',
@@ -66,7 +67,13 @@
                     .state('Foro', {
                                 url: '/Foro',
                                 templateUrl: "src/comunidad/foroMain.tpl.html"
+                    })
+                    .state('crearItinerario', {
+                        url: '/crearItinerario',
+                        templateUrl: "src/itinerario/crearItinerario.tpl.html"
+
                     });
+
         }]);
 
 })(window.angular);
