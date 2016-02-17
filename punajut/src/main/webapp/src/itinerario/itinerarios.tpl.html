@@ -132,7 +132,9 @@
                 } else
                 {
                     alert("Eliminar imagen");
-                    document.getElementById("itinerario1").src="";
+                    var elem=document.getElementById("itinerario1");
+                    elem.parentNode.removeChild(elem);
+                    return false;
                 }
             }
 
