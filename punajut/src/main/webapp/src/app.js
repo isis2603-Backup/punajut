@@ -38,6 +38,12 @@
 
                     })
 
+                    .state('configurarCuenta', {
+                        url: '/configurarCuenta',
+                        templateUrl: "src/Pagina de inicio/configurarCuenta.tpl.html"
+
+                    })
+
                       .state('seleccionaFecha', {
                         url: '/seleccionaFecha',
                         views: {
