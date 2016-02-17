@@ -17,7 +17,7 @@
                         templateUrl: "src/Pagina de inicio/paginaDeInicio.tpl.html"
                     })
                     .state('Sign up', {
-                        url: '/Sing up',
+                        url: '/Sign up',
                         templateUrl: "src/Pagina de inicio/SignUp.tpl.html"
                     })
                      .state('Login', {
@@ -30,9 +30,9 @@
                         templateUrl: "src/timeline/timeline.tpl.html"
 
                     })
-                    .state('verContinentes', {
-                        url: '/verContinentes',
-                        templateUrl: "src/itinerario/verContinentes.tpl.html"
+                    .state('crearItinerario', {
+                        url: '/crearItinerario',
+                        templateUrl: "src/itinerario/crearItinerario.tpl.html"
             });
         }]);
 
