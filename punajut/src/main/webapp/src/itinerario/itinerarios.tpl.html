@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="es">
     <head>
-        <!-- METADATOS -->
+        <!-- METADATOS
         <title>GoTravel</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +11,10 @@
         <link rel="stylesheet" href="css/itinerarioscss.css">
         <script src="resources/js/itinerariosjs.js"></script>
 
-    </head>
+    </head>-->
 
-    <body>
-
-        <!-- NAVIGATION BAR -->
+   <!--  <body>
+              <!-- NAVIGATION BAR
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -37,7 +36,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <!-- BARRA LATERAL -->
         <div class="container-fluid text-center">
@@ -100,19 +99,19 @@
                                 <p style="text-align:center;">Selecciona el itinerario que quieres ver</p>
                                 <hr>
                                 <!-- Itinerarios -->
-                                <div class="col-sm-3">
+                                <div id="imagen1" class="col-sm-3">
                                     <h3>Itinerario 1</h3>
                                     <img id="itinerario1" src="https://civitatis.cachefly.net/guias/londres/fotos/londres.jpg" alt="Londres" style="width:150px;height:150px;" onclick="nuevaPagina1()">
                                 </div>
-                                <div class="col-sm-3">
+                                <div id="imagen2" class="col-sm-3">
                                     <h3>Itinerario 2</h3>
                                     <img id="itinerario2" src="https://civitatis.cachefly.net/guias/nuevayork/fotos/nueva-york.jpg" alt="Nueva York" style="width:150px;height:150px;" onclick="nuevaPagina2()">
                                 </div>
-                                <div class="col-sm-3">
+                                <div id="imagen3" class="col-sm-3">
                                     <h3>Itinerario 3</h3>
                                     <img id="itinerario3" src="http://directorioparaeventos.com.co/uploads/venue/featured/First.jpg" alt="Bogotá" style="width:150px;height:150px;" onclick="nuevaPagina3()">
                                 </div>
-                                <div class="col-sm-3">
+                                <div id="imagen4" class="col-sm-3">
                                     <h3>Itinerario 4</h3>
                                     <img id="itinerario4" src="http://cruzandopaises.com/wp-content/uploads/2013/05/tokio-japon-diez-siglos-de-historia-para-uno-solo.jpg" alt="Tokio" style="width:150px;height:150px;" onclick="nuevaPagina4()">
                                 </div>
@@ -133,6 +132,9 @@
                 } else
                 {
                     alert("Eliminar imagen");
+                    var elem=document.getElementById("imagen1");
+                    elem.parentNode.removeChild(elem);
+                    return false;
                 }
             }
 
@@ -145,6 +147,9 @@
                 } else
                 {
                     alert("Eliminar imagen");
+                    var elem=document.getElementById("imagen2");
+                    elem.parentNode.removeChild(elem);
+                    return false;
                 }
             }
 
@@ -157,6 +162,9 @@
                 } else
                 {
                     alert("Eliminar imagen");
+                    var elem=document.getElementById("imagen3");
+                    elem.parentNode.removeChild(elem);
+                    return false;
                 }
             }
             function nuevaPagina4() {
@@ -168,8 +176,9 @@
                 } else
                 {
                     alert("Eliminar imagen");
+                    var elem=document.getElementById("imagen4");
+                    elem.parentNode.removeChild(elem);
+                    return false;
                 }
             }
         </script>
-    </body>
-</html>

@@ -16,24 +16,57 @@
                         url: '/paginaDeInicio',
                         templateUrl: "src/Pagina de inicio/paginaDeInicio.tpl.html"
                     })
-                    .state('Sign up', {
-                        url: '/Sing up',
-                        templateUrl: "src/Pagina de inicio/SignUp.tpl.html"
-                    })
-                     .state('Login', {
-                        url: '/Login',
-                        templateUrl: "src/Pagina de inicio/Login.tpl.html"
-                    })
 
                     .state('timeline', {
                         url: '/timeline',
                         templateUrl: "src/timeline/timeline.tpl.html"
 
                     })
-                    .state('verContinentes', {
-                        url: '/verContinentes',
-                        templateUrl: "src/itinerario/verContinentes.tpl.html"
-            });
+                    .state('itinerarios', {
+                        url: '/itinerarios',
+                        templateUrl: "src/itinerario/itinerarios.tpl.html"
+
+                    })
+                    .state('itinerarioYmapa', {
+                        url: '/itinerarioYmapa',
+                        templateUrl: "src/itinerario/itinerarioYmapa.tpl.html"
+
+                    })
+                    .state('PerfilInicio', {
+                        url: '/PerfilInicio',
+                        templateUrl: "src/Pagina de inicio/PerfilInicio.tpl.html"
+
+                    })
+
+                    .state('configurarCuenta', {
+                        url: '/configurarCuenta',
+                        templateUrl: "src/Pagina de inicio/configurarCuenta.tpl.html"
+
+                    })
+
+                      .state('seleccionaFecha', {
+                        url: '/seleccionaFecha',
+                        views: {
+                            'PerfilInicio': {
+                                url: "",
+                                controller: 'perfil',
+                                templateUrl: 'src/Pagina de inicio/PerfilInicio.tpl.html'
+                            },
+                            'crearItinerario': {
+                                url: "",
+                                controller: 'loQueEstaAlLado',
+                                templateUrl: 'src/itinerario/crearItinerario.tpl.html'
+                            }
+                        }
+                    })
+                        .state('verContinentes', {
+                            url: '/verContinentes',
+                            templateUrl: "src/itinerario/verContinentes.tpl.html"
+                })
+                    .state('Foro', {
+                                url: '/Foro',
+                                templateUrl: "src/comunidad/foroMain.tpl.html"
+                    });
         }]);
 
 })(window.angular);
