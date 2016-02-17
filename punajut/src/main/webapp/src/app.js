@@ -30,6 +30,11 @@
                         templateUrl: "src/timeline/timeline.tpl.html"
 
                     })
+                    .state('itinerarios', {
+                        url: '/itinerarios',
+                        templateUrl: "src/itinerario/itinerarios.tpl.html"
+
+                    })
                     .state('verContinentes', {
                         url: '/verContinentes',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
