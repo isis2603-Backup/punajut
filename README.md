@@ -16,6 +16,10 @@ Maria Isabel Arévalo  |201415326|Lider de planeación|172.24.99.233|mi.arevalo1
 * En caso de no poder asistir a una reunión, la persona debe comentarle al líder y enterarse de todo lo que ocurrió en la reunión.
 * Se realizarán reuniones semanales para compartir los avances en el proyecto.
 
-#Documentación del proyecto
-La documentación de nuestro proyecto se encuentra en la wiki.
+## Objetivos del grupo
+Éste es nuestro objetivo del proyecto:
+* Realizar un producto de calidad siguiendo el proceso de desarrollo de software expuesto en clase (análisis, diseño, construcción).
 
+Éstos son nuestro objetivos para el ciclo 1:
+* Identificar y especificar los requerimientos funcionales y no funcionales del enunciado del proyecto.
+* Documentar los casos de uso de la aplicación.
