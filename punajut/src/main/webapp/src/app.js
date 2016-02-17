@@ -16,23 +16,25 @@
                         url: '/paginaDeInicio',
                         templateUrl: "src/Pagina de inicio/paginaDeInicio.tpl.html"
                     })
-                    .state('Sign up', {
-                        url: '/Sign up',
-                        templateUrl: "src/Pagina de inicio/SignUp.tpl.html"
-                    })
-                     .state('Login', {
-                        url: '/Login',
-                        templateUrl: "src/Pagina de inicio/Login.tpl.html"
-                    })
 
                     .state('timeline', {
                         url: '/timeline',
                         templateUrl: "src/timeline/timeline.tpl.html"
 
                     })
-                    .state('crearItinerario', {
-                        url: '/crearItinerario',
-                        templateUrl: "src/itinerario/crearItinerario.tpl.html"
+                    .state('itinerarios', {
+                        url: '/itinerarios',
+                        templateUrl: "src/itinerario/itinerarios.tpl.html"
+
+                    })
+                    .state('itinerarioYmapa', {
+                        url: '/itinerarioYmapa',
+                        templateUrl: "src/itinerario/itinerarioYmapa.tpl.html"
+
+                    })
+                    .state('verContinentes', {
+                        url: '/verContinentes',
+                        templateUrl: "src/itinerario/verContinentes.tpl.html"
             });
         }]);
 
