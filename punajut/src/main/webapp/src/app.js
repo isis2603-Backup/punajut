@@ -35,6 +35,11 @@
                         templateUrl: "src/itinerario/itinerarios.tpl.html"
 
                     })
+                    .state('itinerarioYmapa', {
+                        url: '/itinerarioYmapa',
+                        templateUrl: "src/itinerario/itinerarioYmapa.tpl.html"
+
+                    })
                     .state('verContinentes', {
                         url: '/verContinentes',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
