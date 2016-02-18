@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="es">
 
     <head>
         <title>GoTravel</title>
@@ -15,32 +14,7 @@
 
     <body>
 
-        <!--
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">GoTravel</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Itinerarios</a></li>
-              <li><a href="#">Recordatorios  </a></li>
-              <li><a href="#">Ajustes</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-        -->
-
-        <div class="container-fluid text-center">
+        <div class="container">
             <div class="row content">
 <!--                <div class="col-sm-2 sidenav">-->
                     <div class="container">
@@ -62,7 +36,7 @@
                                 <!-- END SIDEBAR USER TITLE -->
                                 <!-- SIDEBAR BUTTONS -->
                                 <div class="profile-userbuttons">
-                                    <button type="button" class="btn btn-success btn-sm">EditarPerfil</button>
+                                    <a ui-sref="configurarCuenta"><button type="button" class="btn btn-success btn-sm">EditarPerfil</button></a>
                                 </div>
                                 <!-- END SIDEBAR BUTTONS -->
                                 <!-- SIDEBAR MENU -->
@@ -80,7 +54,7 @@
                                         </li>
                                         <li>
                                             <a ui-sref="foroMain">
-                                                <i class="glyphicon glyphicon-ok" ></i>
+                                                <i class="glyphicon glyphicon-ok"></i>
                                                 Foro </a>
                                         </li>
                                         <li>
@@ -256,13 +230,96 @@
                 </div>
             </div>
 
-        <div id="itinerario" class="jumbotron" style="margin:4px; padding:4px ">
-            <h1>Itinerario</h1>
-            <p>aca va el itinerario...</p>
+        <div id="itinerario" >
+            <div class="container-fluid">
+                <div id="visualization"></div>
+                 <script type="text/javascript">
+
+                      // DOM element where the Timeline will be attached
+                  var container = document.getElementById('visualization');
+                  var it = 1;
+                  var cont = 1;
+                  // Create a DataSet (allows two way data-binding)
+                  var items = new vis.DataSet([
+                   // {className:'it2' ,id: 2, content: 'item 2', start: '2013-04-14'},
+                   // {className:'it3' ,id: 3, content: 'item 3', start: '2013-04-18'},
+                   // {className:'it4' ,id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+                   // {className:'it5' ,id: 5, content: 'item 5', start: '2013-04-25'}
+                  ]);
+                  // Configuration for the Timeline
+                  var options = {
+                      editable: true,
+                      selectable:true,
+
+                      onAdd: function(item, callback)
+                      {
+                          if(it === 6)
+                              it = 1;
+
+                          item.className = 'it'+it;
+                          it++;
+
+                          //html
+                          var i = document.createElement('div');
+                          i.appendChild(document.createTextNode('Evento'+cont));
+                          i.appendChild(document.createElement('br'));
+                          var img = document.createElement('img');
+                          img.src = 'http://www.datosgratis.net/wp-content/uploads/2010/12/turismo-en-australia.jpg';
+                          img.style.width = '68px';
+                          img.style.height = '68px';
+                          i.appendChild(img);
+
+                          item.content= i;
+                          cont++;
+                          callback(item);
+                      },
+
+                      onRemove: function(item, callback)
+                      {
+                          if(it === 1)
+                              it=6;
+                          else
+                              it--;
+                          callback(item);
+                      }
+
+                };
+
+                  // Create a Timeline
+                  var timeline = new vis.Timeline(container, items, options);
+                </script>
+
+                  <!--fondo cuando se muestra la ventana de información del evento-->
+                  <div class="sweet-overlay" tabindex="-1" style="opacity: 0; display: none;"></div>
+
+                  <!--ventana de información del evento-->
+                 <div class="sweet-alert show-input hideSweetAlert" data-custom-class data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false"  data-has-done-function="true"  data-animation="pop"  data-timer="null"  style="display: none; margin-top: -155px; opacity: -0.03;">
+                     <div class="sa-icon sa-error" style="display: none;">
+                         <span class="sa-x-mark">
+                             <span class="sa-line sa-left"></span>
+                             <span class="sa-line sa-right"></span>
+                         </span>
+                     </div>
+
+                     <!--cuadro-->
+                    <div class="sa-icon sa-custom" style="display: none;">
+                      <h2>Evento</h2>
+                  </div>
+                  <div class="sa-confirm-button-container">
+                      <button class="confirm" tabindex="1" style="display: inline-block; box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.0470588) 0px 0px 0px 1px inset; background-color: rgb(140, 212, 245);">Ok</button>
+                  </div>
+                      <div class="la-ball-fall">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                  </div>
+        </div>
         </div>
 
         <br>
         <br>
+
 
 
                     <!-- Modal evento-->
@@ -432,5 +489,3 @@ Calificación  Evento: <div class="ec-stars-wrapper">
             <p></p>
         </footer>
     </body>
-
-</html>
