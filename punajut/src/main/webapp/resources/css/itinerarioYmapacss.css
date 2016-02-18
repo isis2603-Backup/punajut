@@ -7,6 +7,25 @@ and open the template in the editor.
     Created on : 17/02/2016, 10:54:44 AM
     Author     : r.cardenas11
 */
+.modal-body {
+        position: relative;
+        padding: 20px;
+        min-width: 1200px; /* SET THE WIDTH OF THE MODAL */
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #999;
+        border: 1px solid rgba(0,0,0,0.2);
+        border-radius: 6px;
+        outline: 0;
+        -webkit-box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+        box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+        background-clip: padding-box;
+        width: 1200px; /* SET THE WIDTH OF THE MODAL */
+        margin: 50px 0 0 -150px; /* CHANGE MARGINS TO ACCOMMODATE THE NEW WIDTH */
+    }
 
 
   .btn.btn-primary.btn-lg {
@@ -73,8 +92,9 @@ and open the template in the editor.
         padding-left: 0;
         width: 930px;
         float: right;
-        background-color: red;
+
       }
+
       /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
       .row.content {
         height: 450px

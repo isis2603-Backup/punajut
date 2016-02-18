@@ -69,38 +69,37 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-            <!-- END SIDEBAR USER TITLE -->
-            <!-- SIDEBAR BUTTONS -->
-            <div class="profile-userbuttons">
-                <button type="button" class="btn btn-success btn-sm">EditarPerfil</button>
-            </div>
-            <!-- END SIDEBAR BUTTONS -->
-            <!-- SIDEBAR MENU -->
-            <div class="profile-usermenu">
-                <ul class="nav">
-                    <li class="active">
-                        <a href="../../src/itinerario/crearItinerario.tpl.html">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Crear Itinerario </a>
-                    </li>
-                    <li>
-                        <a href="itinerarios.tpl.html">
-
-                            <i class="glyphicon glyphicon-user"></i>
-                            Itinerario</a>
-                    </li>
-                    <li>
-                        <a href="#" target="_blank">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            Foro </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-flag"></i>
-                            Help </a>
-                    </li>
-                </ul>
-            </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons">
+                    <a ui-sref="configurarCuenta"><button type="button" class="btn btn-success btn-sm">EditarPerfil</button></a>
+                </div>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a ui-sref="crearItinerario">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Crear Itinerario </a>
+                        </li>
+                        <li>
+                            <a ui-sref="itinerarios">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Itinerario</a>
+                        </li>
+                        <li>
+                            <a ui-sref="foroMain">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                Foro </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-flag"></i>
+                                Help </a>
+                        </li>
+                    </ul>
+                </div>
         </div>
         <div class="col-md-9">
             <div id="works"  class=" clearfix grid">
@@ -117,7 +116,7 @@ and open the template in the editor.
                     <figcaption>
                         <h2>Francia</h2>
                         <p>Donde se encuentra ciudad del amor<br>
-                            <a href="../../src/evento/verContinentes.html" title="1" data-gallery>Mas</a></p>
+                            <a ui-sref="itinerarioYmapa" title="1" data-gallery>Mas</a></p>
                     </figcaption>
                 </figure>
                 <figure class="effect-oscar  wowload fadeIn">
