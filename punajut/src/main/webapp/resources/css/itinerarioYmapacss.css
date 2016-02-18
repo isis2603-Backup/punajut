@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : r.cardenas11
 */
 
+
   .btn.btn-primary.btn-lg {
       height: 50px;
       width: 220px;
@@ -16,12 +17,12 @@ and open the template in the editor.
     }
 
     #itinerario {
-      max-width: 100%;
+      /*max-width: 100%;
       /* This will remove the outer padding, and push content edge to edge */
-      padding-right: 0;
-      padding-left: 0;
-      float: right;
-      width: 800px;
+      padding-right: 10px;
+      padding-left: 10px;
+
+      width: 500px;
     }
 
     .btn.btn-default {
@@ -31,6 +32,7 @@ and open the template in the editor.
     }
 
     #mapa {
+
       float: right;
       margin-bottom: 0;
       border-radius: 0;
@@ -61,7 +63,7 @@ and open the template in the editor.
       width: auto;
       padding-right: 10px;
       padding-left: 10px;
-      height: 620px;
+      height: 400px;
       overflow: scroll;
     }
       #itinerario {
@@ -70,6 +72,8 @@ and open the template in the editor.
         padding-right: 0;
         padding-left: 0;
         width: 930px;
+        float: right;
+        background-color: red;
       }
       /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
       .row.content {
