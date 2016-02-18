@@ -1,4 +1,4 @@
 $(function () {
-    $('#from').datepicker();
-    $('#to').datepicker();
+    $('#from').datetimepicker();
+    $('#to').datetimepicker();
 });

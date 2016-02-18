@@ -57,7 +57,12 @@
                                 controller: 'loQueEstaAlLado',
                                 templateUrl: 'src/itinerario/crearItinerario.tpl.html'
                             }
-                        },
+                        }
+                    })
+                    .state('verEuropa', {
+                        url: '/verEuropa',
+                        templateUrl: "src/itinerario/verEuropa.tpl.html"
+
                     })
                     .state('verContinentes', {
                         url: '/verContinentes',
