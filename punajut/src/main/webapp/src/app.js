@@ -9,7 +9,7 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // $urlRouterProvider.otherwise("/paginaDeInicio");
+//           $urlRouterProvider.otherwise("/paginaDeInicio");
             $stateProvider
 
                     .state('paginaDeInicio', {

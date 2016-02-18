@@ -87,22 +87,22 @@
 }
 
 #categoria-1 {
-	background-image: url("resources/imagenes/indiaBack.jpg");
+	background-image: url("../../resources/imagenes/indiaBack.jpg");
 	background-repeat: repeat-x;
 }
 
 #categoria-2 {
-	background-image: url("resources/imagenes/hotelBack.jpg");
+	background-image: url("../../resources/imagenes/hotelBack.jpg");
 }
 
 #categoria-3 {
-	background-image: url("resources/imagenes/chinaBack.jpg");
+	background-image: url("../../resources/imagenes/chinaBack.jpg");
 }
 
 #categoria-4 {
-	background-image: url("resources/imagenes/randomBack.jpg");
+	background-image: url("../../resources/imagenes/randomBack.jpg");
 }
 
 #categoria-5 {
-	background-image: url("resources/imagenes/supportBack.jpg");
+	background-image: url("../../resources/imagenes/supportBack.jpg");
 }
