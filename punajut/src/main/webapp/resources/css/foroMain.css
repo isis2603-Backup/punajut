@@ -1,10 +1,10 @@
-
+/*
 #foro-container {
 	height: 100%;
 	width: 100%;
 	overflow: auto;
 	border: 1px solid red;
-}
+}*/
 
 .categoria {
 	width: 100%;
@@ -16,22 +16,24 @@
 
 .categoria-titulo, .categoria-subtitulo{
 	text-align: center;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 
 .subforos {
 	width: 100%;
 	border: 1px solid #78fb37;
+	display: inline;
 }
 
 #table-foro {
 	width: 100%;
-	background-color: 0;
+	background-color: rgba(255,255,255,0.3);
 }
 
 .userpic-lastpost {
 	position: relative;
-	bottom: 10px;
+	/*bottom: 10px;*/
 }
 
 .lastpost-info, .user-info-post{
@@ -69,3 +71,38 @@
 
 }
 
+.text-subforos {
+	text-align: center;
+	/*text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;*/
+	text-shadow: 0 -1px black, 0 1px red, 0 1px red, 0 -1px black;
+}
+
+.text-center {
+	text-align: center;
+	text-shadow: -1px 0 black, 0.7px 0 white, 0.7px 0 white, -1px 0 black;
+}
+
+.link-subforos {
+	color: rgb(207,103,103);
+}
+
+#categoria-1 {
+	background-image: url("resources/imagenes/indiaBack.jpg");
+	background-repeat: repeat-x;
+}
+
+#categoria-2 {
+	background-image: url("resources/imagenes/hotelBack.jpg");
+}
+
+#categoria-3 {
+	background-image: url("resources/imagenes/chinaBack.jpg");
+}
+
+#categoria-4 {
+	background-image: url("resources/imagenes/randomBack.jpg");
+}
+
+#categoria-5 {
+	background-image: url("resources/imagenes/supportBack.jpg");
+}
