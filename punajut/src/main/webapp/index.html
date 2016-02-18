@@ -56,7 +56,7 @@
         <link href="resources/css/starter-template.css"  property='stylesheet' rel="stylesheet" type="text/css"/>
 
         <!--Recuerdos-->
-<!--        <script src="resources/js/traffic.js"></script>
+        <!--<script src="resources/js/traffic.js"></script>
         <script src="resources/js/imgcrr.js"></script>-->
 
         <!--timeline-->
@@ -70,13 +70,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/locale/es.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+<!--        <script src="src/itinerario/crearIt.js" type="text/javascript"></script>-->
 
-        <script src="src/itinerario/crearItinerario.js" type="text/javascript"></script>
+
+
+        <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css" />
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+
+<!--        <script src="src/itinerario/crearItinerario.js" type="text/javascript"></script>-->
         <!-- Para el foro -->
         <link href="resources/css/foroMain.css" rel="stylesheet" type="text/css"/>
-
+<!--
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css" />
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
+
 
 
         <script src="resources/js/vis.min.js" type="text/javascript"></script>
@@ -101,15 +108,13 @@
                             <ul class="nav navbar-nav">
                                 <li><a ui-sref="paginaDeInicio">Home</a></li>
 
-                                <li><a ui-sref="verContinentes">Itinerarios</a></li>
-
-                                <li><a ui-sref="crearItinerario">Crear Itinerario</a></li>
+                                    <li><a ui-sref="crearItinerario">Crear Itinerario</a></li>
 
                                 <li><a ui-sref="timeline">TimeLine</a></li>
                                 <li><a ui-sref="itinerarios">Ver itinerario</a></li>
                                 <li><a ui-sref="itinerarioYmapa">Ver itinerarioYmapa</a></li>
 
-                                <li><a ui-sref="Foro">Foro</a></li>
+                                <li><a ui-sref="foroMain">Foro</a></li>
 
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
@@ -121,8 +126,7 @@
 
             </div>
             <div ui-view></div>
-            <div ui-view="perfil"></div>
-            <div ui-view="loQueEstaAlLado"></div>
+
         </div>
 
         <!-- Esto sobra ya que se importó arriba con un link, y esta importacion debe ir arriba-->
@@ -136,10 +140,10 @@
 
 <!--
         <div class="container">
-=======
+
 
         <!--<div class="container">
->>>>>>> origin/master
+
             <div class="row">
                 <h1>Bienvenido, primero escoge las fechas de tu itinerario</h1>
                 <form id="frm" onsubmit="return validateForm()">
