@@ -73,8 +73,9 @@ and open the template in the editor.
         padding-left: 0;
         width: 930px;
         float: right;
-        background-color: red;
+
       }
+  
       /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
       .row.content {
         height: 450px
