@@ -3,11 +3,11 @@
 -  [Proyecto Lógica]( #bookbasico-logic)
 -  [Proyecto Api]( #bookbasico-api)
 
-### Crear proyecto
-Con Netbeans se debe crear un proyecto Maven padre con el nombre de "BookBasico" (POM Project), una vez creado se deben agregar dos módulos "BookBasico.logic" y "BookBasico.api", el primero tiene la lógica y la interacción con la base de datos y el segundo tiene los Web services. El "BookBasico.logic" debe ser un proyecto Maven Java Application y el "BookBasico.api" debe ser un proyecto Maven Web Application.
+### Crear proyecto Padre
+Con Netbeans se debe crear un proyecto POM **BookStore**, y el mismo `GroupId` que el proyecto web. Después se debe agregar `bookstore-web` como módulo.
 
-##### Configuración POMS
-Para el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías que se usaran en los proyectos.
+##### Configuración POM
+Para el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías creadas en Uniandes que se usarán en los proyectos.
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -18,8 +18,8 @@ Para el POM padre se debe agregar un repositorio en donde se encuentran diferent
     <packaging>pom</packaging>
     <modules>
         <module>BookBasico.logic</module>
-    <module>BookBasico.api</module>
-  </modules>
+        <module>BookBasico.api</module>
+    </modules>
     <repositories>
         <repository>
             <id>csw-releases</id>
