@@ -309,13 +309,159 @@ $httpBackend.whenPUT(recordsAuthor).respond(function (method, url, data) {
 Para implementar las relaciones de composición *Uno a Muchos* se dispone a crear un **Tab** adicional en la interfaz del  módulo dueño de la relación, donde se puede realizar todas las operaciones CRUD al módulo hijo. Es importante resaltar que una relación de composición establece una fuerte relación entre el dueño de la relación y sus hijos, por ejemplo un hijo sólo puede ser creado y asociado a un módulo padre, *No puede existir hijos sin tener un padre*, de igual manera *si el módulo padre desaparece todos sus hijos también serán eliminados*. En el ejemplo BookStore existe una relación de composición entre Book y Reviews lo que significa que "Un libro tiene muchos reviews " y cada review sólo puede ser creado a un libro. Por lo tanto si se elimina el libro desaparece junto con él todos sus reviews. **Nota: El paso 2 tenía el módulo review independiente al módulo book, en este paso el link de Review desaparece y sólo se puede crear un review cuando se edita un libro.**
 
 
-### Implementación de la relación composite Uno a Muchos.
+### Implementación de la relación composite Uno a Muchos entre book y reviews
 
 - Modificar el template book.tpl.html
-- Implementar el controlador de Reviews acorde a la relación de composición
-- Agregar métodos en el servicio BookService para crear, editar, leer y remover listas de reviews.
-- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
+En el template book.tpl.html usted debe adicionar un **Tab** para Reviews, este tab debe desplegar un toolbar de navegación con el botón "Create". Al oprimir el botón create debe aparecer un formulario con todos los campos de Book.
 
+```html
+<div id="childs" ng-show="ctrl.editMode" class="col-md-6">
+    <ul class="nav nav-tabs">
+      ...
+        <li ng-show="currentRecord.id" role="presentation" ng-class="{active: tab === 'reviews'}">
+            <a href ng-click="ctrl.changeTab('reviews')">Reviews</a>
+        </li>
+    </ul>
+    <!-- Aqui incluye el template del modulo de reviews e indica el controlador correspondiente reviewCtrl-->
+    <div ng-show="tab === 'reviews'">
+        <div ng-controller="reviewsCtrl as ctrl" ng-include="'src/modules/review/review.tpl.html'"></div>
+    </div>
+      ...
+</div>
+```
+
+Como se observa en el anterior ejemplo, mediante el uso del comando **ng-include** se reutiliza el template ubicado en _src/modules/review/review.tpl.html_ el cual se desplegará cada vez que el usuario realice un click en la pestaña **reviews**.
+
+- Implementar el controlador de **Reviews** acorde a la relación de composición.
+En el archivo book.ctrl.js usted debe crear el controlador _reviewsCtrl_ el cual es el encargado de tener la lógica del despliegue de alertas y métodos que invocan a servicios CRUD de reviews.
+
+
+```javascript
+mod.controller("reviewsCtrl", ["$scope", "bookService", function ($scope, bookSvc) {
+            $scope.currentRecord = {};
+            $scope.records = [];
+            $scope.refName = "reviews";
+            $scope.alerts = [];
+
+            //Alertas
+            this.closeAlert = function (index) {
+                $scope.alerts.splice(index, 1);
+            };
+
+            function showMessage(msg, type) {
+                var types = ["info", "danger", "warning", "success"];
+                if (types.some(function (rc) {
+                    return type === rc;
+                })) {
+                    $scope.alerts.push({type: type, msg: msg});
+                }
+            }
+
+            this.showError = function (msg) {
+                showMessage(msg, "danger");
+            };
+
+            var self = this;
+            function responseError(response) {
+                self.showError(response.data);
+            }
+
+            //Variables para el controlador
+            this.readOnly = false;
+            this.editMode = false;
+
+            //Escucha de evento cuando se selecciona un registro maestro
+            function onCreateOrEdit(event, args) {
+                var childName = "reviews";
+                if (args[ childName ] === undefined) {
+                    args[ childName ] = [];
+                }
+                $scope.records = [];
+                $scope.refId = args.id;
+                bookSvc.getReviews(args.id).then(function (response) {
+                    $scope.records = response.data;
+                }, responseError);
+            }
+
+            $scope.$on("post-create", onCreateOrEdit);
+            $scope.$on("post-edit", onCreateOrEdit);
+
+
+
+            this.createRecord = function () {
+                this.editMode = true;
+                $scope.currentRecord = {};
+            };
+
+            var self = this;
+            this.saveRecord = function () {
+                bookSvc.saveReview($scope.refId, $scope.currentRecord).then(function (response) {
+                    $scope.records.push(response.data);
+                    self.fetchRecords();
+                    $scope.$emit("updateReview", $scope.records);
+                }, responseError);
+            };
+
+            this.fetchRecords = function () {
+                return bookSvc.getReviews($scope.refId).then(function (response) {
+                    $scope.records = response.data;
+                    self.editMode = false;
+                }, responseError);
+            };
+
+            this.editRecord = function (record) {
+                return bookSvc.getReview($scope.refId, record.id).then(function (response) {
+                    $scope.currentRecord = response.data;
+                    self.editMode = true;
+                    return response;
+                }, responseError);
+            };
+
+            this.deleteRecord = function (record) {
+                bookSvc.removeReview($scope.refId, record.id).then(function () {
+                    $scope.records.splice(record, 1);
+                    self.fetchRecords();
+                }, responseError);
+            };
+        }]);
+
+```
+Este controlador escucha los eventos del **$scope** padre para conocer cuando se realiza la edición de un libro o su creación. El evento captura el id del libro y trae todos los _reviews_ asociados a este libro.
+
+- Agregar métodos en el servicio _BookService_ para crear, editar, leer y remover listas de reviews.
+En este paso se procede a crear todos los métodos que realizan el llamado a los servicios REST para obtener reviews de un libro mediante el comando de angular $http. Los métodos permiten crear, leer, actualizar y eliminar reviews asociados a un libro.
+
+```javascript
+            //Este método consulta todos los reviews asociados a un libro. Necesita el id del libro
+            this.getReviews = function (idBook) {
+                $log.debug("GET" + context + "/" + idBook + "/reviews");
+                return $http.get(context + "/" + idBook + "/reviews");
+            };
+            //Este método permite obtener un review por id. 
+            this.getReview = function (idBook, idReview) {
+                $log.debug("GET" + context + "/" + idBook + "/reviews/" + idReview);
+                return $http.get(context + "/" + idBook + "/reviews/" + idReview);
+            };
+            //Este método permite crear o actualizar un review. 
+            this.saveReview = function (idBook, currentRecord) {
+                if (currentRecord.id) {
+                    $log.debug("PUT" + context + "/" + idBook + "/reviews/" + currentRecord.id);
+                    return $http.put(context + "/" + idBook + "/reviews/" + currentRecord.id, currentRecord);
+                } else {
+                    $log.debug("POST" + context + "/" + idBook + "/reviews/");
+                    return $http.post(context + "/" + idBook + "/reviews", currentRecord);
+                }
+            };
+            //El método permite remover reviews que están asociados a un libro
+            this.removeReview = function (idBook, idReview) {
+                $log.debug("Llamo a post");
+                return $http.delete(context + "/" + idBook + "/reviews/" + idReview);
+            };
+
+        }]);
+```
+
+- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks: En el archivo book.mocks.js usted debe colocar los siguientes métodos que simulan la respuesta cuando se hace una petición para crear, leer, actualizar y remover un review a de un libro.
 
 ## Manejo de eventos con AngularJS
 
