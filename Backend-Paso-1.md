@@ -144,7 +144,7 @@ En el siguiente enlace se muestra como debe quedar la clase.
 
 [BookEntity.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.logic/src/main/java/co/edu/uniandes/csw/bookbasico/entities/BookEntity.java)
 
-Se debe tener en cuenta que para el manejo de fechas se debe usar la anotación @Temporal(TemporalType.DATE).
+Se debe tener en cuenta que para el manejo de fechas se debe usar la anotación `@Temporal(TemporalType.DATE)`.
 
 ##### Persistencia 
 Se debe crear un paquete llamado “persistence”, aquí crearemos la clase “BookPersistence”, esta clase tiene los métodos básico de acceso a la base de datos (create, update, delete, find,findAll). Esta clase debe estar anotada con @Stateless, y  debe tener un objeto EntityManager, el cual debe estar anotado con @PersistenceContext(unitName = "BookBasicoPU") para indicar la unidad de persistencia que se conecta con la base de datos.  
