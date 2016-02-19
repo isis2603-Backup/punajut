@@ -471,5 +471,5 @@ Hay dos direcciones para disparar eventos, hacia arriba (a los padres) y hacia a
 
 Los eventos son muy útiles para notificar a cierta parte de la aplicación (o toda) sobre algún suceso, por ejemplo para notificar procesos de login y logout. En el anterior ejemplo el controlador _bookCtrl_ dispara un evento hacia los scopes hijos cada vez que se presiona los botones de crear o editar book. Por otro lado los controladores *"reviewCtrl"* y *"authorsCtrl"* están escuchando cuando ocurre el anterior evento mediante el método `$scope.$on("post-create", onCreateOrEdit);` Si el evento ocurre la función _OnCreateOrEdit_ obtiene el id del libro y con base en éste realiza las operaciones respectivas de cada controlador.
 
-
+[Para mayor información Ir a Documentación](https://docs.angularjs.org/api/ng/type/$rootScope.Scope)
 ## FAQ
