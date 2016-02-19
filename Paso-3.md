@@ -465,9 +465,11 @@ En este paso se procede a crear todos los métodos que realizan el llamado a los
 
 ## Manejo de eventos con AngularJS
 
+En AngularJS se maneja los eventos gracias a $broadcast, $emit y $on. 
 
+Hay dos direcciones para disparar eventos, hacia arriba (a los padres) y hacia abajo (a los hijos). El evento que dispara hacia arriba se llama $scope.$emit, **emite eventos que pueden ser capturados por los scopes padres**, en su defecto, $scope.$broadcast o $rootScope.$broadcast emite eventos a todos los scopes hijos. 
 
-
+Los eventos son muy útiles para notificar a cierta parte de la aplicación (o toda) sobre algún suceso, por ejemplo para notificar procesos de login y logout. En el anterior ejemplo el controlador _bookCtrl_ dispara un evento hacia los scopes hijos cada vez que se presiona los botones de crear o editar book. Por otro lado los controladores *"reviewCtrl"* y *"authorsCtrl"* están escuchando cuando ocurre el anterior evento mediante el método `$scope.$on("post-create", onCreateOrEdit);` Si el evento ocurre la función _OnCreateOrEdit_ obtiene el id del libro y con base en éste realiza las operaciones respectivas de cada controlador.
 
 
 ## FAQ
