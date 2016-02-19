@@ -256,7 +256,7 @@ Luego, el método modal.open() retorna un objeto con varias propiedades ([Ver Li
 ```
 - Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks. En el archivo book.mocks.js usted debe colocar los siguientes métodos que simulan la respuesta cuando se hace una petición para agregar un author a un libro, leer autores de un libro y removerlos.
 
-```javscript
+```javascript
 $httpBackend.whenPUT(recordsAuthor).respond(function (method, url, data) {
                 var id = parseInt(url.split('/')[2]);
                 $log.debug(url);
