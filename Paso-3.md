@@ -254,8 +254,56 @@ Luego, el método modal.open() retorna un objeto con varias propiedades ([Ver Li
                 return $http.delete(context + "/" + bookId + "/authors/" + authorId);
             };
 ```
-- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
+- Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks. En el archivo book.mocks.js usted debe colocar los siguientes métodos que simulan la respuesta cuando se hace una petición para agregar un author a un libro, leer autores de un libro y removerlos.
 
+```javscript
+$httpBackend.whenPUT(recordsAuthor).respond(function (method, url, data) {
+                var id = parseInt(url.split('/')[2]);
+                $log.debug(url);
+                var list;
+                var response = ng.fromJson(data);
+                ng.forEach(records, function (value, key) {
+                    if (value.id === id) {
+                        value.authors = response;
+                        list = ng.copy(value.authors);
+                        records[key].authors = list;
+                    }
+                });
+                return [200, list, {}];
+            });
+
+            /*Completar
+             */
+            $httpBackend.whenGET(recordsAuthor).respond(function (method, url) {
+                var id = parseInt(url.split('/')[2]);
+                $log.debug(id);
+                var responseObj;
+                ng.forEach(records, function (value, key) {
+                    if (value.id === id) {
+                        responseObj = value.authors;
+                    }
+                });
+                return [200, responseObj];
+            });
+
+
+            $httpBackend.whenDELETE(recordsAuthor).respond(function (method, url) {
+                var id = parseInt(url.split('/')[2]);
+                var idAuthor = parseInt(url.split('/').pop());
+                $log.debug(idAuthor);
+                var responseObj;
+                ng.forEach(records, function (value) {
+                    if (value.id === id) {
+                        ng.forEach(value.authors, function (valueAuthor, keyAuthor) {
+                            if (valueAuthor.id === idAuthor) {
+                                value.authors.splice(keyAuthor, 1);
+                            }
+                        });
+                    }
+                });
+                return [200, responseObj];
+            });
+```
 ## Relaciones de composición Uno a Muchos.
 
 Para implementar las relaciones de composición *Uno a Muchos* se dispone a crear un **Tab** adicional en la interfaz del  módulo dueño de la relación, donde se puede realizar todas las operaciones CRUD al módulo hijo. Es importante resaltar que una relación de composición establece una fuerte relación entre el dueño de la relación y sus hijos, por ejemplo un hijo sólo puede ser creado y asociado a un módulo padre, *No puede existir hijos sin tener un padre*, de igual manera *si el módulo padre desaparece todos sus hijos también serán eliminados*. En el ejemplo BookStore existe una relación de composición entre Book y Reviews lo que significa que "Un libro tiene muchos reviews " y cada review sólo puede ser creado a un libro. Por lo tanto si se elimina el libro desaparece junto con él todos sus reviews. **Nota: El paso 2 tenía el módulo review independiente al módulo book, en este paso el link de Review desaparece y sólo se puede crear un review cuando se edita un libro.**
