@@ -2,7 +2,7 @@
 
 -  [Introducción](#introducción)
 -  [Relaciones simples uno a muchos](#relaciones-simples-uno-a-muchos)
--  [Relaciones de agregación muchos a muchos](#relaciones-de-agregación-muchos-a-uno)
+-  [Relaciones de agregación muchos a muchos](#relaciones-de-agregación-muchos-a-muchos)
 -  [Relaciones de composición](#relaciones-de-composición-uno-a-muchos)
 -  [Manejo de eventos con AngularJS](#manejo-de-eventos-con-angularjs)
 -  [FAQ](#faq)
