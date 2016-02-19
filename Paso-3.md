@@ -216,12 +216,49 @@ Luego, el método modal.open() retorna un objeto con varias propiedades ([Ver Li
 
 
 
-- Agregar métodos en el servicio BookService para añadir y leer listas de authores.
+- Agregar métodos en el servicio BookService para añadir y leer listas de authores. En el archivo book.svc.js agregue los siguientes servicios para obtener autores asociados a un libro, actualizarlos y removerlos de un libro.
+
+```javascript
+/**
+             * Hace una petición PUT a /books/:id/authors para reemplazar los
+             * author asociados a un book
+             * @param {number} bookId Identificador de la instancia de book
+             * @param {array} authors Colección de authors nueva
+             * @returns {promise} promise para leer la respuesta del servidor
+             * Devuelve un array de objetos de authors con los nuevos autores
+             */
+            this.replaceAuthors = function (bookId, authors) {
+                return $http.put(context + "/" + bookId + "/authors", authors);
+            };
+
+            /**
+             * Hace una petición GET a /books/:id/authors para obtener la colección
+             * de author asociados a un book
+             * @param {number} id Identificador de la instancia de book
+             * @returns {promise} promise para leer la respuesta del servidor
+             * Devuelve un array de objetos de authors.
+             */
+            this.getAuthors = function (id) {
+                return $http.get(context + "/" + id + "/authors");
+            };
+
+            /**
+             * Hace una petición DELETE a /books/:id/authors/:id para remover
+             * un author de un book
+             * @param {number} bookId Identificador de la instancia de book
+             * @param {number} authorId Identificador de la instancia de author
+             * @returns {promise} promise para leer la respuesta del servidor
+             * No devuelve datos.
+             */
+            this.removeAuthor = function (bookId, authorId) {
+                return $http.delete(context + "/" + bookId + "/authors/" + authorId);
+            };
+```
 - Implementar métodos que simulan la respuesta de los anteriores servicios mediante el uso de Mocks.
 
 ## Relaciones de composición Uno a Muchos.
 
-Para implementar las relaciones de composición *Uno a Muchos* se dispone a crear un **Tab** adicional en la interfaz del  módulo dueño de la relación, donde se puede realizar todas las operaciones CRUD al módulo hijo. Es importante resaltar que una relación de composición establece una fuerte relación entre el dueño de la relación y sus hijos, por ejemplo un hijo sólo puede ser creado y asociado a un módulo padre, *No puede existir hijos sin tener un padre*, de igual manera *si el módulo padre desaparece todos sus hijos también eliminados*. En el ejemplo BookStore existe una relación de composición entre Book y Reviews lo que significa que "Un libro tiene muchos reviews " y cada review sólo puede ser creado a un libro. Por lo tanto si se elimina el libro desaparece junto con él todos sus reviews. **Nota: El paso 2 tenía el módulo review independiente al módulo book, en este paso el link de Review desaparece y sólo se puede crear un review cuando se edita un libro.**
+Para implementar las relaciones de composición *Uno a Muchos* se dispone a crear un **Tab** adicional en la interfaz del  módulo dueño de la relación, donde se puede realizar todas las operaciones CRUD al módulo hijo. Es importante resaltar que una relación de composición establece una fuerte relación entre el dueño de la relación y sus hijos, por ejemplo un hijo sólo puede ser creado y asociado a un módulo padre, *No puede existir hijos sin tener un padre*, de igual manera *si el módulo padre desaparece todos sus hijos también serán eliminados*. En el ejemplo BookStore existe una relación de composición entre Book y Reviews lo que significa que "Un libro tiene muchos reviews " y cada review sólo puede ser creado a un libro. Por lo tanto si se elimina el libro desaparece junto con él todos sus reviews. **Nota: El paso 2 tenía el módulo review independiente al módulo book, en este paso el link de Review desaparece y sólo se puede crear un review cuando se edita un libro.**
 
 
 ### Implementación de la relación composite Uno a Muchos.
