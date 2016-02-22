@@ -1,10 +1,36 @@
-## Creación primera entidad
--  [Crear Proyecto]( #crear-proyecto)
--  [Proyecto Lógica]( #bookbasico-logic)
--  [Proyecto Api]( #bookbasico-api)
+# Tabla de Contenido
+-  [Crear Proyecto](#crear-proyecto-padre)
+-  [Proyecto Lógica](#bookbasico-logic)
+-  [Proyecto Api](#bookbasico-api)
 
-### Crear proyecto Padre
-Con Netbeans se debe crear un proyecto POM **BookStore**, y el mismo `GroupId` que el proyecto web. Después se debe agregar `bookstore-web` como módulo.
+# Crear proyecto Padre
+Maven ofrece la posibilidad de realizar [herencia][mvn_inheritance] entre proyectos, de manera que de un proyecto tipo POM, otros puedan usar sus propiedades, manejo de dependencias y de plugins, y demás, sin necesidad de redefinirlos.
+
+En este taller, tenemos la necesidad de crear un proyecto independiente para la capa lógica, el cual tiene algunos elementos en común con el proyecto web. Para asegurar la mantenibilidad de estos aspectos comunes haremos uso de la herencia de POM, crearemos un proyecto que contenga estos elementos y del cual se pueda heredar.
+
+Para esto, se debe crear un proyecto tipo POM llamado **BookStore**, y el mismo `GroupId` que el proyecto web.
+
+> Netbeans no permite crear un proyecto sin la carpeta que lo contiene, sin embargo, necesitamos que el archivo `pom.xml` del proyecto padre se encuentre justo al lado de la carpeta que contiene al proyecto web. Para lograr esto, es necesario mover dicho archivo desde el gestor de archivos de su sistema operativo.
+>
+> ```
+|   pom.xml
+|
+\---bookstore-web
+   |   pom.xml
+> ```
+
+## Agregación de POM
+Otra característica útil de maven es permitir la creación de proyectos de [agregación o multimódulo][mvn_aggregation]. Esta característica permite agrupar diferentes proyectos para ejecutar acciones sobre todos los módulos a partir de un único proyecto agrupador. De esta manera, se puede ejecutar tareas como `clean and build` para todos los proyectos automáticamente.
+
+Para configurar la agregación, es necesario añadir al POM padre los proyectos a agrupar, usando las anotaciones `<modules>` y `<module>`:
+
+```xml
+<modules>
+    <module>bookstore-web</module>
+</modules>
+```
+
+> Esto también puede hacerse desde la interfaz gráfica de NetBeans haciendo clic derecho sobre la carpeta **Modules** y seleccionando la opción `Add Existing Module...`
 
 ##### Configuración POM
 Para el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías creadas en Uniandes que se usarán en los proyectos.
