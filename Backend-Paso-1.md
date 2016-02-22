@@ -1,7 +1,15 @@
 # Tabla de Contenido
--  [Crear Proyecto](#crear-proyecto-padre)
--  [Proyecto Lógica](#bookbasico-logic)
--  [Proyecto Api](#bookbasico-api)
+- [Crear Proyecto](#crear-proyecto-padre)
+  - [Agregación de POM](#agregación-de-pom)
+- [Proyecto Lógica](#bookbasico-logic)
+- [Proyecto Api](#bookbasico-api)
+
+# Introducción
+En este tutorial haremos la construcción del backend para realizar operaciones CRUD de la entidad **Book**. Al finalizar se tendrá tres proyectos que consisten en:
+
+- **Proyecto Logic:** Es el proyecto que contendrá la lógica y persitencia de la aplicación.
+- **Proyecto Web:** Es el proyecto que se ha trabajado hasta ahora con el frontend. Adicional a esto, tendrá la implementación de los servicios RESTful y tendrá dependencia al proyecto Logic.
+- **Proyecto Padre:** Agrupa los dos anteriores, almacenando información común de ellos y permitiendo realizar acciones en ellos en conjunto.
 
 # Crear proyecto Padre
 Maven ofrece la posibilidad de realizar [herencia][mvn_inheritance] entre proyectos, de manera que de un proyecto tipo POM, otros puedan usar sus propiedades, manejo de dependencias y de plugins, y demás, sin necesidad de redefinirlos.
@@ -32,20 +40,23 @@ Para configurar la agregación, es necesario añadir al POM padre los proyectos 
 
 > Esto también puede hacerse desde la interfaz gráfica de NetBeans haciendo clic derecho sobre la carpeta **Modules** y seleccionando la opción `Add Existing Module...`
 
-##### Configuración POM
-Para el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías creadas en Uniandes que se usarán en los proyectos.
+## Configuración POM
+En el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías creadas en Uniandes que se usarán en los proyectos. Despues de esto debería quedar con la siguiente estructura:
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>co.edu.uniandes.csw</groupId>
-    <artifactId>BookBasico</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>co.edu.uniandes.csw.bookstore</groupId>
+    <artifactId>bookstore</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>BookBasico.logic</module>
-        <module>BookBasico.api</module>
+        <module>bookstore-web</module>
+        <module>bookstore-logic</module>
     </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <repositories>
         <repository>
             <id>csw-releases</id>
@@ -53,11 +64,10 @@ Para el POM padre se debe agregar un repositorio en donde se encuentran diferent
             <url>http://157.253.238.75:8081/content/repositories/releases/</url>
         </repository>
     </repositories>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 </project>
 ```
+
+# Logica
 En el POM de BookBasico.logic se deben agregar las dependencias que se muestran a continuación para el correcto funcionamiento de la persistencia.
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
