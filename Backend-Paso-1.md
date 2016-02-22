@@ -198,11 +198,77 @@ public class RestConfig extends ResourceConfig {
 ```
 
 ## DTOs
-Ahora se creara un paquete llamado “dtos” (Data transfer object), aquí crearemos la clase “BookDTO”, esta clase deberá tener los mismo atributos que la clase “BookEntity” y como su nombre lo indica, se usa para la transferencia de datos entre servicios. Esto es importante ya que muchas veces se quiere personalizar el objeto antes de ser transferido y no como lo provee la base de datos.
+Cuando se desarrolla un API REST, es importante diferenciar la representación del recurso de cualquier estructura de datos al interior de la aplicación.
 
-En el siguiente enlace se muestra como debe quedar la clase.
+Por ejemplo, en una aplicación financiera podría crearse un servicio que reciba los datos de un préstamo que desea el usuario y el sistema responda las cuotas que debe pagar. Esta es información que no se encuentra en base de datos (sino que es un resultado de un cálculo) y la respuesta tiene una estructura diferente. Por esta razón se crean los DTO, los cuales definen la estructura de los datos a transmitir por el API REST.
 
-[BookDTO.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.api/src/main/java/co/edu/uniandes/csw/bookbasico/dtos/BookDTO.java)
+En esta implementación, los DTO son POJO anotados con `@XmlRootElement` de JAX-B. Esta anotación permite serializar y deserializar los POJO a XML o JSON. Por ejemplo:
+
+```java
+package co.edu.uniandes.csw.bookstore.dtos;
+
+import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class BookDTO {
+
+    private Long id;
+    private String name;
+    private String isbn;
+    private String image;
+    private Date publishDate;
+    private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+}
+```
 
 ## Converters
 Ahora se debe crear un paquete llamado “converters” y aquí crearemos una clase llamada “BookConverter” la cual tiene como función convertir objetos de tipo BookEntity a BookDTO y viceversa. Esta clase es muy útil, ya que lo objetos que requiere los servicios son DTOs y lo objetos que requiere la persistencia son Entities, de igual manera al hacer consultas a la base de datos, esta devuelve objetos de tipo Entity, y los servicios exponen objetos de tipo DTO.
