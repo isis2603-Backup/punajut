@@ -42,7 +42,7 @@ Para configurar la agregación, es necesario añadir al POM padre los proyectos 
 
 ## Configuración POM
 En el POM padre se debe agregar un repositorio en donde se encuentran diferentes librerías creadas en Uniandes que se usarán en los proyectos. Despues de esto debería quedar con la siguiente estructura:
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -105,7 +105,7 @@ Luego en la misma carpeta se debe crear un archivo llamado beans.xml”, cuya ex
 
 El archivo será creado en la misma ubicación que `web.xml` y tendrá la siguiente estructura:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -118,7 +118,7 @@ El archivo será creado en la misma ubicación que `web.xml` y tendrá la siguie
 Glassfish permite la creación de recursos por aplicación, con el fin de crearlos automáticamente en su despliegue. Para la creación de un *pool* de conexiones, se hace mediante el archivo `glassfish-resources.xml`, el cual debe ubicarse en el directorio **WEB-INF**. En nuestro caso, este archivo creará un pool de conexiones y un recurso JNDI para poder accederlo.
 
 Este archivo se debe crear con la siguiente información, que define la configuración para la conexión a base de datos:
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN" "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
 <resources>
@@ -136,8 +136,7 @@ Este archivo se debe crear con la siguiente información, que define la configur
 ```
 Luego en la misma carpeta se debe crear un archivo llamado “beans.xml”, el cual indica a GlassFish que la aplicación usa EJBs.
 Este archivo debe quedar de la siguiente manera:
-```XML
-
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://java.sun.com/xml/ns/javaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -147,7 +146,10 @@ Este archivo debe quedar de la siguiente manera:
 
 ## Configuración servicios
 
-Para poder utilizar Jersey, es necesario incluir la dependencia a este en el POM. Esto se hace añadiendo lo siguiente:
+Para poder utilizar Jersey, es necesario incluir la dependencia a este en el POM. Esto se hace añadiendo las dependencias al POM del proyecto web:
+
+- `jersey-bom`: Se añade esta dependencia a `dependencyManagement`, la cual permitirá obtener las dependencias compatibles con la versión especificada.
+- `jersey-container-servlet`: Dependencia de Jersey. En este caso no es necesario definir la versión ya que la dependencia anterior la especifica.
 
 ```xml
 <dependencyManagement>
@@ -270,34 +272,47 @@ public class BookDTO {
 }
 ```
 
+## Servicios
+Ahora creamos la clase `BookService` en el mismo paquete que la clase `RestConfig`, en esta clase se expondrán todos los servicios de **Book**.
+La clase deberá tener las siguientes anotaciones:
+
+```java
+package co.edu.uniandes.csw.bookstore.services;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("books")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public class BookService {
+
+}
+```
+
+- `@Path`: Define la URL en la cual se publicará el servicio. Esta ruta es relativa a la definida en la anotación `@ApplicationPath` de `RestConfig`. En este caso, la ruta sería `/api/books`.
+- `@Consumes`: Define el tipo de dato que recibirá. Se establece el formato JSON
+- `@Produces`: Define el tipo de dato que responderá. Se establece el formato JSON
+
+Adicionalmente, Jersey provee otras anotaciones que mapean métodos HTTP a métodos Java, con el fin de poder realizar diferentes acciones dependiendo del método HTTP. Entre estas anotaciones están `@GET`, `@POST`, `@PUT` y `@DELETE`. En el siguiente ejemplo está la firma del método `getBook`, el cual debe retornar una instancia de Book a partir de un ID:
+```java
+@GET
+@Path("{id: \\d+}")
+public BookDTO getBook(@PathParam("id") Long id) {
+    // Implementación
+}
+```
+
+> El método recibe un DTO que, como se mencionó anteriormente, puede serializarse y deserializarse gracias a JAX-B
+
 ## Converters
 Ahora se debe crear un paquete llamado “converters” y aquí crearemos una clase llamada “BookConverter” la cual tiene como función convertir objetos de tipo BookEntity a BookDTO y viceversa. Esta clase es muy útil, ya que lo objetos que requiere los servicios son DTOs y lo objetos que requiere la persistencia son Entities, de igual manera al hacer consultas a la base de datos, esta devuelve objetos de tipo Entity, y los servicios exponen objetos de tipo DTO.
 
 En el siguiente enlace se muestra como debe quedar la clase.
 
 [BookConverter.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.api/src/main/java/co/edu/uniandes/csw/bookbasico/converters/BookConverter.java)
-
-## Servicios
-Ahora se debe crear una clase llamada “BookService” en el paquete anteriormente creado “services”, en esta clase se expondrán todos los servicios de “Book”.
-La clase deberá tener las siguientes anotaciones:
-```
-@Path("/books")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-```
-Estas anotaciones indican la ruta para consumir los servicios, el tipo de dato que consume y produce el servicio.
-
-Cada método debe estar anotado por el tipo de servicio que provee, los cuales son: POST, PUT, GET o DELETE y un path de ser necesario, para indicar la ruta a ese servicios especifico. Por ejemplo:
-```
-@GET
-@Path("{id: \\d+}")
-public BookDTO getBook(@PathParam("id") Long id) {
-    return BookConverter.basicEntity2DTO(bookLogic.getBook(id));
-}
-```
-En el siguiente enlace se muestra como debe quedar la clase.
-
-[BookService.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.api/src/main/java/co/edu/uniandes/csw/bookbasico/services/BookService.java)
 
 # BookBasico Logic
 ## Entidades
