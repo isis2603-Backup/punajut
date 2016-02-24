@@ -334,7 +334,9 @@ Adicionalmente, Jersey provee otras anotaciones que mapean métodos HTTP a méto
 # Implementación de API lógica
 Los pasos anteriores nos permitieron la creación de servicios REST, sin embargo, hasta ahora no realizar ninguna tarea. En este paso crearemos un API que nos permita acceder a los métodos expuestos por la capa lógica.
 
-## Creación del proyecto
+Para poder definir el API de la lógica es necesario crear las clases que representarán los datos que reciben y envían. Estos datos son entidades de JPA, que representan registros de la base de datos. Una vez creados, definiremos las interfaces que expondrán los métodos de la lógica.
+
+## Creación del proyecto bookstore-logic
 Dado que los servicios deben estar desacoplados de la lógica, crearemos una capa adicional que nos permita definir un API al cual tendrá acceso los servicios REST, independiente de la implementación de estos. Para esto, en Netbeans escogemos la opción de crear un nuevo proyecto, cuya categoría es `Maven`, el tipo de proyecto es `Java Application` y su nombre será `bookstore-logic`. Una vez se cree, lo añadiremos a los módulos del proyecto padre haciendo clic derecho en `Modules` y seleccionando la opción `Add Existing Module...`
 
 > Se puede unir ambos pasos haciendo clic derecho en `Modules` y seleccionando la opción `Create New Module...`
@@ -478,14 +480,197 @@ public class BookEntity extends BaseEntity implements Serializable {
 
 Se puede observar que la clase extiende de `BaseEntity`. Esta es una clase abstracta parte de `crud-utils` que permite heredar los atributos `id` y `name`, al igual que sobreescribe la implementación de los métodos `equals` y `hashcode` para realizar la comparación a través del ID si existe. Se recomienda que todas las entidades hereden de esta clase, ya que ofrece funcionalidad que será usada constantemente en los proyectos.
 
----------------------------
+## Creación de interfaces
+Teniendo las entidades definidas, ya podemos crear las interfaces que expondrán los métodos de la lógica. Para esto, creamos el paquete `co.edu.uniandes.csw.bookstore.api` dentro del proyecto `bookstore-logic`. Dentro de este paquete creamos la interfaz `IBookLogic`.
+
+```java
+package co.edu.uniandes.csw.bookstore.api;
+
+import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import java.util.List;
+
+public interface IBookLogic {
+
+    public List<BookEntity> getBooks();
+
+    public BookEntity getBook(Long id);
+
+    public BookEntity createBook(BookEntity entity);
+
+    public BookEntity updateBook(BookEntity entity);
+
+    public void deleteBook(Long id);
+}
+```
+
+Los métodos definidos en la interfaz corresponden a operaciones CRUD de listar, consultar, crear, actualizar y borrar respectivamente.
 
 ## Converters
-Ahora se debe crear un paquete llamado “converters” y aquí crearemos una clase llamada “BookConverter” la cual tiene como función convertir objetos de tipo BookEntity a BookDTO y viceversa. Esta clase es muy útil, ya que lo objetos que requiere los servicios son DTOs y lo objetos que requiere la persistencia son Entities, de igual manera al hacer consultas a la base de datos, esta devuelve objetos de tipo Entity, y los servicios exponen objetos de tipo DTO.
+Dada la cantidad de datos que se transmiten en los DTO y su similitud con los Entity, se crean clases llamadas **Converter**. Estas clases son las encargadas de realizar la conversión entre un DTO y un Entity (en ambos sentidos), y contienen métodos con los siguientes prefijos:
 
-En el siguiente enlace se muestra como debe quedar la clase.
+* **ref**: Métodos que se usan cuando se transmitirá información como una referencia desde otro, los cuales usualmente son `id` y `name`. Por ejemplo, cuando se carga una instancia de Book y se quiere saber el nombre de la Editorial a la que está asociada, se usa este método para convertir la editorial. De esta manera, se evita la transmisión de datos innecesarios.
+* **basic**: Métodos que se usan dentro de los métodos **list**. Estos realizan la conversión de todos los atributos de la entidad a excepción de las colecciones. Esto con el fin de evitar consultas exhaustivas que contengan toda la base de datos. Además que al listar registros de una entidad no se visualiza sus colecciones.
+* **full**: Métodos que se usan cuando se consulta una instancia específica de una entidad. Estos convierten todos los atributos de una entidad incluyendo las colecciones. Se usas cuando se desea editar una instancia.
+* **list**: Métodos usados para convertir listas de registros. Estos por dentro usan los métodos **basic**.
 
-[BookConverter.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.api/src/main/java/co/edu/uniandes/csw/bookbasico/converters/BookConverter.java)
+Los converter se crearán en el proyecto web, en el paquete `co.edu.uniandes.csw.bookstore.converters`. Sin embargo, para teneer acceso a las clases de entidades, es necesario añadir al POM del proyecto web la dependencia al proyecto de lógica:
+
+```xml
+<dependency>
+    <groupId>co.edu.uniandes.csw.bookstore</groupId>
+    <artifactId>bookstore-logic</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+Finalmente, la implementación de la clase `BookConverter` queda así:
+
+```java
+package co.edu.uniandes.csw.bookstore.converters;
+
+import co.edu.uniandes.csw.bookstore.dtos.BookDTO;
+import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookConverter {
+
+    private BookConverter() {
+    }
+
+    public static BookDTO refEntity2DTO(BookEntity entity) {
+        if (entity != null) {
+            BookDTO dto = new BookDTO();
+            dto.setId(entity.getId());
+            dto.setName(entity.getName());
+            dto.setPublishDate(entity.getPublishDate());
+            dto.setIsbn(entity.getIsbn());
+            dto.setImage(entity.getImage());
+            dto.setDescription(entity.getDescription());
+
+            return dto;
+        } else {
+            return null;
+        }
+    }
+
+    public static BookEntity refDTO2Entity(BookDTO dto) {
+        if (dto != null) {
+            BookEntity entity = new BookEntity();
+            entity.setId(dto.getId());
+
+            return entity;
+        } else {
+            return null;
+        }
+    }
+
+    public static BookDTO basicEntity2DTO(BookEntity entity) {
+        if (entity != null) {
+            BookDTO dto = refEntity2DTO(entity);
+
+            return dto;
+        } else {
+            return null;
+        }
+    }
+
+    public static BookEntity basicDTO2Entity(BookDTO dto) {
+        if (dto != null) {
+            BookEntity entity = new BookEntity();
+            entity.setId(dto.getId());
+            entity.setName(dto.getName());
+            entity.setIsbn(dto.getIsbn());
+            entity.setImage(dto.getImage());
+            entity.setPublishDate(dto.getPublishDate());
+            entity.setDescription(dto.getDescription());
+
+            return entity;
+        } else {
+            return null;
+        }
+    }
+
+    public static BookDTO fullEntity2DTO(BookEntity entity) {
+        BookDTO dto = basicEntity2DTO(entity);
+        return dto;
+    }
+
+    public static BookEntity fullDTO2Entity(BookDTO dto) {
+        BookEntity entity = basicDTO2Entity(dto);
+        return entity;
+    }
+
+    public static List<BookDTO> listEntity2DTO(List<BookEntity> entities) {
+        List<BookDTO> dtos = new ArrayList<BookDTO>();
+        if (entities != null) {
+            for (BookEntity entity : entities) {
+                dtos.add(fullEntity2DTO(entity));
+            }
+        }
+        return dtos;
+    }
+
+    public static List<BookEntity> listDTO2Entity(List<BookDTO> dtos) {
+        List<BookEntity> entities = new ArrayList<BookEntity>();
+        if (dtos != null) {
+            for (BookDTO dto : dtos) {
+                entities.add(basicDTO2Entity(dto));
+            }
+        }
+        return entities;
+    }
+}
+```
+
+## Inyección de la lógica en API REST
+Finalmente podemos incluir en los servicios REST la invocación de la lógica. Gracias a la inyección de dependencias de JavaEE, es posible hacer uso de una implementación del API sin necesidad de conocerla. Esto se logra con la anotación `@Inject`. En la clase `BookService` creamos un atributo privado cuyo tipo es `IBookLogic` e incluimos la anotación `@Inject` para que el contenedor se encargue de inicializarlo en ejecución.
+
+```java
+@Inject
+private IBookLogic bookLogic;
+```
+
+Finalmente, haciendo uso de los converter y el API de la lógica, completamos la implementación de los servicios, para que llamen a los métodos de la lógica y devuelvan la información correspondiente:
+
+```java
+public class BookService {
+
+    @Inject
+    private IBookLogic bookLogic;
+
+    @GET
+    public List<BookDTO> getBook() {
+        return BookConverter.listEntity2DTO(bookLogic.getBooks());
+    }
+
+    @GET
+    @Path("{id: \\d+}")
+    public BookDTO getBook(@PathParam("id") Long id) {
+        return BookConverter.basicEntity2DTO(bookLogic.getBook(id));
+    }
+
+    @POST
+    public BookDTO createBook(BookDTO dto) {
+        return BookConverter.basicEntity2DTO(bookLogic.createBook(BookConverter.basicDTO2Entity(dto)));
+    }
+
+    @PUT
+    @Path("{id: \\d+}")
+    public BookDTO updateBook(@PathParam("id") Long id, BookDTO dto) {
+        dto.setId(id);
+        return BookConverter.basicEntity2DTO(bookLogic.updateBook(BookConverter.basicDTO2Entity(dto)));
+    }
+
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteBook(@PathParam("id") Long id) {
+        bookLogic.deleteBook(id);
+    }
+}
+```
+
+------------
 
 # BookBasico Logic
 ## Entidades
