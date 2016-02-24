@@ -11,6 +11,8 @@ En este tutorial haremos la construcción del backend para realizar operaciones 
 - **Proyecto Web:** Es el proyecto que se ha trabajado hasta ahora con el frontend. Adicional a esto, tendrá la implementación de los servicios RESTful y tendrá dependencia al proyecto Logic.
 - **Proyecto Padre:** Agrupa los dos anteriores, almacenando información común de ellos y permitiendo realizar acciones en ellos en conjunto.
 
+En el transcurso de este tutorial estaremos trabajando ambos proyectos iterativamente, con el fin de dejar claro el propósito de cada componente.
+
 # Crear proyecto Padre
 Maven ofrece la posibilidad de realizar [herencia][mvn_inheritance] entre proyectos, de manera que de un proyecto tipo POM, otros puedan usar sus propiedades, manejo de dependencias y de plugins, y demás, sin necesidad de redefinirlos.
 
@@ -144,7 +146,7 @@ Este archivo debe quedar de la siguiente manera:
 </beans>
 ```
 
-## Configuración servicios
+## Configuración servicios REST
 
 Para poder utilizar Jersey, es necesario incluir la dependencia a este en el POM. Esto se hace añadiendo las dependencias al POM del proyecto web:
 
@@ -298,14 +300,185 @@ public class BookService {
 
 Adicionalmente, Jersey provee otras anotaciones que mapean métodos HTTP a métodos Java, con el fin de poder realizar diferentes acciones dependiendo del método HTTP. Entre estas anotaciones están `@GET`, `@POST`, `@PUT` y `@DELETE`. En el siguiente ejemplo está la firma del método `getBook`, el cual debe retornar una instancia de Book a partir de un ID:
 ```java
-@GET
-@Path("{id: \\d+}")
-public BookDTO getBook(@PathParam("id") Long id) {
-    // Implementación
-}
+    @GET
+    public List<BookDTO> getBook() {
+        return null; //Implementar
+    }
+
+    @GET
+    @Path("{id: \\d+}")
+    public BookDTO getBook(@PathParam("id") Long id) {
+        return null; //Implementar
+    }
+
+    @POST
+    public BookDTO createBook(BookDTO dto) {
+        return null; //Implementar
+    }
+
+    @PUT
+    @Path("{id: \\d+}")
+    public BookDTO updateBook(@PathParam("id") Long id, BookDTO dto) {
+        return null; //Implementar
+    }
+
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteBook(@PathParam("id") Long id) {
+        //Implementar
+    }
 ```
 
 > El método recibe un DTO que, como se mencionó anteriormente, puede serializarse y deserializarse gracias a JAX-B
+
+# Implementación de API lógica
+Los pasos anteriores nos permitieron la creación de servicios REST, sin embargo, hasta ahora no realizar ninguna tarea. En este paso crearemos un API que nos permita acceder a los métodos expuestos por la capa lógica.
+
+## Creación del proyecto
+Dado que los servicios deben estar desacoplados de la lógica, crearemos una capa adicional que nos permita definir un API al cual tendrá acceso los servicios REST, independiente de la implementación de estos. Para esto, en Netbeans escogemos la opción de crear un nuevo proyecto, cuya categoría es `Maven`, el tipo de proyecto es `Java Application` y su nombre será `bookstore-logic`. Una vez se cree, lo añadiremos a los módulos del proyecto padre haciendo clic derecho en `Modules` y seleccionando la opción `Add Existing Module...`
+
+> Se puede unir ambos pasos haciendo clic derecho en `Modules` y seleccionando la opción `Create New Module...`
+
+Después de esto, es necesario añadir las dependencias a utilizar en este proyecto:
+
+```xml
+<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>eclipselink</artifactId>
+    <version>2.6.2</version>
+</dependency>
+<dependency>
+    <groupId>co.edu.uniandes.csw</groupId>
+    <artifactId>crud-utils</artifactId>
+    <version>0.1.3</version>
+</dependency>
+<dependency>
+    <groupId>javax</groupId>
+    <artifactId>javaee-api</artifactId>
+    <version>7.0</version>
+    <scope>provided</scope>
+</dependency>
+```
+
+- `eclipselink`: Implementación de JPA.
+- `javaee-api`: API de Java Enterprise.
+- `crud-utils`: Librería de utilidades de Uniandes.
+
+## Configuración de persistencia
+Para la implementación de la persistencia se usará JPA (Java Persistence API). Este *framework* permite hacer un mapeo de las tablas de la base de datos a objetos Java, de manera que se puedan manipular fácilmente.
+
+Para configurar JPA, es necesario crear un archivo `persistence.xml` en la carpeta `META-INF` de los recursos. Para esto, se hace clic derecho en el proyecto de lógica y se selecciona `New > Other...`, y en la categoría **XML** elegir la opción **XML Document** con la siguiente configuración:
+
+- El nombre del archivo debe ser `persistence.xml`
+- La ubicación del archivo debe ser `src/main/resources/META-INF`.
+
+Finalmente, incluir en el archivo lo siguiente:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="BookStorePU" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>java:app/jdbc/BookStore</jta-data-source>
+    <properties>
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+      <property name="eclipselink.cache.type.default" value="NONE" />
+    </properties>
+  </persistence-unit>
+</persistence>
+```
+
+> En este archivo se define que la conexión a base de datos se hará por un recurso JNDI, el cual se puede definir directamente en el contenedor. De esta manera, la base de datos a usar se puede cambiar en el contenedor sin necesidad de modificar código fuente.
+
+## Entidades
+Las estructuras de datos que manejará el API de la lógica son las entidades. Estas son POJO que permiten realizar un mapeo entre la base de datos y objetos de Java. Para la creación de estas es necesario anotar los POJO con `@Entity`. Con esto, JPA crea la asociación entre las entidades y las tablas de base de datos, facilitando la consulta y modificación de los datos.
+
+Estas entidades las guardaremos en un paquete llamado `co.edu.uniandes.csw.bookstore.entities` en el proyecto `bookstore-logic`. El siguiente es un ejemplo de la entidad `BookEntity`:
+
+```java
+package co.edu.uniandes.csw.bookstore.entities;
+
+import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class BookEntity extends BaseEntity implements Serializable {
+
+    private String isbn;
+    private String image;
+    @Temporal(TemporalType.DATE)
+    private Date publishDate;
+    private String description;
+
+    /**
+     * @return the isbn
+     */
+    public String getIsbn() {
+        return isbn;
+    }
+
+    /**
+     * @param isbn the isbn to set
+     */
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
+     * @return the publishDate
+     */
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    /**
+     * @param publishDate the publishDate to set
+     */
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+``` 
+
+> **IMPORTANTE**
+> Para poder mapear objetos tipo fecha, JPA necesita que estos atributos se anoten con `@Temporal`, la cual recibe un parámetro tipo `TemporalType` que define si se almacena la fecha, la hora, o ambos.
+
+Se puede observar que la clase extiende de `BaseEntity`. Esta es una clase abstracta parte de `crud-utils` que permite heredar los atributos `id` y `name`, al igual que sobreescribe la implementación de los métodos `equals` y `hashcode` para realizar la comparación a través del ID si existe. Se recomienda que todas las entidades hereden de esta clase, ya que ofrece funcionalidad que será usada constantemente en los proyectos.
+
+---------------------------
 
 ## Converters
 Ahora se debe crear un paquete llamado “converters” y aquí crearemos una clase llamada “BookConverter” la cual tiene como función convertir objetos de tipo BookEntity a BookDTO y viceversa. Esta clase es muy útil, ya que lo objetos que requiere los servicios son DTOs y lo objetos que requiere la persistencia son Entities, de igual manera al hacer consultas a la base de datos, esta devuelve objetos de tipo Entity, y los servicios exponen objetos de tipo DTO.
