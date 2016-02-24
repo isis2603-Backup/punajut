@@ -417,66 +417,12 @@ public class BookEntity extends BaseEntity implements Serializable {
     private Date publishDate;
     private String description;
 
-    /**
-     * @return the isbn
-     */
-    public String getIsbn() {
-        return isbn;
-    }
-
-    /**
-     * @param isbn the isbn to set
-     */
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    /**
-     * @return the image
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * @param image the image to set
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    /**
-     * @return the publishDate
-     */
-    public Date getPublishDate() {
-        return publishDate;
-    }
-
-    /**
-     * @param publishDate the publishDate to set
-     */
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
-    }
-
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    // Getters y Setters
 }
 ``` 
 
 > **IMPORTANTE**
-> Para poder mapear objetos tipo fecha, JPA necesita que estos atributos se anoten con `@Temporal`, la cual recibe un parámetro tipo `TemporalType` que define si se almacena la fecha, la hora, o ambos.
+> Para poder mapear objetos tipo fecha, JPA necesita que estos atributos se anoten con `@Temporal`, la cual recibe un parámetro tipo `TemporalType` que define si en base de datos se almacena la fecha, la hora, o ambos.
 
 Se puede observar que la clase extiende de `BaseEntity`. Esta es una clase abstracta parte de `crud-utils` que permite heredar los atributos `id` y `name`, al igual que sobreescribe la implementación de los métodos `equals` y `hashcode` para realizar la comparación a través del ID si existe. Se recomienda que todas las entidades hereden de esta clase, ya que ofrece funcionalidad que será usada constantemente en los proyectos.
 
@@ -658,7 +604,7 @@ public class BookService {
     @PUT
     @Path("{id: \\d+}")
     public BookDTO updateBook(@PathParam("id") Long id, BookDTO dto) {
-        dto.setId(id);
+        dto.setId(id); // Se setea el ID ya que el de la URI tiene prioridad sobre el enviado en el cuerpo de la petición
         return BookConverter.basicEntity2DTO(bookLogic.updateBook(BookConverter.basicDTO2Entity(dto)));
     }
 
@@ -670,38 +616,53 @@ public class BookService {
 }
 ```
 
-------------
-
-# BookBasico Logic
-## Entidades
-Primero se debe crear un nuevo paquete llamado “entities”, aquí crearemos la clase “BookEntity” con sus respectivos atributos, esta clase debe estar anotada con @Entity la cual funciona para hacer el mapeo con la base de datos usando JPA, esta clase debe extender de “BaseEntity” la cual es una librería que tiene lo métodos y atributos básicos de una entidad, como el nombre y el id.
-
-En el siguiente enlace se muestra como debe quedar la clase.
-
-[BookEntity.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.logic/src/main/java/co/edu/uniandes/csw/bookbasico/entities/BookEntity.java)
-
-Se debe tener en cuenta que para el manejo de fechas se debe usar la anotación `@Temporal(TemporalType.DATE)`.
-
+# Implementación de lógica
 ## Persistencia
-Se debe crear un paquete llamado “persistence”, aquí crearemos la clase “BookPersistence”, esta clase tiene los métodos básico de acceso a la base de datos (create, update, delete, find,findAll). Esta clase debe estar anotada con @Stateless, y  debe tener un objeto EntityManager, el cual debe estar anotado con @PersistenceContext(unitName = "BookBasicoPU") para indicar la unidad de persistencia que se conecta con la base de datos.
+En el paquete `co.edu.uniandes.csw.bookstore.persistence` crearemos las clases encargadas de realizar las tareas de persistencia, las cuales implementan la funcionalidad para persistir en base de datos a partir de un `EntityManager` de JPA.
 
-En el siguiente enlace se muestra como debe quedar la clase.
+Para obtener el `EntityManager` se usa la anotación `@PersistenceContext`, la cual crea una instancia del mismo a partir del nombre de la unidad de persistencia pasada por parámetro. Este nombre debe empatar con el que asignamos en el archivo `persistence.xml`.
 
-[BookPersistence.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.logic/src/main/java/co/edu/uniandes/csw/bookbasico/persistence/BookPersistence.java)
+> **IMPORTANTE:** La clase debe estar anotada con `` para que pueda ser inyectada con `@Inject`
 
-## Interface
-Se debe crear un paquete llamado “api”, aquí crearemos la interface “IBookLogic”, en la interface definiremos los métodos que usara los Web services.
+```java
+package co.edu.uniandes.csw.bookstore.persistence;
 
-En el siguiente enlace se muestra como debe quedar la interface.
+import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-[IBookLogic.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.logic/src/main/java/co/edu/uniandes/csw/bookbasico/api/IBookLogic.java)
+@Stateless
+public class BookPersistence {
 
-## Lógica
-Se debe crear un paquete llamado “ejbs”, aquí crearemos la clase “BookLogic” la cual debe implementar la interface “IBookLogic”, esta clase tendrá los métodos básicos (Crear, Actualizar, Eliminar, Mostrar) los cuales están conectados a la clase de persistencia para su debida interacción con la base de datos.
+    @PersistenceContext(unitName = "BookBasicoPU")
+    protected EntityManager em;
 
-En el siguiente enlace se muestra como debe quedar la clase.
+    public BookEntity find(Long id) {
+        return em.find(BookEntity.class, id);
+    }
 
-[BookLogic.java](https://github.com/recursosCSWuniandes/ejemplo-book-back/blob/1.0.0/BookBasico.logic/src/main/java/co/edu/uniandes/csw/bookbasico/ejbs/BookLogic.java)
+    public List<BookEntity> findAll() {
+        Query q = em.createQuery("select u from BookEntity u");
+        return q.getResultList();
+    }
 
-[mvn_inheritance]: https://maven.apache.org/pom.html#Inheritance "Maven POM inheritance"
-[mvn_aggregation]: https://maven.apache.org/pom.html#Aggregation "Maven Aggregation"
+    public BookEntity create(BookEntity entity) {
+        em.persist(entity);
+        return entity;
+    }
+
+    public BookEntity update(BookEntity entity) {
+        return em.merge(entity);
+    }
+
+    public void delete(Long id) {
+        BookEntity entity = em.find(BookEntity.class, id);
+        em.remove(entity);
+    }
+}
+```
+
+## EJBs de lógica
