@@ -13,7 +13,7 @@ En este tutorial haremos la construcción del backend para realizar operaciones 
 
 En el transcurso de este tutorial estaremos trabajando ambos proyectos iterativamente, con el fin de dejar claro el propósito de cada componente.
 
-# Crear proyecto Padre
+# Crear proyecto padre
 Maven ofrece la posibilidad de realizar [herencia][mvn_inheritance] entre proyectos, de manera que de un proyecto tipo POM, otros puedan usar sus propiedades, manejo de dependencias y de plugins, y demás, sin necesidad de redefinirlos.
 
 En este taller, tenemos la necesidad de crear un proyecto independiente para la capa lógica, el cual tiene algunos elementos en común con el proyecto web. Para asegurar la mantenibilidad de estos aspectos comunes haremos uso de la herencia de POM, crearemos un proyecto que contenga estos elementos y del cual se pueda heredar.
@@ -133,7 +133,7 @@ Este archivo se debe crear con la siguiente información, que define la configur
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
         <property name="createDatabase" value="create"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/BookBasico" object-type="user" pool-name="BookBasico_pool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/BookStore" object-type="user" pool-name="BookBasico_pool"/>
 </resources>
 ```
 Luego en la misma carpeta se debe crear un archivo llamado “beans.xml”, el cual indica a GlassFish que la aplicación usa EJBs.
@@ -198,7 +198,6 @@ public class RestConfig extends ResourceConfig {
         packages("co.edu.uniandes.csw.bookstore.services");
     }
 }
-
 ```
 
 ## DTOs
@@ -379,15 +378,15 @@ Finalmente, incluir en el archivo lo siguiente:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="BookStorePU" transaction-type="JTA">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:app/jdbc/BookStore</jta-data-source>
-    <properties>
-      <property name="eclipselink.logging.level" value="FINE"/>
-      <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
-      <property name="eclipselink.cache.type.default" value="NONE" />
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="BookStorePU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:app/jdbc/BookStore</jta-data-source>
+        <properties>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.cache.type.default" value="NONE" />
+        </properties>
+    </persistence-unit>
 </persistence>
 ```
 
@@ -637,7 +636,7 @@ import javax.persistence.Query;
 @Stateless
 public class BookPersistence {
 
-    @PersistenceContext(unitName = "BookBasicoPU")
+    @PersistenceContext(unitName = "BookStorePU")
     protected EntityManager em;
 
     public BookEntity find(Long id) {
