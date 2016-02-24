@@ -666,3 +666,51 @@ public class BookPersistence {
 ```
 
 ## EJBs de lógica
+Finalmente, creamos la implementación de la lógica en el paquete `co.edu.uniandes.csw.bookstore.ejbs`. Las clases de este paquete son EJBs anotados con `@Stateless` que implementan la interfaz correspondiente a su entidad y definen la lógica de negocio. Es en estas clases que debe incluirse toda clase de validaciones de negocio, y en caso de necesitar persistir datos, usar los EJB creados para persistencia a través de la anotación `@Inject`.
+
+> **IMPORTANTE:** Para poder usar la inyección de dependencias, debe agregarse un archivo `beans.xml` en la misma carpeta que `persistence.xml`. Dado que solo es necesario que exista el archivo, se puede copiar el creado para el proyecto web.
+
+```java
+package co.edu.uniandes.csw.bookstore.ejbs;
+
+import co.edu.uniandes.csw.bookstore.api.IBookLogic;
+import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import co.edu.uniandes.csw.bookstore.persistence.BookPersistence;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+@Stateless
+public class BookLogic implements IBookLogic {
+
+    @Inject
+    private BookPersistence persistence;
+
+    @Override
+    public List<BookEntity> getBooks() {
+        return persistence.findAll();
+    }
+
+    @Override
+    public BookEntity getBook(Long id) {
+        return persistence.find(id);
+    }
+
+    @Override
+    public BookEntity createBook(BookEntity entity) {
+        persistence.create(entity);
+        return entity;
+    }
+
+    @Override
+    public BookEntity updateBook(BookEntity entity) {
+        BookEntity newEntity = entity;
+        return persistence.update(newEntity);
+    }
+
+    @Override
+    public void deleteBook(Long id) {
+        persistence.delete(id);
+    }
+}
+```
