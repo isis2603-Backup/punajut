@@ -73,8 +73,9 @@
 
                                 </ul>
 
-                                <div class="tab-content">
-                                    <div id="menu11" class="tab-pane fade">
+                                <div class="col-lg-12">
+                                    <div class="tab-content">
+                                    <div id="menu11" class="tab-pane active">
                                         <div id="eventos" style="margin:4px; padding:4px">
                                             <br>
                                             <h3>Eventos Disponibles: </h3>
@@ -218,6 +219,17 @@
                                         <p>Some content in menu 3.</p>
                                     </div>
                                 </div>
+
+                                    <br>
+                                    <br>
+
+                                    <!--Timeline-->
+                                    <div id="itinerario" >
+            <div class="container-fluid">
+                <div id="visualization"></div>
+                 </div>
+        </div>
+                                </div>
                             </div>
                             <br>
 
@@ -230,10 +242,8 @@
                 </div>
             </div>
 
-        <div id="itinerario" >
-            <div class="container-fluid">
-                <div id="visualization"></div>
-                 <script type="text/javascript">
+
+            <script type="text/javascript">
 
                       // DOM element where the Timeline will be attached
                   var container = document.getElementById('visualization');
@@ -288,7 +298,6 @@
                   // Create a Timeline
                   var timeline = new vis.Timeline(container, items, options);
                 </script>
-
                   <!--fondo cuando se muestra la ventana de información del evento-->
                   <div class="sweet-overlay" tabindex="-1" style="opacity: 0; display: none;"></div>
 
@@ -314,8 +323,8 @@
                           <div></div>
                         </div>
                   </div>
-        </div>
-        </div>
+
+
 
         <br>
         <br>
