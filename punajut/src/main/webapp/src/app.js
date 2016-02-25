@@ -76,6 +76,8 @@
                     })
                     .state('crearItinerario', {
                         url: '/crearItinerario',
+                        controller: "crearItinerarioCtrl",
+                        controllerAs: "ctrl",
                         templateUrl: "src/itinerario/crearItinerario.tpl.html"
 
                     });
