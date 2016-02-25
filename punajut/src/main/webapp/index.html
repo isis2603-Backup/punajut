@@ -5,165 +5,109 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-        <title>GoTravel</title>
-        <!-- jquery 2.1.4 -->
-
-        <script data-require="jquery@*" data-semver="2.1.4" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-        <!--Bootstrap-->
-        <link data-require="bootstrap-css@3.3.6" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <title>GoTaravel</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <!--Google fonts-->
-        <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,700" rel="stylesheet" property='stylesheet' type="text/css"/>
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/stylish-portfolio.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/perfil.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom Fonts -->
+        <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-        <!-- font awesome-->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"  property='stylesheet' rel="stylesheet"/>
 
-        <!--Dependencias bootstrap-->
-        <!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-        <!-- bootstrap js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
-        <!--<script src="resources/js/bootstrap.min.js" type="text/javascript"></script>-->
-
-        <!-- gallery-->
-        <link href="resources/assets/gallery/blueimp-gallery.min.css"  property='stylesheet'  rel="stylesheet" type="text/css"/>
-
-        <!-- animate-->
-        <link href="resources/assets/animate/animate.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
-
-        <!-- animate set -->
-        <link href="resources/assets/animate/set.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
-
-        <!--AngularJS-->
+        <script src="resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
+        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="resources/js/angular.min.js" type="text/javascript"></script>
-
-        <!-- ui-router-->
         <script src="resources/js/angular-ui-router.min.js" type="text/javascript"></script>
+        <script src="resources/js/ui-bootstrap-tpls-0.13.4.min.js" type="text/javascript"></script>
+        <script src="resources/js/angular-mocks.js" type="text/javascript"></script>
+        <script src="resources/js/angular-messages.min.js" type="text/javascript"></script>
 
-        <!--Carga el modulo creado-->
         <script src="src/app.js" type="text/javascript"></script>
 
-        <!--Carousel-->
-        <link href="resources/css/carousel.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
+        <!-- se gregan todas los archivos JavaScript de cada modulo que necesita el index.-->
+        <script src="src/usuario/usuario.mod.js" type="text/javascript"></script>
+        <script src="src/usuario/usuario.ctrl.js" type="text/javascript"></script>
+        <script src="src/usuario/usuario.svc.js" type="text/javascript"></script>
+        <script src="src/usuario/usuario.mock.js" type="text/javascript"></script>
 
-        <!-- Recursos para sign in-->
-        <link href="resources/css/signin.css" rel="stylesheet"  property='stylesheet' type="text/css"/>
-
-        <!--Starter template-->
-        <link href="resources/css/starter-template.css"  property='stylesheet' rel="stylesheet" type="text/css"/>
-
-        <!--Recuerdos-->
-        <!--<script src="resources/js/traffic.js"></script>
-        <script src="resources/js/imgcrr.js"></script>-->
-
-        <!--timeline-->
-        <!--   <script src="resources/js/jquery.timelinr-0.9.54.js"></script>
-           <link href="resources/css/timeline.css" rel="stylesheet"  property='stylesheet' type="text/css"/>-->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.14.0/vis.min.js"></script>
-         <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.14.0/vis.min.css" rel="stylesheet" type="text/css" />-->
-
-        <!-- Para el calendario de crear itinerario-->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/locale/es.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-<!--        <script src="src/itinerario/crearIt.js" type="text/javascript"></script>-->
-
-
-
-        <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css" />
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
-
-<!--        <script src="src/itinerario/crearItinerario.js" type="text/javascript"></script>-->
-        <!-- Para el foro -->
-        <link href="resources/css/foroMain.css" rel="stylesheet" type="text/css"/>
-<!--
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.min.css" />
-        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>-->
-
-
-
-        <script src="resources/js/vis.min.js" type="text/javascript"></script>
-        <link href="resources/css/vis.min.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/timeline.css" rel="stylesheet" type="text/css"/>
 
     </head>
-    <body>
+    <body style="padding-top: 60px;">
         <div class="container-fluid">
-            <div class="col-md-12">
-                <nav class="navbar navbar-inverse" role="navigation">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">GoTravel</a>
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="paginaDeInicio">Home</a></li>
-                                    <li><a ui-sref="PerfilInicio">Perfil</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a ui-serf="paginaDeInicio"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- Navigation -->
+                <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+                <nav id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+                        <li class="sidebar-brand">
+                            <a href="#top"  onclick = $("#menu-close").click(); >Menu</a>
+                        </li>
+                        <li>
+                            <a href="#top" onclick = $("#menu-close").click(); >Home</a>
+                        </li>
+                        <li>
+                            <a href="#about" onclick = $("#menu-close").click(); >About</a>
+                        </li>
+                        <li>
+                            <a href="#services" onclick = $("#menu-close").click(); >Services</a>
+                        </li>
+                        <li>
+                            <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
+                        </li>
+                    </ul>
                 </nav>
-
-            </div>
             <div ui-view></div>
-
+            <div class="col-sm-6">
+                <div ui-view="principal"></div>
+            </div>
+            <div class="col-sm-6">
+                <div ui-view="centro"></div>
+            </div>
         </div>
 
-        <!-- Esto sobra ya que se importó arriba con un link, y esta importacion debe ir arriba-->
-        <!--<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>-->
 
-        <!-- Se intentó importar con url pero no sirvió-->
-        <script src="resources/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
-        <script src="resources/js/holder.min.js" type="text/javascript"></script>
-        <!--timeline-->
-        <!--<script src="resources/js/timeline.js" type="text/javascript"></script>-->
+            <!-- jQuery -->
+    <script src="resources/js/jquery.js" type="text/javascript"></script>
 
-<!--
-        <div class="container">
+    <!-- Bootstrap Core JavaScript -->    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
 
-        <!--<div class="container">
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
 
-            <div class="row">
-                <h1>Bienvenido, primero escoge las fechas de tu itinerario</h1>
-                <form id="frm" onsubmit="return validateForm()">
-                    <div class='col-sm-5'>
-                        <div class="form-group">
-                            <h2>Escoge tu fecha de inicio</h2>
-                            <div class='input-group date'  id='from'/>
-                            <input type='text' class="form-control" required>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                        <h2>Escoge tu fecha fin</h2>
-                        <div class='input-group date' id='to'>
-                            <input type='text' class="form-control" required>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success" aria-label="Right Align">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </button>
-                    </div>
-                </form>
-            </div>
-<<<<<<< HEAD
-</div>-->
-</body>
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
 
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+    </body>
 </html>
