@@ -2,55 +2,81 @@
     <div id="visualization"></div>
      <script type="text/javascript">
 
-          // DOM element where the Timeline will be attached
-      var container = document.getElementById('visualization');
-      var it = 1;
-      var cont = 1;
-      // Create a DataSet (allows two way data-binding)
-      var items = new vis.DataSet([
-       // {className:'it2' ,id: 2, content: 'item 2', start: '2013-04-14'},
-       // {className:'it3' ,id: 3, content: 'item 3', start: '2013-04-18'},
-       // {className:'it4' ,id: 4, content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
-       // {className:'it5' ,id: 5, content: 'item 5', start: '2013-04-25'}
-      ]);
-      // Configuration for the Timeline
-      var options = {
-          editable: true,
-          selectable:true,
 
-          onAdd: function(item, callback)
+      // DOM element where the Timeline will be attached
+  var container = document.getElementById('itinerario');
+  // Create a DataSet (allows two way data-binding)
+  var items = new vis.DataSet([
+    {className:'it1' ,id: 'Londres', content: 'item 1', start: '2013-04-12'},
+    {className:'it2' ,id: 'London Eye', content: 'item 2', start: '2013-04-14'},
+    {className:'it2' ,id: 'Palacio de Westminster', content: 'item 3', start: '2013-04-18'},
+    {className:'it2' ,id: 'Tower Bridge', content: 'item 4', start: '2013-04-16', end: '2013-04-19'},
+    {className:'it1',id:'Paris', content: 'item 5', start: '2013-04-25'},
+    {className:'it2' ,id: 'Museo del Louvre', content: 'item 6', start: '2013-04-26'},
+    {className:'it2' ,id: 'Torre Eiffel', content: 'item 7', start: '2013-04-28'},
+    {className:'it2' ,id: 'Catedral de Notre Dame', content: 'item 8', start: '2013-04-29'}
+  ]);
+  // Configuration for the Timeline
+  var options = {
+      editable: true,
+      selectable: true,
+      autoResize: true,
+      height: 270,
+
+      onAdd: function(item, callback)
+      {
+           //html
+          var i = document.createElement('div');
+          i.appendChild(document.createTextNode(item.className));
+          i.appendChild(document.createElement('br'));
+          var img = document.createElement('img');
+
+          img.style.width = '68px';
+          img.style.height = '68px';
+          i.appendChild(img);
+
+          item.content= i;
+          callback(item);
+      },
+
+      template: function(item)
+      {
+          var link = '';
+          var dim = 70;
+          if(item.id=== 'Londres')
           {
-              if(it === 6)
-                  it = 1;
-
-              item.className = 'it'+it;
-              it++;
-
-              //html
-              var i = document.createElement('div');
-              i.appendChild(document.createTextNode('Evento'+cont));
-              i.appendChild(document.createElement('br'));
-              var img = document.createElement('img');
-              img.src = 'http://www.datosgratis.net/wp-content/uploads/2010/12/turismo-en-australia.jpg';
-              img.style.width = '68px';
-              img.style.height = '68px';
-              i.appendChild(img);
-
-              item.content= i;
-              cont++;
-              callback(item);
-          },
-
-          onRemove: function(item, callback)
-          {
-              if(it === 1)
-                  it=6;
-              else
-                  it--;
-              callback(item);
+              link = 'http://www.colegioalca.com/fotos/collage_london.jpg';
+              dim = 100;
           }
 
-    };
+          else if(item.id === 'London Eye')
+             link = 'http://www.portaldeamerica.com/blogdeviajes/images/stories/principales-sitios-turisticos-para-visitar-en-londres7.jpg';
+
+          else if(item.id === 'Palacio de Westminster')
+              link = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Palace_of_Westminster,_London_-_Feb_2007.jpg/980px-Palace_of_Westminster,_London_-_Feb_2007.jpg';
+
+          else if(item.id === 'Tower Bridge')
+              link = 'http://r-ec.bstatic.com/images/hotel/840x460/184/18417356.jpg';
+
+          else if(item.id === 'Paris')
+          {
+              link = 'http://upload.wikimedia.org/wikipedia/ru/2/2b/Collage_Paris.jpg';
+              dim = 100;
+          }
+
+          else if(item.id === 'Museo del Louvre')
+              link = 'http://sitiosturisticos.com/wp-content/uploads/2012/11/Museo-del-Louvre.jpg';
+
+          else if(item.id === 'Torre Eiffel')
+              link = 'http://www.consultan2.com/wp-content/uploads/2015/05/2015_03_31_0219_1427825982_original.jpg';
+
+          else if(item.id === 'Catedral de Notre Dame')
+              link = 'http://www.arqhys.com/arquitectura/fotos/arquitectura/Catedral-Notre-Dame-de-Reims.jpg';
+
+          var html = '<div><h4>'+ item.id +'</h4></br>\n\
+                     <img src = ' + link+ ' width = "'+ dim +'px" height = "'+ dim +'px"/></div>';
+          return html;
+      }
 
       // Create a Timeline
       var timeline = new vis.Timeline(container, items, options);
