@@ -40,7 +40,7 @@
 
 <!-- ESTO ES UNA PRUEBA -->
 <!-- BARRA LATERAL -->
-<div class="container">
+<div ng-app="itinerariosApp" ng-controller="itinerariosCtrl" class="container">
     <div class="row content">
         <div class="col-sm-2 sidenav">
             <div class="container">
@@ -114,9 +114,16 @@
                             <h3>Itinerario 4</h3>
                             <img id="itinerario4" src="http://cruzandopaises.com/wp-content/uploads/2013/05/tokio-japon-diez-siglos-de-historia-para-uno-solo.jpg" alt="Tokio" style="width:150px;height:150px;" onclick="nuevaPagina4()">
                         </div>
+
+
                     </div>
                 </div>
             </div>
+            <b>Mis apuntes:</b>
+             <p><textarea ng-model="apuntes" cols="40" rows="10"></textarea></p>
+             <button type="button" ng-click="guardarApuntes()">Guardar</button>
+             <button type="button" ng-click="eliminarApuntes()">Eliminar</button>
+             <p>{{apuntes}}</p>;
         </div>
     </div>
 </div>
