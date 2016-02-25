@@ -1,6 +1,6 @@
 (function (ng) {
 
-    var mod = ng.module("mainApp", ["ui.router", "foroModule", "foroMock"]);
+    var mod = ng.module("mainApp", ["ui.router"]);
 
     // mod.controller('MainController', ['$scope', function($scope) { $scope.title = 'Top Sellers in Books'; }]);
 
@@ -9,7 +9,7 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-          $urlRouterProvider.otherwise("/paginaDeInicio");
+          //$urlRouterProvider.otherwise("/paginaDeInicio");
             $stateProvider
 
                     .state('paginaDeInicio', {
