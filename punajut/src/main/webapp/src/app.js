@@ -33,7 +33,7 @@
                                 templateUrl: "src/usuario/usuario.tpl.html"
                             },
                             'centro': {
-                                templateUrl: "src/Itinerario/CrearItinerario.tpl.html"
+                                templateUrl: "src/itinerario/CrearItinerario.tpl.html"
                             }
                         }
                     })
@@ -46,9 +46,37 @@
                                 templateUrl: "src/usuario/usuario.tpl.html"
                             },
                             'centro': {
-                                templateUrl: "src/Itinerarios/cerContinentes.tpl.html"
+                                templateUrl: "src/itinerarios/verContinentes.tpl.html"
                             }
                         }
+                    })
+
+                    .state('itinerarios', {
+                        url: '/itinerarios',
+                        templateUrl: "src/itinerario/itinerarios.tpl.html"
+
+                    })
+                    .state('itinerarioYmapa', {
+                        url: '/itinerarioYmapa',
+                        templateUrl: "src/itinerario/itinerarioYmapa.tpl.html"
+
+                    })
+
+                    .state('verEuropa', {
+                        url: '/verEuropa',
+                        templateUrl: "src/itinerario/verEuropa.tpl.html"
+
+                    })
+                    .state('verContinentes', {
+                        url: '/verContinentes',
+                        templateUrl: "src/itinerario/verContinentes.tpl.html"
+                    })
+                    .state('foro', {
+                        url: '/foro',
+                        controller: 'foroCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: "src/modules/comunidad/foroHttpTest.tpl.html"
+
                     });
         }]);
 })(window.angular);
