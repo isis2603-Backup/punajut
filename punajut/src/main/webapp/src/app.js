@@ -1,6 +1,6 @@
 (function (ng) {
 
-    var mod = ng.module("mainApp", ["ui.router"]);
+    var mod = ng.module("mainApp", ["ui.router", "foroModule", "foroMock"]);
 
     // mod.controller('MainController', ['$scope', function($scope) { $scope.title = 'Top Sellers in Books'; }]);
 
@@ -9,7 +9,7 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-//           $urlRouterProvider.otherwise("/paginaDeInicio");
+          $urlRouterProvider.otherwise("/paginaDeInicio");
             $stateProvider
 
                     .state('paginaDeInicio', {
@@ -70,9 +70,12 @@
                         url: '/verContinentes',
                         templateUrl: "src/itinerario/verContinentes.tpl.html"
                     })
-                    .state('foroMain', {
-                        url: '/foroMain',
-                        templateUrl: "src/comunidad/foroMain.tpl.html"
+                    .state('foro', {
+                        url: '/foro',
+                        controller: 'foroCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: "src/modules/comunidad/foroHttpTest.tpl.html"
+
                     })
                     .state('crearItinerario', {
                         url: '/crearItinerario',
