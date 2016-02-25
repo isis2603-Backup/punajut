@@ -17,7 +17,7 @@
             <!-- END SIDEBAR USER TITLE -->
             <!-- SIDEBAR BUTTONS -->
             <div class="profile-userbuttons">
-                  <a ui-sref="configurarCuenta"><button type="button" class="btn btn-success btn-sm">EditarPerfil</button></a>
+                <a ui-sref="configurarCuenta"><button type="button" class="btn btn-success btn-sm">EditarPerfil</button></a>
             </div>
             <!-- END SIDEBAR BUTTONS -->
             <!-- SIDEBAR MENU -->
@@ -47,43 +47,66 @@
             </div>
         </div>
 
+
         <div class="row">
-            <h1>Bienvenido, primero escoge las fechas de tu itinerario</h1>
-            <form id="frm" onsubmit="return validateForm()">
-                <div class="container">
-                    <div class="row">
-                        <div class='col-sm-4'>
-                            <div class="form-group">
-                                <div class='input-group date' id='from'>
-                                    <input type='text' class="form-control" required />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+            <h1>Bienvenido, primero crea tu itinerario</h1>
+            <form id="frm" ng-submit="form.$valid && ctrl.saveRecord()">
+                <fieldset>
+                    <div class="container">
+                        <div class="row">
+                            <div class='col-sm-4'>
+                                <div class="form-group">
+                                    <input id="id" class="form-control" type="hidden" ng-model="currentRecord.name"/>
+                                    <h2>Nombre</h2>
+                                    <div>
+                                        <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name"  />
+                                    </div>
+                                    <h2>Escoge tu fecha de inicio</h2>
+                                    <div class='input-group date' id='from'>
+                                        <input id="date" name="date" class="form-control" type='text' class="form-control" required  ng-model="currentRecord.name"/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    <h2>Escoge tu fecha fin</h2>
+                                    <div class='input-group date' id='to'>
+                                        <input type='text' class="form-control"ng-model="currentRecord.date" required/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
                                 </div>
-                                <h2>Escoge tu fecha fin</h2>
-                                <div class='input-group date' id='to'>
-                                    <input type='text' class="form-control" required/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                <button id="save-date" form="frm" type="submit" class="btn btn-success" aria-label="Right Align" ui-sref="verContinentes">
+                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div ng-hide="ctrl.editMode">
+                                <div class="col-sm-12">
+                                    <table border="1">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Fecha</th>
+                                        </tr>
+                                        <tr ng-repeat="itinerario in itinerarios">
+                                            <td><span id="{{$index}}-name">{{itinerario.name}}</span></td>
+                                            <td><span id="{{$index}}-fecha">{{itinerario.fecha}}</span></td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success" aria-label="Right Align" ui-sref="verContinentes">
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            </button>
                         </div>
-
-                    </div>
-                </div>
+                </fieldset>
             </form>
-            <script type="text/javascript">
-                $(function () {
-                    $('#from').datetimepicker();
-                    $('#to').datetimepicker();
-                });
-            </script>
 
         </div>
+        <script type="text/javascript">
+                    $(function () {
+                        $('#from').datetimepicker();
+                        $('#to').datetimepicker();
+                    });
+        </script>
+
     </div>
+</div>
 </div>
 

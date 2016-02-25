@@ -1,0 +1,131 @@
+<div id="usuario-header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#usuario-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Regristrarse</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="usuario-navbar">
+                <button id="create-usuario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Sign up</button>
+                <button id="refresh-usuario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+                <button id="save-usuario" type="submit" form="usuario-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Sign in</button>
+                <button id="cancel-usuario" type="button" form="usuario-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+<div ng-hide="ctrl.editMode">
+    <div class="col-sm-12">
+        <div ng-repeat="record in records">
+            <div class="col-md-4 col-sm-6 col-lg-3 well">
+                <div class="col-md-12">
+                    <div class="img-thumbnail" id="image" ng-if="record.image">
+                        <a ng-href="{{record.image}}" target="_blank"><img class="img-responsive" style="height: 20vmax;" ng-src="{{record.image}}" alt="{{record.image}}"></a>
+                    </div>
+                </div>
+                <div class="caption" >
+                    <p><strong>id:</strong> <span id="{{$index}}-id">{{record.id}}</span></p>
+                    <p><strong>nickName:</strong> <span id="{{$index}}-nickName">{{record.nickName}}</span></p>
+                    <p><strong>Description:</strong> <span id="{{$index}}-description">{{record.description}}</span></p>
+                    <p><strong>email:</strong> <span id="{{$index}}-email">{{record.email}}</span></p>
+                </div>
+                <p class="text-center">
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                </p>
+                
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li class="active">
+                            <a ui-sref="crearItinerario">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Crear Itinerario </a>
+                        </li>
+                        <li>
+                            <a ui-sref="itinerarios">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Itinerario</a>
+                        </li>
+                        <li>
+                            <a ui-sref="foroMain">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                Foro </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-flag"></i>
+                                Help </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END MENU -->
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="ctrl.editMode" class="col-md-6 well"> 
+    <form novalidate name="form" id="usuario-form" role="form" ng-submit="ctrl.saveRecord()">
+        <alert ng-messages="form.$error" type="danger" close="" ng-hide="!form.$error.required">
+            <div ng-message="required">
+                Please, Fill the required fields!
+            </div>
+        </alert>  
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.lastName.$valid && form.lastName.$dirty, 'has-error': form.lastName.$invalid && (form.lastName.$dirty || form.$submitted)}" >
+                <label for="lastName" class="col-md-2 control-label">lastName</label>
+                <div class="col-md-10">
+                    <input id="lastName" name="lastName" class="form-control" type="text" ng-model="currentRecord.lastName" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.nickName.$valid && form.nickName.$dirty, 'has-error': form.nickName.$invalid && (form.nickName.$dirty || form.$submitted)}" >
+                <label for="nickName" class="col-md-2 control-label">nickName</label>
+                <div class="col-md-10">
+                    <input id="nickName" name="nickName" class="form-control" type="text" ng-model="currentRecord.nickName" required />
+                </div>
+            </div>
+            
+            <div class="form-group col-md-12" ng-class="{'has-success': form.description.$valid && form.description.$dirty, 'has-error': form.description.$invalid && (form.description.$dirty || form.$submitted)}" >
+                <label for="description" class="col-md-2 control-label">Description</label>
+                <div class="col-md-10">
+                    <input id="description" name="description" class="form-control" type="text" ng-model="currentRecord.description" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.email.$valid && form.email.$dirty, 'has-error': form.email.$invalid && (form.email.$dirty || form.$submitted)}" >
+                <label for="email" class="col-md-2 control-label">email</label>
+                <div class="col-md-10">
+                    <input id="email" name="email" class="form-control" type="text" ng-model="currentRecord.email" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.password.$valid && form.password.$dirty, 'has-error': form.password.$invalid && (form.password.$dirty || form.$submitted)}" >
+                <label for="password" class="col-md-2 control-label">password</label>
+                <div class="col-md-10">
+                    <input id="password" name="password" class="form-control" type="text" ng-model="currentRecord.password" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.image.$valid && form.image.$dirty, 'has-error': form.image.$invalid && (form.image.$dirty || form.$submitted)}" >
+                <label for="image" class="col-md-2 control-label">Image</label>
+                <div class="col-md-10">
+                    <input id="image" name="image" class="form-control" type="text" ng-model="currentRecord.image" required />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
