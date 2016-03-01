@@ -3,5 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module("itinerariosApp", []);
+(function (ng) {
+    var mod = ng.module("comunidadModule", ["ui.bootstrap"]);
+    mod.constant("comunidadContext", "api/comunidad");
 
+})(window.angular);
