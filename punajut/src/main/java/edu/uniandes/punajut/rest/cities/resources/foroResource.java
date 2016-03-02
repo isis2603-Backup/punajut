@@ -9,6 +9,7 @@ package edu.uniandes.punajut.rest.cities.resources;
  *
  * @author ra.angel10
  */
+@Path("foro")
 public class foroResource {
 
 }
