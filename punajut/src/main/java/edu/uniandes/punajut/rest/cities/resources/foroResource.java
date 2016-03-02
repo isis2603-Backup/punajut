@@ -9,7 +9,8 @@ package edu.uniandes.punajut.rest.cities.resources;
  *
  * @author ra.angel10
  */
-@Path("foro")
+@Path("cities")
+@Produces
 public class foroResource {
 
 }
