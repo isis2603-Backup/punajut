@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package edu.uniandes.punajut.rest.cities.resources;
+import javax.ws.rs.Path;
+
 
 /**
  *
