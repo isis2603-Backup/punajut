@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  *
  * @author mi.arevalo10
  */
-@Path("itinerario")
+@Path("itinerarios")
 @Produces("application/json")
 public class ItinerarioResource {
 
