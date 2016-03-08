@@ -19,7 +19,7 @@ import javax.ws.rs.Produces;
  *
  * @author ra.angel10
  */
-@Path("cities")
+@Path("foro")
 @Produces("application/json")
 public class foroResource {
 
