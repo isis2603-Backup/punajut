@@ -7,7 +7,12 @@
   mod.controller("crearItinerarioCtrl", ["$scope", "crearItinerarioService", function ($scope, svc) {
 
             $scope.itinerarios = [];
-            $scope.currentRecord = {};
+            $scope.currentRecord = {
+                id: 0, /*Tipo long*/
+                name:'',
+                description:'', /*Tipo String*/
+                date : '' /*Tipo fecha*/
+            };
 
             this.readOnly = false;
             this.editMode = false;
