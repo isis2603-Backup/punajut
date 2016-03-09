@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.punajut.rest.cities.resources;
+package edu.uniandes.rest.punajut.resources;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -15,12 +15,15 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+
 /**
  *
- * @author ra.angel10
+ * @author r.cardenas11
  */
-@Path("foro")
+@Path("cities")
 @Produces("application/json")
-public class foroResource {
+public class eventoManejo {
+
+   
 
 }

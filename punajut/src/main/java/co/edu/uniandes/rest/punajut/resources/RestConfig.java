@@ -2,7 +2,7 @@
  * RestConfig.java
  * Configura el servicio JAX-RS.
  */
-package edu.uniandes.punajut.rest.cities.resources;
+package edu.uniandes.rest.punajut.resources;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
