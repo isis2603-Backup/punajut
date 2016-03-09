@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.rest.punajut.resources;
+package co.edu.uniandes.rest.punajut.resources;
 
-import edu.uniandes.punajut.rest.cities.resources.dtos.ItinerarioDTO;
-import edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
-import edu.uniandes.rest.punajut.mocks.ItinerarioLogicMock;
+import co.edu.uniandes.rest.punajut.dtos.ItinerarioDTO;
+import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
+import co.edu.uniandes.rest.punajut.mocks.ItinerarioLogicMock;
 
 
 import java.util.List;

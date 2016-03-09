@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.rest.punajut.exceptions;
+package co.edu.uniandes.rest.punajut.mocks;
 
 /**
  *
  * @author mi.arevalo10
  */
-public class ItinerarioLogicException extends Exception  {
+public class ItinerarioLogicMock {
 
 }

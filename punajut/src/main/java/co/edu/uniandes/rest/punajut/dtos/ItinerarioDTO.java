@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.rest.punajut.mappers;
+package co.edu.uniandes.rest.punajut.dtos;
 
 /**
  *
  * @author mi.arevalo10
  */
-public class ItinerarioLogicExceptionMapper {
+public class ItinerarioDTO {
 
 }

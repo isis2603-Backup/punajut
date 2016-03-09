@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.punajut.rest.cities.resources.dtos;
+package co.edu.uniandes.rest.punajut.exceptions;
 
 /**
  *
  * @author mi.arevalo10
  */
-public class ItinerarioDTO {
+public class ItinerarioLogicException extends Exception  {
 
 }
