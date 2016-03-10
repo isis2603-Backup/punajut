@@ -1,4 +1,4 @@
-package edu.uniandes.punajut.rest.cities.resources.exceptions;
+package co.edu.uniandes.rest.punajut.exceptions;
 
 /**
  * Representa las excepciones de la lógica de CityLogic

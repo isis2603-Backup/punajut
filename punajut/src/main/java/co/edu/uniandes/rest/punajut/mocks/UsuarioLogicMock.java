@@ -1,4 +1,4 @@
-package edu.uniandes.punajut.rest.cities.resources.mocks;
+package co.edu.uniandes.rest.punajut.mocks;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import edu.uniandes.punajut.rest.cities.resources.dtos.UsuarioDTO;
-import edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException;
+import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
+import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
 
 /**
  * Mock del recurso Usuario (Mock del servicio REST)
@@ -74,7 +74,7 @@ public class UsuarioLogicMock {
      * Obtiene un usuario
      * @param nickname identificador del usuario
      * @return usuario encontrada
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     public UsuarioDTO getNickName(String nickname) throws UsuarioLogicException {
     	logger.info("recibiendo solicitud de usuario con nickname " + nickname);
@@ -96,7 +96,7 @@ public class UsuarioLogicMock {
      * Agrega una ciudad a la lista.
      * @param newUsuario ciudad a adicionar
      * @return ciudad agregada
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     public UsuarioDTO createUsuario(UsuarioDTO newUsuario) throws UsuarioLogicException {
     	logger.info("recibiendo solicitud de agregar ciudad " + newUsuario);
@@ -137,7 +137,7 @@ public class UsuarioLogicMock {
      * @param password
      * @param updatedUsuario usuario a modificar
      * @return datos de la ciudad modificada
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     public UsuarioDTO updateUsuario(String nickname, String password, UsuarioDTO updatedUsuario) throws UsuarioLogicException {
     	logger.info("recibiendo solictud de modificar usuario " + updatedUsuario);
@@ -170,7 +170,7 @@ public class UsuarioLogicMock {
     /**
      * Elimina los datos de una ciudad
      * @param nickname identificador deL USUARIO a eliminar
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     public void deleteUsuario(String nickname) throws UsuarioLogicException {
     	logger.info("recibiendo solictud de eliminar usuario con nickname " + nickname);

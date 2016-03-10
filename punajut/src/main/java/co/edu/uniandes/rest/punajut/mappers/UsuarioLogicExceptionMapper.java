@@ -1,6 +1,6 @@
-package edu.uniandes.punajut.rest.cities.resources.converters;
+package co.edu.uniandes.rest.punajut.mappers;
 
-import edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException;
+import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;

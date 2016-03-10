@@ -3,12 +3,12 @@
  * Clase que representa el recurso "/cities"
  * Implementa varios métodos para manipular las ciudades
  */
-package edu.uniandes.punajut.rest.cities.resources;
+package co.edu.uniandes.rest.punajut.resources;
 
 
-import edu.uniandes.punajut.rest.cities.resources.dtos.UsuarioDTO;
-import edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException;
-import edu.uniandes.punajut.rest.cities.resources.mocks.UsuarioLogicMock;
+import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
+import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
+import co.edu.uniandes.rest.punajut.mocks.UsuarioLogicMock;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -43,7 +43,7 @@ public class UsuarioResource {
 	/**
 	 * Obtiene el listado de personas.
 	 * @return lista de usuarios
-         * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+         * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
 	 */
     @GET
     public List<UsuarioDTO> getUsuarios() throws UsuarioLogicException {
@@ -54,7 +54,7 @@ public class UsuarioResource {
      * Obtiene una ciudad
      * @param nickname identificador del usuario
      * @return usuario encontrada
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @GET
     @Path("{nickname: \\d+}")
@@ -66,7 +66,7 @@ public class UsuarioResource {
      * Agrega una ciudad
      * @param user usuario a agregar
      * @return datos de la usuario a agregar
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @POST
     public UsuarioDTO createCity(UsuarioDTO user) throws UsuarioLogicException {
@@ -79,7 +79,7 @@ public class UsuarioResource {
      * @param password
      * @param user usuario a modificar
      * @return datos de la ciudad modificada
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @PUT
     @Path("{nickname: \\d+}")
@@ -90,7 +90,7 @@ public class UsuarioResource {
     /**
      * Elimina los datos de una ciudad
      * @param nickname identificador de la ciudad a eliminar
-     * @throws edu.uniandes.punajut.rest.cities.resources.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @DELETE
     @Path("{nickname: \\d+}")
