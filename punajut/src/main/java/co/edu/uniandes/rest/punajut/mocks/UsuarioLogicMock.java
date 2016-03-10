@@ -33,7 +33,7 @@ public class UsuarioLogicMock {
 	private final static Logger logger = Logger.getLogger(UsuarioLogicMock.class.getName());
 
 	// listado de Usuarios
-    public static ArrayList<UsuarioDTO> usuario;
+    public ArrayList<UsuarioDTO> usuario;
 
     /**
      * Constructor. Crea los datos de ejemplo.
