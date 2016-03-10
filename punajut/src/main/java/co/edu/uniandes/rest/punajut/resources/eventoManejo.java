@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.rest.punajut.resources;
+package co.edu.uniandes.rest.punajut.resources;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -24,6 +24,6 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class eventoManejo {
 
-   
+
 
 }

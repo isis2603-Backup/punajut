@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.rest.punajut.resources;
+package co.edu.uniandes.rest.punajut.resources;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
