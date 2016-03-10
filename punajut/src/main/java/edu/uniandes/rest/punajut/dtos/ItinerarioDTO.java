@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.punajut.rest.cities.resources;
+package edu.uniandes.punajut.rest.cities.resources.dtos;
 
 /**
  *
- * @author ra.angel10
+ * @author mi.arevalo10
  */
-public class foroResource {
+public class ItinerarioDTO {
 
 }
