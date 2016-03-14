@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.uniandes.punajut.rest.cities.resources;
-import javax.ws.rs.Path;
-
+package co.edu.uniandes.rest.punajut.exceptions;
 
 /**
  *
- * @author ra.angel10
+ * @author mi.arevalo10
  */
-@Path("foro")
-public class foroResource {
+public class ItinerarioLogicException extends Exception  {
 
 }
