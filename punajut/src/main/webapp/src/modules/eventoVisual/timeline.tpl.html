@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timeline</title>
+        <script src="../../../resources/js/vis.min.js" type="text/javascript"></script>
+        <link href="../../../resources/css/vis.min.css" rel="stylesheet" type="text/css"/>
+        <script src="http://visjs.org/examples/googleAnalytics.js"></script>
+    </head>
+    <body>
+        <div class="container"></div>
+        <h1>sirveeee</h1>
+        <script type="text/javascript" >
+
+  // DOM element where the Timeline will be attached
+  var container = document.getElementById('visualization');
+
+  // Create a DataSet (allows two way data-binding)
+  var items = new vis.DataSet([
+    {id: 1, content: 'item 1', start: '2014-04-20'},
+    {id: 2, content: 'item 2', start: '2014-04-14'},
+    {id: 3, content: 'item 3', start: '2014-04-18'},
+    {id: 4, content: 'item 4', start: '2014-04-16', end: '2014-04-19'},
+    {id: 5, content: 'item 5', start: '2014-04-25'},
+    {id: 6, content: 'item 6', start: '2014-04-27', type: 'point'}
+  ]);
+
+  // Configuration for the Timeline
+  var options = {};
+
+  // Create a Timeline
+  var timeline = new vis.Timeline(container, items, options);
+        </script>
+        <h2>finalll</h2>
+    </body>
+</html>
+
