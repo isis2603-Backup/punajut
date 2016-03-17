@@ -11,7 +11,9 @@
                 id: 0, /*Tipo long*/
                 name:'',
                 description:'', /*Tipo String*/
-                date : '' /*Tipo fecha*/
+                fechaInicio : '', /*Tipo fecha*/
+                fechaFin : '' /*Tipo fecha*/
+
             };
 
             this.readOnly = false;
