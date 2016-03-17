@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.punajut.resources;
-import co.edu.uniandes.rest.punajut.dtos.EventosUsuarioDTO;
+import co.edu.uniandes.rest.punajut.dtos.EventoViajeroDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoUsuarioLogicMock;
 
@@ -33,7 +33,7 @@ public class eventoUsuarioResource {
 	 * @throws ItinerarioLogicException excepción retornada por la lógica
 	 */
     @GET
-    public List<EventosUsuarioDTO> getEventoUsuario() throws ItinerarioLogicException {
+    public List<EventoViajeroDTO> getEventoUsuario() throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.getCities();
     return null;
     }
@@ -46,7 +46,7 @@ public class eventoUsuarioResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public EventosUsuarioDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
+    public EventoViajeroDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.getCity(id);
     return null;
     }
@@ -58,7 +58,7 @@ public class eventoUsuarioResource {
      * @throws ItinerarioLogicException cuando ya existe una ciudad con el id suministrado
      */
     @POST
-    public EventosUsuarioDTO registrarEventoUsuario(EventosUsuarioDTO evento) throws ItinerarioLogicException {
+    public EventoViajeroDTO registrarEventoUsuario(EventoViajeroDTO evento) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.createCity(evento);
     return null;
     }
@@ -72,7 +72,7 @@ public class eventoUsuarioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventosUsuarioDTO modificarEventoUsuario(@PathParam("id") Long id, EventosUsuarioDTO evento) throws ItinerarioLogicException {
+    public EventoViajeroDTO modificarEventoUsuario(@PathParam("id") Long id, EventoViajeroDTO evento) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.updateCity(id, evento);
     return null;
     }

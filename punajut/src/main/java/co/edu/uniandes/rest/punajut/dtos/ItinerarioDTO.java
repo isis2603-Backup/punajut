@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.rest.punajut.dtos;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -31,6 +31,8 @@ public class ItinerarioDTO
      * Constructor con parámetros.
      * @param id identificador del itinerario
      * @param name nombre del itinerario
+     * @param fechaI
+     * @param fechaF
      */
     public ItinerarioDTO(Long id, String name, Date fechaI, Date fechaF) {
 		super();
