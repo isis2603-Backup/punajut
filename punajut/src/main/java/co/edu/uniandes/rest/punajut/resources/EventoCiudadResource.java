@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.punajut.resources;
-import co.edu.uniandes.rest.punajut.dtos.EventoCiudadDTO;
+import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoCiudadLogicMock;
 
@@ -33,7 +33,7 @@ public class EventoCiudadResource {
 	 * @throws ItinerarioLogicException excepción retornada por la lógica
 	 */
     @GET
-    public List<EventoCiudadDTO> getEventoCiudad() throws ItinerarioLogicException {
+    public List<EventoDTO> getEventoCiudad() throws ItinerarioLogicException {
     //    return eventoCiudadLogic.getCities();
     return null;
     }
@@ -46,7 +46,7 @@ public class EventoCiudadResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public EventoCiudadDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
+    public EventoDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
     //    return eventoCiudadLogic.getCity(id);
     return null;
     }
@@ -58,7 +58,7 @@ public class EventoCiudadResource {
      * @throws ItinerarioLogicException cuando ya existe una ciudad con el id suministrado
      */
     @POST
-    public EventoCiudadDTO registrarEventoCiudad(EventoCiudadDTO evento) throws ItinerarioLogicException {
+    public EventoDTO registrarEventoCiudad(EventoDTO evento) throws ItinerarioLogicException {
     //    return eventoCiudadLogic.createCity(evento);
     return null;
     }
@@ -72,7 +72,7 @@ public class EventoCiudadResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventoCiudadDTO modificarEventoCiudad(@PathParam("id") Long id, EventoCiudadDTO evento) throws ItinerarioLogicException {
+    public EventoDTO modificarEventoCiudad(@PathParam("id") Long id, EventoDTO evento) throws ItinerarioLogicException {
     //    return eventoCiudadLogic.updateCity(id, evento);
     return null;
     }

@@ -7,7 +7,6 @@ package co.edu.uniandes.rest.punajut.dtos;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Clase que contiene los eventos que visitará el viajero en una ciudad determinada
@@ -70,7 +69,7 @@ public class EventosUsuarioDTO
     public boolean agregarEventoUsuario(EventoDTO evento)
     {
         boolean seAgrego = false;
-        if(evento.darFechaInicio().after(fechaInicial) && evento.darFechaFin().before(fechaFinal) && evento.darCiudad().equals(ciudad))
+        if(evento.getHorario().after(fechaInicial) && evento.getHorario().before(fechaFinal) && evento.getCiudad().equals(ciudad))
         {
             eventos.add(evento);
             seAgrego = true;
@@ -89,7 +88,7 @@ public class EventosUsuarioDTO
         boolean flag = false;
         for (int i = 0; i < eventos.size() && !flag; i++)
         {
-            if(eventos.get(i).darId() == id)
+            if(eventos.get(i).getId() == id)
             {
                 evento = eventos.get(i);
                 flag = true;
