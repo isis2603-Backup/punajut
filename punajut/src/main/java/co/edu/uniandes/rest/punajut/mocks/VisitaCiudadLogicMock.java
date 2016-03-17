@@ -77,7 +77,7 @@ public class VisitaCiudadLogicMock
 
         // si no encuentra la ciudad
         logger.severe("No existe ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe una ciudad con ese id");
     }
 
     /**
@@ -99,7 +99,7 @@ public class VisitaCiudadLogicMock
 	            if (Objects.equals(city.getId(), newCity.getId()))
                     {
 	            	logger.severe("Ya existe una ciudad con ese id");
-	                throw new ItinerarioLogicException();
+	                throw new ItinerarioLogicException("Ya existe una ciudad con ese id");
 	            }
 	        }
 
@@ -155,7 +155,7 @@ public class VisitaCiudadLogicMock
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe una ciudad con ese id");
     }
 
     /**
@@ -181,7 +181,7 @@ public class VisitaCiudadLogicMock
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe una ciudad con ese id");
     }
 
 

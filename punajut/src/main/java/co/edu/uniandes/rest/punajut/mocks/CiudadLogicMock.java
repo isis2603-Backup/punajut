@@ -52,7 +52,7 @@ public class CiudadLogicMock
     public List<CiudadDTO> getCities() throws ItinerarioLogicException {
     	if (ciudades == null) {
     		logger.severe("Error interno: lista de ciudades no existe.");
-    		throw new ItinerarioLogicException();
+    		throw new ItinerarioLogicException("La lista de ciudades no existe");
     	}
 
     	logger.info("retornando todas las ciudades");
@@ -81,7 +81,7 @@ public class CiudadLogicMock
 
         // si no encuentra la ciudad
         logger.severe("No existe ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe ninguna ciudad con el id dado");
     }
 
     /**
@@ -103,7 +103,7 @@ public class CiudadLogicMock
 	            if (Objects.equals(city.getId(), newCity.getId()))
                     {
 	            	logger.severe("Ya existe una ciudad con ese id");
-	                throw new ItinerarioLogicException();
+	                throw new ItinerarioLogicException("Ya existe una ciudad con el id");
 	            }
 	        }
 
@@ -159,7 +159,7 @@ public class CiudadLogicMock
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe una ciudad con ese id");
     }
 
     /**
@@ -184,7 +184,7 @@ public class CiudadLogicMock
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException();
+        throw new ItinerarioLogicException("No existe una ciudad con ese id");
     }
 
 }
