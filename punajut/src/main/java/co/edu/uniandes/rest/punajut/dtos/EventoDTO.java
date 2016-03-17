@@ -49,6 +49,7 @@ public class EventoDTO
      */
     public EventoDTO()
     {
+        
     }
 
 
