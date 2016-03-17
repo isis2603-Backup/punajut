@@ -87,6 +87,47 @@ public class ComunidadLogicMock {
     }
 
     /**
+     * Agrega un itinerario a la lista.
+     * @param nuevoItinerario ciudad a adicionar
+     * @throws ComunidadLogicException cuando ya existe una ciudad con el id suministrado
+     * @return itinerario agregado
+     */
+    public ComunidadDTO createItinerarioComunidad(ComunidadDTO nuevoItinerario) throws ComunidadLogicException {
+    	logger.info("recibiendo solicitud de agregar itinerario " + nuevoItinerario);
+
+    	// el nuevo itinerario tiene id ?
+    	if ( nuevoItinerario.getId() != null ) {
+	    	// busca el itinerario con el id suministrado
+	        for (ComunidadDTO com : comunidad) {
+	        	// si existe un itinerario con ese id
+	            if (Objects.equals(com.getId(), nuevoItinerario.getId())){
+	            	logger.severe("Ya existe un itinerario con ese id");
+	                throw new ComunidadLogicException("Ya existe un itinerario con ese id");
+	            }
+	        }
+
+	    // el nuevo itinerario no tiene id ?
+    	} else {
+
+    		// genera un id para el itinerario
+    		logger.info("Generando id para el nuevo itinerario");
+    		long newId = 1;
+	        for (ComunidadDTO com : comunidad) {
+	            if (newId <= com.getId()){
+	                newId =  com.getId() + 1;
+	            }
+	        }
+	        nuevoItinerario.setId(newId);
+    	}
+
+        // agrega el itinerario
+    	logger.info("agregando itinerario " + nuevoItinerario);
+        comunidad.add(nuevoItinerario);
+        return nuevoItinerario;
+    }
+
+
+    /**
      * Elimina los datos de un itinerario
      * @param id identificador del itinerario a eliminar
      * @throws ComunidadLogicException cuando no existe un itinerario con el id suministrado

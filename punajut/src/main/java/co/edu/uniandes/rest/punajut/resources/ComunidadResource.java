@@ -53,6 +53,17 @@ public class ComunidadResource {
     }
 
     /**
+     * Agrega un itinerario
+     * @param itinerario itinerario a agregar
+     * @return datos del itinerario a agregar
+     * @throws ComunidadLogicException cuando ya existe un itinerario con el id suministrado
+     */
+    @POST
+    public ComunidadDTO createItinerarioComunidad(ComunidadDTO comunidad) throws ComunidadLogicException {
+        return comunidadLogic.createItinerarioComunidad(comunidad);
+    }
+
+    /**
      * Elimina los datos de un itinerario
      * @param id identificador del itinerario a eliminar
      * @throws ComnidadLogicException cuando no existe un itinerario con el id suministrado
