@@ -32,9 +32,13 @@ public class EventoDTO
 
     private String lugar;
 
-    private Date horario ;
+    private CiudadDTO ciudad;
 
-    private String ciudad;
+    //Fecha y hora en que comienza el evento
+    private Date fechaInicial;
+
+    //Fecha y hora en que finaliza el evento
+    private Date fechaFinal;
 
 
     //-----------------------------------------------------------
@@ -47,10 +51,22 @@ public class EventoDTO
     {
     }
 
-/**
-     * Constructor con parámetros.
+
+    /**
+     * Constructor con parametros
+     * @param pId
+     * @param tipo
+     * @param calificacion
+     * @param precio
+     * @param descripcion
+     * @param opiniones
+     * @param lugar
+     * @param pCiudad
+     * @param pFechaInicial
+     * @param pFechaFinal
      */
-     public EventoDTO(Long pId, String tipo ,double calificacion, double precio,String descripcion,String[] opiniones,String lugar,Date horario, String pCiudad)
+     public EventoDTO(Long pId, String tipo ,double calificacion, double precio,String descripcion,
+             String[] opiniones,String lugar, CiudadDTO pCiudad, Date pFechaInicial, Date pFechaFinal)
     {
         super();
         id = pId;
@@ -60,8 +76,9 @@ public class EventoDTO
         this.descripcion = descripcion;
         this.opiniones = opiniones;
         this.lugar = lugar;
-        this.horario = horario;
         ciudad = pCiudad;
+        fechaInicial = pFechaInicial;
+        fechaFinal = pFechaFinal;
     }
 
 
@@ -128,20 +145,29 @@ public class EventoDTO
         this.lugar = lugar;
     }
 
-    public Date getHorario() {
-        return horario;
+    public CiudadDTO getCiudad() {
+        return ciudad;
     }
 
-    public void setHorario(Date horario) {
-        this.horario = horario;
-    }
-
-    public String getCiudad() {
-        return lugar;
-    }
-
-    public void setCiudad(String ciudad) {
+    public void setCiudad(CiudadDTO ciudad) {
         this.ciudad = ciudad;
     }
+
+    public Date getFechaInicial() {
+        return fechaInicial;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaInicial(Date fechaInicial) {
+        this.fechaInicial = fechaInicial;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
 
 }
