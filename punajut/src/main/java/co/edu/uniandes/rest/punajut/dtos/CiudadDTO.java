@@ -13,6 +13,11 @@ import java.util.ArrayList;
 public class CiudadDTO
 {
     /**
+     * Id que representa la ciudad
+     */
+    private Long id;
+
+    /**
      * Nombre ciudad
      */
     private String nombre;
@@ -46,12 +51,22 @@ public class CiudadDTO
     public boolean agregarEventoCiudad(EventoDTO evento)
     {
         boolean seAgrego = false;
-        if(evento.getCiudad().equals(nombre))
+        if(evento.getCiudad().getNombre().equals(nombre))
         {
             eventos.add(evento);
             seAgrego = true;
         }
         return seAgrego;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 
 }

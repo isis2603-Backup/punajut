@@ -20,6 +20,8 @@ public class EventoViajeroDTO
      */
     private EventoDTO evento;
 
+    private Long id;
+
     //Constructor por defecto
     public EventoViajeroDTO()
     {
@@ -47,5 +49,22 @@ public class EventoViajeroDTO
         return evento;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setVisitaCiudad(VisitaCiudadDTO visitaCiudad) {
+        this.visitaCiudad = visitaCiudad;
+    }
+
+    public void setEvento(EventoDTO evento) {
+        this.evento = evento;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
 
 }
