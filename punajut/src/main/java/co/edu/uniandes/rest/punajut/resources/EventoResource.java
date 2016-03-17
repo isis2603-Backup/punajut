@@ -23,7 +23,7 @@ import javax.ws.rs.PathParam;
  * @author r.cardenas11
  */
 @Path("eventoCiudad")
-public class EventoCiudadResource {
+public class EventoResource {
     	@Inject
 	EventoCiudadLogicMock eventoCiudadLogic;
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class VisitaCiudadDTO
 {
+    private Long id;
     /**
      * Fecha en que el viajero llega a la ciudad
      */
@@ -77,5 +78,13 @@ public class VisitaCiudadDTO
 
     public void setCiudad(CiudadDTO ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
