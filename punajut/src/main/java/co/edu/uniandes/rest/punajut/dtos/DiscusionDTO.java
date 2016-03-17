@@ -26,11 +26,18 @@ public class DiscusionDTO {
 
     private List<RespuestaDTO> respuestas;
 
-    public DiscusionDTO(int id, String title, UsuarioDTO op, RespuestaDTO inicial) {
+    private String state;
+
+    public final static String OPEN = "Abierto";
+
+    public final static String CLOSED = "Cerrado";
+
+    public DiscusionDTO(int id, String title, UsuarioDTO op, RespuestaDTO inicial, String state) {
         this.id = id;
         this.title = title;
-        this. op = op;
+        this.op = op;
         this.inicial = inicial;
+        this.state = state;
         respuestas = new ArrayList<>();
         visitas = 0;
     }
@@ -74,6 +81,22 @@ public class DiscusionDTO {
                 return res;
         }
         return null;
+    }
+
+    public RespuestaDTO getInicial() {
+        return inicial;
+    }
+
+    public void setInicial(RespuestaDTO inicial) {
+        this.inicial = inicial;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
 }

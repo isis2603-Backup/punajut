@@ -40,6 +40,33 @@ public class ForoLogicMock {
         return d.getRespuestaID(idRes);
     }
 
+    public RespuestaDTO createResponse(int idCat, int idDis, RespuestaDTO res) throws ForoLogicException {
+        DiscusionDTO d = getDiscusion(idCat, idDis);
+        d.addRespuesta(res);
+        return d.getRespuestaID(res.getId());
+    }
+
+     public RespuestaDTO[] createResponse(int idCat, int idDis, int idRes,RespuestaDTO res) throws ForoLogicException {
+        DiscusionDTO d = getDiscusion(idCat, idDis);
+        d.addRespuesta(res);
+        RespuestaDTO iRes = d.getRespuestaID(idRes);
+        iRes.addResponse(res);
+        return new RespuestaDTO[]{iRes, d.getRespuestaID(res.getId())};
+    }
+
+     public DiscusionDTO updateDiscusion(int idCat, int idDis, RespuestaDTO res) throws ForoLogicException {
+         DiscusionDTO d = getDiscusion(idCat, idDis);
+         d.setInicial(res);
+         return d;
+     }
+
+     public RespuestaDTO updateResponse(int idCat, int idDis, int idRes,String content)throws ForoLogicException {
+         DiscusionDTO d = getDiscusion(idCat, idDis);
+         RespuestaDTO r = d.getRespuestaID(idRes);
+         r.setMessage(content);
+         return r;
+     }
+
 
 
 }

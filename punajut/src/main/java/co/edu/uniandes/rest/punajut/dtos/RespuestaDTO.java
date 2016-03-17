@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.rest.punajut.dtos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,7 +21,7 @@ public class RespuestaDTO {
 
     private UsuarioDTO user;
 
-    private RespuestaDTO response;
+    private List<RespuestaDTO> responses;
 
     private Date fecha;
 
@@ -27,7 +29,7 @@ public class RespuestaDTO {
         this.id = id;
         this.message = message;
         this.user = user;
-        this.response = null;
+        this.responses = new ArrayList<>();
         this.fecha = new Date();
     }
 
@@ -55,12 +57,12 @@ public class RespuestaDTO {
         this.user = user;
     }
 
-    public RespuestaDTO getResponse() {
-        return response;
+    public List<RespuestaDTO> getResponse() {
+        return responses;
     }
 
-    public void setResponse(RespuestaDTO response) {
-        this.response = response;
+    public void setResponse(List<RespuestaDTO> response) {
+        this.responses = response;
     }
 
     public Date getFecha() {
@@ -71,7 +73,17 @@ public class RespuestaDTO {
         this.fecha = fecha;
     }
 
-    
+    public void addResponse(RespuestaDTO res) {
+        responses.add(res);
+    }
+
+    public RespuestaDTO getRespuestaID(int id) {
+        for (RespuestaDTO res : responses) {
+            if(res.getId() == id)
+                return res;
+        }
+        return null;
+    }
 
 
 
