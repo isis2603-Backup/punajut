@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.punajut.resources;
-import co.edu.uniandes.rest.punajut.dtos.EventoUsuarioDTO;
+import co.edu.uniandes.rest.punajut.dtos.EventosUsuarioDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoUsuarioLogicMock;
 
@@ -22,7 +22,7 @@ import javax.ws.rs.PathParam;
  *
  * @author ls.hernandez10
  */
-@Path("eventoVisual")
+@Path("eventoUsuario")
 public class eventoUsuarioResource {
     	@Inject
 	EventoUsuarioLogicMock eventoUsuarioLogic;
@@ -33,7 +33,7 @@ public class eventoUsuarioResource {
 	 * @throws ItinerarioLogicException excepción retornada por la lógica
 	 */
     @GET
-    public List<EventoUsuarioDTO> getEventoUsuario() throws ItinerarioLogicException {
+    public List<EventosUsuarioDTO> getEventoUsuario() throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.getCities();
     return null;
     }
@@ -46,7 +46,7 @@ public class eventoUsuarioResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public EventoUsuarioDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
+    public EventosUsuarioDTO getCity(@PathParam("id") Long id) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.getCity(id);
     return null;
     }
@@ -58,7 +58,7 @@ public class eventoUsuarioResource {
      * @throws ItinerarioLogicException cuando ya existe una ciudad con el id suministrado
      */
     @POST
-    public EventoUsuarioDTO registrarEventoUsuario(EventoUsuarioDTO evento) throws ItinerarioLogicException {
+    public EventosUsuarioDTO registrarEventoUsuario(EventosUsuarioDTO evento) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.createCity(evento);
     return null;
     }
@@ -72,7 +72,7 @@ public class eventoUsuarioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventoUsuarioDTO modificarEventoUsuario(@PathParam("id") Long id, EventoUsuarioDTO evento) throws ItinerarioLogicException {
+    public EventosUsuarioDTO modificarEventoUsuario(@PathParam("id") Long id, EventosUsuarioDTO evento) throws ItinerarioLogicException {
     //    return eventoUsuarioLogic.updateCity(id, evento);
     return null;
     }
