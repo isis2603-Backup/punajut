@@ -6,7 +6,8 @@
 package co.edu.uniandes.rest.punajut.resources;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
-import co.edu.uniandes.rest.punajut.mocks.EventoCiudadLogicMock;
+import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
+import co.edu.uniandes.rest.punajut.mocks.EventoLogicMock;
 
 import java.util.List;
 import javax.inject.Inject;
@@ -22,10 +23,10 @@ import javax.ws.rs.PathParam;
  *
  * @author r.cardenas11
  */
-@Path("eventoCiudad")
+@Path("eventos")
 public class EventoResource {
     	@Inject
-	EventoCiudadLogicMock eventoCiudadLogic;
+	EventoLogicMock eventoLogic;
 
 	/**
 	 * Obtiene el listado de los eventos a los  en una ciudad.
@@ -33,9 +34,9 @@ public class EventoResource {
 	 * @throws ItinerarioLogicException excepción retornada por la lógica
 	 */
     @GET
-    public List<EventoDTO> getEventoCiudad() throws ItinerarioLogicException {
-    //    return eventoCiudadLogic.getCities();
-    return null;
+    public List<EventoDTO> getEventoCiudad() throws UsuarioLogicException {
+        return eventoLogic.getEventos();
+
     }
 
     /**
