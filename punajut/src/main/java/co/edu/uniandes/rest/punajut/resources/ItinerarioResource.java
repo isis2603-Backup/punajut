@@ -52,7 +52,7 @@ public class ItinerarioResource {
     @GET
     @Path("{id: \\d+}")
     public ItinerarioDTO getItinerario(@PathParam("id") Long id) throws ItinerarioLogicException {
-        return null;
+        return itinerarioLogic.getItinerario(id);
     }
 
     /**
@@ -65,7 +65,7 @@ public class ItinerarioResource {
      */
     @POST
     public ItinerarioDTO createItinerario(ItinerarioDTO itinerario) throws ItinerarioLogicException {
-        return null;
+        return itinerarioLogic.createItinerario(itinerario);
     }
 
     /**
@@ -78,8 +78,8 @@ public class ItinerarioResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public ItinerarioDTO updateItinerario(@PathParam("id") Long id) throws ItinerarioLogicException {
-        return null;
+    public ItinerarioDTO updateItinerario(@PathParam("id") Long id,  ItinerarioDTO pIt) throws ItinerarioLogicException {
+        return itinerarioLogic.updateItinerario(id, pIt);
     }
 
     /**
@@ -91,8 +91,9 @@ public class ItinerarioResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteItinerario(@PathParam("id") Long id) throws ItinerarioLogicException {
-
+    public void deleteItinerario(@PathParam("id") Long id) throws ItinerarioLogicException
+    {
+        itinerarioLogic.deleteItinerario(id);
     }
 
 }
