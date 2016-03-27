@@ -4,6 +4,11 @@
         "ui.router",
         "usuarioModule",
         "usuarioMock",
+        "crearItinerarioModule",
+        "foroModule",
+        "foroMock",
+        "itinerarioYmapaModule",
+        "comunidadModule",
         "ngMessages"
     ]);
 
