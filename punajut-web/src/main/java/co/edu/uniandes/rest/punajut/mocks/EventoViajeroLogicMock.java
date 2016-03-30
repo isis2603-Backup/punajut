@@ -12,11 +12,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author ls.hernandez10
  */
+@Named
+@ApplicationScoped
 public class EventoViajeroLogicMock {
 //Objeto para representar los logs de la operación
     private final static Logger logger = Logger.getLogger(EventoViajeroLogicMock.class.getName());

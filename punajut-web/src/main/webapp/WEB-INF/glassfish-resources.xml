@@ -10,5 +10,5 @@
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
         <property name="createDatabase" value="create"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/BookStore" object-type="user" pool-name="Punajut_pool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/jdbc/Punajut" object-type="user" pool-name="Punajut_pool"/>
 </resources>

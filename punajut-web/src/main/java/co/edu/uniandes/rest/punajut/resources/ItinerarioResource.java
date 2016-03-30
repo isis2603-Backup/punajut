@@ -11,7 +11,9 @@ import co.edu.uniandes.rest.punajut.mocks.ItinerarioLogicMock;
 
 
 import java.util.List;
+import java.util.logging.Logger;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,17 +21,22 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author mi.arevalo10
  */
 @Path("itinerarios")
-@Produces("application/json")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ItinerarioResource {
 
     @Inject
     ItinerarioLogicMock itinerarioLogic;
+
+    private static final Logger logger = Logger.getLogger(ItinerarioResource.class.getName());
+
 
     /**
      * Obtiene el listado de itinerarios.
@@ -38,8 +45,9 @@ public class ItinerarioResource {
      * @throws ItinerarioLogicException excepción retornada por la lógica
      */
     @GET
-      @Path("lista")
     public List<ItinerarioDTO> getItinerarios() throws ItinerarioLogicException{
+        logger.info("Se ejecuta método getItinerarios");
+
         return itinerarioLogic.getItinerarios();
     }
 

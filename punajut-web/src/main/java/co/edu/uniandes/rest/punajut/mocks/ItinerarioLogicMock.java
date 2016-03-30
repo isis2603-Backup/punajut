@@ -15,11 +15,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author mi.arevalo10
  */
+@Named
+@ApplicationScoped
 public class ItinerarioLogicMock {
 
     // objeto para presentar logs de las operaciones
