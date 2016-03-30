@@ -38,8 +38,9 @@ public class ItinerarioResource {
      * @throws ItinerarioLogicException excepción retornada por la lógica
      */
     @GET
+      @Path("lista")
     public List<ItinerarioDTO> getItinerarios() throws ItinerarioLogicException{
-        return null;
+        return itinerarioLogic.getItinerarios();
     }
 
     /**
@@ -64,6 +65,7 @@ public class ItinerarioResource {
      * suministrado
      */
     @POST
+    @Path("{id: \\d+}")
     public ItinerarioDTO createItinerario(ItinerarioDTO itinerario) throws ItinerarioLogicException {
         return itinerarioLogic.createItinerario(itinerario);
     }

@@ -51,7 +51,7 @@ public class ItinerarioLogicMock {
 
             // muestra información
             logger.info("Inicializa la lista de itinerarios");
-            logger.info("itinrarios" + itinerarios);
+            logger.info("itinerarios" + itinerarios);
         } catch (ParseException ex) {
             Logger.getLogger(ItinerarioLogicMock.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,7 +85,7 @@ public class ItinerarioLogicMock {
 
         // busca la ciudad con el id suministrado
         for (ItinerarioDTO itinerario : itinerarios) {
-            if (Objects.equals(itinerario.getId(), id)) {
+            if (Objects.equals( itinerario.getId(), id)) {
                 logger.info("retornando itinerario" + itinerario);
                 return itinerario;
             }

@@ -3,11 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>co.edu.uniandes.punajut</groupId>
-    <artifactId>punajut</artifactId>
+    <artifactId>punajut-web</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>punajut</name>
+    <name>punajut-web</name>
+
+    <!--
+    <parent>
+        <groupId>co.edu.uniandes.punajut</groupId>
+        <artifactId>punajut</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>-->
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

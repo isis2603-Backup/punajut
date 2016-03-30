@@ -32,7 +32,7 @@ import javax.ws.rs.Produces;
  *
  * @author Asistente
  */
-@Path("cities")
+@Path("usuarios")
 @Produces("application/json")
 @RequestScoped
 public class UsuarioResource {
