@@ -20,7 +20,6 @@ import javax.persistence.TemporalType;
  *
  * @author mi.arevalo10
  */
-public class ItinerarioEntity
-{
+public class ItinerarioEntity BaseEntity implements Serializable{
 
 }

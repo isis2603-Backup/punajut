@@ -7,7 +7,7 @@ package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
-import co.edu.uniandes.csw.bookstore.persistence.ItinerarioPersistence;
+import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +18,23 @@ import javax.inject.Inject;
  *
  * @author mi.arevalo10
  */
-public class ItinerarioLogic
-{
+@Stateless
 
+public class ItinerarioLogic implements IItinerarioLogic
+{
+    private static final Logger logger = Logger.getLogger(ItinerarioLogic.class.getName());
+
+    @Inject
+    private ItinerarioPersistence persistence;
+
+    @Inject
+    IItinerarioLogic itinerarioLogic;
+
+    @Override
+    public List<ItinerarioEntity> getItinerarios() {
+        logger.info("Inicia proceso de consultar todos los itinerarios");
+        List<ItinerarioEntity> itinerarios = persistence.findAll();
+        logger.info("Termina proceso de consultar todos los itinerarios");
+        return itinerarios;
+    }
 }

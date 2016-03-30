@@ -5,10 +5,14 @@
  */
 package co.edu.uniandes.punajut.api;
 
+import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import java.util.List;
+
 /**
  *
  * @author mi.arevalo10
  */
-public interface IItinerarioLogic {
-
+public interface IItinerarioLogic
+{
+    public List<ItinerarioEntity> getItinerarioss();
 }
