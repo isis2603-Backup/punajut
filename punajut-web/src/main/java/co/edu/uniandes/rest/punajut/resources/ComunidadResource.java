@@ -9,6 +9,7 @@ import co.edu.uniandes.rest.punajut.dtos.ComunidadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ComunidadLogicException;
 import co.edu.uniandes.rest.punajut.mocks.ComunidadLogicMock;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,6 +27,8 @@ import javax.ws.rs.Produces;
  */
 @Path("comunidad")
 @Produces("application/json")
+@RequestScoped
+
 public class ComunidadResource {
     @Inject
 	ComunidadLogicMock comunidadLogic;

@@ -29,7 +29,7 @@ public class ItinerarioLogicMock {
     // objeto para presentar logs de las operaciones
     private final static Logger logger = Logger.getLogger(ItinerarioLogicMock.class.getName());
 
-    // listado de ciudades
+    // listado de itinerarios
     private static ArrayList<ItinerarioDTO> itinerarios;
 
     /**

@@ -9,6 +9,7 @@ import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoViajeroLogicMock;
 
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -25,6 +26,7 @@ import javax.ws.rs.Produces;
  */
 @Path("eventoViajero")
 @Produces("application/json")
+@RequestScoped
 public class EventoViajeroResource {
     	@Inject
 	EventoViajeroLogicMock cityLogic;

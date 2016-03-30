@@ -11,6 +11,7 @@ import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 
 
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,6 +27,8 @@ import javax.ws.rs.Produces;
  */
 @Path("ciudades")
 @Produces("application/json")
+@RequestScoped
+
 public class CiudadResource
 {
     @Inject

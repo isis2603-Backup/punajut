@@ -14,12 +14,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 
 /**
  *
  * @author ls.hernandez10
  */
+@Named
+@Singleton
 public class VisitaCiudadLogicMock
 {
     // objeto para presentar logs de las operaciones

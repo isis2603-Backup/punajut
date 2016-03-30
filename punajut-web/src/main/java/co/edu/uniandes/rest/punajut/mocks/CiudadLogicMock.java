@@ -13,11 +13,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author ls.hernandez10
  */
+@Named
+@ApplicationScoped
 public class CiudadLogicMock
 {
     // objeto para presentar logs de las operaciones
