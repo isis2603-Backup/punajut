@@ -6,8 +6,11 @@
 package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.entities.EventoEntity;
+import co.edu.uniandes.punajut.persistence.EventoPersistence;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 /**
  *

@@ -14,5 +14,5 @@ import java.util.List;
  */
 public interface IItinerarioLogic
 {
-    public List<ItinerarioEntity> getItinerarioss();
+    public List<ItinerarioEntity> getItinerarios();
 }
