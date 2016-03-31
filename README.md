@@ -23,3 +23,12 @@ Maria Isabel Arévalo  |201415326|Lider de soporte|172.24.99.233|mi.arevalo10|
 Éstos son nuestro objetivos para el ciclo 1:
 * Identificar y especificar los requerimientos funcionales y no funcionales del enunciado del proyecto.
 * Documentar los casos de uso de la aplicación.
+* Implementar los archivos HTML, CSS y JavaScript correspondientes a la aplicación web transaccional GoTravel
+
+Éstos son nuestros objetivos para el ciclo 2:
+* Diseñar adecuadamente el API Rest para asignar responsabilidades
+* Utilizar de manera adecuada teamwork para planear las tareas por elaborar
+
+Éstos son nuestros objetivos para el ciclo 3:
+* Implementar de manera completa y funcional al menos un requerimiento por cada miembro del grupo
+* Realizar de manera adecuada un proceso de estimación inicial en teamwork para realizar la planeación y seguimiento del ciclo
