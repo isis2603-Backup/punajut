@@ -23,9 +23,9 @@ import javax.inject.Inject;
  * @author ja.poveda10
  */
 @Stateless
-public class ComunidadLogic implements IComunidadLogic {
+public class CiudadLogic implements IComunidadLogic {
 
-    private static final Logger logger = Logger.getLogger(ComunidadLogic.class.getName());
+    private static final Logger logger = Logger.getLogger(CiudadLogic.class.getName());
 
     @Inject
     private ComunidadPersistence persistence;

@@ -19,9 +19,9 @@ import javax.persistence.Query;
  * @author ja.poveda10
  */
 @Stateless
-public class ComunidadPersistence {
+public class CiudadPersistence {
 
-    private static final Logger logger = Logger.getLogger(ComunidadPersistence.class.getName());
+    private static final Logger logger = Logger.getLogger(CiudadPersistence.class.getName());
 
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;

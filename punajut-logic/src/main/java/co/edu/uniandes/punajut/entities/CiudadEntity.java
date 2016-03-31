@@ -20,6 +20,6 @@ import javax.persistence.TemporalType;
  * @author ja.poveda10
  */
 @Entity
-public class ComunidadEntity extends BaseEntity implements Serializable {
+public class CiudadEntity extends BaseEntity implements Serializable {
 
 }

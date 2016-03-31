@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author ja.poveda10
  */
-public class IComunidadLogic {
+public class ICiudadLogic {
 
         public List<ItinerarioEntity> getItinerariosComunidad();
 
