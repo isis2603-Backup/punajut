@@ -1,44 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Mock del recurso Ciudad (mock del servicio REST)
+ * @author ja.poveda10
  */
 package co.edu.uniandes.rest.punajut.mocks;
 
 import co.edu.uniandes.rest.punajut.dtos.CiudadDTO;
+import co.edu.uniandes.rest.punajut.exceptions.CiudadLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
-/**
- *
- * @author ls.hernandez10
+
+/*
+ * CiudadLogicMock
+ * Mock del recurso Ciudad (Mock del servicio REST)
  */
 @Named
 @ApplicationScoped
-public class CiudadLogicMock
-{
+public class CiudadLogicMock {
+
     // objeto para presentar logs de las operaciones
     private final static Logger logger = Logger.getLogger(CiudadLogicMock.class.getName());
 
-    //Lista de ciudades
-    private ArrayList<CiudadDTO> ciudades;
+    // listado de ciudades
+    private static ArrayList<CiudadDTO> ciudades;
 
-    public CiudadLogicMock()
-    {
-        ciudades = new ArrayList<>();
-        ciudades.add(new CiudadDTO("Bogotá"));
-        ciudades.add(new CiudadDTO("Montería"));
-        ciudades.add(new CiudadDTO("Barranquilla"));
-        ciudades.add(new CiudadDTO("Cartagena"));
+    /**
+     * Constructor. Crea los datos de ejemplo.
+     */
+    public CiudadLogicMock() {
 
-        // indica que se muestren todos los mensajes
+    	if (ciudades == null) {
+            ciudades = new ArrayList<>();
+            ciudades.add(new CiudadDTO(1L, "Londres", "Capital de Inglaterra", "frio", 0L, 0L));
+            ciudades.add(new CiudadDTO(1L, "Nueva York", "Llamada capital del mundo", "frio", 1L, 1L));
+            ciudades.add(new CiudadDTO(1L, "Paris", "Capital de Francia", "frio", 2L, 2L));
+
+        }
+
+    	// indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
 
     	// muestra información
@@ -46,17 +50,15 @@ public class CiudadLogicMock
     	logger.info("ciudades" + ciudades );
     }
 
-
-
-        /**
-	 * Obtiene el listado de ciudades.
+	/**
+	 * Obtiene el listado de ciudades
 	 * @return lista de ciudades
-	 * @throws ItinerarioLogicException cuando no existe la lista en memoria
+	 * @throws CiudadLogicException cuando no existe la lista en memoria
 	 */
-    public List<CiudadDTO> getCities() throws ItinerarioLogicException {
+    public List<CiudadDTO> getCiudades() throws CiudadLogicException {
     	if (ciudades == null) {
-    		logger.severe("Error interno: lista de ciudades no existe.");
-    		throw new ItinerarioLogicException("La lista de ciudades no existe");
+    		logger.severe("Error interno: no hay ciudades.");
+    		throw new CiudadLogicException("Error interno: no hay ciudades.");
     	}
 
     	logger.info("retornando todas las ciudades");
@@ -67,128 +69,114 @@ public class CiudadLogicMock
      * Obtiene una ciudad
      * @param id identificador de la ciudad
      * @return ciudad encontrada
-     * @throws ItinerarioLogicException cuando la ciudad no existe
+     * @throws CiudadLogicException cuando la ciudad no existe
      */
-    public CiudadDTO getCity(Long id) throws ItinerarioLogicException
-    {
-    	logger.info("recibiendo solicitud de ciudad con id " + id);
+    public CiudadDTO getCiudad(Long id) throws CiudadLogicException {
+    	logger.info("recibiendo solicitud de la ciudad con id " + id);
 
     	// busca la ciudad con el id suministrado
-        for (CiudadDTO city : ciudades)
-        {
-            if (Objects.equals(city.getId(), id))
-            {
-            	logger.info("retornando ciudad " + city);
-                return city;
+        for (CiudadDTO ciudad : ciudades) {
+            if (Objects.equals(ciudad.getId(), id)){
+            	logger.info("retornando ciudad " + ciudad);
+                return ciudad;
             }
         }
 
         // si no encuentra la ciudad
-        logger.severe("No existe ciudad con ese id");
-        throw new ItinerarioLogicException("No existe ninguna ciudad con el id dado");
+        logger.severe("No existe una ciudad con ese id");
+        throw new CiudadLogicException("No existe una ciudad con ese id");
     }
 
     /**
      * Agrega una ciudad a la lista.
-     * @param newCity ciudad a adicionar
-     * @throws ItinerarioLogicException cuando ya existe una ciudad con el id suministrado
+     * @param nuevoItinerario ciudad a adicionar
+     * @throws CiudadLogicException cuando ya existe una ciudad con el id suministrado
      * @return ciudad agregada
      */
-    public CiudadDTO createCity(CiudadDTO newCity) throws ItinerarioLogicException
-    {
-    	logger.info("recibiendo solicitud de agregar ciudad " + newCity);
-        // la nueva ciudad tiene id ?
-    	if ( newCity.getId() != null )
-        {
+    public CiudadDTO createCiudad(CiudadDTO nuevaCiudad) throws CiudadLogicException {
+    	logger.info("recibiendo solicitud de agregar ciudad " + nuevaCiudad);
+
+    	// la nueva ciudad tiene id ?
+    	if ( nuevaCiudad.getId() != null ) {
 	    	// busca la ciudad con el id suministrado
-	        for (CiudadDTO city : ciudades)
-                {
+	        for (CiudadDTO com : ciudades) {
 	        	// si existe una ciudad con ese id
-	            if (Objects.equals(city.getId(), newCity.getId()))
-                    {
+	            if (Objects.equals(com.getId(), nuevaCiudad.getId())){
 	            	logger.severe("Ya existe una ciudad con ese id");
-	                throw new ItinerarioLogicException("Ya existe una ciudad con el id");
+	                throw new CiudadLogicException("Ya existe una ciudad con ese id");
 	            }
 	        }
 
 	    // la nueva ciudad no tiene id ?
-    	}
-
-        else
-        {
+    	} else {
 
     		// genera un id para la ciudad
-    		logger.info("Generando id paa la nueva ciudad");
+    		logger.info("Generando id para la nueva ciudad");
     		long newId = 1;
-	        for (CiudadDTO city : ciudades)
-                {
-	            if (newId <= city.getId())
-                    {
-	                newId =  city.getId() + 1;
+	        for (CiudadDTO com : ciudades) {
+	            if (newId <= com.getId()){
+	                newId =  com.getId() + 1;
 	            }
 	        }
-	        newCity.setId(newId);
-        }
+	        nuevaCiudad.setId(newId);
+    	}
+
         // agrega la ciudad
-    	logger.info("agregando ciudad " + newCity);
-        ciudades.add(newCity);
-        return newCity;
+    	logger.info("agregando ciudad " + nuevaCiudad);
+        ciudades.add(nuevaCiudad);
+        return nuevaCiudad;
     }
 
     /**
      * Actualiza los datos de una ciudad
      * @param id identificador de la ciudad a modificar
-     * @param updatedCity ciudad a modificar
+     * @param ciudad ciudad a modificar
      * @return datos de la ciudad modificada
-     * @throws ItinerarioLogicException cuando no existe una ciudad con el id suministrado
+     * @throws CiudadLogicException cuando no existe una ciudad con el id suministrado
      */
-    public CiudadDTO updateCity(Long id, CiudadDTO updatedCity) throws ItinerarioLogicException
-    {
-    	logger.info("recibiendo solictud de modificar ciudad " + updatedCity);
+    public CiudadDTO updateCiudad(Long id, CiudadDTO ciudadModificada) throws CiudadLogicException {
+    	logger.info("recibiendo solictud de modificar ciudad " + ciudadModificada);
 
     	// busca la ciudad con el id suministrado
-        for (CiudadDTO city : ciudades)
-        {
-            if (Objects.equals(city.getId(), id))
-            {
+        for (CiudadDTO ciudad : ciudades) {
+            if (Objects.equals(ciudad.getId(), id)) {
+
             	// modifica la ciudad
-            	city.setId(updatedCity.getId());
-                city.setNombre(updatedCity.getNombre());
+            	ciudad.setId(ciudadModificada.getId());
+                ciudad.setNombreCiudad(ciudadModificada.getNombreCiudad());
 
                 // retorna la ciudad modificada
-            	logger.info("Modificando ciudad " + city);
-                return city;
+            	logger.info("Modificando ciudad " + ciudad);
+                return ciudad;
             }
         }
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException("No existe una ciudad con ese id");
+        throw new CiudadLogicException("No existe una ciudad con ese id");
     }
 
     /**
      * Elimina los datos de una ciudad
      * @param id identificador de la ciudad a eliminar
-     * @throws ItinerarioLogicException cuando no existe una ciudad con el id suministrado
+     * @throws CiudadLogicException cuando no existe una ciudad con el id suministrado
      */
-    public void deleteCity(Long id) throws ItinerarioLogicException {
+    public void deleteCiudad(Long id) throws CiudadLogicException {
     	logger.info("recibiendo solictud de eliminar ciudad con id " + id);
 
     	// busca la ciudad con el id suministrado
-        for (CiudadDTO city : ciudades)
-        {
-            if (Objects.equals(city.getId(), id))
-            {
+        for (CiudadDTO c : ciudades) {
+            if (Objects.equals(c.getId(), id)) {
+
             	// elimina la ciudad
-            	logger.info("eliminando ciudad " + city);
-                ciudades.remove(city);
+            	logger.info("eliminando ciudad " + c);
+                ciudades.remove(c);
                 return;
             }
         }
 
         // no encontró la ciudad con ese id ?
         logger.severe("No existe una ciudad con ese id");
-        throw new ItinerarioLogicException("No existe una ciudad con ese id");
+        throw new CiudadLogicException("No existe una ciudad con ese id");
     }
-
 }
