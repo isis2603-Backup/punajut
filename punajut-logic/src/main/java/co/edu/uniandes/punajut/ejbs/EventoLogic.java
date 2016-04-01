@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 
+import co.edu.uniandes.punajut.api.IEventoLogic;
 import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.punajut.persistence.EventoPersistence;
 import java.util.List;
@@ -17,8 +18,8 @@ import javax.inject.Inject;
  * @author r.cardenas11
  */
 @Stateless
-public class EventoLogic {
-    private static final Logger logger = Logger.getLogger(AuthorLogic.class.getName());
+public class EventoLogic implements IEventoLogic{
+    private static final Logger logger = Logger.getLogger(EventoLogic.class.getName());
 
 
 
@@ -27,7 +28,7 @@ public class EventoLogic {
     private EventoPersistence eventoPersistence;
 
     @Override
-    public List<EventoEntity> getAuthors() {
+    public List<EventoEntity> getEventos() {
         logger.info("Inicia proceso de consultar todos los autores");
         List<EventoEntity> authors = eventoPersistence.findAll();
         logger.info("Termina proceso de consultar todos los autores");

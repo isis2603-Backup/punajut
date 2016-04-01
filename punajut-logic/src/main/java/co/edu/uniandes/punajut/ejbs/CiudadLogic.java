@@ -5,13 +5,10 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 
-import co.edu.uniandes.csw.bookstore.api.IAuthorLogic;
-import co.edu.uniandes.csw.bookstore.api.IBookLogic;
-import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
-import co.edu.uniandes.csw.bookstore.entities.BookEntity;
-import co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.bookstore.persistence.AuthorPersistence;
-import co.edu.uniandes.csw.bookstore.persistence.BookPersistence;
+
+import co.edu.uniandes.punajut.api.ICiudadLogic;
+import co.edu.uniandes.punajut.entities.CiudadEntity;
+import co.edu.uniandes.punajut.persistence.CiudadPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,23 +20,23 @@ import javax.inject.Inject;
  * @author ja.poveda10
  */
 @Stateless
-public class CiudadLogic implements IComunidadLogic {
+public class CiudadLogic implements ICiudadLogic {
 
     private static final Logger logger = Logger.getLogger(CiudadLogic.class.getName());
 
     @Inject
-    private ComunidadPersistence persistence;
+    private CiudadPersistence persistence;
 
     @Inject
-    IItinerarioLogic itinerarioLogic;
+    ICiudadLogic itinerarioLogic;
 
     @Inject
-    private ItinerarioPersistence itinerarioPersistence;
+    private CiudadPersistence itinerarioPersistence;
 
     @Override
-    public List<ItinerarioEntity> getItinerariosComunidad() {
+    public List<CiudadEntity> getCiudades() {
         logger.info("Inicia proceso de consultar todos los itinerarios de comunidad");
-        List<ItinerarioEntity> itinerariosComunidad = persistence.findAll();
+        List<CiudadEntity> itinerariosComunidad = persistence.findAll();
         logger.info("Termina proceso de consultar todos los itinerarios de comunidad");
         return itinerariosComunidad;
     }

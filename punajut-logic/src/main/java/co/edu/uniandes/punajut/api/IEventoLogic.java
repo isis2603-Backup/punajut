@@ -5,15 +5,14 @@
  */
 package co.edu.uniandes.punajut.api;
 
-import co.edu.uniandes.punajut.entities.CiudadEntity;
+import co.edu.uniandes.punajut.entities.EventoEntity;
 import java.util.List;
 
 /**
  *
- * @author ja.poveda10
+ * @author mi.arevalo10
  */
-public interface ICiudadLogic {
-
-        public List<CiudadEntity> getCiudades();
+public interface IEventoLogic {
+    public List<EventoEntity> getEventos();
 
 }

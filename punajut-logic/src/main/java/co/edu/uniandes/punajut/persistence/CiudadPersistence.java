@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.punajut.persistence;
 
-import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
+import co.edu.uniandes.punajut.entities.CiudadEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +26,7 @@ public class CiudadPersistence {
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
-    public List<ItinerarioEntity> findAll() {
+    public List<CiudadEntity> findAll() {
         logger.info("Consultando todos los itinerarios de comunidad");
         Query q = em.createQuery("select u from ComunidadEntity u");
         return q.getResultList();

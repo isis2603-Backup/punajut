@@ -19,9 +19,9 @@ import javax.persistence.PersistenceContext;
  */
 public class EventoPersistence
 {
-   private static final Logger logger = Logger.getLogger(AuthorPersistence.class.getName());
+   private static final Logger logger = Logger.getLogger(EventoPersistence.class.getName());
 
-    @PersistenceContext(unitName = "BookStorePU")
+    @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
      public List<EventoEntity> findAll() {
