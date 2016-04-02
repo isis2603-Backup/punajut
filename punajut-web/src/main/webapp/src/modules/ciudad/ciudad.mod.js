@@ -1,5 +1,4 @@
 (function (ng) {
-    var mod = ng.module("comunidadModule", ["ui.bootstrap"]);
-    mod.constant("comunidadContext", "api/comunidad");
-
+    var mod = ng.module("ciudadModule", ["ui.bootstrap", "ngMessages"]);
+    mod.constant("ciudadContext", "api/ciudades");
 })(window.angular);
