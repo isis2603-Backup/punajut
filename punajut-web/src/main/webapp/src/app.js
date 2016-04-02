@@ -8,7 +8,7 @@
         "foroModule",
         "foroMock",
         "itinerarioYmapaModule",
-        "comunidadModule",
+        "ciudadModule",
         "ngMessages"
     ]);
 
