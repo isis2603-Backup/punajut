@@ -26,10 +26,32 @@ public class CiudadPersistence {
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
-    public List<CiudadEntity> findAll() {
-        logger.info("Consultando todos los itinerarios de comunidad");
-        Query q = em.createQuery("select u from ComunidadEntity u");
-        return q.getResultList();
+    public CiudadEntity create(CiudadEntity entity) {
+        logger.info("Creando una ciudad nueva");
+        em.persist(entity);
+        logger.info("Ciudad creada");
+        return entity;
     }
 
+    public CiudadEntity update(CiudadEntity entity) {
+        logger.log(Level.INFO, "Actualizando ciudad con id={0}", entity.getId());
+        return em.merge(entity);
+    }
+
+    public void delete(Long id) {
+        logger.log(Level.INFO, "Borrando ciudad con id={0}", id);
+        CiudadEntity entity = em.find(CiudadEntity.class, id);
+        em.remove(entity);
+    }
+
+    public CiudadEntity find(Long id) {
+        logger.log(Level.INFO, "Consultando ciudad con id={0}", id);
+        return em.find(CiudadEntity.class, id);
+    }
+
+    public List<CiudadEntity> findAll() {
+        logger.info("Consultando todas las ciudades");
+        Query q = em.createQuery("select u from CiudadEntity u");
+        return q.getResultList();
+    }
 }

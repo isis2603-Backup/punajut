@@ -24,6 +24,11 @@ public class EventoPersistence
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
+    public EventoEntity find(Long id) {
+        logger.log(Level.INFO, "Consultando evento con id={0}", id);
+        return em.find(EventoEntity.class, id);
+    }
+
      public List<EventoEntity> findAll() {
         logger.info("Consultando todos los autores");
         Query q = em.createQuery("select u from AuthorEntity u");

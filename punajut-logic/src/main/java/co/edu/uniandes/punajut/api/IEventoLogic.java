@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.punajut.api;
 
+import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.EventoEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import java.util.List;
 
 /**
@@ -14,5 +16,9 @@ import java.util.List;
  */
 public interface IEventoLogic {
     public List<EventoEntity> getEventos();
+
+        public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException;
+
+        public void removeCiudad(Long ciudadId, Long eventoId);
 
 }

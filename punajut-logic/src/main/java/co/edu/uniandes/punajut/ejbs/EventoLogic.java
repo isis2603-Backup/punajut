@@ -6,7 +6,10 @@
 package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.api.IEventoLogic;
+import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.EventoEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
+import co.edu.uniandes.punajut.persistence.CiudadPersistence;
 import co.edu.uniandes.punajut.persistence.EventoPersistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,20 +22,37 @@ import javax.inject.Inject;
  */
 @Stateless
 public class EventoLogic implements IEventoLogic{
+
     private static final Logger logger = Logger.getLogger(EventoLogic.class.getName());
 
-
-
+    @Inject
+    private EventoPersistence persistence;
 
     @Inject
-    private EventoPersistence eventoPersistence;
+    private CiudadPersistence ciudadPersistence;
 
     @Override
     public List<EventoEntity> getEventos() {
         logger.info("Inicia proceso de consultar todos los autores");
-        List<EventoEntity> authors = eventoPersistence.findAll();
+        List<EventoEntity> authors = persistence.findAll();
         logger.info("Termina proceso de consultar todos los autores");
         return authors;
     }
 
+    @Override
+    public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException {
+        EventoEntity eventoEntity = persistence.find(eventoId);
+        CiudadEntity ciudadEntity = ciudadPersistence.find(ciudadId);
+
+        eventoEntity.getCiudades().add(ciudadEntity);
+        return ciudadEntity;
+    }
+
+    @Override
+    public void removeCiudad(Long ciudadId, Long eventoId) {
+        EventoEntity eventoEntity = persistence.find(eventoId);
+        CiudadEntity ciudadEntity = new CiudadEntity();
+        ciudadEntity.setId(ciudadId);
+        eventoEntity.getCiudades().remove(ciudadEntity);
+    }
 }
