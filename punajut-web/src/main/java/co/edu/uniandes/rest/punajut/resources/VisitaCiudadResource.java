@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.rest.punajut.resources;
 
-import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
+//import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.VisitaCiudadLogicMock;
@@ -30,8 +30,8 @@ public class VisitaCiudadResource
     @Inject
     VisitaCiudadLogicMock cityLogic;
 
-    @Inject
-    IVisitaCiudadLogic visitaCiudadLogic;
+    //@Inject
+    //IVisitaCiudadLogic visitaCiudadLogic;
 
 	/**
 	 * Obtiene el listado de visitas a ciudades.
