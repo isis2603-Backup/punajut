@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.punajut.ejbs;
+package co.edu.uniandes.punajut.api;
 
 /**
  *
  * @author ra.angel10
  */
-public class VisitaCiudad {
+public interface IVisitaCiudadLogic {
 
 }
