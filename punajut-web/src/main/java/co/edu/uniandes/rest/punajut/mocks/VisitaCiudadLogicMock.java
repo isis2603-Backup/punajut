@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.punajut.mocks;
 
 import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
+import co.edu.uniandes.rest.punajut.exceptions.CiudadLogicException;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,14 +35,14 @@ public class VisitaCiudadLogicMock
 
     CiudadLogicMock ciudades = new CiudadLogicMock();
 
-    public VisitaCiudadLogicMock() throws ParseException, ItinerarioLogicException
+    public VisitaCiudadLogicMock() throws ParseException, ItinerarioLogicException, CiudadLogicException
     {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         visitasCiudades = new ArrayList<>();
-        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("15/03/2016"), formato.parse("30/03/2016"), ciudades.getCities().get(0)));
-        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("30/03/2016"), formato.parse("15/04/2016"), ciudades.getCities().get(1)));
-        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("15/04/2016"), formato.parse("30/04/2016"), ciudades.getCities().get(2)));
-        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("30/04/2016"), formato.parse("08/05/2016"), ciudades.getCities().get(3)));
+        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("15/03/2016"), formato.parse("30/03/2016"), ciudades.getCiudades().get(0)));
+        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("30/03/2016"), formato.parse("15/04/2016"), ciudades.getCiudades().get(1)));
+        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("15/04/2016"), formato.parse("30/04/2016"), ciudades.getCiudades().get(2)));
+        visitasCiudades.add(new VisitaCiudadDTO(formato.parse("30/04/2016"), formato.parse("08/05/2016"), ciudades.getCiudades().get(3)));
 
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);

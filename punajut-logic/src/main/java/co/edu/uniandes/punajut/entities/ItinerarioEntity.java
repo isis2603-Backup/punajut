@@ -5,21 +5,16 @@
  */
 package co.edu.uniandes.punajut.entities;
 
+import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 /**
  *
  * @author mi.arevalo10
  */
-public class ItinerarioEntity BaseEntity implements Serializable{
+public class ItinerarioEntity extends BaseEntity implements Serializable
+{
 
 }

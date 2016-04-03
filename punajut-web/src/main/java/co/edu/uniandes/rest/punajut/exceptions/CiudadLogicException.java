@@ -1,11 +1,11 @@
 package co.edu.uniandes.rest.punajut.exceptions;
 
 /**
- * Representa las excepciones de la lógica de ComunidadLogic
+ * Representa las excepciones de la lógica de CiudadLogic
  *
  * @author ja.poveda10
  */
-public class ComunidadLogicException extends Exception {
+public class CiudadLogicException extends Exception {
 
     /**
      * versión usada en la serialización de la clase
@@ -15,7 +15,7 @@ public class ComunidadLogicException extends Exception {
     /**
      * Constructor por defecto
      */
-    public ComunidadLogicException() {
+    public CiudadLogicException() {
     }
 
     /**
@@ -23,7 +23,7 @@ public class ComunidadLogicException extends Exception {
      *
      * @param message mensaje de la excepción
      */
-    public ComunidadLogicException(String message) {
+    public CiudadLogicException(String message) {
         super(message);
     }
 
@@ -32,7 +32,7 @@ public class ComunidadLogicException extends Exception {
      *
      * @param cause causa de la excepción. Usada para generar la traza.
      */
-    public ComunidadLogicException(Throwable cause) {
+    public CiudadLogicException(Throwable cause) {
         super(cause);
     }
 
@@ -42,7 +42,7 @@ public class ComunidadLogicException extends Exception {
      * @param message mensaje de la excepción
      * @param cause causa de la excepción. Usada para generar la traza.
      */
-    public ComunidadLogicException(String message, Throwable cause) {
+    public CiudadLogicException(String message, Throwable cause) {
         super(message, cause);
     }
 }
