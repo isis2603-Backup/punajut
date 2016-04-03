@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.punajut.resources;
 
 import co.edu.uniandes.punajut.api.ICiudadLogic;
+import co.edu.uniandes.rest.punajut.converters.CiudadConverter;
 import co.edu.uniandes.rest.punajut.dtos.CiudadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.CiudadLogicException;
 import co.edu.uniandes.rest.punajut.mocks.CiudadLogicMock;
@@ -35,8 +36,12 @@ import javax.ws.rs.core.MediaType;
 
 public class CiudadResource {
 
+    //@Inject
+    //ICiudadLogic ciudadLogic;
+
     @Inject
-    ICiudadLogic ciudadLogic;
+    CiudadLogicMock ciudadLogic;
+
 
     /**
      * Obtiene la lista de los recursos
@@ -44,10 +49,10 @@ public class CiudadResource {
      * @return lista de ciudades
      * @generated
      */
-    @GET
-    public List<CiudadDTO> getCiudades() {
-        return CiudadConverter.listEntity2DTO(ciudadLogic.getCiudades());
-    }
+    //@GET
+    //public List<CiudadDTO> getCiudades() {
+        //return CiudadConverter.listEntity2DTO(ciudadLogic.getCiudades());
+    //}
 
     /**
      * Obtiene una ciudad

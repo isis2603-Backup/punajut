@@ -77,9 +77,6 @@ public abstract class CiudadConverter {
         if (entity != null) {
             CiudadDTO dto = new CiudadDTO();
             dto.setId(entity.getId());
-            dto.setName(entity.getName());
-            dto.setBirthDate(entity.getBirthDate());
-
             return dto;
         } else {
             return null;
@@ -99,8 +96,6 @@ public abstract class CiudadConverter {
         if (dto != null) {
             CiudadEntity entity = new CiudadEntity();
             entity.setId(dto.getId());
-            entity.setName(dto.getName());
-            entity.setBirthDate(dto.getBirthDate());
 
             return entity;
         } else {
