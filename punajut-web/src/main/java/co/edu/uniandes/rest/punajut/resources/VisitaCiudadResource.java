@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.punajut.resources;
 
+import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.VisitaCiudadLogicMock;
@@ -20,14 +21,17 @@ import javax.ws.rs.Produces;
 
 /**
  *
- * @author ls.hernandez10
+ * @author ra.angel10
  */
 @Path("visitaCiudad")
 @Produces("application/json")
 public class VisitaCiudadResource
 {
     @Inject
-	VisitaCiudadLogicMock cityLogic;
+    VisitaCiudadLogicMock cityLogic;
+
+    @Inject
+    IVisitaCiudadLogic visitaCiudadLogic;
 
 	/**
 	 * Obtiene el listado de visitas a ciudades.
