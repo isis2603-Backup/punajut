@@ -3,12 +3,12 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "usuarioModule",
-        "usuarioMock",
-        "crearItinerarioModule",
-        "foroModule",
-        "foroMock",
-        "itinerarioYmapaModule",
+        //"crearItinerarioModule",
+        //"foroModule",
+        //"itinerarioYmapaModule",
         "ciudadModule",
+        //"usuarioMock",
+        //"foroMock",
         "ngMessages"
     ]);
 
@@ -59,18 +59,14 @@
                     .state('itinerarios', {
                         url: '/itinerarios',
                         templateUrl: "src/modules/itinerario/itinerarios.tpl.html"
-
                     })
                     .state('itinerarioYmapa', {
                         url: '/itinerarioYmapa',
                         templateUrl: "src/modules/itinerario/itinerarioYmapa.tpl.html"
-
                     })
-
                     .state('verEuropa', {
                         url: '/verEuropa',
                         templateUrl: "src/modules/itinerario/verEuropa.tpl.html"
-
                     })
                     .state('verContinentes', {
                         url: '/verContinentes',

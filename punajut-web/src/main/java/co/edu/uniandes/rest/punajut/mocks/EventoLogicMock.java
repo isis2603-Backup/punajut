@@ -25,7 +25,7 @@ import java.util.logging.Level;
 public class EventoLogicMock
 {
 //Objeto para representar los logs de la operación
-    private final static Logger logger = Logger.getLogger("");
+    private final static Logger logger = Logger.getLogger(EventoLogicMock.class.getName());
 
     //Listado de itinerarios
     private  ArrayList<EventoDTO> eventos;
@@ -37,7 +37,7 @@ public class EventoLogicMock
         {
         eventos = new ArrayList<EventoDTO>();
         eventos.add(new EventoDTO(Long.valueOf(1), "Gatro", 0, 0, "restaurante de cocina molecular", null, "maloka", null, null, null));
-               
+
         }
 
         // indica que se muestren todos los mensajes

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("itinerarioModule");
+    var mod = ng.module("crearItinerarioModule");
 
     mod.service("crearItinerarioService", ["$http", "crearItinerarioContext", function ($http, context)
     {
@@ -23,7 +23,7 @@
         };
         this.deleteRecord = function (id) {
             return $http.delete(context + "/" + id);
-        }; 
+        };
 
 
 
