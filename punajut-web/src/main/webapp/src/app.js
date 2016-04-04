@@ -5,7 +5,7 @@
         "usuarioModule",
         //"crearItinerarioModule",
         //"foroModule",
-        "itinerarioYmapaModule",
+        //"itinerarioYmapaModule",
         "ciudadModule",
         //"usuarioMock",
         //"foroMock",
