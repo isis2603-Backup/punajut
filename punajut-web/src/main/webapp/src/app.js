@@ -4,7 +4,7 @@
         "ui.router",
         "usuarioModule",
         //"crearItinerarioModule",
-        "foroModule",
+        //"foroModule",
         "itinerarioYmapaModule",
         "ciudadModule",
         //"usuarioMock",
