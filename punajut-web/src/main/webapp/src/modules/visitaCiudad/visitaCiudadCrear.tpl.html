@@ -1,80 +1,83 @@
 
-	<div class="container">
-		<div class="row">
-			<h1 id="title">Itinerario 1 - <small>Agregar Ciudad</small></h1>
-			<div id="linea"></div>
-		</div><br>
-		<div class="row">
-			<form class="form-inline" role="form">
-				<div class="form-group col-md-4">
-					<label for="fechaInicio">Desde</label>
-	                <input type='text' class="form-control" id='fechaInicio' placeholder="Fecha fin"/>
-	            </div>
-	            <script type="text/javascript">
-		            $(function () {
-		                $('#fechaInicio').datetimepicker();
-		            });
-	        	</script>
-				<div class="form-group col-md-4">
-					<label for="fechaFin">Hasta</label>
-	                <input type='text' class="form-control" id='fechaFin' placeholder="Fecha inicio" />
-	            </div>
-	            <script type="text/javascript">
-		            $(function () {
-		                $('#fechaFin').datetimepicker();
-		            });
-	        	</script>
-			</form>
-		</div>
-		<br>
-		<div class="row col-md-12" id="opciones-lista">
-			<form  class="form-inline" role="form">
-				<div class="form-group">
-					<label for="pais">Pais</label>
-					<select id="pais" class="form-control">
-						<option value="default" selected>Elegir un pais</option>
-						<option value="pais-1">Pais</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="region">Region</label>
-					<select id="region" class="form-control">
-						<option value="default" selected>Elegir una region</option>
-						<option value="region-1">Region</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="ciudad">Ciudad</label>
-					<select id="ciudad" class="form-control">
-						<option value="default" selected>Elegir una ciudad</option>
-						<option value="ciudad-1">Ciudad</option>
-					</select>
-				</div>
-			</form>
-		</div>
-		<br><br><br>
-		<div class="row col-md-4">
-			<form class="form-inline">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Busca tu destino"/>
-					<button type="button" class="btn btn-primary">
-						<span class="glyphicon glyphicon-circle-arrow-right"></span>
-					</button>
-				</div>
-			</form>
-		</div>
-		<br>
-		<div class="row col-md-12">
-			<h1 id="title-destino">DESTINO: <small>Ciudad 1</small></h1>
-			<div id="info-destino">
-				placeholder
-			</div>
-			<button type="button" class="btn btn-danger">Atras</button>
-			<button type="button" class="btn btn-success">Siguiente</button>
-		</div>
-		<br>
-		<div class="row">
-			<h1>Timeline</h1>
-			<hr>
-		</div>
-	</div>
+<div class="container">
+    <div class="row">
+        <h1 id="title">Itinerario 1 - <small>Agregar Ciudad</small></h1>
+        <div id="linea"></div>
+    </div><br>
+    <div class="row">
+        <form class="form-inline" role="form">
+            <div class="form-group col-md-4">
+                <label for="fechaInicio">Desde</label>
+                <input type='text' class="form-control" id='fechaInicio' placeholder="Fecha fin"/>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#fechaInicio').datetimepicker();
+                });
+            </script>
+            <div class="form-group col-md-4">
+                <label for="fechaFin">Hasta</label>
+                <input type='text' class="form-control" id='fechaFin' placeholder="Fecha inicio" />
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#fechaFin').datetimepicker();
+                });
+            </script>
+        </form>
+    </div>
+    <br>
+    <div class="row col-md-12" id="opciones-lista">
+        <form  class="form-inline" role="form">
+            <div class="form-group">
+                <label for="pais">Pais</label>
+                <select id="pais" class="form-control">
+                    <option value="default" selected>Elegir un pais</option>
+                    <option value="pais-1">Pais</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="region">Region</label>
+                <select id="region" class="form-control">
+                    <option value="default" selected>Elegir una region</option>
+                    <option value="region-1">Region</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <select id="ciudad" class="form-control">
+                    <option value="default" selected>Elegir una ciudad</option>
+                    <option value="ciudad-1">Ciudad</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </button>
+        </form>
+    </div>
+    <br><br><br>
+    <div class="row col-md-4">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Busca tu destino"/>
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="row col-md-12">
+        <h1 id="title-destino">DESTINO: <small>Ciudad 1</small></h1>
+        <div id="info-destino">
+            placeholder
+        </div>
+        <button type="button" class="btn btn-danger">Atras</button>
+        <button type="button" class="btn btn-success">Siguiente</button>
+    </div>
+    <br>
+    <div class="row">
+        <h1>Timeline</h1>
+        <hr>
+    </div>
+</div>
