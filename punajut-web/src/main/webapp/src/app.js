@@ -16,7 +16,7 @@
         }]);
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-//            $urlRouterProvider.otherwise("/PaginaDeInicio");
+            $urlRouterProvider.otherwise("/PaginaDeInicio");
             $stateProvider
                     .state('PaginaDeInicio', {
                         url: '/PaginaDeInicio',
@@ -42,6 +42,13 @@
                         controller: "ciudadCtrl",
                         controllerAs: "ctrl",
                         templateUrl: "src/modules/ciudad/ciudad.tpl.html"
+                    })
+
+                    .state('visitaCiudad', {
+                        url: '/visitaCiudad',
+                        controller: "visitaCiudadCtrl",
+                        controllerAs: "ctrl",
+                        templateUrl: "src/modules/visitaCiudad/visitaCiudadCrear.tpl.html"
                     });
         }]);
 })(window.angular);
