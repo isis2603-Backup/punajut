@@ -15,8 +15,7 @@
             $logProvider.debugEnabled(true);
         }]);
 
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-//            $urlRouterProvider.otherwise("/PaginaDeInicio");
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {            $urlRouterProvider.otherwise("/PaginaDeInicio");
             $stateProvider
                     .state('PaginaDeInicio', {
                         url: '/PaginaDeInicio',

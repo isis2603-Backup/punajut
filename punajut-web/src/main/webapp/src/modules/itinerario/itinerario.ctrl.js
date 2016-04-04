@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,7 +6,7 @@
 // Code goes here
 (function (ng) {
 
-  var mod = ng.module("itinerarioModule");
+  var mod = ng.module("itinerarioModule",[]);
   // crea el controlador con dependencias a $scope y a itinerarioService
   mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
 
@@ -19,7 +19,7 @@
             this.readOnly = false;
             this.editMode = false;
             var self = this;
-            
+
              this.changeTab = function (tab) {
                 $scope.tab = tab;
             };
@@ -45,7 +45,7 @@
                     return response;
                 });
             };
-            
+
             this.deleteRecord = function (record) {
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
