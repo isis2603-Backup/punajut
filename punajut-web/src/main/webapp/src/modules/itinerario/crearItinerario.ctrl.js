@@ -1,7 +1,6 @@
 (function (ng) {
 
-  // es parte del módulo "personModule"
-  var mod = ng.module("personModule");
+  var mod = ng.module("crearItinerarioModule");
 
   // crea el controlador con dependencias a $scope y a personService
   mod.controller("crearItinerarioCtrl", ["$scope", "crearItinerarioService", function ($scope, svc) {
