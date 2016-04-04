@@ -1,0 +1,35 @@
+<div>
+    <div style="border-bottom:1px solid #000;"> 
+        <div style = "display:inline-block"><h1>Itinerario 1- Ciudades</h1></div>
+        <div style = "display:inline-block; align:right"><h4>Desde 24/04/2015 Hasta 28/04/2015</h4></div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li><a data-toggle="tab" href="#menu11">Grafo</a></li>
+        <li><a data-toggle="tab" href="#menu22">Mapa</a></li>
+        <li><a data-toggle="tab" href="#menu33">Cuadricula</a></li>
+    </ul>
+    <div ng-hide="ctrl.editMode">
+        <div class="col-sm-12">
+            <div ng-repeat="record in records">
+                <div class="col-md-4 col-sm-6 col-lg-3 well">
+                    <div class="col-md-12">
+                        <div class="img-thumbnail" id="image" ng-if="record.image">
+                            <a ng-href="{{record.image}}" target="_blank"><img class="img-responsive" style="height: 20vmax;" ng-src="{{record.image}}" alt="{{record.image}}"></a>
+                        </div>
+                    </div>
+                    <div class="caption" >
+                        <p><strong>Name:</strong> <span id="{{$index}}-name">{{record.name}}</span></p>
+                    </div>
+                    <p class="text-center">
+                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                        <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="create-itinerario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Agregar ciudad</button>
+
+
+</div>

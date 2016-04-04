@@ -1,24 +1,28 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+// Code goes here
 (function (ng) {
 
-  // es parte del módulo "personModule"
-  var mod = ng.module("personModule");
+  var mod = ng.module("itinerarioModule");
+  // crea el controlador con dependencias a $scope y a itinerarioService
+  mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
 
-  // crea el controlador con dependencias a $scope y a personService
-  mod.controller("crearItinerarioCtrl", ["$scope", "crearItinerarioService", function ($scope, svc) {
-
-            $scope.itinerarios = [];
+            $scope.ciudades = [];
             $scope.currentRecord = {
                 id: 0, /*Tipo long*/
-                name:'',
-                description:'', /*Tipo String*/
-                fechaInicio : '', /*Tipo fecha*/
-                fechaFin : '' /*Tipo fecha*/
-
+                name:''
             };
 
             this.readOnly = false;
             this.editMode = false;
             var self = this;
+            
+             this.changeTab = function (tab) {
+                $scope.tab = tab;
+            };
 
             this.createRecord = function () {
                 $scope.$broadcast("pre-create", $scope.currentRecord);
@@ -35,14 +39,24 @@
             };
             this.fetchRecords = function () {
                 return svc.fetchRecords().then(function (response) {
-                    $scope.itinerarios = response.data;
+                    $scope.ciudades = response.data;
                     $scope.currentRecord = {};
                     self.editMode = false;
                     return response;
                 });
+            };
+            
+            this.deleteRecord = function (record) {
+                return svc.deleteRecord(record.id).then(function () {
+                    self.fetchRecords();
+                }, responseError);
             };
 
             this.fetchRecords();
       }]);
 
 })(window.angular);
+
+
+
+
