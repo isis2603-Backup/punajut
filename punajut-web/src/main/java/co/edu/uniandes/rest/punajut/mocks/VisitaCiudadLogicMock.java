@@ -21,7 +21,7 @@ import javax.inject.Singleton;
 
 /**
  *
- * @author ls.hernandez10
+ * @author ra.angel10
  */
 @Named
 @Singleton

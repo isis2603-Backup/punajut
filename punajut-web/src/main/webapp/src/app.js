@@ -6,6 +6,8 @@
         "usuarioMock",
         "itinerarioModule",
         "ciudadModule",
+        //"usuarioMock",
+        //"foroMock",
         "ngMessages"
     ]);
 
