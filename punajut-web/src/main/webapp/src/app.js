@@ -3,7 +3,7 @@
     var mod = ng.module("mainApp", [
         "ui.router",
         "usuarioModule",
-        "crearItinerarioModule",
+        //"crearItinerarioModule",
         "foroModule",
         "itinerarioYmapaModule",
         "ciudadModule",
