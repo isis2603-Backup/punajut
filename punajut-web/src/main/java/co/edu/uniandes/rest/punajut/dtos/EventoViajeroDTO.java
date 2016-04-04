@@ -12,15 +12,10 @@ package co.edu.uniandes.rest.punajut.dtos;
  */
 public class EventoViajeroDTO
 {
-    //Ciudad en la que se encuentra el viajero
-    private VisitaCiudadDTO visitaCiudad;
-
     /**
-     * Evento que cumple con la restriccion de horario de la ciudad
+     * Evento que cumple con la restriccion de horario de la ciudad y que el viajero ha seleccionado para realizar
      */
     private EventoDTO evento;
-
-    private Long id;
 
     //Constructor por defecto
     public EventoViajeroDTO()
@@ -30,41 +25,26 @@ public class EventoViajeroDTO
 
     /**
      * Constructor con parámetros
-     * @param pCiudad
      * @param pEvento
      */
-    public EventoViajeroDTO(VisitaCiudadDTO pCiudad, EventoDTO pEvento)
+    public EventoViajeroDTO(EventoDTO pEvento)
     {
-        visitaCiudad = pCiudad;
-        if(pEvento.getCiudad() == visitaCiudad.getCiudad())
-            if(pEvento.getFechaInicial().after(visitaCiudad.getFechaInicio()) && pEvento.getFechaFinal().before(visitaCiudad.getFechaFin()))
-                evento = pEvento;
-    }
-
-    public VisitaCiudadDTO getVisitaCiudad() {
-        return visitaCiudad;
+        super();
+        evento = pEvento;
     }
 
     public EventoDTO getEvento() {
         return evento;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setVisitaCiudad(VisitaCiudadDTO visitaCiudad) {
-        this.visitaCiudad = visitaCiudad;
-    }
-
     public void setEvento(EventoDTO evento) {
         this.evento = evento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public String toString()
+    {
+        return "Tipo:" + evento.getTipo();
     }
-
-    
 
 }

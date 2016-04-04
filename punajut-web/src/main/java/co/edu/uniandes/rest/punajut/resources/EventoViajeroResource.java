@@ -9,8 +9,10 @@ import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoViajeroLogicMock;
 
 import java.util.List;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 
 /**
@@ -25,20 +28,26 @@ import javax.ws.rs.Produces;
  * @author ls.hernandez10
  */
 @Path("eventoViajero")
-@Produces("application/json")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
-public class EventoViajeroResource {
+public class EventoViajeroResource
+{
     	@Inject
 	EventoViajeroLogicMock cityLogic;
 
+        private static final Logger logger = Logger.getLogger(EventoViajeroResource.class.getName());
+
+
 	/**
-	 * Obtiene el listado de eventos a los cuales el viajero asistirá en la ciudad
+	 * Obtiene el listado de eventos a los cuales el viajero asistirÃ¡ en la ciudad
 	 * @return lista de eventos
-	 * @throws ItinerarioLogicException excepción retornada por la lógica
+	 * @throws ItinerarioLogicException excepciÃ³n retornada por la lÃ³gica
 	 */
     @GET
-    public List<EventoViajeroDTO> getEventosViajeros() throws ItinerarioLogicException
+    public List<EventoViajeroDTO> getEventosViajero() throws ItinerarioLogicException
     {
+        logger.info("Se ejecuta mÃ©todo getEventosViajero");
         return cityLogic.getEventosViajeros();
     }
 
