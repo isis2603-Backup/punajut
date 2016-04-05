@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.punajut.api;
-import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
+import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import java.util.List;
 
 /**
  * @author ls.hernandez10
  */
-public interface IEventoViajeroLogic IEventoViajeroLogic
+public interface IEventoViajeroLogic
 {
-
+    public List<EventoViajeroEntity> getEventoViajeros();
 }
