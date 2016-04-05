@@ -9,7 +9,8 @@ import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
 /**
  * @author ls.hernandez10
  */
-public interface IEventoViajeroLogic IEventoViajeroLogic
+public interface IEventoViajeroLogic 
 {
 
 }
+

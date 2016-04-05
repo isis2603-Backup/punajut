@@ -10,6 +10,6 @@ import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
  *
  * @author ls.hernandez10
  */
-public class EventoViajeroLogic implements{
+public class EventoViajeroLogic implements IEventoViajeroLogic{
 
 }
