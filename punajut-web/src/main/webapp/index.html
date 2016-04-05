@@ -4,20 +4,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>GoTravel</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+        <!-- Bootstrap y JQuery-->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-        <script src="resources/js/jquery-1.12.0.min.js" type="text/javascript"></script>
-        <script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Optional theme  Boostrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Angular -->
         <script src="resources/js/angular.min.js" type="text/javascript"></script>
         <script src="resources/js/angular-ui-router.min.js" type="text/javascript"></script>
         <script src="resources/js/ui-bootstrap-tpls-0.13.4.min.js" type="text/javascript"></script>
         <script src="resources/js/angular-mocks.js" type="text/javascript"></script>
         <script src="resources/js/angular-messages.min.js" type="text/javascript"></script>
 
+        <!-- APP -->
         <script src="src/app.js" type="text/javascript"></script>
 
         <!-- se agregan todos los archivos JavaScript de cada modulo que necesita el index -->
@@ -31,34 +37,32 @@
         <script src="src/modules/itinerario/itinerario.mod.js" type="text/javascript"></script>
         <script src="src/modules/itinerario/itinerario.mock.js" type="text/javascript"></script>
 
-
-<!--        <script src="src/modules/foro/foro.mod.js" type="text/javascript"></script>
-        <script src="src/modules/foro/foro.ctrl.js" type="text/javascript"></script>
-        <script src="src/modules/foro/foro.svc.js" type="text/javascript"></script>
-        <script src="src/modules/foro/foro.mock.js" type="text/javascript"></script>-->
+        <script src="src/modules/visitaCiudad/visitaCiudad.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/visitaCiudad/visitaCiudad.svc.js" type="text/javascript"></script>
+        <script src="src/modules/visitaCiudad/visitaCiudad.mod.js" type="text/javascript"></script>
+        <script src="src/modules/visitaCiudad/visitaCiudad.mock.js" type="text/javascript"></script>
 
         <script src="src/modules/eventoManejo/itinerarioYmapa.mod.js" type="text/javascript"></script>
         <script src="src/modules/eventoManejo/itinerarioYmapa.ctrl.js" type="text/javascript"></script>
         <!-- Falta itinerarioYmapa.svc.js -->
         <!-- Falta itinerarioYmapa.mock.js -->
 
-
         <script src="src/modules/ciudad/ciudad.mod.js" type="text/javascript"></script>
         <script src="src/modules/ciudad/ciudad.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/ciudad/ciudad.svc.js" type="text/javascript"></script>
-<!--    Falta     <script src="src/modules/ciudad/ciudad.mock.js" type="text/javascript"></script>-->
+        <!--    Falta     <script src="src/modules/ciudad/ciudad.mock.js" type="text/javascript"></script>-->
 
-       <link href="resources/css/stylish-portfolio.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/perfil.css" rel="stylesheet" type="text/css"/>
-        <!-- Custom Fonts -->
-        <link href="resources/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-        <!-- Esto es necesario para el funcionamiento correcto de ciudad.tpl.html -->
-<!--        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+        <!-- Estilos de cada modulo -->
         <link rel="stylesheet" href="resources/css/ciudadStyle.css">
+        <link rel="stylesheet" href="resources/css/visitaCiudad.css">
+
+        <!-- Importaciones especificas de cada modulo -->
+        <!-- Visita Ciudad -->
+        <!-- Moment.js -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+	<!-- DateTimePicker -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 
     </head>
     <body style="padding-top: 60px;">
@@ -156,6 +160,7 @@
                                 <li><a ui-sref="usuario">Perfil</a></li>
                                 <li><a ui-sref="itinerario">Itinerarios</a></li>
                                 <li><a ui-sref="ciudad">Prueba ciudad</a></li>
+                                <li><a ui-sref="visitaCiudad">Prueba visita ciudad</a></li>
                             </ul>
                         </div> <!-- /.navbar-collapse -->
                     </div> <!-- /.container-fluid -->
