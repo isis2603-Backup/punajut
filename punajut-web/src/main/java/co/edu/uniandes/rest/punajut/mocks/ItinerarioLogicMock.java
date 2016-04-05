@@ -118,7 +118,7 @@ public class ItinerarioLogicMock {
                 // si existe un itinerario con ese id
                 if (Objects.equals(itinerario.getId(), pItinerario.getId())) {
                     logger.severe("Ya existe un itinerario con ese id");
-                    throw new ItinerarioLogicException("Ya existe una ciudad con ese id");
+                    throw new ItinerarioLogicException("Ya existe un itinerario con ese id");
                 }
             }
 

@@ -14,3 +14,4 @@ public interface IEventoViajeroLogic
 {
     public List<EventoViajeroEntity> getEventoViajeros();
 }
+
