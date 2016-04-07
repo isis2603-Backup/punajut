@@ -24,9 +24,9 @@ import javax.persistence.TemporalType;
 public class EventoEntity extends BaseEntity implements Serializable
 {
     @ManyToMany
-    private List<EventoEntity> ciudades = new ArrayList<>();
+    private List<CiudadEntity> ciudades = new ArrayList<>();
 
-    public List<EventoEntity> getEventos() {
+    public List<CiudadEntity> getCiudades() {
         return ciudades;
     }
 
