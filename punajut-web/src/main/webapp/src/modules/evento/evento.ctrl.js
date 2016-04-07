@@ -4,17 +4,14 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("itinerarioModule");
+    var mod = ng.module("eventoModule");
 
-    mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
+    mod.controller("eventoCtrl", ["$scope", "eventoService", function ($scope, svc) {
             $scope.currentRecord = {
-                id: undefined /* Tipo Long */,
+             
                 nombre: '' /* Tipo String */,
-                descripcion: '' /* Tipo String */,
-                clima: '' /* Tipo String */,
-                longitud: '' /* Tipo Long */,
-                latitud: '' /* Tipo Long */,
-                eventos: [] /* Coleccion de eventos */
+                comentario: '' /* Tipo String */
+
             };
 
             $scope.records = [];
@@ -110,4 +107,7 @@
     ]);
 
 })(window.angular);
+
+
+
 

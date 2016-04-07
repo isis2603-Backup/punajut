@@ -75,7 +75,6 @@ public class ItinerarioResource {
      * suministrado
      */
     @POST
-    @Path("{id: \\d+}")
     public ItinerarioDTO createItinerario(ItinerarioDTO itinerario) throws ItinerarioLogicException {
         return itinerarioLogic.createItinerario(itinerario);
     }
