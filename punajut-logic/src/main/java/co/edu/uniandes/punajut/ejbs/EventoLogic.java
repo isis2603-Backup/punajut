@@ -40,19 +40,13 @@ public class EventoLogic implements IEventoLogic{
     }
 
     @Override
-    public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException {
-        EventoEntity eventoEntity = persistence.find(eventoId);
-        CiudadEntity ciudadEntity = ciudadPersistence.find(ciudadId);
-
-        eventoEntity.getCiudades().add(ciudadEntity);
-        return ciudadEntity;
+    public CiudadEntity addEvento(Long ciudadId, Long eventoId) throws BusinessLogicException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void removeCiudad(Long ciudadId, Long eventoId) {
-        EventoEntity eventoEntity = persistence.find(eventoId);
-        CiudadEntity ciudadEntity = new CiudadEntity();
-        ciudadEntity.setId(ciudadId);
-        eventoEntity.getCiudades().remove(ciudadEntity);
+    public void removeEvento(Long ciudadId, Long eventoId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
