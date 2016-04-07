@@ -6,6 +6,7 @@
 package co.edu.uniandes.punajut.api;
 
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import java.util.List;
 
 /**
@@ -15,4 +16,8 @@ import java.util.List;
 public interface IItinerarioLogic
 {
     public List<ItinerarioEntity> getItinerarios();
+    public ItinerarioEntity getItinerario(Long id) throws BusinessLogicException;
+    public ItinerarioEntity createItinerario(ItinerarioEntity entity);
+    public ItinerarioEntity updateItinerario(ItinerarioEntity entity);
+    public void deleteItinerario(Long id);
 }
