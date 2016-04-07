@@ -22,5 +22,23 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     private String nombre;
     private Long id;
 
+    public Date getFechaInicio()
+    {
+        return fechaInicio;
+    }
 
+    public Date getFechaFin()
+    {
+        return fechaFin;
+    }
+
+    public String getNombre()
+    {
+        return nombre;
+    }
+
+    public Long getId()
+    {
+        return id;
+    }
 }
