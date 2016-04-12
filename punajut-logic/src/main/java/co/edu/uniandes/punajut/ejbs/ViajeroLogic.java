@@ -46,7 +46,7 @@ public class ViajeroLogic implements IViajeroLogic {
     }
 
     @Override
-    public ViajeroEntity getViajero(long id) throws BusinessLogicException {
+    public ViajeroEntity getViajero(Long id) throws BusinessLogicException {
         logger.log(Level.INFO, "Inicia proceso de consultar ciudad con id={0}", id);
         ViajeroEntity viajero = persistence.find(id);
         if (viajero == null) {
@@ -79,35 +79,4 @@ public class ViajeroLogic implements IViajeroLogic {
         persistence.delete(id);
         logger.log(Level.INFO, "Termina proceso de borrar ciudad con id={0}", id);
     }
-
-    @Override
-    public ItinerarioEntity addItineratio(Long eventoId, Long ciudadId) throws BusinessLogicException {
-        ItinerarioLogic.addCiudad(ciudadId, eventoId);
-        return eventoPersistence.find(eventoId);
-    }
-
-    @Override
-    public void removeItinerario(Long eventoId, Long ciudadId) {
-        itinerarioLogic.removeCiudad(ciudadId, eventoId);
-    }
-
-
-
-    @Override
-    public List<ItinerarioEntity> getItinerarios(Long ciudadId) {
-        return persistence.find(ciudadId).getEventos();
-    }
-
-    @Override
-    public ItinerarioEntity getItinerario(Long ciudadId, Long eventoId) {
-        List<ItinerarioEntity> eventos = persistence.find(ciudadId).getEventos();
-        ItinerarioEntity evento = new ItinerarioEntity();
-        evento.setId(eventoId);
-        int index = eventos.indexOf(evento);
-        if (index >= 0) {
-            return eventos.get(index);
-        }
-        return null;
-    }
-
 }
