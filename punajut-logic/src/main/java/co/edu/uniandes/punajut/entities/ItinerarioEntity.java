@@ -23,8 +23,6 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     private Date fechaInicio;
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    private String nombre;
-    private Long id;
 
     public Date getFechaInicio()
     {
@@ -36,13 +34,4 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
         return fechaFin;
     }
 
-    public String getNombre()
-    {
-        return nombre;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
 }

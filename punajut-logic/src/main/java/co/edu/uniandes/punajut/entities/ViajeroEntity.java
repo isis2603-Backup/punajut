@@ -32,7 +32,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     private int age;
     private String email;
     @Id
-    long id;
+    private long id;
 
     @OneToMany(mappedBy = "viajero", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItinerarioEntity> itinerarios = new ArrayList<>();
