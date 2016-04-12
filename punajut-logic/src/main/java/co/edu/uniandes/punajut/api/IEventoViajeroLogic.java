@@ -13,5 +13,13 @@ import java.util.List;
 public interface IEventoViajeroLogic
 {
     public List<EventoViajeroEntity> getEventoViajeros();
+
+    public EventoViajeroEntity darEventoViajero(Long idEvento);
+
+    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
+
+    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e);
+
+    public void eliminarEventoViajero(Long idEvento);
 }
 

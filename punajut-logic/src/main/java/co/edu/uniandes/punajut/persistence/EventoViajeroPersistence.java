@@ -7,6 +7,7 @@ package co.edu.uniandes.punajut.persistence;
 
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,5 +31,11 @@ public class EventoViajeroPersistence
             logger.info("Consultando todos los eventos del viajero");
             Query q = em.createQuery("select u from EventoViajeroEntity u");
             return q.getResultList();
+        }
+
+        public EventoViajeroEntity find(Long id)
+        {
+            logger.log(Level.INFO, "Consultando evento viajero con id={0}", id);
+            return em.find(EventoViajeroEntity.class, id);
         }
 }
