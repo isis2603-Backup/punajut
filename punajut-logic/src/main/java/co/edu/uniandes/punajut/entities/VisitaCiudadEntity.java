@@ -7,11 +7,12 @@ package co.edu.uniandes.punajut.entities;
 
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,24 +25,47 @@ import javax.persistence.TemporalType;
 public class VisitaCiudadEntity extends BaseEntity implements Serializable{
 
     @Temporal(TemporalType.DATE)
-    private Date birthDate;
+    private Date fechaInicio;
 
-    @ManyToMany(mappedBy = "authors")
-    private List<CiudadEntity> ciudades = new ArrayList<>();
+    @Temporal(TemporalType.DATE)
+    private Date fechaFin;
 
-    public Date getBirthDate() {
-        return birthDate;
+    @OneToOne
+    private CiudadEntity ciudad;
+
+    @OneToMany
+    private List<EventoViajeroEntity> misEventos = new ArrayList<EventoViajeroEntity>();
+
+    public List<EventoViajeroEntity> getMisEventos() {
+        return misEventos;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setMisEventos(List<EventoViajeroEntity> misEventos) {
+        this.misEventos = misEventos;
     }
 
-    public List<CiudadEntity> getBooks() {
-        return ciudades;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setBooks(List<CiudadEntity> ciudades) {
-        this.ciudades = ciudades;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
+
+     public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public CiudadEntity getCiudad() {
+        return ciudad;
+    }
+
+
+
+
+
 }

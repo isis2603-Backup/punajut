@@ -12,4 +12,5 @@ package co.edu.uniandes.punajut.ejbs;
 public class VisitaCiudadLogic {
 
 
+
 }
