@@ -9,7 +9,7 @@ import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
 import co.edu.uniandes.rest.punajut.mocks.EventoLogicMock;
-
+import co.edu.uniandes.rest.punajut.converters.EventoConverter;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
