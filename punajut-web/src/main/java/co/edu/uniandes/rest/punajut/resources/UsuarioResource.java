@@ -38,7 +38,7 @@ import javax.ws.rs.Produces;
 public class UsuarioResource {
 
 	@Inject
-	UsuarioLogicMock usuarioLogic;
+	UsuarioLogic usuarioLogic;
 
 	/**
 	 * Obtiene el listado de personas.
