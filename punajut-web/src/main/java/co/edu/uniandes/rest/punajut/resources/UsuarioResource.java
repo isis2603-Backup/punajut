@@ -1,14 +1,16 @@
 /*
  * CityResource.java
  * Clase que representa el recurso "/cities"
- * Implementa varios m√©todos para manipular las ciudades
+ * Implementa varios mÈtodos para manipular las ciudades
  */
 package co.edu.uniandes.rest.punajut.resources;
 
 
-import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
+import co.edu.uniandes.punajut.api.IViajeroLogic;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
-import co.edu.uniandes.rest.punajut.mocks.UsuarioLogicMock;
+
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -25,9 +27,9 @@ import javax.ws.rs.Produces;
 /**
  * Clase que implementa el recurso REST correspondiente a "cities".
  *
- * Note que la aplicaci√≥n (definida en RestConfig.java) define la ruta
+ * Note que la aplicaciÛn (definida en RestConfig.java) define la ruta
  * "/api" y este recurso tiene la ruta "cities".
- * Al ejecutar la aplicaci√≥n, el recurse ser√° accesibe a trav√©s de la
+ * Al ejecutar la aplicaciÛn, el recurse ser· accesibe a travÈs de la
  * ruta "/api/cities"
  *
  * @author Asistente
@@ -38,7 +40,7 @@ import javax.ws.rs.Produces;
 public class UsuarioResource {
 
 	@Inject
-	UsuarioLogic usuarioLogic;
+	IViajeroLogic usuarioLogic;
 
 	/**
 	 * Obtiene el listado de personas.
@@ -46,20 +48,20 @@ public class UsuarioResource {
          * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
 	 */
     @GET
-    public List<UsuarioDTO> getUsuarios() throws UsuarioLogicException {
-        return usuarioLogic.getUsuarios();
+    public List<ViajeroEntity> getUsuarios() throws UsuarioLogicException {
+        return usuarioLogic.getViajero();
     }
 
     /**
      * Obtiene una ciudad
      * @param nickname identificador del usuario
      * @return usuario encontrada
-     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
+     * @throws co.edu.uniandes.punajut.exceptions.BusinessLogicException
      */
     @GET
-    @Path("{nickname: \\d+}")
-    public UsuarioDTO getUusario(@PathParam("nickname") String nickname) throws UsuarioLogicException {
-        return usuarioLogic.getNickName(nickname);
+    @Path("{id: \\d+}")
+    public ViajeroEntity getUusario(@PathParam("id") long nickname) throws BusinessLogicException {
+        return usuarioLogic.getViajero(nickname);
     }
 
     /**
@@ -69,22 +71,15 @@ public class UsuarioResource {
      * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @POST
-    public UsuarioDTO createCity(UsuarioDTO user) throws UsuarioLogicException {
-        return usuarioLogic.createUsuario(user);
+    public ViajeroEntity createCity(ViajeroEntity user) throws UsuarioLogicException {
+        return usuarioLogic.createViajero(user);
     }
 
-    /**
-     * Actualiza los datos de una ciudad
-     * @param nickname identificador del usuario a modificar
-     * @param password
-     * @param user usuario a modificar
-     * @return datos de la ciudad modificada
-     * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
-     */
+
     @PUT
     @Path("{nickname: \\d+}")
-    public UsuarioDTO updateCity(@PathParam("nickname") String nickname,@PathParam("password") String password, UsuarioDTO user) throws UsuarioLogicException {
-        return usuarioLogic.updateUsuario(nickname, password, user);
+    public ViajeroEntity updateCity(ViajeroEntity user) throws UsuarioLogicException {
+        return usuarioLogic.updateViajero(user);
     }
 
     /**
@@ -93,9 +88,9 @@ public class UsuarioResource {
      * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @DELETE
-    @Path("{nickname: \\d+}")
-    public void deleteUsuario(@PathParam("nickname") String nickname) throws UsuarioLogicException {
-    	usuarioLogic.deleteUsuario(nickname);
+    @Path("{id: \\d+}")
+    public void deleteUsuario(@PathParam("id") long nickname) throws UsuarioLogicException {
+    	usuarioLogic.deleteViajero(nickname);
     }
 
 }
