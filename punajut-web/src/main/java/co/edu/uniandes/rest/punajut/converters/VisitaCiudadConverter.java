@@ -11,4 +11,5 @@ package co.edu.uniandes.rest.punajut.converters;
  */
 public class VisitaCiudadConverter {
 
+
 }
