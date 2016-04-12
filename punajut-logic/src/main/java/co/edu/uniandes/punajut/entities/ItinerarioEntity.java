@@ -34,4 +34,14 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
         return fechaFin;
     }
 
+    public void setFechaInicio(Date pFechaInicio)
+    {
+        fechaInicio=pFechaInicio;
+    }
+
+    public void setFechaFin(Date pFechaFin)
+    {
+       fechaFin = pFechaFin;
+    }
+
 }
