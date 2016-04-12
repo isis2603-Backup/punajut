@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.punajut.resources;
 import co.edu.uniandes.rest.punajut.dtos.EventoViajeroDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
-import co.edu.uniandes.rest.punajut.mocks.EventoViajeroLogicMock;
+import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 public class EventoViajeroResource
 {
     	@Inject
-	EventoViajeroLogic cityLogic;
+	IEventoViajeroLogic cityLogic;
 
         private static final Logger logger = Logger.getLogger(EventoViajeroResource.class.getName());
 

@@ -5,11 +5,14 @@
  */
 package co.edu.uniandes.rest.punajut.dtos;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  * Clase que contiene los eventos que visitará el viajero en una ciudad determinada
  * @author ls.hernandez10
  */
+@XmlRootElement
 public class EventoViajeroDTO
 {
     /**
@@ -18,20 +21,20 @@ public class EventoViajeroDTO
     private EventoDTO evento;
 
     //Constructor por defecto
-    public EventoViajeroDTO()
-    {
-
-    }
+//    public EventoViajeroDTO()
+//    {
+//
+//    }
 
     /**
      * Constructor con parámetros
      * @param pEvento
      */
-    public EventoViajeroDTO(EventoDTO pEvento)
-    {
-        super();
-        evento = pEvento;
-    }
+//    public EventoViajeroDTO(EventoDTO pEvento)
+//    {
+//        super();
+//        evento = pEvento;
+//    }
 
     public EventoDTO getEvento() {
         return evento;
