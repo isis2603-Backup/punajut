@@ -14,10 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author ja.poveda10
- */
+
 @Stateless
 public class ViajeroPersistence {
 
