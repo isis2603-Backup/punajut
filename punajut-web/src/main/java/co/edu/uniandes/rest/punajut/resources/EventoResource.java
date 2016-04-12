@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.punajut.resources;
 import co.edu.uniandes.punajut.api.IEventoLogic;
+import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
@@ -43,7 +44,8 @@ public class EventoResource {
 	 */
     @GET
     public List<EventoDTO> getEventoCiudad() throws UsuarioLogicException {
-        return eventoLogic.getEventos();
+     
+     return EventoConverter.listEntity2DTO( eventoLogic.getEventos()) ;
 
     }
 
