@@ -1,8 +1,20 @@
 <div>
+    <div class="configuracion">
+        <p>Ingrese los datos de la ciudad en los siguientes campos:</p>
+        <input type="text" ng-model="nombreCiudad" placeholder="Nombre ciudad">
+        <input type="text" ng-model="descripcionCiudad" placeholder="Descripcion ciudad">
+        <input type="text" ng-model="climaCiudad" placeholder="Clima ciudad">
+        <input type="text" ng-model="longitudCiudad" placeholder="Longitud ciudad">
+        <input type="text" ng-model="latitudCiudad" placeholder="Latitud ciudad">
+
+        <button type="button" onclick="alert('funciona.')">Crear ciudad</button>
+    </div>
+
     <div class="jumbotron">
         <div class="container text-center">
-            <h1>Bogotá</h1>
-            <p>Capital de Colombia. Rica en historia, cultura y entretenimiento.</p>
+            <h1>{{nombreCiudad}}</h1>
+            <p>{{descripcionCiudad}}. Clima {{climaCiudad}}</p>
+            <p><b>Longitud: </b>{{longitudCiudad}} <b>Latitud: </b>{{latitudCiudad}}</p>
         </div>
     </div>
 
