@@ -31,9 +31,6 @@ public class ItinerarioLogic implements IItinerarioLogic
     @Inject
     private ItinerarioPersistence persistence;
 
-    @Inject
-    IItinerarioLogic itinerarioLogic;
-
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 

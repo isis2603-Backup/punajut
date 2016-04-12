@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,7 +25,7 @@ import javax.persistence.TemporalType;
 public class EventoEntity extends BaseEntity implements Serializable
 {
 
-    private Long id;
+
 
     private String tipo;
 
@@ -41,25 +42,21 @@ public class EventoEntity extends BaseEntity implements Serializable
 
 
     //--------------------------------------
-    @ManyToMany
+    @ManyToOne
     private List<CiudadEntity> ciudades = new ArrayList<>();
 
     public List<CiudadEntity> getCiudades() {
         return ciudades;
     }
     //----------------------------------------
+
+
+
+
+
+
+
     
-
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTipo() {
         return tipo;
