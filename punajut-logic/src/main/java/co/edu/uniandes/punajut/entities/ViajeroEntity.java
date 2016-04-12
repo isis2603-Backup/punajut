@@ -18,38 +18,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author ja.poveda10
- */
+
 @Entity
 public class ViajeroEntity extends BaseEntity implements Serializable {
     private String password;
     private String name;
     private String lastName;
-    private String nickname;
     private String extraInfo;
     private int age;
     private String email;
-    @Id
-    long id;
 
     @OneToMany(mappedBy = "viajero", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItinerarioEntity> itinerarios = new ArrayList<>();
 
-     /**
-     * @return the id
-     */
-    public long getId() {
-        return id;
-    }
 
-    /**
-     * @param id the password to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
 
 
     /**
@@ -92,19 +74,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    /**
-     * @return the nickname
-     */
-    public String getNickName() {
-        return nickname;
-    }
-
-    /**
-     * @param nickname the nickname to set
-     */
-    public void setNickName(String nickname) {
-        this.nickname = nickname;
-    }
+ 
     /**
      * @return the extraInfo
      */
@@ -146,7 +116,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
         this.email = email;
     }
 
-    public List<ItinerarioEntity> getEventos() {
+    public List<ItinerarioEntity> getItiverarios() {
         return itinerarios;
     }
 
