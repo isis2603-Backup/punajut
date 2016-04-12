@@ -21,7 +21,7 @@ public interface IEventoLogic {
 
         public void removeEvento(Long ciudadId, Long eventoId);
 
-        public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException;
-
-        public void removeCiudad(Long ciudadId, Long eventoId);
+//        public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException;
+//
+//        public void removeCiudad(Long ciudadId, Long eventoId);
 }

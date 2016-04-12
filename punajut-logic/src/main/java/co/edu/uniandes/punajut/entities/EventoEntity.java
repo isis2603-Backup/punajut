@@ -42,21 +42,13 @@ public class EventoEntity extends BaseEntity implements Serializable
 
 
     //--------------------------------------
-    @ManyToOne
-    private List<CiudadEntity> ciudades = new ArrayList<>();
-
-    public List<CiudadEntity> getCiudades() {
-        return ciudades;
-    }
+//    @ManyToOne
+//    private List<CiudadEntity> ciudades = new ArrayList<>();
+//
+//    public List<CiudadEntity> getCiudades() {
+//        return ciudades;
+//    }
     //----------------------------------------
-
-
-
-
-
-
-
-    
 
     public String getTipo() {
         return tipo;
@@ -105,13 +97,4 @@ public class EventoEntity extends BaseEntity implements Serializable
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
-
-
-
-
-
-
-
-
-
 }
