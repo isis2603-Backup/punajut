@@ -29,8 +29,8 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     private Long longitud;
     private Long latitud;
 
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<EventoEntity> eventos = new ArrayList<>();
+//    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<EventoEntity> eventos = new ArrayList<>();
 
     /**
      * @return descripcion
@@ -88,11 +88,11 @@ public class CiudadEntity extends BaseEntity implements Serializable {
         this.latitud = latitud;
     }
 
-    public List<EventoEntity> getEventos() {
-        return eventos;
-    }
-
-    public void setEventos(List<EventoEntity> eventos) {
-        this.eventos = eventos;
-    }
+//    public List<EventoEntity> getEventos() {
+//        return eventos;
+//    }
+//
+//    public void setEventos(List<EventoEntity> eventos) {
+//        this.eventos = eventos;
+//    }
 }
