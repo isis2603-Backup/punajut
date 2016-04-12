@@ -6,8 +6,8 @@
 
 /**
  *
- * @author ra.angel10
+ * @author jp.gonzalez14
  */
-public class VisitaCiudadPersistenceTest {
+public class ViajeroPersistenceTest {
 
 }
