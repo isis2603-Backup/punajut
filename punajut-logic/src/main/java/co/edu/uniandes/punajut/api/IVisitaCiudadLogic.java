@@ -26,13 +26,9 @@ public interface IVisitaCiudadLogic {
 
     public void deleteVisitaCiudad(Long id);
 
-    public CiudadEntity addBook(Long bookId, Long authorId) throws BusinessLogicException;
+    public CiudadEntity addCiudad(Long bookId, Long authorId) throws BusinessLogicException;
 
-    public void removeBook(Long bookId, Long authorId);
+    public List<CiudadEntity> replaceCiudad(List<CiudadEntity> books, Long authorId) throws BusinessLogicException;
 
-    public List<CiudadEntity> replaceBooks(List<CiudadEntity> books, Long authorId) throws BusinessLogicException;
-
-    public List<CiudadEntity> getBooks(Long authorId);
-
-    public CiudadEntity getBook(Long authorId, Long bookId);
+    public CiudadEntity getCiudad(long idCiudad);
 }
