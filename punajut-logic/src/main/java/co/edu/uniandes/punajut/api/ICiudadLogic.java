@@ -26,13 +26,13 @@ public interface ICiudadLogic {
 
     public void deleteCiudad(Long id);
 
-    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException;
-
-    public void removeEvento(Long eventoId, Long ciudadId);
-
-    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException;
-
-    public List<EventoEntity> getEventos(Long ciudadId);
-
-    public EventoEntity getEvento(Long ciudadId, Long eventoId);
+//    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException;
+//
+//    public void removeEvento(Long eventoId, Long ciudadId);
+//
+//    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException;
+//
+//    public List<EventoEntity> getEventos(Long ciudadId);
+//
+//    public EventoEntity getEvento(Long ciudadId, Long eventoId);
 }

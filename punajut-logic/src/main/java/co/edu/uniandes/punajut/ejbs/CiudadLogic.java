@@ -80,49 +80,49 @@ public class CiudadLogic implements ICiudadLogic {
         logger.log(Level.INFO, "Termina proceso de borrar ciudad con id={0}", id);
     }
 
-    @Override
-    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException {
-        eventoLogic.addCiudad(ciudadId, eventoId);
-        return eventoPersistence.find(eventoId);
-    }
-
-    @Override
-    public void removeEvento(Long eventoId, Long ciudadId) {
-        eventoLogic.removeCiudad(ciudadId, eventoId);
-    }
-
-    @Override
-    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException {
-        List<EventoEntity> eventoList = eventoPersistence.findAll();
-        CiudadEntity ciudad = persistence.find(ciudadId);
-        for (EventoEntity evento : eventoList) {
-            if (eventos.contains(evento)) {
-                if (!evento.getCiudades().contains(ciudad)) {
-                    eventoLogic.addCiudad(ciudadId, evento.getId());
-                }
-            } else {
-                eventoLogic.removeCiudad(ciudadId, evento.getId());
-            }
-        }
-        ciudad.setEventos(eventos);
-        return ciudad.getEventos();
-    }
-
-    @Override
-    public List<EventoEntity> getEventos(Long ciudadId) {
-        return persistence.find(ciudadId).getEventos();
-    }
-
-    @Override
-    public EventoEntity getEvento(Long ciudadId, Long eventoId) {
-        List<EventoEntity> eventos = persistence.find(ciudadId).getEventos();
-        EventoEntity evento = new EventoEntity();
-        evento.setId(eventoId);
-        int index = eventos.indexOf(evento);
-        if (index >= 0) {
-            return eventos.get(index);
-        }
-        return null;
-    }
+//    @Override
+//    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException {
+//        eventoLogic.addCiudad(ciudadId, eventoId);
+//        return eventoPersistence.find(eventoId);
+//    }
+//
+//    @Override
+//    public void removeEvento(Long eventoId, Long ciudadId) {
+//        eventoLogic.removeCiudad(ciudadId, eventoId);
+//    }
+//
+//    @Override
+//    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException {
+//        List<EventoEntity> eventoList = eventoPersistence.findAll();
+//        CiudadEntity ciudad = persistence.find(ciudadId);
+//        for (EventoEntity evento : eventoList) {
+//            if (eventos.contains(evento)) {
+//                if (!evento.getCiudades().contains(ciudad)) {
+//                    eventoLogic.addCiudad(ciudadId, evento.getId());
+//                }
+//            } else {
+//                eventoLogic.removeCiudad(ciudadId, evento.getId());
+//            }
+//        }
+//        ciudad.setEventos(eventos);
+//        return ciudad.getEventos();
+//    }
+//
+//    @Override
+//    public List<EventoEntity> getEventos(Long ciudadId) {
+//        return persistence.find(ciudadId).getEventos();
+//    }
+//
+//    @Override
+//    public EventoEntity getEvento(Long ciudadId, Long eventoId) {
+//        List<EventoEntity> eventos = persistence.find(ciudadId).getEventos();
+//        EventoEntity evento = new EventoEntity();
+//        evento.setId(eventoId);
+//        int index = eventos.indexOf(evento);
+//        if (index >= 0) {
+//            return eventos.get(index);
+//        }
+//        return null;
+//    }
 
 }
