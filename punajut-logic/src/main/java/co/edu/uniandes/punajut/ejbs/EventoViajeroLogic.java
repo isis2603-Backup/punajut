@@ -69,5 +69,10 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     public void eliminarEventoViajero(Long idEvento) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 

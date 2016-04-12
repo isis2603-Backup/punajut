@@ -34,7 +34,7 @@ import javax.ws.rs.core.MediaType;
 public class EventoViajeroResource
 {
     	@Inject
-	EventoViajeroLogicMock cityLogic;
+	EventoViajeroLogic cityLogic;
 
         private static final Logger logger = Logger.getLogger(EventoViajeroResource.class.getName());
 

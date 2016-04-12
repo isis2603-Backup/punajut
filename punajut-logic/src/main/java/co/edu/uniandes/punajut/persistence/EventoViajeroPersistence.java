@@ -38,4 +38,9 @@ public class EventoViajeroPersistence
             logger.log(Level.INFO, "Consultando evento viajero con id={0}", id);
             return em.find(EventoViajeroEntity.class, id);
         }
+
+        public EventoViajeroEntity create(EventoViajeroEntity e)
+        {
+            return null;
+        }
 }

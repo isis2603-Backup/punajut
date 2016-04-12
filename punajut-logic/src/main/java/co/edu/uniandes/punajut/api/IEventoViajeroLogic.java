@@ -16,6 +16,8 @@ public interface IEventoViajeroLogic
 
     public EventoViajeroEntity darEventoViajero(Long idEvento);
 
+    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e);
+
     public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
 
     public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e);
