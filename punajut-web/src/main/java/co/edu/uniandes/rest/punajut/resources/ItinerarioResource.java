@@ -28,7 +28,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author mi.arevalo10
  */
-@Path("itinerarios")
+@Path("/viajero/{idViajero}/itinerarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
@@ -43,11 +43,12 @@ public class ItinerarioResource {
     /**
      * Obtiene el listado de itinerarios.
      *
+     * @param idViajero
      * @return lista de itinerarios
      * @throws ItinerarioLogicException excepción retornada por la lógica
      */
     @GET
-    public List<ItinerarioDTO> getItinerarios() throws ItinerarioLogicException{
+    public List<ItinerarioDTO> getItinerarios(@PathParam("idViajero") Long idViajero) throws ItinerarioLogicException{
         logger.info("Se ejecuta método getItinerarios");
 
         return itinerarioLogic.getItinerarios();
