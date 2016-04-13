@@ -3,12 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package co.edu.uniandes.punajut.persistence;
 
 import co.edu.uniandes.punajut.entities.CiudadEntity;
-import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,23 +21,22 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-
 /**
  *
- * @author jp.gonzalez14
+ * @author ja.poveda10
  */
 @RunWith(Arquillian.class)
-public class ViajeroPersistenceTest {
+public class CiudadPersistenceTest {
 
     @Inject
-    private ViajeroPersistence viajeroPersistence;
+    private CiudadPersistence ciudadPersistence;
 
     @PersistenceContext
     private EntityManager em;
 
     private final PodamFactory factory = new PodamFactoryImpl();
 
-    public ViajeroPersistenceTest() {
+    public CiudadPersistenceTest() {
     }
 
     @Deployment
@@ -53,16 +49,14 @@ public class ViajeroPersistenceTest {
     }
 
     @Test
-    public void createViajeroTest() {
-        ViajeroEntity newEntity = factory.manufacturePojo(ViajeroEntity.class);
+    public void createCiudadTest() {
+        CiudadEntity newEntity = factory.manufacturePojo(CiudadEntity.class);
 
-        ViajeroEntity result = viajeroPersistence.create(newEntity);
+        CiudadEntity result = ciudadPersistence.create(newEntity);
 
         Assert.assertNotNull(result);
-        ViajeroEntity entity = em.find(ViajeroEntity.class, result.getId());
+        CiudadEntity entity = em.find(CiudadEntity.class, result.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getAge(), entity.getAge());
-        Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
-        Assert.assertEquals(newEntity.getExtraInfo(), entity.getExtraInfo());
     }
+
 }

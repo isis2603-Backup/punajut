@@ -28,30 +28,30 @@ public class VisitaCiudadPersistence {
     protected EntityManager em;
 
     public VisitaCiudadEntity create(VisitaCiudadEntity entity) {
-        logger.info("Creando un autor nuevo");
+        logger.info("Creando una visita ciudad nueva");
         em.persist(entity);
-        logger.info("Autor creado");
+        logger.info("Visita ciudad creado");
         return entity;
     }
 
     public VisitaCiudadEntity update(VisitaCiudadEntity entity) {
-        logger.log(Level.INFO, "Actualizando autor con id={0}", entity.getId());
+        logger.log(Level.INFO, "Actualizando visita ciudad con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        logger.log(Level.INFO, "Borrando autor con id={0}", id);
+        logger.log(Level.INFO, "Borrando visita ciudad con id={0}", id);
         VisitaCiudadEntity entity = em.find(VisitaCiudadEntity.class, id);
         em.remove(entity);
     }
 
     public VisitaCiudadEntity find(Long id) {
-        logger.log(Level.INFO, "Consultando autor con id={0}", id);
+        logger.log(Level.INFO, "Consultando visita ciudad con id={0}", id);
         return em.find(VisitaCiudadEntity.class, id);
     }
 
     public List<VisitaCiudadEntity> findAll() {
-        logger.info("Consultando todos los autores");
+        logger.info("Consultando todas las visitas");
         Query q = em.createQuery("select u from VisitaCiudadEntity u");
         return q.getResultList();
     }

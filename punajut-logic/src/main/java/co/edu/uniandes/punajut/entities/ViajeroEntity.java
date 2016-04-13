@@ -31,9 +31,6 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "viajero", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItinerarioEntity> itinerarios = new ArrayList<>();
 
-
-
-
     /**
      * @return the id
      */
@@ -74,7 +71,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
- 
+
     /**
      * @return the extraInfo
      */

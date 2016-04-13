@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
@@ -33,15 +34,15 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
     @OneToOne
     private CiudadEntity ciudad;
 
-    @OneToMany
-    private List<EventoViajeroEntity> misEventos = new ArrayList<EventoViajeroEntity>();
+    @OneToMany(mappedBy="visitaCiudad", cascade = CascadeType.ALL, orphanRemoval=true)
+    private List<EventoViajeroEntity> eventosViajero = new ArrayList<>();
 
-    public List<EventoViajeroEntity> getMisEventos() {
-        return misEventos;
+    public List<EventoViajeroEntity> getEventosViajero() {
+        return eventosViajero;
     }
 
-    public void setMisEventos(List<EventoViajeroEntity> misEventos) {
-        this.misEventos = misEventos;
+    public void setEventosViajero(List<EventoViajeroEntity> eventosViajero) {
+        this.eventosViajero = eventosViajero;
     }
 
     public Date getFechaInicio() {
@@ -62,6 +63,10 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
 
     public CiudadEntity getCiudad() {
         return ciudad;
+    }
+
+    public void setCiudad(CiudadEntity c) {
+        ciudad = c;
     }
 
 

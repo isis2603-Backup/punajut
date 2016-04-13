@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +21,7 @@ import javax.persistence.TemporalType;
  */
 public class ItinerarioEntity extends BaseEntity implements Serializable
 {
+
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     @Temporal(TemporalType.DATE)
@@ -32,6 +35,16 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     public Date getFechaFin()
     {
         return fechaFin;
+    }
+
+    public void setFechaInicio(Date pFechaInicio)
+    {
+        fechaInicio=pFechaInicio;
+    }
+
+    public void setFechaFin(Date pFechaFin)
+    {
+       fechaFin = pFechaFin;
     }
 
 }
