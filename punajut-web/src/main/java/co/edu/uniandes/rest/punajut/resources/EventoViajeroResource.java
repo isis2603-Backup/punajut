@@ -6,7 +6,8 @@
 package co.edu.uniandes.rest.punajut.resources;
 import co.edu.uniandes.rest.punajut.dtos.EventoViajeroDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
-import co.edu.uniandes.rest.punajut.mocks.EventoViajeroLogicMock;
+import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
+import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -34,7 +35,7 @@ import javax.ws.rs.core.MediaType;
 public class EventoViajeroResource
 {
     	@Inject
-	EventoViajeroLogicMock cityLogic;
+	IEventoViajeroLogic cityLogic;
 
         private static final Logger logger = Logger.getLogger(EventoViajeroResource.class.getName());
 
@@ -45,10 +46,10 @@ public class EventoViajeroResource
 	 * @throws ItinerarioLogicException excepciÃ³n retornada por la lÃ³gica
 	 */
     @GET
-    public List<EventoViajeroDTO> getEventosViajero() throws ItinerarioLogicException
+    public List<EventoViajeroEntity> getEventosViajero() throws ItinerarioLogicException
     {
         logger.info("Se ejecuta mÃ©todo getEventosViajero");
-        return cityLogic.getEventosViajeros();
+        return cityLogic.getEventoViajeros();
     }
 
     /**
@@ -59,33 +60,33 @@ public class EventoViajeroResource
      */
     @GET
     @Path("{id: \\d+}")
-    public EventoViajeroDTO getEventoViajero(@PathParam("id") Long id) throws ItinerarioLogicException
+    public EventoViajeroEntity getEventoViajero(@PathParam("id") Long id) throws ItinerarioLogicException
     {
-        return cityLogic.getEventoViajero(id);
+        return cityLogic.darEventoViajero(id);
     }
 
     /**
      * Agrega un evento a la lista del viajero
-     * @param city evento a agregar
+     * @param evento evento a agregar
      * @return datos del evento a agregar
      * @throws ItinerarioLogicException cuando ya existe un evento con el id suministrado
      */
     @POST
-    public EventoViajeroDTO createEventoViajero(EventoViajeroDTO city) throws ItinerarioLogicException {
-        return cityLogic.createEventoViajero(city);
+    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity evento) throws ItinerarioLogicException {
+        return cityLogic.agregarEventoViajero(evento);
     }
 
     /**
      * Actualiza los datos de un evento en la lista del viajero
      * @param id identificador del evento a modificar
-     * @param city evento a modificar
+     * @param evento evento a modificar
      * @return datos del evento modificado
      * @throws ItinerarioLogicException cuando no existe una evento con el id suministrado
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventoViajeroDTO updateEventoCiudad(@PathParam("id") Long id, EventoViajeroDTO city) throws ItinerarioLogicException {
-        return cityLogic.updateEventoCiudad(id, city);
+    public EventoViajeroEntity updateEventoCiudad(@PathParam("id") Long id, EventoViajeroEntity evento) throws ItinerarioLogicException {
+        return cityLogic.modificarEventoViajero(id, evento);
     }
 
     /**
@@ -97,6 +98,6 @@ public class EventoViajeroResource
     @Path("{id: \\d+}")
     public void deleteEventoCiudad(@PathParam("id") Long id) throws ItinerarioLogicException
     {
-    	cityLogic.deleteEventoViajero(id);
+    	cityLogic.eliminarEventoViajero(id);
     }
 }

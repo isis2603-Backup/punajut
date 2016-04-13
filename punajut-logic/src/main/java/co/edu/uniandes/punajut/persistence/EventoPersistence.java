@@ -24,6 +24,13 @@ public class EventoPersistence
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
+     public EventoEntity create(EventoEntity entity) {
+        logger.info("Creando un evento nuevo");
+        em.persist(entity);
+        logger.info("Evento creado");
+        return entity;
+    }
+
     public EventoEntity find(Long id) {
         logger.log(Level.INFO, "Consultando evento con id={0}", id);
         return em.find(EventoEntity.class, id);
