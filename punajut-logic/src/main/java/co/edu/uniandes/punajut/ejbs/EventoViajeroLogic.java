@@ -61,7 +61,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     }
 
     @Override
-    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e) {
+    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

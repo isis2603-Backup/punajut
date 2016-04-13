@@ -47,7 +47,7 @@ public class EventoViajeroLogicMock
             if (eventosViajero == null)
             {
                 eventosViajero = new ArrayList<>();
-                eventosViajero.add(new EventoViajeroDTO(new EventoDTO(Long.MIN_VALUE, "Musical", 4.5, 8000, "Espectaculo sobre hielo", opiniones, "Carrera 124", new CiudadDTO() , fechaInicio, fechaFinal)));
+            //    eventosViajero.add(new EventoViajeroDTO(new EventoDTO(Long.MIN_VALUE, "Musical", 4.5, 8000, "Espectaculo sobre hielo", opiniones, "Carrera 124", new CiudadDTO() , fechaInicio, fechaFinal)));
             }
 
             // indica que se muestren todos los mensajes
