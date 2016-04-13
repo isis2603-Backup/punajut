@@ -38,12 +38,12 @@ public abstract class EventoViajeroConverter {
     public static EventoViajeroDTO refEntity2DTO(EventoViajeroEntity entity) {
         if (entity != null) {
             EventoViajeroDTO dto = new EventoViajeroDTO();
-            dto.setId(entity.getId());
-            dto.setName(entity.getName());
-            dto.setDescription(entity.getDescription());
-            dto.setIsbn(entity.getIsbn());
-            dto.setImage(entity.getImage());
-            dto.setPublishDate(entity.getPublishDate());
+//            dto.setId(entity.getId());
+//            dto.setName(entity.getName());
+//            dto.setDescription(entity.getDescription());
+//            dto.setIsbn(entity.getIsbn());
+//            dto.setImage(entity.getImage());
+//            dto.setPublishDate(entity.getPublishDate());
 
             return dto;
         } else {
