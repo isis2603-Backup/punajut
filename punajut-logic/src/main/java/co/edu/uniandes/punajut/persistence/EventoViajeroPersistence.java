@@ -6,6 +6,7 @@
 package co.edu.uniandes.punajut.persistence;
 
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +42,22 @@ public class EventoViajeroPersistence
 
         public EventoViajeroEntity create(EventoViajeroEntity e)
         {
-            return null;
+            logger.info("Creando una evento viajero nueva");
+            em.persist(e);
+            logger.info("Evento viajero creado");
+            return e;
         }
-}
+
+        public EventoViajeroEntity update(EventoViajeroEntity entity)
+        {
+            logger.log(Level.INFO, "Actualizando el evento viajero con id={0}", entity.getId());
+            return em.merge(entity);
+        }
+
+        public void delete(Long id)
+        {
+            logger.log(Level.INFO, "Borrando evento viajero con id={0}", id);
+            EventoViajeroEntity entity = em.find(EventoViajeroEntity.class, id);
+            em.remove(entity);
+        }
+    }

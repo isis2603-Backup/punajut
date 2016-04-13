@@ -6,6 +6,7 @@
 package co.edu.uniandes.punajut.ejbs;
 import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
 import java.util.Date;
 import java.util.List;
@@ -55,24 +56,39 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         return evento;
     }
 
+//    @Override
+//    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e)
+//    {
+//        logger.info("Inicia proceso de creación de evento personalizado");
+//        persistence.create(e);
+//        logger.info("Termina proceso de creación de evento personalizado");
+//        return e;
+//    }
+
     @Override
-    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e)
+    {
+         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", id);
+        EventoViajeroEntity newEntity = persistence.update(e);
+        logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", id);
+        return newEntity;
     }
 
     @Override
-    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminarEventoViajero(Long idEvento)
+    {
+        logger.log(Level.INFO, "Inicia proceso de borrar un evento viajero con id={0}", idEvento);
+        persistence.delete(idEvento);
+        logger.log(Level.INFO, "Termina proceso de borrar in evento viajero con id={0}", idEvento);
     }
 
     @Override
-    public void eliminarEventoViajero(Long idEvento) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e)
+    {
+        logger.info("Inicia proceso de creación de evento personalizado");
+        persistence.create(e);
+        logger.info("Termina proceso de creación de evento personalizado");
+        return e;
     }
 }
 
