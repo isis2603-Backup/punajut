@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.rest.punajut.resources;
 
-//import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
+import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import java.util.List;
@@ -28,7 +28,7 @@ import co.edu.uniandes.punajut.ejbs.VisitaCiudadLogic;
 public class VisitaCiudadResource
 {
     @Inject
-    VisitaCiudadLogic cityLogic;
+    IVisitaCiudadLogic visitaLogic;
 
     //@Inject
     //IVisitaCiudadLogic visitaCiudadLogic;
@@ -90,6 +90,6 @@ public class VisitaCiudadResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteVisitaCiudad(@PathParam("id") Long id) throws ItinerarioLogicException {
-    	cityLogic.deleteVisitaCiudad(id);
+    	//cityLogic.deleteVisitaCiudad(id);
     }
 }
