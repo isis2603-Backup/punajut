@@ -35,14 +35,14 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
     private CiudadEntity ciudad;
 
     @OneToMany(mappedBy="visitaCiudad", cascade = CascadeType.ALL, orphanRemoval=true)
-    private List<EventoViajeroEntity> misEventos = new ArrayList<>();
+    private List<EventoViajeroEntity> eventosViajero = new ArrayList<>();
 
-    public List<EventoViajeroEntity> getMisEventos() {
-        return misEventos;
+    public List<EventoViajeroEntity> getEventosViajero() {
+        return eventosViajero;
     }
 
-    public void setMisEventos(List<EventoViajeroEntity> misEventos) {
-        this.misEventos = misEventos;
+    public void setEventosViajero(List<EventoViajeroEntity> eventosViajero) {
+        this.eventosViajero = eventosViajero;
     }
 
     public Date getFechaInicio() {
@@ -63,6 +63,10 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
 
     public CiudadEntity getCiudad() {
         return ciudad;
+    }
+
+    public void setCiudad(CiudadEntity c) {
+        ciudad = c;
     }
 
 
