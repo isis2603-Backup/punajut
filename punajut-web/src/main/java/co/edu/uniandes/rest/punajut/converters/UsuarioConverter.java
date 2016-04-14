@@ -124,4 +124,42 @@ public abstract class UsuarioConverter {
         }
     }
 
+
+
+    /**
+     * Convierte instancias de VisitaCiudadEntity a VisitaCiudadDTO incluyendo sus relaciones
+     * Uno a muchos y Muchos a muchos
+     *
+     * @param entity Instancia de VisitaCiudadEntity a convertir
+     * @return Instancia de VisitaCiudadDTO con los datos recibidos por parámetro
+     * @generated
+     */
+    public static UsuarioDTO fullEntity2DTO(ViajeroEntity entity) {
+        if (entity != null) {
+            UsuarioDTO dto = basicEntity2DTO(entity);
+            //dto.setEventosViajero(EventoConverter.listEntity2DTO(entity.getEventosViajero()));
+            return dto;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Convierte una instancia de VisitaCiudadDTO a VisitaCiudadEntity.
+     * Incluye todos los atributos de VisitaCiudadEntity.
+     *
+     * @param dto Instancia de VisitaCiudadDTO a convertir
+     * @return Instancia de VisitaCiudadEntity con los datos recibidos por parámetro
+     * @generated
+     */
+    public static ViajeroEntity fullDTO2Entity(UsuarioDTO dto) {
+        if (dto != null) {
+            ViajeroEntity entity = basicDTO2Entity(dto);
+            //entity.setEventosViajero(EventoConverter.listDTO2Entity(dto.getEventosViajero()));
+            return entity;
+        } else {
+            return null;
+        }
+    }
+
 }
