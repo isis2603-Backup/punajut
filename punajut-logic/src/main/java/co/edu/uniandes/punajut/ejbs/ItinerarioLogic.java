@@ -23,7 +23,6 @@ import javax.persistence.TemporalType;
  * @author mi.arevalo10
  */
 @Stateless
-
 public class ItinerarioLogic implements IItinerarioLogic
 {
     private static final Logger logger = Logger.getLogger(ItinerarioLogic.class.getName());
