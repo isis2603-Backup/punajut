@@ -27,9 +27,24 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     private String extraInfo;
     private int age;
     private String email;
+    private String nickname;
 
     @OneToMany(mappedBy = "viajero", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItinerarioEntity> itinerarios = new ArrayList<>();
+
+/**
+     * @return the nickname
+     */
+    public String getNickName() {
+        return nickname;
+    }
+
+    /**
+     * @param nickname the nickname to set
+     */
+    public void setNickName(String nickname) {
+        this.nickname = nickname;
+    }
 
     /**
      * @return the id
