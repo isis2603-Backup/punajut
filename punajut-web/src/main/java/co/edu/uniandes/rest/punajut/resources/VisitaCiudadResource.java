@@ -18,6 +18,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.punajut.ejbs.VisitaCiudadLogic;
+import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
+import co.edu.uniandes.rest.punajut.converters.VisitaCiudadConverter;
 
 /**
  *
@@ -54,7 +57,13 @@ public class VisitaCiudadResource
     @Path("{id: \\d+}")
     public VisitaCiudadDTO getVisitaCiudad(@PathParam("id") Long id) throws ItinerarioLogicException
     {
-        return null; //cityLogic.getVisitaCiudad(id);
+        VisitaCiudadDTO visita = null;
+        try {
+            return VisitaCiudadConverter.fullEntity2DTO(visitaLogic.getVisitaCiudad(id));
+        } catch (BusinessLogicException e) {
+            e.printStackTrace();
+        }
+        return visita;
     }
 
     /**
@@ -66,7 +75,8 @@ public class VisitaCiudadResource
     @POST
     public VisitaCiudadDTO createVisitaCiudad(VisitaCiudadDTO city) throws ItinerarioLogicException
     {
-        return null; //cityLogic.createVisitaCiudad(city);
+       VisitaCiudadEntity entity = VisitaCiudadConverter.fullDTO2Entity(city);
+       return VisitaCiudadConverter.fullEntity2DTO(visitaLogic.createVisitaCiudad(entity));
     }
 
     /**
@@ -90,6 +100,6 @@ public class VisitaCiudadResource
     @DELETE
     @Path("{id: \\d+}")
     public void deleteVisitaCiudad(@PathParam("id") Long id) throws ItinerarioLogicException {
-    	//cityLogic.deleteVisitaCiudad(id);
+    	visitaLogic.deleteVisitaCiudad(id);
     }
 }
