@@ -16,6 +16,7 @@ public class UsuarioDTO {
     private String nickname;
     private String extraInfo;
     private int age;
+    private long id;
     private String email;
 
     /**
@@ -34,7 +35,7 @@ public class UsuarioDTO {
      * @param email
      * @param name nombre de la ciudad
      */
-    public UsuarioDTO(String password, String name, String lastName, String nickname, String extraInfo, int age, String email) {
+    public UsuarioDTO(String password, String name, String lastName, String nickname, String extraInfo, int age, int id, String email) {
 		super();
 		this.password = password;
 		this.name = name;
@@ -43,6 +44,7 @@ public class UsuarioDTO {
                 this.extraInfo = extraInfo;
                 this.age = age;
                 this.email = email;
+                this.id = id;
 	}
 
     public UsuarioDTO(long l, String bogota) {
@@ -127,6 +129,20 @@ public class UsuarioDTO {
      */
     public void setAge(int age) {
         this.age = age;
+    }
+
+    /**
+     * @return the age
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the age to set
+     */
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
