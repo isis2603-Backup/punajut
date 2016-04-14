@@ -47,7 +47,7 @@ public abstract class ItinerarioConverter
         }
     }
 
-        /**
+     /**
      * Realiza la conversión de ItinerarioDTO a ItinerarioEntity Se invoca cuando otro DTO
      * tiene una referencia a ItinerarioDTO Convierte únicamente el ID ya que es el
      * único atributo necesario para guardar la relación en la base de datos

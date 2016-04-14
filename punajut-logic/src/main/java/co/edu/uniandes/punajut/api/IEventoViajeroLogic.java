@@ -16,10 +16,13 @@ public interface IEventoViajeroLogic
 
     public EventoViajeroEntity darEventoViajero(Long idEvento);
 
-    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
+    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e);
 
-    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e);
+//    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
+
+    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e);
 
     public void eliminarEventoViajero(Long idEvento);
+
 }
 
