@@ -8,6 +8,7 @@ package co.edu.uniandes.punajut.entities;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 
@@ -21,7 +22,12 @@ public class EventoViajeroEntity extends BaseEntity implements Serializable
     private String tipo;
     private String descripcion;
     private String lugar;
+
+    @ManyToOne
     private EventoEntity evento;
+
+    @ManyToOne
+    private VisitaCiudadEntity visitaCiudad;
 
     public String getTipo() {
         return tipo;
@@ -55,5 +61,5 @@ public class EventoViajeroEntity extends BaseEntity implements Serializable
         this.evento = evento;
     }
 
-    
+
 }
