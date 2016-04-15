@@ -43,7 +43,7 @@ public class EventoEntity extends BaseEntity implements Serializable
 
     //--------------------------------------
 //    @ManyToOne
-//    private List<CiudadEntity> ciudades = new ArrayList<>();
+//    private List<CiudadEntity> ciudad = new ArrayList<>();
 //
 //    public List<CiudadEntity> getCiudades() {
 //        return ciudades;
