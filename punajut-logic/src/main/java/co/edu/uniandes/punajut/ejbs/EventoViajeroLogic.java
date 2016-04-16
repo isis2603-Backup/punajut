@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +20,7 @@ import javax.persistence.TemporalType;
  *
  * @author ls.hernandez10
  */
+@Stateless
 public class EventoViajeroLogic implements IEventoViajeroLogic
 {
     private static final Logger logger = Logger.getLogger(IEventoViajeroLogic.class.getName());

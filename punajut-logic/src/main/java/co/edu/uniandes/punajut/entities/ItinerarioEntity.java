@@ -8,8 +8,7 @@ package co.edu.uniandes.punajut.entities;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.CascadeType;
+import java.util.Date;  
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,10 +21,15 @@ import javax.persistence.TemporalType;
 public class ItinerarioEntity extends BaseEntity implements Serializable
 {
 
+    @ManyToOne
+    private ViajeroEntity viajero;
+
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
+
+
 
     public Date getFechaInicio()
     {
@@ -45,6 +49,16 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     public void setFechaFin(Date pFechaFin)
     {
        fechaFin = pFechaFin;
+    }
+
+    public ViajeroEntity getViajero()
+    {
+        return viajero;
+    }
+
+    public void setViajero(ViajeroEntity v)
+    {
+        viajero = v;
     }
 
 }
