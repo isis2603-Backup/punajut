@@ -6,7 +6,6 @@
 package co.edu.uniandes.punajut.ejbs;
 import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
-import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
 import java.util.Date;
 import java.util.List;
@@ -27,8 +26,8 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     @Inject
     private EventoViajeroPersistence persistence;
 
-    @Inject
-    IEventoViajeroLogic itinerarioLogic;
+//    @Inject
+//    IEventoViajeroLogic eventoViajeroLogic;
 
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
@@ -66,11 +65,11 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
 //    }
 
     @Override
-    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e)
+    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e)
     {
-         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", id);
+         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", e.getId());
         EventoViajeroEntity newEntity = persistence.update(e);
-        logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", id);
+        logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", e.getId());
         return newEntity;
     }
 

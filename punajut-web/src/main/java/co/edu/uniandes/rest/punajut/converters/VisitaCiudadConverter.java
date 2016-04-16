@@ -81,7 +81,7 @@ public abstract class VisitaCiudadConverter {
             //dto.setName(entity.getName());
             dto.setFechaInicio(entity.getFechaInicio());
             dto.setFechaFin(entity.getFechaFin());
-            //dto.setCiudad(CiudadConverter.refEntity2DTO(entity.getCiudad()));
+            //dto.setCiudad(CiudadC}onverter.refEntity2DTO(entity.getCiudad()));
             return dto;
         } else {
             return null;

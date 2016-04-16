@@ -20,7 +20,7 @@ public interface IEventoViajeroLogic
 
 //    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
 
-    public EventoViajeroEntity modificarEventoViajero(Long id, EventoViajeroEntity e);
+    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e);
 
     public void eliminarEventoViajero(Long idEvento);
 
