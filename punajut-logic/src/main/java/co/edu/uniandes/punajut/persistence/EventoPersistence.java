@@ -9,6 +9,7 @@ import co.edu.uniandes.punajut.entities.EventoEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,6 +18,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author r.cardenas11
  */
+@Stateless
 public class EventoPersistence
 {
    private static final Logger logger = Logger.getLogger(EventoPersistence.class.getName());
