@@ -1,49 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.rest.punajut.converters;
 
-//import co.edu.uniandes.punajut.entities.CiudadEntity;
-//import co.edu.uniandes.rest.punajut.dtos.CiudadDTO;
-//import java.util.ArrayList;
-//import java.util.List;
+import co.edu.uniandes.rest.punajut.dtos.CiudadDTO;
+import co.edu.uniandes.punajut.entities.CiudadEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author ja.poveda10
- */
 public abstract class CiudadConverter {
 
     /**
      * Constructor privado para evitar la creación del constructor implícito de Java
      * @generated
      */
-    //private CiudadConverter() {
-    //}
+    private CiudadConverter() {
+    }
 
     /**
      * Realiza la conversión de CiudadEntity a CiudadDTO.
      * Se invoca cuando otra entidad tiene una referencia a CiudadEntity.
-     * Entrega únicamente los atributos proprios de la entidad.
+     * Entrega únicamente los atributos propios de la entidad.
      *
      * @param entity instancia de CiudadEntity a convertir
      * @return instancia de CiudadDTO con los datos recibidos por parámetro
      * @generated
      */
-    //public static CiudadDTO refEntity2DTO(CiudadEntity entity) {
-        //if (entity != null) {
-            //CiudadDTO dto = new CiudadDTO();
-            //dto.setId(entity.getId());
-            //dto.setNombreCiudad(entity.getName());
-            //dto.setDescripcion(entity.getDescripcion());
+    public static CiudadDTO refEntity2DTO(CiudadEntity entity) {
+        if (entity != null) {
+            CiudadDTO dto = new CiudadDTO();
+            dto.setId(entity.getId());
+            dto.setNombreCiudad(entity.getName());
+            dto.setDescripcion(entity.getDescripcion());
+            dto.setClima(entity.getClima());
+            dto.setLongitud(entity.getLongitud());
+            dto.setLatitud(entity.getLatitud());
 
-            //return dto;
-        //} else {
-            //return null;
-        //}
-    //}
+            return dto;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Realiza la conversión de CiudadDTO a CiudadEntity Se invoca cuando otro DTO
@@ -54,16 +48,16 @@ public abstract class CiudadConverter {
      * @return instancia de CiudadEntity con los datos recibidos por parámetro
      * @generated
      */
-    //public static CiudadEntity refDTO2Entity(CiudadDTO dto) {
-        //if (dto != null) {
-            //CiudadEntity entity = new CiudadEntity();
-            //entity.setId(dto.getId());
+    public static CiudadEntity refDTO2Entity(CiudadDTO dto) {
+        if (dto != null) {
+            CiudadEntity entity = new CiudadEntity();
+            entity.setId(dto.getId());
 
-            //return entity;
-        //} else {
-            //return null;
-       //}
-    //}
+            return entity;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Convierte una instancia de CiudadEntity a CiudadDTO Se invoca cuando se desea
@@ -73,15 +67,21 @@ public abstract class CiudadConverter {
      * @return Instancia de CiudadDTO con los datos recibidos por parámetro
      * @generated
      */
-    //private static CiudadDTO basicEntity2DTO(CiudadEntity entity) {
-        //if (entity != null) {
-            //CiudadDTO dto = new CiudadDTO();
-            //dto.setId(entity.getId());
-            //return dto;
-        //} else {
-            //return null;
-        //}
-    //}
+    private static CiudadDTO basicEntity2DTO(CiudadEntity entity) {
+        if (entity != null) {
+            CiudadDTO dto = new CiudadDTO();
+            dto.setId(entity.getId());
+            dto.setNombreCiudad(entity.getName());
+            dto.setDescripcion(entity.getDescripcion());
+            dto.setClima(entity.getClima());
+            dto.setLongitud(entity.getLongitud());
+            dto.setLatitud(entity.getLatitud());
+
+            return dto;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Convierte una instancia de CiudadDTO a CiudadEntity Se invoca cuando se
@@ -92,16 +92,21 @@ public abstract class CiudadConverter {
      * @return Instancia de CiudadEntity creada a partir de los datos de dto
      * @generated
      */
-    //private static CiudadEntity basicDTO2Entity(CiudadDTO dto) {
-        //if (dto != null) {
-            //CiudadEntity entity = new CiudadEntity();
-            //entity.setId(dto.getId());
+    private static CiudadEntity basicDTO2Entity(CiudadDTO dto) {
+        if (dto != null) {
+            CiudadEntity entity = new CiudadEntity();
+            entity.setId(dto.getId());
+            entity.setName(dto.getNombreCiudad());
+            entity.setDescripcion(dto.getDescripcion());
+            entity.setClima(dto.getClima());
+            entity.setLongitud(dto.getLongitud());
+            entity.setLatitud(dto.getLatitud());
 
-            //return entity;
-        //} else {
-            //return null;
-        //}
-    //}
+            return entity;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Convierte instancias de CiudadEntity a CiudadDTO incluyendo sus relaciones
@@ -111,14 +116,14 @@ public abstract class CiudadConverter {
      * @return Instancia de CiudadDTO con los datos recibidos por parámetro
      * @generated
      */
-    //public static CiudadDTO fullEntity2DTO(CiudadEntity entity) {
-        //if (entity != null) {
-            //CiudadDTO dto = basicEntity2DTO(entity);
-            //return dto;
-        //} else {
-            //return null;
-        //}
-    //}
+    public static CiudadDTO fullEntity2DTO(CiudadEntity entity) {
+        if (entity != null) {
+            CiudadDTO dto = basicEntity2DTO(entity);
+            return dto;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Convierte una instancia de CiudadDTO a CiudadEntity.
@@ -128,14 +133,14 @@ public abstract class CiudadConverter {
      * @return Instancia de CiudadEntity con los datos recibidos por parámetro
      * @generated
      */
-    //public static CiudadEntity fullDTO2Entity(CiudadDTO dto) {
-        //if (dto != null) {
-            //CiudadEntity entity = basicDTO2Entity(dto);
-            //return entity;
-        //} else {
-            //return null;
-        //}
-    //}
+    public static CiudadEntity fullDTO2Entity(CiudadDTO dto) {
+        if (dto != null) {
+            CiudadEntity entity = basicDTO2Entity(dto);
+            return entity;
+        } else {
+            return null;
+        }
+    }
 
     /**
      * Convierte una colección de instancias de CiudadEntity a CiudadDTO. Para cada
@@ -146,15 +151,15 @@ public abstract class CiudadConverter {
      * @return Collección de instancias de CiudadDTO
      * @generated
      */
-    //public static List<CiudadDTO> listEntity2DTO(List<CiudadEntity> entities) {
-        //List<CiudadDTO> dtos = new ArrayList<CiudadDTO>();
-        //if (entities != null) {
-            //for (CiudadEntity entity : entities) {
-                //dtos.add(basicEntity2DTO(entity));
-            //}
-        //}
-        //return dtos;
-    //}
+    public static List<CiudadDTO> listEntity2DTO(List<CiudadEntity> entities) {
+        List<CiudadDTO> dtos = new ArrayList<CiudadDTO>();
+        if (entities != null) {
+            for (CiudadEntity entity : entities) {
+                dtos.add(basicEntity2DTO(entity));
+            }
+        }
+        return dtos;
+    }
 
     /**
      * Convierte una colección de instancias de CiudadDTO a instancias de
@@ -164,14 +169,13 @@ public abstract class CiudadConverter {
      * @return Collección de instancias de CiudadEntity
      * @generated
      */
-    //public static List<CiudadEntity> listDTO2Entity(List<CiudadDTO> dtos) {
-        //List<CiudadEntity> entities = new ArrayList<CiudadEntity>();
-        //if (dtos != null) {
-            //for (CiudadDTO dto : dtos) {
-                //entities.add(basicDTO2Entity(dto));
-            //}
-        //}
-        //return entities;
-    //}
-
+    public static List<CiudadEntity> listDTO2Entity(List<CiudadDTO> dtos) {
+        List<CiudadEntity> entities = new ArrayList<CiudadEntity>();
+        if (dtos != null) {
+            for (CiudadDTO dto : dtos) {
+                entities.add(basicDTO2Entity(dto));
+            }
+        }
+        return entities;
+    }
 }

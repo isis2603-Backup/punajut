@@ -9,9 +9,9 @@ package co.edu.uniandes.rest.punajut.exceptions;
  *
  * @author ra.angel10
  */
-public class ForoLogicException extends Exception{
+public class VisitaCiudadLogicException extends Exception {
 
-    /**
+     /**
 	 * versión usada en la serialización de la clase
 	 */
 	private static final long serialVersionUID = 1L;
@@ -19,14 +19,14 @@ public class ForoLogicException extends Exception{
 	/**
 	 * Constructor por defecto
 	 */
-	public ForoLogicException() {
+	public VisitaCiudadLogicException() {
 	}
 
 	/**
 	 * Constructor con un mensaje
 	 * @param message mensaje de la excepción
 	 */
-	public ForoLogicException(String message) {
+	public VisitaCiudadLogicException(String message) {
 		super(message);
 	}
 
@@ -34,7 +34,7 @@ public class ForoLogicException extends Exception{
 	 * Constructor con una causa
 	 * @param cause causa de la excepción. Usada para generar la traza.
 	 */
-	public ForoLogicException(Throwable cause) {
+	public VisitaCiudadLogicException(Throwable cause) {
 		super(cause);
 	}
 
@@ -43,7 +43,7 @@ public class ForoLogicException extends Exception{
 	 * @param message mensaje de la excepción
 	 * @param cause causa de la excepción. Usada para generar la traza.
 	 */
-	public ForoLogicException(String message, Throwable cause) {
+	public VisitaCiudadLogicException(String message, Throwable cause) {
 		super(message, cause);
 	}
 }

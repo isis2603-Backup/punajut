@@ -5,6 +5,7 @@
         <groupId>co.edu.uniandes.punajut</groupId>
         <artifactId>punajut</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>punajut-logic</artifactId>
     <packaging>jar</packaging>

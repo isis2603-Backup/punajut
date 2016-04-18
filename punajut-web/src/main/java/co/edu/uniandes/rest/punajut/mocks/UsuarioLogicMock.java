@@ -42,9 +42,9 @@ public class UsuarioLogicMock {
 
     	if (usuario == null) {
             usuario = new ArrayList<>();
-            usuario.add(new UsuarioDTO("htlpg","juan","pablo","kyota","cualquier cosa",18,"juan@email.com"));
-            usuario.add(new UsuarioDTO("htlpg1","andres","perez","pedre","cualquier cosa",15,"perez@email.com"));
-            usuario.add(new UsuarioDTO("htlpg2","daniela","cortes","danico","cualquier cosa",21,"danico@email.com"));
+            usuario.add(new UsuarioDTO("htlpg","juan","pablo","kyota","cualquier cosa",18, 2,"juan@email.com"));
+            usuario.add(new UsuarioDTO("htlpg1","andres","perez","pedre","cualquier cosa",15, 5,"perez@email.com"));
+            usuario.add(new UsuarioDTO("htlpg2","daniela","cortes","danico","cualquier cosa",21, 9,"danico@email.com"));
         }
 
     	// indica que se muestren todos los mensajes

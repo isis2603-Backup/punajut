@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,11 +24,77 @@ import javax.persistence.TemporalType;
 @Entity
 public class EventoEntity extends BaseEntity implements Serializable
 {
-    @ManyToMany
-    private List<CiudadEntity> ciudades = new ArrayList<>();
 
-    public List<CiudadEntity> getCiudades() {
-        return ciudades;
+
+
+    private String tipo;
+
+    private double calificacion;
+
+    private double precio;
+
+    private  String descripcion;
+
+    private String[] opiniones ;
+
+    private String lugar;
+
+
+
+    //--------------------------------------
+//    @ManyToOne
+//    private List<CiudadEntity> ciudad = new ArrayList<>();
+//
+//    public List<CiudadEntity> getCiudades() {
+//        return ciudades;
+//    }
+    //----------------------------------------
+
+    public String getTipo() {
+        return tipo;
     }
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(double calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String[] getOpiniones() {
+        return opiniones;
+    }
+
+    public void setOpiniones(String[] opiniones) {
+        this.opiniones = opiniones;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
 }

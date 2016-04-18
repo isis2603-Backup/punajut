@@ -35,12 +35,15 @@ public class VisitaCiudadDTO
      */
     private ArrayList<EventoViajeroDTO> eventosViajero;
 
+    public VisitaCiudadDTO(){
+    }
+
     public VisitaCiudadDTO(Date pFechaInicio, Date pFechaFin, CiudadDTO pCiudad)
     {
         fechaInicio = pFechaInicio;
         fechaFin = pFechaFin;
         ciudad = pCiudad;
-        eventosViajero = new ArrayList();
+        eventosViajero = new ArrayList<>();
     }
 
     public Date getFechaInicio() {
