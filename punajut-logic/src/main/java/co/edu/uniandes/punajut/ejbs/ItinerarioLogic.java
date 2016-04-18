@@ -30,12 +30,6 @@ public class ItinerarioLogic implements IItinerarioLogic
     @Inject
     private ItinerarioPersistence persistence;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaInicio;
-
-     @Temporal(TemporalType.DATE)
-    private Date fechaFin;
-
     @Override
     public List<ItinerarioEntity> getItinerarios() {
         logger.info("Inicia proceso de consultar todos los itinerarios");
@@ -48,13 +42,13 @@ public class ItinerarioLogic implements IItinerarioLogic
     @Override
     public ItinerarioEntity getItinerario(Long id) throws BusinessLogicException {
         logger.log(Level.INFO, "Inicia proceso de consultar itinerario con id={0}", id);
-        ItinerarioEntity ciudad = persistence.find(id);
-        if (ciudad == null) {
+        ItinerarioEntity itinerario = persistence.find(id);
+        if (itinerario == null) {
             logger.log(Level.SEVERE, "El itinerario con el id {0} no existe", id);
             throw new BusinessLogicException("El itinerario solicitado no existe");
         }
         logger.log(Level.INFO, "Termina proceso de consultar itinerario con id={0}", id);
-        return ciudad;
+        return itinerario;
     }
 
     @Override

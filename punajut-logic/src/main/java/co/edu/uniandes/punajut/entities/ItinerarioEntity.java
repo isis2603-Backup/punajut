@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.entities;
 
+import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.Date;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
 /**
@@ -25,8 +27,11 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     private ViajeroEntity viajero;
 
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicio;
+    
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;
 
 
