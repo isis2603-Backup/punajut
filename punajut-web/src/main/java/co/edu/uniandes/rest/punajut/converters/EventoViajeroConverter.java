@@ -6,9 +6,7 @@
 package co.edu.uniandes.rest.punajut.converters;
 
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
-import co.edu.uniandes.punajut.entities.ItinerarioEntity;
 import co.edu.uniandes.rest.punajut.dtos.EventoViajeroDTO;
-import co.edu.uniandes.rest.punajut.dtos.ItinerarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +41,11 @@ public abstract class EventoViajeroConverter {
         if (entity != null) {
             EventoViajeroDTO dto = new EventoViajeroDTO();
             dto.setId(entity.getId());
+            dto.setNombre(entity.getNombre());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-            dto.setTipo(entity.getTipo());
-//            dto.setEvento(entity.getEvento());
+            dto.setFechaInicio(entity.getFechaInicio());
+            dto.setFechaFin(entity.getFechaFin());
 
             return dto;
         } else {
@@ -60,7 +59,7 @@ public abstract class EventoViajeroConverter {
      * único atributo necesario para guardar la relación en la base de datos
      *
      * @param dto instancia de EventoViajeroDTO a convertir
-     * @return instancia de ItinerarioEntity con los datos recibidos por parámetro
+     * @return instancia de EventoViajeroEntity con los datos recibidos por parámetro
      * @generated
      */
     public static EventoViajeroEntity refDTO2Entity(EventoViajeroDTO dto) {
@@ -86,9 +85,14 @@ public abstract class EventoViajeroConverter {
         if (entity != null) {
             EventoViajeroDTO dto = new EventoViajeroDTO();
             dto.setId(entity.getId());
+            dto.setNombre(entity.getNombre());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-            dto.setTipo(entity.getTipo());
+            dto.setFechaInicio(entity.getFechaInicio());
+            dto.setFechaFin(entity.getFechaFin());
+
+            dto.setEvento(EventoConverter.refEntity2DTO(entity.getEvento()));
+            dto.setVisitaCiudad(VisitaCiudadConverter.refEntity2DTO(entity.getVisitaCiudad()));
 
             return dto;
         } else {
@@ -108,9 +112,14 @@ public abstract class EventoViajeroConverter {
         if (dto != null) {
             EventoViajeroEntity entity = new EventoViajeroEntity();
             entity.setId(dto.getId());
-            dto.setDescripcion(entity.getDescripcion());
-            dto.setLugar(entity.getLugar());
-            dto.setTipo(entity.getTipo());
+            entity.setNombre(dto.getNombre());
+            entity.setDescripcion(dto.getDescripcion());
+            entity.setLugar(dto.getLugar());
+            entity.setFechaInicio(dto.getFechaInicio());
+            entity.setFechaFin(dto.getFechaFin());
+
+            entity.setEvento(EventoConverter.refDTO2Entity(dto.getEvento()));
+            entity.setVisitaCiudad(VisitaCiudadConverter.refDTO2Entity(dto.getVisitaCiudad()));
 
             return entity;
         } else {
@@ -129,7 +138,6 @@ public abstract class EventoViajeroConverter {
     public static EventoViajeroDTO fullEntity2DTO(EventoViajeroEntity entity) {
         if (entity != null) {
             EventoViajeroDTO dto = basicEntity2DTO(entity);
-//            dto.setReviews(ReviewConverter.listEntity2DTO(entity.getReviews()));
             return dto;
         } else {
             return null;
@@ -147,7 +155,6 @@ public abstract class EventoViajeroConverter {
     public static EventoViajeroEntity fullDTO2Entity(EventoViajeroDTO dto) {
         if (dto != null) {
             EventoViajeroEntity entity = basicDTO2Entity(dto);
-//            entity.setReviews(ReviewConverter.childListDTO2Entity(dto.getReviews(), entity));
             return entity;
         } else {
             return null;

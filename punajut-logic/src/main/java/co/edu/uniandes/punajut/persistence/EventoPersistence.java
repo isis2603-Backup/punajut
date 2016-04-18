@@ -6,6 +6,7 @@
 package co.edu.uniandes.punajut.persistence;
 
 import co.edu.uniandes.punajut.entities.EventoEntity;
+import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,5 +41,9 @@ public class EventoPersistence
         logger.info("Consultando todos los autores");
         Query q = em.createQuery("select u from AuthorEntity u");
         return q.getResultList();
+    }
+
+    EventoViajeroEntity create(EventoViajeroEntity newEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

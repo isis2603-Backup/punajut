@@ -14,15 +14,15 @@ public interface IEventoViajeroLogic
 {
     public List<EventoViajeroEntity> getEventoViajeros();
 
-    public EventoViajeroEntity darEventoViajero(Long idEvento);
+    public EventoViajeroEntity getEventoViajero(Long idEvento);
 
-    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e);
+    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e);
 
 //    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
 
-    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e);
+    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e);
 
-    public void eliminarEventoViajero(Long idEvento);
+    public void deleteEventoViajero(Long idEvento);
 
 }
 

@@ -28,25 +28,16 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     @Inject
     private EventoViajeroPersistence persistence;
 
-//    @Inject
-//    IEventoViajeroLogic eventoViajeroLogic;
-
-    @Temporal(TemporalType.DATE)
-    private Date fechaInicio;
-
-     @Temporal(TemporalType.DATE)
-    private Date fechaFin;
-
     @Override
     public List<EventoViajeroEntity> getEventoViajeros() {
-        logger.info("Inicia proceso de consultar todos los itinerarios");
+        logger.info("Inicia proceso de consultar todos los evento viajero");
         List<EventoViajeroEntity> eventos = persistence.findAll();
-        logger.info("Termina proceso de consultar todos los itinerarios");
+        logger.info("Termina proceso de consultar todos los evento viajero");
         return eventos;
     }
 
     @Override
-    public EventoViajeroEntity darEventoViajero(Long idEvento) {
+    public EventoViajeroEntity getEventoViajero(Long idEvento) {
          logger.log(Level.INFO, "Inicia proceso de consultar el evento viajero con id={0}", idEvento);
         EventoViajeroEntity evento = persistence.find(idEvento);
         if (evento == null) {
@@ -67,7 +58,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
 //    }
 
     @Override
-    public EventoViajeroEntity modificarEventoViajero(EventoViajeroEntity e)
+    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e)
     {
          logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", e.getId());
         EventoViajeroEntity newEntity = persistence.update(e);
@@ -76,7 +67,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     }
 
     @Override
-    public void eliminarEventoViajero(Long idEvento)
+    public void deleteEventoViajero(Long idEvento)
     {
         logger.log(Level.INFO, "Inicia proceso de borrar un evento viajero con id={0}", idEvento);
         persistence.delete(idEvento);
@@ -84,11 +75,11 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     }
 
     @Override
-    public EventoViajeroEntity agregarEventoViajero(EventoViajeroEntity e)
+    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e)
     {
-        logger.info("Inicia proceso de creación de evento personalizado");
+        logger.info("Inicia proceso de agregar un evento viajero");
         persistence.create(e);
-        logger.info("Termina proceso de creación de evento personalizado");
+        logger.info("Termina proceso de agregar un evento viajero");
         return e;
     }
 }

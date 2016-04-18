@@ -6,7 +6,6 @@
 package co.edu.uniandes.punajut.persistence;
 
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
-import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
