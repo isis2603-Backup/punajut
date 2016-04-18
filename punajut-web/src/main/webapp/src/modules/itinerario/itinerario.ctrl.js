@@ -6,7 +6,7 @@
 // Code goes here
 (function (ng) {
 
-  var mod = ng.module("itinerarioModule");
+  var mod = ng.module("itinerarioModule", []);
   // crea el controlador con dependencias a $scope y a itinerarioService
   mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
 
