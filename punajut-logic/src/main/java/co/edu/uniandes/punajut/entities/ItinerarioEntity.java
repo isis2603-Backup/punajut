@@ -9,10 +9,11 @@ import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
-import java.util.Date;  
+import java.util.Date;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
@@ -24,12 +25,13 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
 {
 
     @ManyToOne
+    @PodamExclude
     private ViajeroEntity viajero;
 
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicio;
-    
+
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;

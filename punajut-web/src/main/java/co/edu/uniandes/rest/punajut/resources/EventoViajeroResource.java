@@ -63,7 +63,7 @@ public class EventoViajeroResource
     @Path("{id: \\d+}")
     public EventoViajeroDTO getEventoViajero(@PathParam("id") Long id) throws ItinerarioLogicException
     {
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.darEventoViajero(id));
+        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.getEventoViajero(id));
     }
 
     /**
@@ -75,7 +75,7 @@ public class EventoViajeroResource
     @POST
     public EventoViajeroDTO createEventoViajero(EventoViajeroDTO evento) throws ItinerarioLogicException {
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.agregarEventoViajero(entity));
+        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.createEventoViajero(entity));
     }
 
     /**
@@ -90,9 +90,9 @@ public class EventoViajeroResource
     public EventoViajeroDTO updateEventoViajero(@PathParam("id") Long id, EventoViajeroDTO evento) throws ItinerarioLogicException {
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
         entity.setId(id);
-        EventoViajeroEntity oldEntity = eventoViajeroLogic.darEventoViajero(id);
+        EventoViajeroEntity oldEntity = eventoViajeroLogic.getEventoViajero(id);
         entity.setEvento(oldEntity.getEvento());
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.modificarEventoViajero(entity));
+        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.updateEventoViajero(entity));
     }
 
     /**
@@ -104,6 +104,6 @@ public class EventoViajeroResource
     @Path("{id: \\d+}")
     public void deleteEventoCiudad(@PathParam("id") Long id) throws ItinerarioLogicException
     {
-    	eventoViajeroLogic.eliminarEventoViajero(id);
+    	eventoViajeroLogic.deleteEventoViajero(id);
     }
 }
