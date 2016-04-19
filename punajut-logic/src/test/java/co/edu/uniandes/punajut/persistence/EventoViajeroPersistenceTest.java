@@ -96,7 +96,7 @@ public class EventoViajeroPersistenceTest
         Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getDescripcion(), entity.getDescripcion());
         Assert.assertEquals(newEntity.getLugar(), entity.getLugar());
-        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaInicio());
+        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
         Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
     }
 
@@ -126,7 +126,7 @@ public class EventoViajeroPersistenceTest
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
         Assert.assertEquals(entity.getDescripcion(), newEntity.getDescripcion());
         Assert.assertEquals(entity.getLugar(), newEntity.getLugar());
-        Assert.assertEquals(entity.getFechaFin(), newEntity.getFechaInicio());
+        Assert.assertEquals(entity.getFechaInicio(), newEntity.getFechaInicio());
         Assert.assertEquals(entity.getFechaFin(), newEntity.getFechaFin());
     }
 
