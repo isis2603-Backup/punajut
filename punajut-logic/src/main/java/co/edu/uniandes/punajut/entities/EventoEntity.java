@@ -29,9 +29,9 @@ public class EventoEntity extends BaseEntity implements Serializable
 
     private String tipo;
 
-    private double calificacion;
+    private Double calificacion;
 
-    private double precio;
+    private Double precio;
 
     private  String descripcion;
 
