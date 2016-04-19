@@ -7,8 +7,9 @@
 
 package co.edu.uniandes.punajut.persistence;
 
-import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.ViajeroEntity;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,7 +20,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -38,6 +39,9 @@ public class ViajeroPersistenceTest {
     @PersistenceContext
     private EntityManager em;
 
+    @Inject
+    UserTransaction utx;
+
     private final PodamFactory factory = new PodamFactoryImpl();
 
     public ViajeroPersistenceTest() {
@@ -46,10 +50,51 @@ public class ViajeroPersistenceTest {
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CiudadEntity.class.getPackage())
-                .addPackage(CiudadPersistence.class.getPackage())
+                .addPackage(ViajeroEntity.class.getPackage())
+                .addPackage(ViajeroPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+
+    @Before
+    public void configTest() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    private void clearData() {
+        em.createQuery("delete from ItinerarioEntity").executeUpdate();
+    }
+
+    private List<ViajeroEntity> data = new ArrayList<>();
+
+    private void insertData() {
+        for (int i = 0; i < 3; i++) {
+            ViajeroEntity entity = factory.manufacturePojo(ViajeroEntity.class);
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+
+
+    @Test
+    public void deleteItinerarioTest() {
+        ViajeroEntity entity = data.get(0);
+        viajeroPersistence.delete(entity.getId());
+        ViajeroEntity deleted = em.find(ViajeroEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
 
     @Test
