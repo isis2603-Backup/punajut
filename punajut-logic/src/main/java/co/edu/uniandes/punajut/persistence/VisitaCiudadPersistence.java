@@ -27,7 +27,7 @@ public class VisitaCiudadPersistence {
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
-    public VisitaCiudadEntity create(VisitaCiudadEntity entity) {
+    public  VisitaCiudadEntity create(VisitaCiudadEntity entity) {
         logger.info("Creando una visita ciudad nueva");
         em.persist(entity);
         logger.info("Visita ciudad creado");
