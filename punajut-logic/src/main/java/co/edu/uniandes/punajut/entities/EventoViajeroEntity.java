@@ -28,6 +28,7 @@ public class EventoViajeroEntity extends BaseEntity implements Serializable
     private String descripcion;
     private String lugar;
 
+    
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicio;

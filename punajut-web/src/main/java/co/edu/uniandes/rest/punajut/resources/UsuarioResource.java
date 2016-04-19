@@ -90,9 +90,9 @@ public class UsuarioResource {
 
     @PUT
     @Path("{nickname: \\d+}")
-    public UsuarioDTO updateCity(ViajeroEntity user) throws UsuarioLogicException {
-        //return usuarioLogic.updateViajero(user);
+    public UsuarioDTO updateCity(UsuarioDTO user) throws UsuarioLogicException {
         return null;
+
     }
 
     /**
