@@ -6,17 +6,16 @@
 package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
+import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -29,6 +28,9 @@ public class ItinerarioLogic implements IItinerarioLogic
 
     @Inject
     private ItinerarioPersistence persistence;
+
+    @Inject
+    private IVisitaCiudadLogic visitaCiudad;
 
     @Override
     public List<ItinerarioEntity> getItinerarios() {
