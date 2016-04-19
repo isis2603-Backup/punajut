@@ -41,7 +41,7 @@ public class ItinerarioPersistenceTest {
     private final PodamFactory factory = new PodamFactoryImpl();
     public ItinerarioPersistenceTest() {
     }
-    
+
     @Deployment
     public static JavaArchive createDeployment(){
         return ShrinkWrap.create(JavaArchive.class)
@@ -50,7 +50,7 @@ public class ItinerarioPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+
     @Before
     public void configTest() {
         try {
@@ -59,6 +59,7 @@ public class ItinerarioPersistenceTest {
             clearData();
             insertData();
             utx.commit();
+            System.out.println("le commit");
         } catch (Exception e) {
             e.printStackTrace();
             try {
@@ -72,7 +73,7 @@ public class ItinerarioPersistenceTest {
     private void clearData() {
         em.createQuery("delete from ItinerarioEntity").executeUpdate();
     }
-    
+
     private List<ItinerarioEntity> data = new ArrayList<>();
 
     private void insertData() {
@@ -85,7 +86,9 @@ public class ItinerarioPersistenceTest {
 
 
     @Test
-    public void createCiudadTest() {
+    public void createItinerarioTest() {
+                    System.out.println("le creacion");
+
         ItinerarioEntity newEntity = factory.manufacturePojo(ItinerarioEntity.class);
 
         ItinerarioEntity result = itinerarioPersistence.create(newEntity);
@@ -97,7 +100,7 @@ public class ItinerarioPersistenceTest {
         Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
         Assert.assertEquals(newEntity.getViajero(), entity.getViajero());
     }
-    
+
     @Test
     public void getItinerariosTest() {
         List<ItinerarioEntity> list = itinerarioPersistence.findAll();
@@ -112,8 +115,8 @@ public class ItinerarioPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
-    
+
+
     @Test
     public void getItinerarioTest() {
         ItinerarioEntity entity = data.get(0);
@@ -121,7 +124,7 @@ public class ItinerarioPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
-    
+
     @Test
     public void updateItinerarioTest() {
         ItinerarioEntity entity = data.get(0);
@@ -135,7 +138,7 @@ public class ItinerarioPersistenceTest {
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
-    
+
     @Test
     public void deleteItinerarioTest() {
         ItinerarioEntity entity = data.get(0);
@@ -143,5 +146,5 @@ public class ItinerarioPersistenceTest {
         ItinerarioEntity deleted = em.find(ItinerarioEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    
+
 }
