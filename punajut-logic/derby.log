@@ -1,11 +1,16 @@
 ----------------------------------------------------------------
-Tue Apr 19 07:53:40 COT 2016:
- Iniciando instancia a816c00e-0154-2e95-5b13-000007c81918 de Derby, versión The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
-en el directorio de base de datos C:\Users\estudiante\AppData\Local\Temp\gfembed5123389339208121844tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@75b84c92
+Tue Apr 19 06:14:30 COT 2016:
+ Iniciando instancia a816c00e-0154-2e3a-9049-000007ac6170 de Derby, versiï¿½n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\estudiante\AppData\Local\Temp\gfembed6101640461462674797tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@75b84c92
+Cargado desde file:/C:/Users/estudiante/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1.1/glassfish-embedded-all-4.1.1.jar
+----------------------------------------------------------------
+Tue Apr 19 05:56:58 COT 2016:
+ Iniciando instancia a816c00e-0154-2e2a-820f-0000081687c8 de Derby, versiï¿½n The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): 
+en el directorio de base de datos C:\Users\estudiante\AppData\Local\Temp\gfembed5148868972151849927tmp\lib\databases\embedded_default con el cargador de clases sun.misc.Launcher$AppClassLoader@75b84c92
 Cargado desde file:/C:/Users/estudiante/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1.1/glassfish-embedded-all-4.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_66-b18
-user.dir=C:\Users\estudiante\Documents\ciclo3\punajut\punajut-logic
+user.dir=C:\Users\estudiante\Documents\Desarrollo de Software en equipo\PROYECTO\punajut\punajut-logic
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
