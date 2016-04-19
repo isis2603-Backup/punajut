@@ -97,6 +97,15 @@ public class ViajeroPersistenceTest {
         Assert.assertNull(deleted);
     }
 
+
+    @Test
+    public void getItinerarioTest() {
+        ViajeroEntity entity = data.get(0);
+        ViajeroEntity newEntity = viajeroPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+
     @Test
     public void createViajeroTest() {
         ViajeroEntity newEntity = factory.manufacturePojo(ViajeroEntity.class);
