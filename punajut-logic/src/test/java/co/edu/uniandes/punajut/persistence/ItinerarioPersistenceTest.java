@@ -59,7 +59,6 @@ public class ItinerarioPersistenceTest {
             clearData();
             insertData();
             utx.commit();
-            System.out.println("le commit");
         } catch (Exception e) {
             e.printStackTrace();
             try {
