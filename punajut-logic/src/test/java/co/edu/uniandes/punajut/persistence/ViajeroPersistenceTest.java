@@ -119,4 +119,5 @@ public class ViajeroPersistenceTest {
         Assert.assertEquals(newEntity.getEmail(), entity.getEmail());
         Assert.assertEquals(newEntity.getExtraInfo(), entity.getExtraInfo());
     }
+
 }

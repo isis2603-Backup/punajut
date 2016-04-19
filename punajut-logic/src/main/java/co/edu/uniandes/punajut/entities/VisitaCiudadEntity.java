@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -32,9 +33,11 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
     private Date fechaFin;
 
     @OneToOne
+    @PodamExclude
     private CiudadEntity ciudad;
 
     @OneToMany(mappedBy="visitaCiudad", cascade = CascadeType.ALL, orphanRemoval=true)
+    @PodamExclude
     private List<EventoViajeroEntity> eventosViajero = new ArrayList<>();
 
     public List<EventoViajeroEntity> getEventosViajero() {
