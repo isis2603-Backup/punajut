@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -41,14 +42,13 @@ public class EventoEntity extends BaseEntity implements Serializable
 
 
 
-    //--------------------------------------
-//    @ManyToOne
-//    private List<CiudadEntity> ciudad = new ArrayList<>();
-//
-//    public List<CiudadEntity> getCiudades() {
-//        return ciudades;
-//    }
-    //----------------------------------------
+    @ManyToOne
+    @PodamExclude
+    private CiudadEntity ciudad;
+
+    public CiudadEntity getCiudad() {
+        return ciudad;
+    }
 
     public String getTipo() {
         return tipo;
