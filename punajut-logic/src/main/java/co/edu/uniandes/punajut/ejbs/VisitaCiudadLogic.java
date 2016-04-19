@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 
+import co.edu.uniandes.punajut.api.ICiudadLogic;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ejb.Stateless;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -30,7 +32,7 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     private VisitaCiudadPersistence persistence;
 
     @Inject
-    CiudadLogic ciudadLogic;
+    ICiudadLogic ciudadLogic;
 
     @Inject
     private EventoViajeroPersistence eventoPersistence;
