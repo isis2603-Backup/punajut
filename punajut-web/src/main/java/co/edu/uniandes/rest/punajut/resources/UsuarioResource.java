@@ -45,9 +45,10 @@ public class UsuarioResource {
      * @throws co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException
      */
     @GET
-    public List<ViajeroEntity> getUsuarios() throws UsuarioLogicException {
-        //return usuarioLogic.getViajero();
-        return null;
+    public List<UsuarioDTO> getUsuarios() throws UsuarioLogicException {
+        logger.info("Se ejecuta método getViajero");
+        List<ViajeroEntity> viajeros = usuarioLogic.getViajero();
+        return UsuarioConverter.listEntity2DTO(viajeros);
     }
 
     /**
@@ -102,8 +103,9 @@ public class UsuarioResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteUsuario(@PathParam("id") long nickname) throws UsuarioLogicException {
-        //usuarioLogic.deleteViajero(nickname);
+    public void deleteUsuario(@PathParam("id") long id) throws UsuarioLogicException {
+        logger.log(Level.INFO, "Se ejecuta método deleteViajero con id={0}", id);
+        usuarioLogic.deleteViajero(id);
     }
 
 }

@@ -6,9 +6,7 @@
 package co.edu.uniandes.rest.punajut.converters;
 
 import co.edu.uniandes.punajut.entities.ViajeroEntity;
-import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
-import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -161,5 +159,43 @@ public abstract class UsuarioConverter {
             return null;
         }
     }
+
+       /**
+     * Convierte una colección de instancias de EventoViajeroEntity a EventoViajeroDTO. Para cada
+     * instancia de EventoViajeroEntity en la lista, invoca basicEntity2DTO y añade el
+     * nuevo EventoViajeroDTO a una nueva lista
+     *
+     * @param entities Colección de entidades a convertir
+     * @return Collección de instancias de EventoViajeroDTO
+     * @generated
+     */
+    public static List<UsuarioDTO> listEntity2DTO(List<ViajeroEntity> entities) {
+        List<UsuarioDTO> dtos = new ArrayList<>();
+        if (entities != null) {
+            for (ViajeroEntity entity : entities) {
+                dtos.add(basicEntity2DTO(entity));
+            }
+        }
+        return dtos;
+    }
+
+        /**
+     * Convierte una colección de instancias de EventoViajeroDTO a instancias de
+     * EventoViajeroEntity Para cada instancia se invoca el método basicDTO2Entity
+     *
+     * @param dtos entities Colección de EventoViajeroDTO a convertir
+     * @return Colección de instancias de EventoViajeroEntity
+     * @generated
+     */
+    public static List<ViajeroEntity> listDTO2Entity(List<UsuarioDTO> dtos) {
+        List<ViajeroEntity> entities = new ArrayList<>();
+        if (dtos != null) {
+            for (UsuarioDTO dto : dtos) {
+                entities.add(basicDTO2Entity(dto));
+            }
+        }
+        return entities;
+    }
+
 
 }
