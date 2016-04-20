@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.api;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import java.util.List;
 
 /**
@@ -16,11 +17,9 @@ public interface IEventoViajeroLogic
 
     public EventoViajeroEntity getEventoViajero(Long idEvento);
 
-    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e);
+    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e) throws BusinessLogicException;
 
-//    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e);
-
-    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e);
+    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e) throws BusinessLogicException;
 
     public void deleteEventoViajero(Long idEvento);
 

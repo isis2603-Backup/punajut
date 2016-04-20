@@ -8,9 +8,11 @@ import co.edu.uniandes.rest.punajut.dtos.EventoViajeroDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.converters.EventoViajeroConverter;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,7 +24,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 
 /**
@@ -70,12 +74,24 @@ public class EventoViajeroResource
      * Agrega un evento a la lista del viajero
      * @param evento evento a agregar
      * @return datos del evento a agregar
-     * @throws ItinerarioLogicException cuando ya existe un evento con el id suministrado
      */
     @POST
-    public EventoViajeroDTO createEventoViajero(EventoViajeroDTO evento) throws ItinerarioLogicException {
+    public EventoViajeroDTO createEventoViajero(EventoViajeroDTO evento)
+    {
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.createEventoViajero(entity));
+        EventoViajeroEntity newEntity;
+        try
+        {
+            newEntity = eventoViajeroLogic.createEventoViajero(entity);
+        }
+
+        catch (BusinessLogicException ex)
+        {
+            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
+        }
+
+        return EventoViajeroConverter.fullEntity2DTO(newEntity);
     }
 
     /**
@@ -88,11 +104,22 @@ public class EventoViajeroResource
     @PUT
     @Path("{id: \\d+}")
     public EventoViajeroDTO updateEventoViajero(@PathParam("id") Long id, EventoViajeroDTO evento) throws ItinerarioLogicException {
+        logger.log(Level.INFO, "Se ejecuta método updateEventoViajero con id={0}", id);
+
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
         entity.setId(id);
         EventoViajeroEntity oldEntity = eventoViajeroLogic.getEventoViajero(id);
         entity.setEvento(oldEntity.getEvento());
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.updateEventoViajero(entity));
+        try
+        {
+            return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.updateEventoViajero(entity));
+        }
+
+        catch (BusinessLogicException ex)
+        {
+            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
+        }
     }
 
     /**
@@ -102,7 +129,7 @@ public class EventoViajeroResource
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteEventoCiudad(@PathParam("id") Long id) throws ItinerarioLogicException
+    public void deleteEventoViajero(@PathParam("id") Long id) throws ItinerarioLogicException
     {
     	eventoViajeroLogic.deleteEventoViajero(id);
     }
