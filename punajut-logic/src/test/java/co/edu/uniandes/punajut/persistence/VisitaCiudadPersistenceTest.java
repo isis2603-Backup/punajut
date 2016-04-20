@@ -55,17 +55,6 @@ public class VisitaCiudadPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
-    @Test
-    public void createVisitaTest() {
-        VisitaCiudadEntity newEntity = factory.manufacturePojo(VisitaCiudadEntity.class);
-
-        VisitaCiudadEntity result = visitaPersistence.create(newEntity);
-
-        Assert.assertNotNull(result);
-        VisitaCiudadEntity entity = em.find(VisitaCiudadEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        }
-
     @Before
     public void configTest() {
         try {
@@ -85,7 +74,7 @@ public class VisitaCiudadPersistenceTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from CiudadEntity").executeUpdate();
+        em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
     }
 
     private List<VisitaCiudadEntity> data = new ArrayList<>();
@@ -96,6 +85,63 @@ public class VisitaCiudadPersistenceTest {
             em.persist(entity);
             data.add(entity);
         }
+    }
+
+    @Test
+    public void createVisitaTest() {
+        VisitaCiudadEntity newEntity = factory.manufacturePojo(VisitaCiudadEntity.class);
+
+        VisitaCiudadEntity result = visitaPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        VisitaCiudadEntity entity = em.find(VisitaCiudadEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        }
+
+    @Test
+    public void getVisitaCiudadesTest() {
+        List<VisitaCiudadEntity> list = visitaPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (VisitaCiudadEntity ent : list) {
+            boolean found = false;
+            for (VisitaCiudadEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+
+    @Test
+    public void getVisitaCiudadTest() {
+        VisitaCiudadEntity entity = data.get(0);
+        VisitaCiudadEntity newEntity = visitaPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+
+    @Test
+    public void updateVisitaCiudadTest() {
+        VisitaCiudadEntity entity = data.get(0);
+        VisitaCiudadEntity newEntity = factory.manufacturePojo(VisitaCiudadEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        visitaPersistence.update(newEntity);
+
+        VisitaCiudadEntity resp = em.find(VisitaCiudadEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+    }
+
+    @Test
+    public void deleteVisitaCiudadTest() {
+        VisitaCiudadEntity entity = data.get(0);
+        visitaPersistence.delete(entity.getId());
+        VisitaCiudadEntity deleted = em.find(VisitaCiudadEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
 
 }

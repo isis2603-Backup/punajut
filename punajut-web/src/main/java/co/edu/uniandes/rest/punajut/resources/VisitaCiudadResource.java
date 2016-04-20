@@ -42,9 +42,10 @@ public class VisitaCiudadResource
 	 * @throws VisitaCiudadLogicException excepción retornada por la lógica
 	 */
     @GET
+    @Path("Viajero/{idViajero: \\d+}/Itinerarios/{idItinerario: \\d+}/Visitas/")
     public List<VisitaCiudadDTO> getVisitasCiudades() throws VisitaCiudadLogicException
     {
-        return null; //cityLogic.getVisitasCiudades();
+        return VisitaCiudadConverter.listEntity2DTO(visitaLogic.getVisitasCiudades());
     }
 
     /**
@@ -54,7 +55,7 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando la visita ciudad no existe
      */
     @GET
-    @Path("{id: \\d+}")
+    @Path("Viajero/{idViajero: \\d+}/Itinerarios/{idItinerario: \\d+}/Visitas/{idVisita: \\d+}")
     public VisitaCiudadDTO getVisitaCiudad(@PathParam("id") Long id) throws VisitaCiudadLogicException
     {
         VisitaCiudadDTO visita = null;
@@ -98,7 +99,7 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando no existe una visita ciudad con el id suministrado
      */
     @DELETE
-    @Path("{id: \\d+}")
+    @Path("Viajero/{idViajero: \\d+}/Itinerarios/{idItinerario: \\d+}/Visitas/{idVisita: \\d+}")
     public void deleteVisitaCiudad(@PathParam("id") Long id) throws VisitaCiudadLogicException {
     	visitaLogic.deleteVisitaCiudad(id);
     }

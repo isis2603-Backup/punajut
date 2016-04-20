@@ -9,7 +9,6 @@
                 clima: '' /* Tipo String */,
                 longitud: '' /* Tipo Long */,
                 latitud: '' /* Tipo Long */,
-                eventos: [] /* Coleccion de eventos */
             };
 
             $scope.records = [];
@@ -65,12 +64,14 @@
             showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de atención", "warning");
 
             this.createRecord = function () {
+                $scope.$broadcast("pre-create", $scope.currentRecord);
                 this.editMode = true;
                 $scope.currentRecord = {};
                 $scope.$broadcast("post-create", $scope.currentRecord);
             };
 
             this.editRecord = function (record) {
+                $scope.$broadcast("pre-edit", $scope.currentRecord);
                 return svc.fetchRecord(record.id).then(function (response) {
                     $scope.currentRecord = response.data;
                     self.editMode = true;

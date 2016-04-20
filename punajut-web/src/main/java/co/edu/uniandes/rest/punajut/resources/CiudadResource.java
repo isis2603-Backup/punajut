@@ -24,6 +24,7 @@ import javax.ws.rs.core.Response;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.api.ICiudadLogic;
 import co.edu.uniandes.punajut.entities.CiudadEntity;
+import javax.ws.rs.PUT;
 
 
 /**
@@ -85,28 +86,28 @@ public class CiudadResource {
         return CiudadConverter.fullEntity2DTO(ciudadLogic.createCiudad(entity));
     }
 
-//    /**
-//     * Actualiza la información de un objeto de Ciduad.
-//     *
-//     * @param id Identificador del objeto de Ciudad a modificar
-//     * @param dto Instancia de CiudadDTO (representación full) con los nuevos datos.
-//     * @return Instancia de CiudadDTO (representación full) con los datos actualizados.
-//     * @generated
-//     */
-//    @PUT
-//    @Path("{id: \\d+}")
-//    public CiudadDTO updateCiudad(@PathParam("id") Long id, CiudadDTO dto) {
-//        CiudadEntity entity = CiudadConverter.fullDTO2Entity(dto);
-//        entity.setId(id);
-//        try {
-//            CiudadEntity oldEntity = ciudadLogic.getCiudad(id);
-//            entity.setEventos(oldEntity.getEventos());
-//        } catch (BusinessLogicException ex) {
-//            logger.log(Level.SEVERE, "La ciudad no existe", ex);
-//            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.NOT_FOUND);
-//        }
-//        return CiudadConverter.fullEntity2DTO(ciudadLogic.updateCiudad(entity));
-//    }
+    /**
+     * Actualiza la información de un objeto de Ciduad.
+     *
+     * @param id Identificador del objeto de Ciudad a modificar
+     * @param dto Instancia de CiudadDTO (representación full) con los nuevos datos.
+     * @return Instancia de CiudadDTO (representación full) con los datos actualizados.
+     * @generated
+     */
+    @PUT
+    @Path("{id: \\d+}")
+    public CiudadDTO updateCiudad(@PathParam("id") Long id, CiudadDTO dto) {
+        CiudadEntity entity = CiudadConverter.fullDTO2Entity(dto);
+        entity.setId(id);
+        try {
+            CiudadEntity oldEntity = ciudadLogic.getCiudad(id);
+            entity.setEventos(oldEntity.getEventos());
+        } catch (BusinessLogicException ex) {
+            logger.log(Level.SEVERE, "La ciudad no existe", ex);
+            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.NOT_FOUND);
+        }
+        return CiudadConverter.fullEntity2DTO(ciudadLogic.updateCiudad(entity));
+    }
 
     /**
      * Elimina el objeto de una Ciudad de la base de datos
