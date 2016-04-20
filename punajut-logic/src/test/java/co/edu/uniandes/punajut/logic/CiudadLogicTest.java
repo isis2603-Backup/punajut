@@ -142,14 +142,6 @@ public class CiudadLogicTest {
     }
 
     @Test
-    public void deleteCiudadTest() {
-        CiudadEntity entity = data.get(1);
-        ciudadLogic.deleteCiudad(entity.getId());
-        CiudadEntity expected = em.find(CiudadEntity.class, entity.getId());
-        Assert.assertNull(expected);
-    }
-
-    @Test
     public void updateCiudadTest() {
         CiudadEntity entity = data.get(0);
         CiudadEntity expected = factory.manufacturePojo(CiudadEntity.class);
@@ -163,5 +155,13 @@ public class CiudadLogicTest {
         Assert.assertNotNull(expected);
         Assert.assertEquals(expected.getId(), resp.getId());
         Assert.assertEquals(expected.getName(), resp.getName());
+    }
+
+    @Test
+    public void deleteCiudadTest() {
+        CiudadEntity entity = data.get(1);
+        ciudadLogic.deleteCiudad(entity.getId());
+        CiudadEntity expected = em.find(CiudadEntity.class, entity.getId());
+        Assert.assertNull(expected);
     }
 }
