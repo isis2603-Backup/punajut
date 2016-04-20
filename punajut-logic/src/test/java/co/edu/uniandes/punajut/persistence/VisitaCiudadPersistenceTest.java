@@ -96,6 +96,9 @@ public class VisitaCiudadPersistenceTest {
         Assert.assertNotNull(result);
         VisitaCiudadEntity entity = em.find(VisitaCiudadEntity.class, result.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
+        Assert.assertEquals(newEntity.getCiudad(), entity.getCiudad());
         }
 
     @Test
@@ -120,6 +123,9 @@ public class VisitaCiudadPersistenceTest {
         VisitaCiudadEntity newEntity = visitaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(newEntity.getFechaFin(), entity.getFechaFin());
+        Assert.assertEquals(newEntity.getFechaInicio(), entity.getFechaInicio());
+        Assert.assertEquals(newEntity.getCiudad(), entity.getCiudad());
     }
 
     @Test
@@ -134,6 +140,9 @@ public class VisitaCiudadPersistenceTest {
         VisitaCiudadEntity resp = em.find(VisitaCiudadEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getFechaFin(), resp.getFechaFin());
+        Assert.assertEquals(newEntity.getFechaInicio(), resp.getFechaInicio());
+        Assert.assertEquals(newEntity.getCiudad(), resp.getCiudad());
     }
 
     @Test
