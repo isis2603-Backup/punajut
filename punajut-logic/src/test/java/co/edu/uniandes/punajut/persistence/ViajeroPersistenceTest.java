@@ -75,7 +75,7 @@ public class ViajeroPersistenceTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from ItinerarioEntity").executeUpdate();
+        em.createQuery("delete from ViajeroEntity").executeUpdate();
     }
 
     private List<ViajeroEntity> data = new ArrayList<>();
@@ -90,7 +90,7 @@ public class ViajeroPersistenceTest {
 
 
     @Test
-    public void deleteItinerarioTest() {
+    public void deleteViajeroTest() {
         ViajeroEntity entity = data.get(0);
         viajeroPersistence.delete(entity.getId());
         ViajeroEntity deleted = em.find(ViajeroEntity.class, entity.getId());
@@ -99,11 +99,40 @@ public class ViajeroPersistenceTest {
 
 
     @Test
-    public void getItinerarioTest() {
+    public void getViajeroTest() {
         ViajeroEntity entity = data.get(0);
         ViajeroEntity newEntity = viajeroPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+
+    @Test
+    public void getViajerosTest() {
+        List<ViajeroEntity> list = viajeroPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (ViajeroEntity ent : list) {
+            boolean found = false;
+            for (ViajeroEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    @Test
+    public void updateViajeroTest() {
+        ViajeroEntity entity = data.get(0);
+        ViajeroEntity newEntity = factory.manufacturePojo(ViajeroEntity.class);
+
+        newEntity.setId(entity.getId());
+
+        viajeroPersistence.update(newEntity);
+
+        ViajeroEntity resp = em.find(ViajeroEntity.class, entity.getId());
+
+        Assert.assertEquals(newEntity.getName(), resp.getName());
     }
 
     @Test

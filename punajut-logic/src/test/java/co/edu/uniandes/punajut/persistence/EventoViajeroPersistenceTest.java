@@ -139,6 +139,8 @@ public class EventoViajeroPersistenceTest
         Assert.assertNull(deleted);
     }
 
+
+    @Test
     public void updateEventoViajeroTest()
     {
         EventoViajeroEntity entity = data.get(0);
@@ -152,7 +154,7 @@ public class EventoViajeroPersistenceTest
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
         Assert.assertEquals(newEntity.getDescripcion(), resp.getDescripcion());
         Assert.assertEquals(newEntity.getLugar(), resp.getLugar());
-        Assert.assertEquals(newEntity.getFechaFin(), resp.getFechaInicio());
+        Assert.assertEquals(newEntity.getFechaInicio(), resp.getFechaInicio());
         Assert.assertEquals(newEntity.getFechaFin(), resp.getFechaFin());
     }
 }
