@@ -8,9 +8,12 @@ package co.edu.uniandes.punajut.logic;
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
 import co.edu.uniandes.punajut.ejbs.ItinerarioLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -105,6 +108,61 @@ public class ItinerarioLogicTest {
             Assert.assertEquals(entity.getFechaFin(), resp.getFechaFin());
 
         }
+        @Test
+    public void getItinerariosTest() {
+        List<ItinerarioEntity> resultList = itinerarioLogic.getItinerarios();
+        List<ItinerarioEntity> expectedList = em.createQuery("SELECT u from ItinerarioEntity u").getResultList();
+        Assert.assertEquals(expectedList.size(), resultList.size());
+        for (ItinerarioEntity expected : expectedList) {
+            boolean found = false;
+            for (ItinerarioEntity result : resultList) {
+                if (result.getId().equals(expected.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+
+    @Test
+    public void getItinerarioTest() {
+        try {
+            ItinerarioEntity result = itinerarioLogic.getItinerario(data.get(0).getId());
+
+            ItinerarioEntity expected = em.find(ItinerarioEntity.class, data.get(0).getId());
+
+            Assert.assertNotNull(expected);
+            Assert.assertNotNull(result);
+            Assert.assertEquals(expected.getId(), result.getId());
+            Assert.assertEquals(expected.getName(), result.getName());
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Test
+    public void updateItinerarioTest() {
+        ItinerarioEntity entity = data.get(0);
+        ItinerarioEntity expected = factory.manufacturePojo(ItinerarioEntity.class);
+
+        expected.setId(entity.getId());
+
+        itinerarioLogic.updateItinerario(expected);
+
+        ItinerarioEntity resp = em.find(ItinerarioEntity.class, entity.getId());
+
+        Assert.assertNotNull(expected);
+        Assert.assertEquals(expected.getId(), resp.getId());
+        Assert.assertEquals(expected.getName(), resp.getName());
+    }
+
+    @Test
+    public void deleteCiudadTest() {
+        ItinerarioEntity entity = data.get(1);
+        itinerarioLogic.deleteItinerario(entity.getId());
+        ItinerarioEntity expected = em.find(ItinerarioEntity.class, entity.getId());
+        Assert.assertNull(expected);
+    }
 
     }
 
