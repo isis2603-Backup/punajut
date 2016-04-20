@@ -143,7 +143,7 @@ public class CiudadLogicMock {
 
             	// modifica la ciudad
             	ciudad.setId(ciudadModificada.getId());
-                ciudad.setNombreCiudad(ciudadModificada.getNombreCiudad());
+                ciudad.setName(ciudadModificada.getName());
 
                 // retorna la ciudad modificada
             	logger.info("Modificando ciudad " + ciudad);
