@@ -15,11 +15,16 @@ import java.util.List;
  * @author mi.arevalo10
  */
 public interface IEventoLogic {
-    public List<EventoEntity> getEventos();
 
-        public CiudadEntity addEvento(Long ciudadId, Long eventoId) throws BusinessLogicException;
+       public List<EventoEntity> getEventos();
 
-        public void removeEvento(Long ciudadId, Long eventoId);
+        public EventoEntity getEvento(Long id) throws BusinessLogicException;
+
+        public EventoEntity createEvento(EventoEntity entity);
+
+         public EventoEntity updateEvento(EventoEntity entity);
+
+         public void deleteEvento(Long id);
 
 //        public CiudadEntity addCiudad(Long ciudadId, Long eventoId) throws BusinessLogicException;
 //

@@ -40,12 +40,19 @@ public class EventoPersistence
     }
 
      public List<EventoEntity> findAll() {
-        logger.info("Consultando todos los autores");
-        Query q = em.createQuery("select u from AuthorEntity u");
+        logger.info("Consultando todos los eventos");
+        Query q = em.createQuery("select u from EventoEntity u");
         return q.getResultList();
     }
 
-    EventoViajeroEntity create(EventoViajeroEntity newEntity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     public EventoEntity update(EventoEntity entity) {
+        logger.log(Level.INFO, "Actualizando evento con id={0}", entity.getId());
+        return em.merge(entity);
+    }
+
+    public void delete(Long id) {
+        logger.log(Level.INFO, "Borrando evento con id={0}", id);
+        EventoEntity entity = em.find(EventoEntity.class, id);
+        em.remove(entity);
     }
 }
