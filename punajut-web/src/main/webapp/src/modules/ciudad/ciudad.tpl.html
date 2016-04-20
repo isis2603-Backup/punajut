@@ -77,17 +77,6 @@
         </div>
     </div><br><br>
 
-    <div class="configuracionEvento">
-        <p>Agregue un evento:</p>
-        <input type="text" ng-model="nombreEvento" placeholder="Nombre evento">
-        <input type="text" ng-model="tipoEvento" placeholder="Tipo evento">
-        <input type="text" ng-model="precioEvento" placeholder="Precio evento">
-        <input type="text" ng-model="descripcionEvento" placeholder="Descripcion evento">
-        <input type="text" ng-model="lugarEvento" placeholder="Lugar evento">
-
-        <button type="button" onclick="alert('funciona.')">Crear evento</button>
-    </div>
-
     <div class="collapse navbar-collapse" id="usuario-navbar">
         <button type="button" id="create-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span>Crear ciudad</button>
         <button id="refresh-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
