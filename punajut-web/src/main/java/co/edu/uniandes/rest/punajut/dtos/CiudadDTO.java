@@ -25,7 +25,7 @@ public class CiudadDTO {
     /**
      * Nombre de la ciudad
      */
-    private String nombre;
+    private String name;
 
     /**
      * Descripcion sobre la ciudad
@@ -47,16 +47,6 @@ public class CiudadDTO {
      */
     private Long latitud;
 
-    /**
-     * Coleccion de eventos de la ciudad
-     */
-    private ArrayList<EventoDTO> eventos;
-
-    /**
-     * Coleccion de imagenes
-     */
-    private ArrayList imagenes;
-
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------
@@ -70,22 +60,20 @@ public class CiudadDTO {
      * Constructor con parámetros.
      *
      * @param id identificador de la ciudad
-     * @param nombre nombre de la ciudad
+     * @param name nombre de la ciudad
      * @param descripcion descripcion sobre la ciudad
      * @param clima descripcion sobre el clima de la ciudad
      * @param longitud longitud de la ciudad
      * @param latitud latitud de la ciudad
      */
-    public CiudadDTO(Long id, String nombre, String descripcion, String clima, Long longitud, Long latitud) {
+    public CiudadDTO(Long id, String name, String descripcion, String clima, Long longitud, Long latitud) {
         super();
         this.id = id;
-        this.nombre = nombre;
+        this.name = name;
         this.descripcion = descripcion;
         this.clima = clima;
         this.longitud = longitud;
         this.latitud = latitud;
-
-        imagenes=new ArrayList();
     }
 
     //-----------------------------------------------------------
@@ -109,16 +97,16 @@ public class CiudadDTO {
     /**
      * @return Retorna el nombre de la ciudad
      */
-    public String getNombreCiudad() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     /**
      * Cambia el nombre de la ciudad por el que llega como parametro
-     * @param nombre Nombre ciudad
+     * @param name Nombre ciudad
      */
-    public void setNombreCiudad(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -131,10 +119,10 @@ public class CiudadDTO {
 
     /**
      * Cambia la descripcion de la ciudad por lo que llega como parametro
-     * @param nombre Nombre ciudad
+     * @param descripcion Nombre ciudad
      */
     public void setDescripcion(String descripcion) {
-        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     /**
@@ -186,40 +174,10 @@ public class CiudadDTO {
     }
 
     /**
-     * Retorna los eventos de la ciudad
-     * @return eventos
-     */
-    public ArrayList getEventos()
-    {
-        return eventos;
-    }
-
-    public void addEvento(EventoDTO evento)
-    {
-        eventos.add(evento);
-    }
-
-    public void deleteEvento(Long id)
-    {
-        boolean encontrado=false;
-
-        for(int i=0;i<eventos.size();i++)
-        {
-            EventoDTO actual=(EventoDTO)eventos.get(i);
-
-            if(actual.getId()==id)
-            {
-                encontrado=true;
-                eventos.remove(i);
-            }
-        }
-    }
-
-    /**
      * Convierte el objeto a una cadena
      */
     @Override
     public String toString() {
-        return "{ id : " + getId() + ", nombre : \"" + getNombreCiudad() + ", descripcion : \"" + getDescripcion()+ ", clima : \"" + getClima()+ ", longitud : \"" + getLongitud()+ ", latitud : \"" + getLatitud()+ ", eventos : \"" + getEventos() + "\" }";
+        return "{ id : " + getId() + ", nombre : \"" + getName() + ", descripcion : \"" + getDescripcion()+ ", clima : \"" + getClima()+ ", longitud : \"" + getLongitud()+ ", latitud : \"" + getLatitud()+ "\" }";
     }
 }

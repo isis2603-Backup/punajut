@@ -27,7 +27,7 @@ public abstract class CiudadConverter {
         if (entity != null) {
             CiudadDTO dto = new CiudadDTO();
             dto.setId(entity.getId());
-            dto.setNombreCiudad(entity.getName());
+            dto.setName(entity.getName());
             dto.setDescripcion(entity.getDescripcion());
             dto.setClima(entity.getClima());
             dto.setLongitud(entity.getLongitud());
@@ -71,7 +71,7 @@ public abstract class CiudadConverter {
         if (entity != null) {
             CiudadDTO dto = new CiudadDTO();
             dto.setId(entity.getId());
-            dto.setNombreCiudad(entity.getName());
+            dto.setName(entity.getName());
             dto.setDescripcion(entity.getDescripcion());
             dto.setClima(entity.getClima());
             dto.setLongitud(entity.getLongitud());
@@ -96,7 +96,7 @@ public abstract class CiudadConverter {
         if (dto != null) {
             CiudadEntity entity = new CiudadEntity();
             entity.setId(dto.getId());
-            entity.setName(dto.getNombreCiudad());
+            entity.setName(dto.getName());
             entity.setDescripcion(dto.getDescripcion());
             entity.setClima(dto.getClima());
             entity.setLongitud(dto.getLongitud());
