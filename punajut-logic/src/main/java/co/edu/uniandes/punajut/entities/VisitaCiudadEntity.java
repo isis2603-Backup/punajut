@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.entities;
 
+import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 
 /**
@@ -27,9 +29,11 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class VisitaCiudadEntity extends BaseEntity implements Serializable{
 
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaInicio;
 
     @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;
 
     @OneToOne
