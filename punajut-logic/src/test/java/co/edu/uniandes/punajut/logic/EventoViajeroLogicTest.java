@@ -95,16 +95,12 @@ public class EventoViajeroLogicTest
             System.out.println("Datos eventos: "+eventos.getLugar());
             em.persist(eventos);
             eventosData.add(eventos);
-        }
 
-        for (int i = 0; i < 3; i++) {
             VisitaCiudadEntity visita = factory.manufacturePojo(VisitaCiudadEntity.class);
             System.out.println("Datos visita ciudad: " + visita.getFechaInicio());
             em.persist(visita);
             visitasCiudadData.add(visita);
-        }
 
-        for (int i = 0; i < 3; i++) {
             EventoViajeroEntity entity = factory.manufacturePojo(EventoViajeroEntity.class);
 
             entity.setVisitaCiudad(visitasCiudadData.get(i));
