@@ -49,6 +49,8 @@ public class VisitaCiudadLogicTest {
 
     private List<VisitaCiudadEntity> data = new ArrayList<VisitaCiudadEntity>();
 
+    
+
      @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -78,7 +80,7 @@ public class VisitaCiudadLogicTest {
     }
 
     private void clearData() {
-        em.createQuery("delete from CiudadEntity").executeUpdate();
+        em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
     }
 
     private void insertData() {
@@ -91,7 +93,7 @@ public class VisitaCiudadLogicTest {
     }
 
     @Test
-    public void createCiudadTest() {
+    public void createVisitaCiudadTest() {
         VisitaCiudadEntity expected = factory.manufacturePojo(VisitaCiudadEntity.class);
         VisitaCiudadEntity created = visitaLogic.createVisitaCiudad(expected);
 
@@ -107,7 +109,7 @@ public class VisitaCiudadLogicTest {
     }
 
     @Test
-    public void getCiudadesTest() {
+    public void getVisitasCiudadesTest() {
         List<VisitaCiudadEntity> resultList = visitaLogic.getVisitasCiudades();
         List<VisitaCiudadEntity> expectedList = em.createQuery("SELECT u from VisitaCiudadEntity u").getResultList();
         Assert.assertEquals(expectedList.size(), resultList.size());
@@ -123,7 +125,7 @@ public class VisitaCiudadLogicTest {
     }
 
     @Test
-    public void getCiudadTest() {
+    public void getVisitaCiudadTest() {
         try {
             VisitaCiudadEntity result = visitaLogic.getVisitaCiudad(data.get(0).getId());
 
@@ -142,7 +144,7 @@ public class VisitaCiudadLogicTest {
     }
 
     @Test
-    public void updateCiudadTest() {
+    public void updateVisitaCiudadTest() {
         VisitaCiudadEntity entity = data.get(0);
         VisitaCiudadEntity expected = factory.manufacturePojo(VisitaCiudadEntity.class);
 
@@ -161,7 +163,7 @@ public class VisitaCiudadLogicTest {
     }
 
     @Test
-    public void deleteCiudadTest() {
+    public void deleteVisitaCiudadTest() {
         VisitaCiudadEntity entity = data.get(1);
         visitaLogic.deleteVisitaCiudad(entity.getId());
         VisitaCiudadEntity expected = em.find(VisitaCiudadEntity.class, entity.getId());

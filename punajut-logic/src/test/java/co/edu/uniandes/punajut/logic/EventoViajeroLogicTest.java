@@ -106,7 +106,6 @@ public class EventoViajeroLogicTest
 
         for (int i = 0; i < 3; i++) {
             EventoViajeroEntity entity = factory.manufacturePojo(EventoViajeroEntity.class);
-//            entity.setPublishDate(getMaxDate());
 
             entity.setVisitaCiudad(visitasCiudadData.get(i));
             entity.setEvento(eventosData.get(i));
@@ -147,7 +146,6 @@ public class EventoViajeroLogicTest
     public void getEventosViajeroTest()
     {
         List<EventoViajeroEntity> list = eventoViajeroLogic.getEventoViajeros();
-        System.out.println("Data size en test que sirve "+ data.size());
         Assert.assertEquals(data.size(), list.size());
         for (EventoViajeroEntity entity : list) {
             boolean found = false;
@@ -164,10 +162,7 @@ public class EventoViajeroLogicTest
     @Test
     public void getEventoViajeroTest()
     {
-        System.out.println("AQUI ESTOYYYYYYYY" + data.size());
         EventoViajeroEntity entity = data.get(0);
-        System.out.println("Entity en data.get(0) " + entity.getNombre());
-        System.out.println("Id del entity "+ entity.getId());
         EventoViajeroEntity resultEntity = eventoViajeroLogic.getEventoViajero(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
