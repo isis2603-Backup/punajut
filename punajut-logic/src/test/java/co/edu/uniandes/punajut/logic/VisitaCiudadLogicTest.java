@@ -7,6 +7,8 @@ package co.edu.uniandes.punajut.logic;
 
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.punajut.ejbs.VisitaCiudadLogic;
+import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.VisitaCiudadPersistence;
@@ -47,9 +49,12 @@ public class VisitaCiudadLogicTest {
     @Inject
     private UserTransaction utx;
 
-    private List<VisitaCiudadEntity> data = new ArrayList<VisitaCiudadEntity>();
+    private List<VisitaCiudadEntity> data = new ArrayList<>();
 
-    
+    private List<EventoViajeroEntity> dataEventos = new ArrayList<>();
+
+    private List<CiudadEntity> dataCiudad = new ArrayList<>();
+
 
      @Deployment
     public static JavaArchive createDeployment() {
@@ -81,14 +86,23 @@ public class VisitaCiudadLogicTest {
 
     private void clearData() {
         em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
+        em.createQuery("delete from EventoViajeroEntity").executeUpdate();
+        em.createQuery("delete from CiudadEntity").executeUpdate();
     }
 
     private void insertData() {
         for (int i = 0; i < 3; i++) {
             VisitaCiudadEntity entity = factory.manufacturePojo(VisitaCiudadEntity.class);
-
+            EventoViajeroEntity entityEvento = factory.manufacturePojo(EventoViajeroEntity.class);
+            CiudadEntity entityCiudad = factory.manufacturePojo(CiudadEntity.class);
             em.persist(entity);
+            em.persist(entityEvento);
+            em.persist(entityCiudad);
             data.add(entity);
+            dataEventos.add(entityEvento);
+            dataCiudad.add(entityCiudad);
+            entity.setCiudad(dataCiudad.get(i));
+            entity.setEventosViajero(dataEventos);
         }
     }
 
@@ -106,6 +120,7 @@ public class VisitaCiudadLogicTest {
         Assert.assertEquals(expected.getFechaFin(), result.getFechaFin());
         Assert.assertEquals(expected.getFechaInicio(), result.getFechaInicio());
         Assert.assertEquals(expected.getCiudad(), result.getCiudad());
+        Assert.assertEquals(expected.getEventosViajero(), result.getEventosViajero());
     }
 
     @Test
@@ -138,6 +153,7 @@ public class VisitaCiudadLogicTest {
             Assert.assertEquals(expected.getFechaFin(), result.getFechaFin());
             Assert.assertEquals(expected.getFechaInicio(), result.getFechaInicio());
             Assert.assertEquals(expected.getCiudad(), result.getCiudad());
+            Assert.assertEquals(expected.getEventosViajero(), result.getEventosViajero());
         } catch (BusinessLogicException ex) {
             Logger.getLogger(CiudadLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -160,6 +176,7 @@ public class VisitaCiudadLogicTest {
         Assert.assertEquals(expected.getFechaFin(), resp.getFechaFin());
         Assert.assertEquals(expected.getFechaInicio(), resp.getFechaInicio());
         Assert.assertEquals(expected.getCiudad(), resp.getCiudad());
+        Assert.assertEquals(expected.getEventosViajero(), resp.getEventosViajero());
     }
 
     @Test
