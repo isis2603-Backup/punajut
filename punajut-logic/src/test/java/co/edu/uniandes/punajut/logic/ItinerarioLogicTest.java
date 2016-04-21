@@ -8,6 +8,7 @@ package co.edu.uniandes.punajut.logic;
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
 import co.edu.uniandes.punajut.ejbs.ItinerarioLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
 import java.util.ArrayList;
@@ -48,6 +49,8 @@ public class ItinerarioLogicTest {
     private UserTransaction utx;
 
     private List<ItinerarioEntity> data = new ArrayList<ItinerarioEntity>();
+    
+    private List<VisitaCiudadEntity> visitasData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -80,6 +83,7 @@ public class ItinerarioLogicTest {
 
       private void clearData() {
         em.createQuery("delete from ItinerarioEntity").executeUpdate();
+        em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
     }
 
     private void insertData() {
@@ -88,6 +92,13 @@ public class ItinerarioLogicTest {
 
             em.persist(entity);
             data.add(entity);
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            VisitaCiudadEntity entity = factory.manufacturePojo(VisitaCiudadEntity.class);
+
+            em.persist(entity);
+            visitasData.add(entity);
         }
     }
 
