@@ -61,7 +61,7 @@
             };
 
             //Ejemplo alerta
-            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de atención", "warning");
+            showMessage("Bienvenido!, Para agregar una ciudad, presione el botón Crear ciudad", "warning");
 
             this.createRecord = function () {
                 $scope.$broadcast("pre-create", $scope.currentRecord);

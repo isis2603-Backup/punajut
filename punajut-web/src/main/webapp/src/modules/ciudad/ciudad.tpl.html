@@ -1,20 +1,83 @@
 <div>
-    <div class="configuracion">
-        <p>Ingrese los datos de la ciudad en los siguientes campos:</p>
-        <input type="text" ng-model="nombreCiudad" placeholder="Nombre ciudad">
-        <input type="text" ng-model="descripcionCiudad" placeholder="Descripcion ciudad">
-        <input type="text" ng-model="climaCiudad" placeholder="Clima ciudad">
-        <input type="text" ng-model="longitudCiudad" placeholder="Longitud ciudad">
-        <input type="text" ng-model="latitudCiudad" placeholder="Latitud ciudad">
-
-        <button type="button" onclick="alert('funciona.')">Crear ciudad</button>
+    <div class="collapse navbar-collapse" id="usuario-navbar">
+        <button type="button" id="create-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Crear ciudad</button>
+        <button id="refresh-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
     </div>
 
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <div ng-hide="ctrl.editMode">
+        <div class="col-sm-12">
+            <div ng-repeat="record in records">
+                <div class="col-md-4 col-sm-6 col-lg-3 well">
+                    <div class="caption" >
+                        <p><strong>Nombre:</strong> <span id="{{$index}}-nombre">{{record.nombre}}</span></p>
+                        <p><strong>Descripcion:</strong> <span id="{{$index}}-descripcion">{{record.descripcion}}</span></p>
+                        <p><strong>Clima:</strong> <span id="{{$index}}-clima">{{record.clima}}</span></p>
+                        <p><strong>Longitud:</strong> <span id="{{$index}}-longitud">{{record.longitud}}</span></p>
+                        <p><strong>Latitud:</strong> <span id="{{$index}}-latitud">{{record.latitud}}</span></p>
+                    </div>
+                    <p class="text-center">
+                        <button id="{{$index}}-showEventos-btn" class="btn btn-default btn-sm" ng-click="alert()"><span class="glyphicon glyphicon-th"></span> Mostrar eventos</button>
+                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+                        <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="ctrl.editMode" class="col-md-6 well">
+        <form novalidate name="form" id="ciudad-form" role="form" ng-submit="ctrl.saveRecord()">
+            <alert ng-messages="form.$error" type="danger" close="" ng-hide="!form.$error.required">
+                <div ng-message="required">
+                    Por favor ingrese los datos de la ciudad
+                </div>
+            </alert>
+            <fieldset>
+                <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && (form.nombre.$dirty || form.$submitted)}" >
+                    <label for="nombre" class="col-md-2 control-label">Nombre</label>
+                    <div class="col-md-10">
+                        <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" required />
+                    </div>
+                </div>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.descripcion.$valid && form.descripcion.$dirty, 'has-error': form.descripcion.$invalid && (form.descripcion.$dirty || form.$submitted)}" >
+                    <label for="descripcion" class="col-md-2 control-label">Descripcion</label>
+                    <div class="col-md-10">
+                        <input id="descripcion" name="descripcion" class="form-control" type="text" ng-model="currentRecord.descripcion" required />
+                    </div>
+                </div>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.clima.$valid && form.clima.$dirty, 'has-error': form.clima.$invalid && (form.clima.$dirty || form.$submitted)}" >
+                    <label for="clima" class="col-md-2 control-label">Clima</label>
+                    <div class="col-md-10">
+                        <input id="clima" name="clima" class="form-control" type="text" ng-model="currentRecord.clima" required />
+                    </div>
+                </div>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.longitud.$valid && form.longitud.$dirty, 'has-error': form.longitud.$invalid && (form.longitud.$dirty || form.$submitted)}" >
+                    <label for="longitud" class="col-md-2 control-label">Longitud</label>
+                    <div class="col-md-10">
+                        <input id="longitud" name="longitud" class="form-control" type="text" ng-model="currentRecord.longitud" required />
+                    </div>
+                </div>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.latitud.$valid && form.latitud.$dirty, 'has-error': form.latitud.$invalid && (form.latitud.$dirty || form.$submitted)}" >
+                    <label for="latitud" class="col-md-2 control-label">Latitud</label>
+                    <div class="col-md-10">
+                        <input id="latitud" name="latitud" class="form-control" type="text" ng-model="currentRecord.latitud" required />
+                    </div>
+                </div>
+            </fieldset>
+
+            <button id="save-ciudad" type="submit" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Agregar</button>
+        <button id="cancel-ciudad" type="button" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+        </form>
+    </div>
+
+    <div ng-show="ctrl.editMode">
     <div class="jumbotron">
         <div class="container text-center">
-            <h1>{{nombreCiudad}}</h1>
-            <p>{{descripcionCiudad}}. Clima {{climaCiudad}}</p>
-            <p><b>Longitud: </b>{{longitudCiudad}} <b>Latitud: </b>{{latitudCiudad}}</p>
+            <h1>{{currentRecord.nombre}}</h1>
+            <p>{{currentRecord.descripcion}}</p>
+            <p>{{currentRecord.clima}}</p>
+            <p><b>Longitud: </b>{{currentRecord.longitud}} <b>Latitud: </b>{{currentRecord.latitud}}</p>
         </div>
     </div>
 
@@ -77,87 +140,9 @@
         </div>
     </div><br><br>
 
-    <div class="collapse navbar-collapse" id="usuario-navbar">
-        <button type="button" id="create-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span>Crear ciudad</button>
-        <button id="refresh-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
-        <button id="save-ciudad" type="submit" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span>Agregar</button>
-        <button id="cancel-ciudad" type="button" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
-    </div>
+</div>
 
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
-    <div ng-hide="ctrl.editMode">
-        <div class="col-sm-12">
-            <div ng-repeat="record in records">
-                <div class="col-md-4 col-sm-6 col-lg-3 well">
-                    <div class="col-md-12">
-                        <div class="img-thumbnail" id="image" ng-if="record.image">
-                            <a ng-href="{{record.image}}" target="_blank"><img class="img-responsive" style="height: 20vmax;" ng-src="{{record.image}}" alt="{{record.image}}"></a>
-                        </div>
-                    </div>
-                    <div class="caption" >
-                        <p><strong>nombre:</strong> <span id="{{$index}}-nombre">{{record.nombre}}</span></p>
-                        <p><strong>descripcion:</strong> <span id="{{$index}}-descripcion">{{record.descripcion}}</span></p>
-                        <p><strong>clima:</strong> <span id="{{$index}}-clima">{{record.clima}}</span></p>
-                        <p><strong>longitud:</strong> <span id="{{$index}}-longitud">{{record.longitud}}</span></p>
-                    </div>
-                    <p class="text-center">
-                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span>Editar</button>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ng-show="ctrl.editMode" class="col-md-6 well">
-        <form novalidate name="form" id="ciudad-form" role="form" ng-submit="ctrl.saveRecord()">
-            <alert ng-messages="form.$error" type="danger" close="" ng-hide="!form.$error.required">
-                <div ng-message="required">
-                    Por favor complete los campos
-                </div>
-            </alert>
-            <fieldset>
-                <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-                <div class="form-group col-md-12" ng-class="{'has-success': form.nombre.$valid && form.nickName.$dirty, 'has-error': form.nombre.$invalid && (form.nombre.$dirty || form.$submitted)}" >
-                    <label for="nombre" class="col-md-2 control-label">nombre</label>
-                    <div class="col-md-10">
-                        <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" required />
-                    </div>
-                </div>
-
-                <div class="form-group col-md-12" ng-class="{'has-success': form.descripcion.$valid && form.descripcion.$dirty, 'has-error': form.descripcion.$invalid && (form.descripcion.$dirty || form.$submitted)}" >
-                    <label for="descripcion" class="col-md-2 control-label">descripcion</label>
-                    <div class="col-md-10">
-                        <input id="descripcion" name="descripcion" class="form-control" type="text" ng-model="currentRecord.descripcion" required />
-                    </div>
-                </div>
-                <div class="form-group col-md-12" ng-class="{'has-success': form.clima.$valid && form.clima.$dirty, 'has-error': form.clima.$invalid && (form.clima.$dirty || form.$submitted)}" >
-                    <label for="clima" class="col-md-2 control-label">clima</label>
-                    <div class="col-md-10">
-                        <input id="clima" name="clima" class="form-control" type="text" ng-model="currentRecord.clima" required />
-                    </div>
-                </div>
-                <div class="form-group col-md-12" ng-class="{'has-success': form.longitud.$valid && form.longitud.$dirty, 'has-error': form.longitud.$invalid && (form.longitud.$dirty || form.$submitted)}" >
-                    <label for="longitud" class="col-md-2 control-label">longitud</label>
-                    <div class="col-md-10">
-                        <input id="longitud" name="longitud" class="form-control" type="text" ng-model="currentRecord.longitud" required />
-                    </div>
-                </div>
-                <div class="form-group col-md-12" ng-class="{'has-success': form.latitud.$valid && form.latitud.$dirty, 'has-error': form.latitud.$invalid && (form.latitud.$dirty || form.$submitted)}" >
-                    <label for="latitud" class="col-md-2 control-label">latitud</label>
-                    <div class="col-md-10">
-                        <input id="latitud" name="latitud" class="form-control" type="text" ng-model="currentRecord.latitud" required />
-                    </div>
-                </div>
-                <!--                <div class="form-group col-md-12" ng-class="{'has-success': form.image.$valid && form.image.$dirty, 'has-error': form.image.$invalid && (form.image.$dirty || form.$submitted)}" >
-                                    <label for="image" class="col-md-2 control-label">Image</label>
-                                    <div class="col-md-10">
-                                        <input id="image" name="image" class="form-control" type="text" ng-model="currentRecord.image" required />
-                                    </div>
-                                </div>-->
-            </fieldset>
-        </form>
-    </div>
-    <!--    <footer class="container-fluid text-center">
-            <p>GoTravel</p>
-        </footer>-->
-
+    <footer class="container-fluid text-center">
+        <p>GoTravel</p>
+    </footer>
 </div>
