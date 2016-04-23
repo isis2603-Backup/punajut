@@ -1,11 +1,11 @@
 <div>
-    <div class="collapse navbar-collapse" id="usuario-navbar">
+    <div class="collapse navbar-collapse" id="ciudad-navbar">
         <button type="button" id="create-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Crear ciudad</button>
         <button id="refresh-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
     </div>
 
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
-    <div ng-hide="ctrl.editMode">
+    <div ng-hide="ctrl.eventosMode">
         <div class="col-sm-12">
             <div ng-repeat="record in records">
                 <div class="col-md-4 col-sm-6 col-lg-3 well">
@@ -17,7 +17,7 @@
                         <p><strong>Latitud:</strong> <span id="{{$index}}-latitud">{{record.latitud}}</span></p>
                     </div>
                     <p class="text-center">
-                        <button id="{{$index}}-showEventos-btn" class="btn btn-default btn-sm" ng-click="alert()"><span class="glyphicon glyphicon-th"></span> Mostrar eventos</button>
+                        <button id="{{$index}}-showEventos-btn" class="btn btn-default btn-sm" ng-click="ctrl.showEventos()"><span class="glyphicon glyphicon-th"></span> Mostrar eventos</button>
                         <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Editar</button>
                         <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
                     </p>
@@ -67,80 +67,79 @@
             </fieldset>
 
             <button id="save-ciudad" type="submit" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Agregar</button>
-        <button id="cancel-ciudad" type="button" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
+            <button id="cancel-ciudad" type="button" form="ciudad-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
         </form>
     </div>
 
-    <div ng-show="ctrl.editMode">
-    <div class="jumbotron">
-        <div class="container text-center">
-            <h1>{{currentRecord.nombre}}</h1>
-            <p>{{currentRecord.descripcion}}</p>
-            <p>{{currentRecord.clima}}</p>
-            <p><b>Longitud: </b>{{currentRecord.longitud}} <b>Latitud: </b>{{currentRecord.latitud}}</p>
-        </div>
+    <div id="separador" ng-show="ctrl.showEventosMode">
+        <h6>Información de la ciudad</h6>
     </div>
 
-    <div class="instrucciones">
-        <button type="button" class="btn btn-primary">Evento deportivo</button>
-        <button type="button" class="btn btn-success">Concierto</button>
-        <button type="button" class="btn btn-info">Restaurante</button>
-        <button type="button" class="btn btn-warning">Evento cultural</button>
+    <div  id="headingCiudad" class="well" ng-show="ctrl.showEventosMode">
+        <h1>Párrafo de prueba</h1>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">SANTA FE VS MILLONARIOS</div>
-                    <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Tuchin_Balon_Futbol_Colombiano.jpg" class="img-responsive" style="width:100%" alt="Balón de la Liga Águila"></div>
-                    <div class="panel-footer">Clásico capitalino correspondiente a la fecha 9 de la Liga Aguila. <b>Sábado 9 de Abril 5:45 pm.</b></div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-success">
-                    <div class="panel-heading">CONCIERTO COLDPLAY</div>
-                    <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Coldplay-snl.jpg" class="img-responsive" style="width:100%" alt="Integrantes de la banda Coldplay"></div>
-                    <div class="panel-footer">El concierto de una de las bandas británicas más populares se realizará en el estadio El Campín. <b>Miércoles 13 de Abril 8:00 pm.</b></div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">GoTravel restaurant</div>
-                    <div class="panel-body"><img src="https://static.pexels.com/photos/7900/food-pasta-tomato-theme-workspaces.jpg" class="img-responsive" style="width:100%" alt="Pasta"></div>
-                    <div class="panel-footer">Inauguración de restaurante italiano en Ciudad Salitre. <b>Lunes 18 de Abril 9:00 pm.</b></div>
-                </div>
-            </div>
+    <div id="eventosCiudad" ng-show="ctrl.showEventosMode">
+        <div class="instrucciones">
+            <button type="button" class="btn btn-primary">Evento deportivo</button>
+            <button type="button" class="btn btn-success">Concierto</button>
+            <button type="button" class="btn btn-info">Restaurante</button>
+            <button type="button" class="btn btn-warning">Evento cultural</button>
         </div>
-    </div><br>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">NUEVA OBRA DE TEATRO</div>
-                    <div class="panel-body"><img src="https://pixabay.com/static/uploads/photo/2016/01/19/15/48/luggage-1149289_960_720.jpg" class="img-responsive" style="width:100%" alt="Foto de una maleta"></div>
-                    <div class="panel-footer">Se estrena la esperada obra GoTravel. <b>Sábado 23 de Abril 12:00 pm.</b> </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">SANTA FE VS MILLONARIOS</div>
+                        <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Tuchin_Balon_Futbol_Colombiano.jpg" class="img-responsive" style="width:100%" alt="Balón de la Liga Águila"></div>
+                        <div class="panel-footer">Clásico capitalino correspondiente a la fecha 9 de la Liga Aguila. <b>Sábado 9 de Abril 5:45 pm.</b></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">CONCIERTO COLDPLAY</div>
+                        <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Coldplay-snl.jpg" class="img-responsive" style="width:100%" alt="Integrantes de la banda Coldplay"></div>
+                        <div class="panel-footer">El concierto de una de las bandas británicas más populares se realizará en el estadio El Campín. <b>Miércoles 13 de Abril 8:00 pm.</b></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">GoTravel restaurant</div>
+                        <div class="panel-body"><img src="https://static.pexels.com/photos/7900/food-pasta-tomato-theme-workspaces.jpg" class="img-responsive" style="width:100%" alt="Pasta"></div>
+                        <div class="panel-footer">Inauguración de restaurante italiano en Ciudad Salitre. <b>Lunes 18 de Abril 9:00 pm.</b></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">CICLOVIA NOCTURNA</div>
-                    <div class="panel-body"><img src="https://adventurebeforeavarice.files.wordpress.com/2013/11/la-septima1.jpg" class="img-responsive" style="width:100%" alt="Ciclistas en Bogotá"></div>
-                    <div class="panel-footer">Aproveche el próximo jueves por la noche para dar un paseo por Bogotá. <b>Jueves 28 de Abril 6:00 pm.</b> </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">TORNEO WTA</div>
-                    <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Pereira_WMQ13-007.jpg" class="img-responsive" style="width:100%" alt="Teliana Pereira, jugadora de tenis"></div>
-                    <div class="panel-footer">Bogotá será sede de un torneo WTA, en el que figuran jugadoras como Teliana Pereira. <b>Del 11 al 17 de Abril.</b></div>
-                </div>
-            </div>
-        </div>
-    </div><br><br>
+        </div><br>
 
-</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">NUEVA OBRA DE TEATRO</div>
+                        <div class="panel-body"><img src="https://pixabay.com/static/uploads/photo/2016/01/19/15/48/luggage-1149289_960_720.jpg" class="img-responsive" style="width:100%" alt="Foto de una maleta"></div>
+                        <div class="panel-footer">Se estrena la esperada obra GoTravel. <b>Sábado 23 de Abril 12:00 pm.</b> </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">CICLOVIA NOCTURNA</div>
+                        <div class="panel-body"><img src="https://adventurebeforeavarice.files.wordpress.com/2013/11/la-septima1.jpg" class="img-responsive" style="width:100%" alt="Ciclistas en Bogotá"></div>
+                        <div class="panel-footer">Aproveche el próximo jueves por la noche para dar un paseo por Bogotá. <b>Jueves 28 de Abril 6:00 pm.</b> </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">TORNEO WTA</div>
+                        <div class="panel-body"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Pereira_WMQ13-007.jpg" class="img-responsive" style="width:100%" alt="Teliana Pereira, jugadora de tenis"></div>
+                        <div class="panel-footer">Bogotá será sede de un torneo WTA, en el que figuran jugadoras como Teliana Pereira. <b>Del 11 al 17 de Abril.</b></div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+
+    </div>
 
     <footer class="container-fluid text-center">
         <p>GoTravel</p>

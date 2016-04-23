@@ -55,6 +55,10 @@
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.showEventosMode = false;
+
+
+
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
@@ -85,6 +89,7 @@
                     $scope.records = response.data;
                     $scope.currentRecord = {};
                     self.editMode = false;
+
                     return response;
                 }, responseError);
             };
@@ -96,9 +101,14 @@
             };
 
             this.deleteRecord = function (record) {
+                this.showEventosMode=false;
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
+            };
+
+            this.showEventos = function () {
+                this.showEventosMode=true;
             };
 
             this.fetchRecords();
