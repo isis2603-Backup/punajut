@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 
-
 import co.edu.uniandes.punajut.api.ICiudadLogic;
 import co.edu.uniandes.punajut.api.IEventoLogic;
 import co.edu.uniandes.punajut.entities.CiudadEntity;
@@ -13,6 +12,7 @@ import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.CiudadPersistence;
 import co.edu.uniandes.punajut.persistence.EventoPersistence;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,49 +80,71 @@ public class CiudadLogic implements ICiudadLogic {
         logger.log(Level.INFO, "Termina proceso de borrar ciudad con id={0}", id);
     }
 
-//    @Override
-//    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException {
-//        eventoLogic.addCiudad(ciudadId, eventoId);
-//        return eventoPersistence.find(eventoId);
-//    }
-//
-//    @Override
-//    public void removeEvento(Long eventoId, Long ciudadId) {
-//        eventoLogic.removeCiudad(ciudadId, eventoId);
-//    }
-//
-//    @Override
-//    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException {
-//        List<EventoEntity> eventoList = eventoPersistence.findAll();
-//        CiudadEntity ciudad = persistence.find(ciudadId);
-//        for (EventoEntity evento : eventoList) {
-//            if (eventos.contains(evento)) {
-//                if (!evento.getCiudades().contains(ciudad)) {
-//                    eventoLogic.addCiudad(ciudadId, evento.getId());
-//                }
-//            } else {
-//                eventoLogic.removeCiudad(ciudadId, evento.getId());
-//            }
-//        }
-//        ciudad.setEventos(eventos);
-//        return ciudad.getEventos();
-//    }
-//
-//    @Override
-//    public List<EventoEntity> getEventos(Long ciudadId) {
-//        return persistence.find(ciudadId).getEventos();
-//    }
-//
-//    @Override
-//    public EventoEntity getEvento(Long ciudadId, Long eventoId) {
-//        List<EventoEntity> eventos = persistence.find(ciudadId).getEventos();
-//        EventoEntity evento = new EventoEntity();
-//        evento.setId(eventoId);
-//        int index = eventos.indexOf(evento);
-//        if (index >= 0) {
-//            return eventos.get(index);
-//        }
-//        return null;
-//    }
+    @Override
+    public List<EventoEntity> getEventos(Long ciudadId) {
+        List<EventoEntity> respuesta = null;
+        try {
+            respuesta = getCiudad(ciudadId).getEventos();
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(CiudadLogic.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return respuesta;
+    }
+
+    @Override
+    public EventoEntity getEvento(Long ciudadId, Long eventoId) {
+        List<EventoEntity> eventos = null;
+        try {
+            eventos = getCiudad(ciudadId).getEventos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        EventoEntity eventoEntity = eventoPersistence.find(eventoId);
+        if (eventoEntity == null) {
+            throw new IllegalArgumentException("El evento no existe");
+        }
+        int index = eventos.indexOf(eventoEntity);
+        if (index >= 0) {
+            return eventos.get(index);
+        }
+        throw new IllegalArgumentException("El evento no está asociado a la ciudad");
+    }
+
+    @Override
+    public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException {
+        CiudadEntity ciudadEntity = getCiudad(ciudadId);
+        EventoEntity eventoEntity = eventoPersistence.find(eventoId);
+        if (eventoEntity == null) {
+            throw new IllegalArgumentException("El evento no existe");
+        }
+
+        ciudadEntity.getEventos().add(eventoEntity);
+        return eventoEntity;
+    }
+
+    @Override
+    public void removeEvento(Long eventoId, Long ciudadId) {
+        CiudadEntity ciudadEntity = null;
+        try {
+            ciudadEntity = getCiudad(ciudadId);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        EventoEntity eventoEntity = eventoPersistence.find(eventoId);
+        if (eventoEntity == null) {
+            throw new IllegalArgumentException("El evento no existe");
+        }
+        ciudadEntity.getEventos().remove(eventoEntity);
+    }
+
+    @Override
+    public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException {
+        CiudadEntity ciudadEntity = getCiudad(ciudadId);
+        ciudadEntity.setEventos(eventos);
+
+        return ciudadEntity.getEventos();
+    }
 
 }

@@ -24,6 +24,9 @@ import javax.ws.rs.core.Response;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.api.ICiudadLogic;
 import co.edu.uniandes.punajut.entities.CiudadEntity;
+import co.edu.uniandes.punajut.entities.EventoEntity;
+import co.edu.uniandes.rest.punajut.converters.EventoConverter;
+import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import javax.ws.rs.PUT;
 
 
@@ -119,5 +122,88 @@ public class CiudadResource {
     @Path("{id: \\d+}")
     public void deleteCiudad(@PathParam("id") Long id) {
         ciudadLogic.deleteCiudad(id);
+    }
+
+     /**
+     * Obtiene una colección de objetos de EventoDTO asociados a un objeto de Ciudad
+     *
+     * @param id Identificador del objeto de Ciudad
+     * @return Colección de objetos de EventoDTO en representación basic
+     * @generated
+     */
+    @GET
+    @Path("{id: \\d+}/eventos")
+    public List<EventoDTO> listEventos(@PathParam("id") Long id) {
+        List<EventoEntity> eventos = ciudadLogic.getEventos(id);
+        return EventoConverter.listEntity2DTO(eventos);
+    }
+
+    /**
+     * Obtiene un objeto de Evento asociada a un objeto de Ciudad
+     *
+     * @param id Identificador del objeto de Ciudad
+     * @param eventoId Identificador del objeto de Evento
+     * @generated
+     */
+    @GET
+    @Path("{id: \\d+}/eventos/{eventoId: \\d+}")
+    public EventoDTO getEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
+        EventoEntity evento = ciudadLogic.getEvento(id, eventoId);
+        return EventoConverter.fullEntity2DTO(evento);
+    }
+
+    /**
+     * Asocia un Evento existente a una Ciudad
+     *
+     * @param id Identificador del objeto de Ciudad
+     * @param eventoId Identificador del objeto de Evento
+     * @return Objeto de EventoDTO en representación full que fue asociado a Ciudad
+     * @generated
+     */
+    @POST
+    @Path("{id: \\d+}/eventos/{eventoId: \\d+}")
+    public EventoDTO addEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
+        try {
+            EventoEntity evento = ciudadLogic.addEvento(id, eventoId);
+            return EventoConverter.fullEntity2DTO(evento);
+        } catch (BusinessLogicException ex) {
+            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Remplaza los objetos de Evento asociados a un objeto de Ciudad
+     *
+     * @param id Identificador del objeto de Ciudad
+     * @param eventos Colección de objetos de EventoDTO en representación minimum a asociar a objeto
+     * de Ciudad
+     * @return Nueva colección de EventoDTO en representación Basic
+     * @generated
+     */
+    @PUT
+    @Path("{id: \\d+}/eventos")
+    public List<EventoDTO> replaceEventos(@PathParam("id") Long id, List<EventoDTO> eventos) {
+        try {
+            List<EventoEntity> eventoList = EventoConverter.listDTO2Entity(eventos);
+            List<EventoEntity> newEventos = ciudadLogic.replaceEventos(eventoList, id);
+            return EventoConverter.listEntity2DTO(newEventos);
+        } catch (BusinessLogicException ex) {
+            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Desasocia un Evento existente de una Ciudad existente
+     *
+     * @param ciudadId Identificador del objeto de Ciudad
+     * @param eventoId Identificador del objeto de Evento
+     * @generated
+     */
+    @DELETE
+    @Path("{id: \\d+}/eventos/{ciudadId: \\d+}")
+    public void removeEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
+        ciudadLogic.removeEvento(id, eventoId);
     }
 }

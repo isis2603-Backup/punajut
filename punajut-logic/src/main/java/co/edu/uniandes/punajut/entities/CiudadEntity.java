@@ -95,4 +95,5 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     public void setEventos(List<EventoEntity> eventos) {
         this.eventos = eventos;
     }
+
 }
