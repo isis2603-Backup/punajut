@@ -1,4 +1,4 @@
-/*
+ /*
  * CiudadResource.java
  * Clase que representa el recurso "/ciudades"
  * Implementa varios métodos para manipular ciudades
@@ -133,8 +133,8 @@ public class CiudadResource {
      */
     @GET
     @Path("{id: \\d+}/eventos")
-    public List<EventoDTO> listEventos(@PathParam("id") Long id) {
-        List<EventoEntity> eventos = ciudadLogic.getEventos(id);
+    public List<EventoDTO> listEventos(@PathParam("ciudadId") Long ciudadId) {
+        List<EventoEntity> eventos = ciudadLogic.getEventos(ciudadId);
         return EventoConverter.listEntity2DTO(eventos);
     }
 
@@ -147,8 +147,8 @@ public class CiudadResource {
      */
     @GET
     @Path("{id: \\d+}/eventos/{eventoId: \\d+}")
-    public EventoDTO getEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
-        EventoEntity evento = ciudadLogic.getEvento(id, eventoId);
+    public EventoDTO getEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) {
+        EventoEntity evento = ciudadLogic.getEvento(ciudadId, eventoId);
         return EventoConverter.fullEntity2DTO(evento);
     }
 
@@ -162,9 +162,9 @@ public class CiudadResource {
      */
     @POST
     @Path("{id: \\d+}/eventos/{eventoId: \\d+}")
-    public EventoDTO addEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
+    public EventoDTO addEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) {
         try {
-            EventoEntity evento = ciudadLogic.addEvento(id, eventoId);
+            EventoEntity evento = ciudadLogic.addEvento(ciudadId, eventoId);
             return EventoConverter.fullEntity2DTO(evento);
         } catch (BusinessLogicException ex) {
             logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
@@ -183,10 +183,10 @@ public class CiudadResource {
      */
     @PUT
     @Path("{id: \\d+}/eventos")
-    public List<EventoDTO> replaceEventos(@PathParam("id") Long id, List<EventoDTO> eventos) {
+    public List<EventoDTO> replaceEventos(@PathParam("ciudadId") Long ciudadId, List<EventoDTO> eventos) {
         try {
             List<EventoEntity> eventoList = EventoConverter.listDTO2Entity(eventos);
-            List<EventoEntity> newEventos = ciudadLogic.replaceEventos(eventoList, id);
+            List<EventoEntity> newEventos = ciudadLogic.replaceEventos(eventoList, ciudadId);
             return EventoConverter.listEntity2DTO(newEventos);
         } catch (BusinessLogicException ex) {
             logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
@@ -203,7 +203,7 @@ public class CiudadResource {
      */
     @DELETE
     @Path("{id: \\d+}/eventos/{ciudadId: \\d+}")
-    public void removeEventos(@PathParam("id") Long id, @PathParam("eventoId") Long eventoId) {
-        ciudadLogic.removeEvento(id, eventoId);
+    public void removeEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) {
+        ciudadLogic.removeEvento(ciudadId, eventoId);
     }
 }
