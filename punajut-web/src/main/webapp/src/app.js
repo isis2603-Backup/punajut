@@ -5,6 +5,7 @@
         "usuarioModule",
         "itinerarioModule",
         "ciudadModule",
+        "eventoModule",
         "ngMessages"
     ]);
 

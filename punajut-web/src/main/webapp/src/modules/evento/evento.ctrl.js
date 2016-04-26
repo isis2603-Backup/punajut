@@ -8,8 +8,17 @@
 
     mod.controller("eventoCtrl", ["$scope", "eventoService", function ($scope, svc) {
             $scope.currentRecord = {
-             
+                id: undefined /* Tipo Long */,
                 nombre: '' /* Tipo String */,
+                tipo: '' /* Tipo String */,
+                calificacion: '' /* Tipo Double */,
+                precio: '' /* Tipo Double */,
+                descripcion: '' /* Tipo String */,
+                lugar: '' /* Tipo String */,
+
+
+
+
                 comentario: '' /* Tipo String */
 
             };
@@ -58,21 +67,26 @@
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.showEventosMode = false;
+
+
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
             };
 
             //Ejemplo alerta
-            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de atención", "warning");
+            showMessage("Bienvenido!, Para agregar un evento, presione el boton Crear evento", "warning");
 
             this.createRecord = function () {
+                $scope.$broadcast("pre-create", $scope.currentRecord);
                 this.editMode = true;
                 $scope.currentRecord = {};
                 $scope.$broadcast("post-create", $scope.currentRecord);
             };
 
             this.editRecord = function (record) {
+                $scope.$broadcast("pre-edit", $scope.currentRecord);
                 return svc.fetchRecord(record.id).then(function (response) {
                     $scope.currentRecord = response.data;
                     self.editMode = true;
@@ -86,6 +100,7 @@
                     $scope.records = response.data;
                     $scope.currentRecord = {};
                     self.editMode = false;
+
                     return response;
                 }, responseError);
             };
@@ -97,10 +112,16 @@
             };
 
             this.deleteRecord = function (record) {
+                this.showEventosMode=false;
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
             };
+
+            this.showEventos = function () {
+                this.showEventosMode=true;
+            };
+
 
             this.fetchRecords();
         }
