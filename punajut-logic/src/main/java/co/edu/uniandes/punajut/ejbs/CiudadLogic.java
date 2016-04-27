@@ -12,7 +12,6 @@ import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.CiudadPersistence;
 import co.edu.uniandes.punajut.persistence.EventoPersistence;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,14 +92,12 @@ public class CiudadLogic implements ICiudadLogic {
     }
 
     @Override
-    public EventoEntity getEvento(Long ciudadId, Long eventoId) {
-        List<EventoEntity> eventos = null;
-        try {
-            eventos = getCiudad(ciudadId).getEventos();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public EventoEntity getEvento(Long ciudadId, Long eventoId) throws Exception {
+
+        List<EventoEntity> eventos = getCiudad(ciudadId).getEventos();
+
         EventoEntity eventoEntity = eventoPersistence.find(eventoId);
+
         if (eventoEntity == null) {
             throw new IllegalArgumentException("El evento no existe");
         }
@@ -124,14 +121,10 @@ public class CiudadLogic implements ICiudadLogic {
     }
 
     @Override
-    public void removeEvento(Long eventoId, Long ciudadId) {
-        CiudadEntity ciudadEntity = null;
-        try {
-            ciudadEntity = getCiudad(ciudadId);
+    public void removeEvento(Long eventoId, Long ciudadId) throws Exception {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        CiudadEntity ciudadEntity = getCiudad(ciudadId);
+
         EventoEntity eventoEntity = eventoPersistence.find(eventoId);
         if (eventoEntity == null) {
             throw new IllegalArgumentException("El evento no existe");

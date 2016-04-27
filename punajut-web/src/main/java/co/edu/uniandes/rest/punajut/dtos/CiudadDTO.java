@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.rest.punajut.dtos;
 
-import java.util.ArrayList;
-
 /**
  * Objeto de transferencia de datos de Ciudades.
  *

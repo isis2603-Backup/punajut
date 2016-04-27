@@ -28,11 +28,11 @@ public interface ICiudadLogic {
 
     public List<EventoEntity> getEventos(Long ciudadId);
 
-    public EventoEntity getEvento(Long ciudadId, Long eventoId);
+    public EventoEntity getEvento(Long ciudadId, Long eventoId) throws Exception;
 
     public EventoEntity addEvento(Long eventoId, Long ciudadId) throws BusinessLogicException;
 
-    public void removeEvento(Long eventoId, Long ciudadId);
+    public void removeEvento(Long eventoId, Long ciudadId) throws Exception;
 
     public List<EventoEntity> replaceEventos(List<EventoEntity> eventos, Long ciudadId) throws BusinessLogicException;
 

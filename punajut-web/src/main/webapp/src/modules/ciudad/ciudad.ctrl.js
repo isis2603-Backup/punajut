@@ -8,7 +8,7 @@
                 descripcion: '' /* Tipo String */,
                 clima: '' /* Tipo String */,
                 longitud: '' /* Tipo Long */,
-                latitud: '' /* Tipo Long */,
+                latitud: '' /* Tipo Long */
             };
 
             $scope.records = [];

@@ -127,7 +127,7 @@ public class CiudadResource {
      /**
      * Obtiene una colección de objetos de EventoDTO asociados a un objeto de Ciudad
      *
-     * @param id Identificador del objeto de Ciudad
+     * @param ciudadId Identificador del objeto de Ciudad
      * @return Colección de objetos de EventoDTO en representación basic
      * @generated
      */
@@ -141,7 +141,7 @@ public class CiudadResource {
     /**
      * Obtiene un objeto de Evento asociada a un objeto de Ciudad
      *
-     * @param id Identificador del objeto de Ciudad
+     * @param ciudadId Identificador del objeto de Ciudad
      * @param eventoId Identificador del objeto de Evento
      * @generated
      */
@@ -155,7 +155,7 @@ public class CiudadResource {
     /**
      * Asocia un Evento existente a una Ciudad
      *
-     * @param id Identificador del objeto de Ciudad
+     * @param ciudadId Identificador del objeto de Ciudad
      * @param eventoId Identificador del objeto de Evento
      * @return Objeto de EventoDTO en representación full que fue asociado a Ciudad
      * @generated
@@ -175,7 +175,7 @@ public class CiudadResource {
     /**
      * Remplaza los objetos de Evento asociados a un objeto de Ciudad
      *
-     * @param id Identificador del objeto de Ciudad
+     * @param ciudadId Identificador del objeto de Ciudad
      * @param eventos Colección de objetos de EventoDTO en representación minimum a asociar a objeto
      * de Ciudad
      * @return Nueva colección de EventoDTO en representación Basic
