@@ -1,10 +1,14 @@
 <div>
+    <!-- Div que contiene los botones de crear ciudad y refrescar -->
     <div class="collapse navbar-collapse" id="ciudad-navbar">
         <button type="button" id="create-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Crear ciudad</button>
         <button id="refresh-ciudad" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
     </div>
 
+    <!-- Alert que se ejecuta cuando ciudad.tpl.html se despliega -->
     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+
+    <!-- Div que despliega la informacion de una ciudad creada -->
     <div ng-hide="ctrl.eventosMode">
         <div class="col-sm-12">
             <div ng-repeat="record in records">
@@ -25,6 +29,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Div que se despliega cuando se presiona el boton Crear ciudad -->
     <div ng-show="ctrl.editMode" class="col-md-6 well">
         <form novalidate name="form" id="ciudad-form" role="form" ng-submit="ctrl.saveRecord()">
             <alert ng-messages="form.$error" type="danger" close="" ng-hide="!form.$error.required">
@@ -80,7 +86,7 @@
     </div>
 
     <div ng-show="ctrl.showEventosMode">
-        <button type="button" id="create-evento" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="count=count+1"><span class="glyphicon glyphicon-plus"></span> Crear evento</button>
+        <button type="button" id="create-evento" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="count = count + 1"><span class="glyphicon glyphicon-plus"></span> Crear evento</button>
         <button id="refresh-evento" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refrescar</button>
         <p>{{count}}</p>
     </div>

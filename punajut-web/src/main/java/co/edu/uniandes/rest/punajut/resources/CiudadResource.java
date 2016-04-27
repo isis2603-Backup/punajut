@@ -1,4 +1,4 @@
- /*
+/*
  * CiudadResource.java
  * Clase que representa el recurso "/ciudades"
  * Implementa varios métodos para manipular ciudades
@@ -28,7 +28,6 @@ import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.rest.punajut.converters.EventoConverter;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import javax.ws.rs.PUT;
-
 
 /**
  * Clase que implementa el recurso REST correspondiente a "ciudades". Al
@@ -80,7 +79,8 @@ public class CiudadResource {
      * Crea una ciudad en la base de datos
      *
      * @param dto Objeto de CiudadDTO con los datos nuevos (representacion full)
-     * @return Objeto de CiudadDTO con los datos nuevos y su ID (representacion full)
+     * @return Objeto de CiudadDTO con los datos nuevos y su ID (representacion
+     * full)
      * @generated
      */
     @POST
@@ -93,8 +93,10 @@ public class CiudadResource {
      * Actualiza la información de un objeto de Ciduad.
      *
      * @param id Identificador del objeto de Ciudad a modificar
-     * @param dto Instancia de CiudadDTO (representación full) con los nuevos datos.
-     * @return Instancia de CiudadDTO (representación full) con los datos actualizados.
+     * @param dto Instancia de CiudadDTO (representación full) con los nuevos
+     * datos.
+     * @return Instancia de CiudadDTO (representación full) con los datos
+     * actualizados.
      * @generated
      */
     @PUT
@@ -124,8 +126,9 @@ public class CiudadResource {
         ciudadLogic.deleteCiudad(id);
     }
 
-     /**
-     * Obtiene una colección de objetos de EventoDTO asociados a un objeto de Ciudad
+    /**
+     * Obtiene una colección de objetos de EventoDTO asociados a un objeto de
+     * Ciudad
      *
      * @param ciudadId Identificador del objeto de Ciudad
      * @return Colección de objetos de EventoDTO en representación basic
@@ -157,7 +160,8 @@ public class CiudadResource {
      *
      * @param ciudadId Identificador del objeto de Ciudad
      * @param eventoId Identificador del objeto de Evento
-     * @return Objeto de EventoDTO en representación full que fue asociado a Ciudad
+     * @return Objeto de EventoDTO en representación full que fue asociado a
+     * Ciudad
      * @generated
      */
     @POST
@@ -176,8 +180,8 @@ public class CiudadResource {
      * Remplaza los objetos de Evento asociados a un objeto de Ciudad
      *
      * @param ciudadId Identificador del objeto de Ciudad
-     * @param eventos Colección de objetos de EventoDTO en representación minimum a asociar a objeto
-     * de Ciudad
+     * @param eventos Colección de objetos de EventoDTO en representación
+     * minimum a asociar a objeto de Ciudad
      * @return Nueva colección de EventoDTO en representación Basic
      * @generated
      */

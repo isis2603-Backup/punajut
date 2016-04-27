@@ -8,15 +8,10 @@ package co.edu.uniandes.punajut.entities;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -24,6 +19,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class CiudadEntity extends BaseEntity implements Serializable {
+
     private String descripcion;
     private String clima;
     private Long longitud;
@@ -74,9 +70,9 @@ public class CiudadEntity extends BaseEntity implements Serializable {
         this.longitud = longitud;
     }
 
-   /**
-    * @return latitud
-    */
+    /**
+     * @return latitud
+     */
     public Long getLatitud() {
         return latitud;
     }

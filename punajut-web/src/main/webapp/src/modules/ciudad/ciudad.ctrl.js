@@ -101,14 +101,14 @@
             };
 
             this.deleteRecord = function (record) {
-                this.showEventosMode=false;
+                this.showEventosMode = false;
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
             };
 
             this.showEventos = function () {
-                this.showEventosMode=true;
+                this.showEventosMode = true;
             };
 
             this.fetchRecords();

@@ -8,7 +8,7 @@
     var mod = ng.module('ciudadMock', ['ngMockE2E']);
 
 
-    mod.run(['$httpBackend','$log', function ($httpBackend, $log) {
+    mod.run(['$httpBackend', '$log', function ($httpBackend, $log) {
             var ignore_regexp = new RegExp('^((?!api).)*$');
             /*
              * @type RegExp
@@ -29,7 +29,6 @@
                     clima: 'Frio',
                     longitud: 1,
                     latitud: 2,
-                    eventos: []
                 }];
 
             function getQueryParams(url) {
@@ -135,8 +134,6 @@
                 return [204, null, {}];
             });
 
-            /*Completar
-             */
             $httpBackend.whenPUT(recordsEvento).respond(function (method, url, data) {
                 var id = parseInt(url.split('/')[2]);
                 $log.debug(url);
@@ -152,8 +149,6 @@
                 return [200, list, {}];
             });
 
-            /*Completar
-             */
             $httpBackend.whenGET(recordsEvento).respond(function (method, url) {
                 var id = parseInt(url.split('/')[2]);
                 $log.debug(id);
@@ -186,8 +181,3 @@
 
         }]);
 })(window.angular);
-
-
-
-
-
