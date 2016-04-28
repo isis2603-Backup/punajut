@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.punajut.entities;
 
+import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 
 /**
@@ -36,19 +38,21 @@ public class EventoEntity extends BaseEntity implements Serializable
 
     private  String descripcion;
 
-    private String[] opiniones ;
+//    private String[] opiniones ;
 
     private String lugar;
 
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fechaInicial;
 
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fechaFinal;
 
     @ManyToOne
     @PodamExclude
     private CiudadEntity ciudad;
-
-    public CiudadEntity getCiudad() {
-        return ciudad;
-    }
 
     public String getTipo() {
         return tipo;
@@ -82,13 +86,13 @@ public class EventoEntity extends BaseEntity implements Serializable
         this.descripcion = descripcion;
     }
 
-    public String[] getOpiniones() {
-        return opiniones;
-    }
-
-    public void setOpiniones(String[] opiniones) {
-        this.opiniones = opiniones;
-    }
+//    public String[] getOpiniones() {
+//        return opiniones;
+//    }
+//
+//    public void setOpiniones(String[] opiniones) {
+//        this.opiniones = opiniones;
+//    }
 
     public String getLugar() {
         return lugar;
@@ -96,5 +100,21 @@ public class EventoEntity extends BaseEntity implements Serializable
 
     public void setLugar(String lugar) {
         this.lugar = lugar;
+    }
+
+    public Date getFechaInicial() {
+        return fechaInicial;
+    }
+
+    public void setFechaInicial(Date fechaInicial) {
+        this.fechaInicial = fechaInicial;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
 }
