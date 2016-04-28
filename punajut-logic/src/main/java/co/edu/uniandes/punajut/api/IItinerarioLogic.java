@@ -15,8 +15,8 @@ import java.util.List;
  */
 public interface IItinerarioLogic
 {
-    public List<ItinerarioEntity> getItinerarios();
-    public ItinerarioEntity getItinerario(Long id) throws BusinessLogicException;
+    public List<ItinerarioEntity> getItinerarios(Long idViajero) throws BusinessLogicException;
+    public ItinerarioEntity getItinerario(Long idItinerario, Long idViajero) throws BusinessLogicException;
     public ItinerarioEntity createItinerario(ItinerarioEntity entity);
     public ItinerarioEntity updateItinerario(ItinerarioEntity entity);
     public void deleteItinerario(Long id);
