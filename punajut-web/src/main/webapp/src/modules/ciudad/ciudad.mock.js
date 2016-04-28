@@ -17,7 +17,9 @@
              * ej: api/ciudades/1
              */
             var recordUrl = new RegExp('api/ciudades/([0-9]+)$');
-            var recordsBook = new RegExp('api/ciudades/([0-9]+)/eventos');
+            var recordsEvento = new RegExp('api/ciudades/([0-9]+)/eventos');
+
+
             /*
              * @type Array
              * records: Array con una ciudad por defecto
@@ -28,7 +30,7 @@
                     descripcion: 'Capital de Inglaterra',
                     clima: 'Frio',
                     longitud: 1,
-                    latitud: 2,
+                    latitud: 2
                 }];
 
             function getQueryParams(url) {

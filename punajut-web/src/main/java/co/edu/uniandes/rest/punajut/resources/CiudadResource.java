@@ -42,7 +42,7 @@ import javax.ws.rs.PUT;
 
 public class CiudadResource {
 
-    private static final Logger logger = Logger.getLogger(CiudadResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CiudadResource.class.getName());
 
     @Inject
     ICiudadLogic ciudadLogic;
@@ -70,7 +70,7 @@ public class CiudadResource {
         try {
             return CiudadConverter.fullEntity2DTO(ciudadLogic.getCiudad(id));
         } catch (BusinessLogicException ex) {
-            logger.log(Level.SEVERE, "La ciudad no existe", ex);
+            LOGGER.log(Level.SEVERE, "La ciudad no existe", ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.NOT_FOUND);
         }
     }
@@ -108,7 +108,7 @@ public class CiudadResource {
             CiudadEntity oldEntity = ciudadLogic.getCiudad(id);
             entity.setEventos(oldEntity.getEventos());
         } catch (BusinessLogicException ex) {
-            logger.log(Level.SEVERE, "La ciudad no existe", ex);
+            LOGGER.log(Level.SEVERE, "La ciudad no existe", ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.NOT_FOUND);
         }
         return CiudadConverter.fullEntity2DTO(ciudadLogic.updateCiudad(entity));
@@ -171,7 +171,7 @@ public class CiudadResource {
             EventoEntity evento = ciudadLogic.addEvento(ciudadId, eventoId);
             return EventoConverter.fullEntity2DTO(evento);
         } catch (BusinessLogicException ex) {
-            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            LOGGER.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
         }
     }
@@ -193,7 +193,7 @@ public class CiudadResource {
             List<EventoEntity> newEventos = ciudadLogic.replaceEventos(eventoList, ciudadId);
             return EventoConverter.listEntity2DTO(newEventos);
         } catch (BusinessLogicException ex) {
-            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+            LOGGER.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
         }
     }

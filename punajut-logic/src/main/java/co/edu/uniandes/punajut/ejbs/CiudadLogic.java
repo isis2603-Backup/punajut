@@ -25,7 +25,7 @@ import javax.inject.Inject;
 @Stateless
 public class CiudadLogic implements ICiudadLogic {
 
-    private static final Logger logger = Logger.getLogger(CiudadLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CiudadLogic.class.getName());
 
     @Inject
     private CiudadPersistence persistence;
@@ -38,45 +38,45 @@ public class CiudadLogic implements ICiudadLogic {
 
     @Override
     public List<CiudadEntity> getCiudades() {
-        logger.info("Inicia proceso de consultar todas las ciudades");
+        LOGGER.info("Inicia proceso de consultar todas las ciudades");
         List<CiudadEntity> ciudades = persistence.findAll();
-        logger.info("Termina proceso de consultar todas las ciudades");
+        LOGGER.info("Termina proceso de consultar todas las ciudades");
         return ciudades;
     }
 
     @Override
     public CiudadEntity getCiudad(Long id) throws BusinessLogicException {
-        logger.log(Level.INFO, "Inicia proceso de consultar ciudad con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar ciudad con id={0}", id);
         CiudadEntity ciudad = persistence.find(id);
         if (ciudad == null) {
-            logger.log(Level.SEVERE, "La ciudad con el id {0} no existe", id);
+            LOGGER.log(Level.SEVERE, "La ciudad con el id {0} no existe", id);
             throw new BusinessLogicException("La ciudad solicitada no existe");
         }
-        logger.log(Level.INFO, "Termina proceso de consultar ciudad con id={0}", id);
+        LOGGER.log(Level.INFO, "Termina proceso de consultar ciudad con id={0}", id);
         return ciudad;
     }
 
     @Override
     public CiudadEntity createCiudad(CiudadEntity entity) {
-        logger.info("Inicia proceso de creación de ciudad");
+        LOGGER.info("Inicia proceso de creación de ciudad");
         persistence.create(entity);
-        logger.info("Termina proceso de creación de ciudad");
+        LOGGER.info("Termina proceso de creación de ciudad");
         return entity;
     }
 
     @Override
     public CiudadEntity updateCiudad(CiudadEntity entity) {
-        logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", entity.getId());
         CiudadEntity newEntity = persistence.update(entity);
-        logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", entity.getId());
         return newEntity;
     }
 
     @Override
     public void deleteCiudad(Long id) {
-        logger.log(Level.INFO, "Inicia proceso de borrar ciudad con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar ciudad con id={0}", id);
         persistence.delete(id);
-        logger.log(Level.INFO, "Termina proceso de borrar ciudad con id={0}", id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar ciudad con id={0}", id);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class CiudadLogic implements ICiudadLogic {
     }
 
     @Override
-    public EventoEntity getEvento(Long ciudadId, Long eventoId) throws Exception {
+    public EventoEntity getEvento(Long ciudadId, Long eventoId) throws BusinessLogicException {
 
         List<EventoEntity> eventos = getCiudad(ciudadId).getEventos();
 
@@ -121,7 +121,7 @@ public class CiudadLogic implements ICiudadLogic {
     }
 
     @Override
-    public void removeEvento(Long eventoId, Long ciudadId) throws Exception {
+    public void removeEvento(Long eventoId, Long ciudadId) throws BusinessLogicException {
 
         CiudadEntity ciudadEntity = getCiudad(ciudadId);
 

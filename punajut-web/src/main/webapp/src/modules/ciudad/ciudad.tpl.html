@@ -81,8 +81,8 @@
         <h6>Información de la ciudad</h6>
     </div>
 
-    <div  id="headingCiudad" class="well" ng-show="ctrl.showEventosMode">
-        <h1>Párrafo de prueba</h1>
+    <div  id="headingCiudad" class="well" ng-show="ctrl.showEventosMode" ng-repeat="record in records">
+        <h1>{{record.name}}</h1>
     </div>
 
     <div ng-show="ctrl.showEventosMode">
@@ -156,4 +156,5 @@
     <footer class="container-fluid text-center">
         <p>GoTravel</p>
     </footer>
+
 </div>
