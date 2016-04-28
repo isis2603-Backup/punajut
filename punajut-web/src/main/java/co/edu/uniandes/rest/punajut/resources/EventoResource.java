@@ -11,7 +11,7 @@ import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
 import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
-import co.edu.uniandes.rest.punajut.mocks.EventoLogicMock;
+//import co.edu.uniandes.rest.punajut.mocks.EventoLogicMock;
 import co.edu.uniandes.rest.punajut.converters.EventoConverter;
 import java.util.List;
 import java.util.logging.Level;

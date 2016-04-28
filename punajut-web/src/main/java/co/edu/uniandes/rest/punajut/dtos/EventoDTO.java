@@ -28,11 +28,11 @@ public class EventoDTO
 
     private  String descripcion;
 
-    private String[] opiniones ;
+//    private String[] opiniones ;
 
     private String lugar;
 
-    private CiudadDTO ciudad;
+//    private CiudadDTO ciudad;
 
     //Fecha y hora en que comienza el evento
     private Date fechaInicial;
@@ -67,7 +67,7 @@ public class EventoDTO
      * @param pFechaFinal
      */
      public EventoDTO(Long pId, String tipo ,double calificacion, double precio,String descripcion,
-             String[] opiniones,String lugar, CiudadDTO pCiudad, Date pFechaInicial, Date pFechaFinal)
+             String lugar, Date pFechaInicial, Date pFechaFinal)
     {
         super();
         id = pId;
@@ -75,9 +75,9 @@ public class EventoDTO
         this.calificacion = calificacion;
         this.precio = precio;
         this.descripcion = descripcion;
-        this.opiniones = opiniones;
+//        this.opiniones = opiniones;
         this.lugar = lugar;
-        ciudad = pCiudad;
+//        ciudad = pCiudad;
         fechaInicial = pFechaInicial;
         fechaFinal = pFechaFinal;
     }
@@ -130,13 +130,13 @@ public class EventoDTO
         this.descripcion = descripcion;
     }
 
-    public String[] getOpiniones() {
-        return opiniones;
-    }
-
-    public void setOpiniones(String[] opiniones) {
-        this.opiniones = opiniones;
-    }
+//    public String[] getOpiniones() {
+//        return opiniones;
+//    }
+//
+//    public void setOpiniones(String[] opiniones) {
+//        this.opiniones = opiniones;
+//    }
 
     public String getLugar() {
         return lugar;
@@ -146,13 +146,13 @@ public class EventoDTO
         this.lugar = lugar;
     }
 
-    public CiudadDTO getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(CiudadDTO ciudad) {
-        this.ciudad = ciudad;
-    }
+//    public CiudadDTO getCiudad() {
+//        return ciudad;
+//    }
+//
+//    public void setCiudad(CiudadDTO ciudad) {
+//        this.ciudad = ciudad;
+//    }
 
     public Date getFechaInicial() {
         return fechaInicial;
@@ -168,6 +168,14 @@ public class EventoDTO
 
     public void setFechaFinal(Date fechaFinal) {
         this.fechaFinal = fechaFinal;
+    }
+
+    /**
+     * Convierte el objeto a una cadena
+     */
+    @Override
+    public String toString() {
+        return "{ id : " + getId() + ", tipo : \"" + getTipo() + ", calificacion : \"" + getCalificacion() + ", precio : \"" + getPrecio() + ", descripcion : \"" + getDescripcion() + ", lugar : \"" + getLugar() + ", fechaInicial : \"" + getFechaInicial() +  ", fechaFinal : \"" + getFechaFinal()+ "\" }";
     }
 
 
