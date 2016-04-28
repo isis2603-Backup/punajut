@@ -116,13 +116,13 @@ public class ItinerarioPersistenceTest {
 //    }
 
 
-    @Test
-    public void getItinerarioTest() {
-        ItinerarioEntity entity = data.get(0);
-        ItinerarioEntity newEntity = itinerarioPersistence.find(entity.getId(),1L);
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-    }
+//    @Test
+//    public void getItinerarioTest() {
+//        ItinerarioEntity entity = data.get(0);
+//        ItinerarioEntity newEntity = itinerarioPersistence.find(entity.getId(),1L);
+//        Assert.assertNotNull(newEntity);
+//        Assert.assertEquals(entity.getName(), newEntity.getName());
+//    }
 
     @Test
     public void updateItinerarioTest() {
