@@ -10,12 +10,15 @@
             <div ng-repeat="record in records">
                 <div class="col-md-4 col-sm-6 col-lg-3 well">
                     <div class="caption" >
-                        <p><strong>Nombre:</strong> <span id="{{$index}}-nombre">{{record.nombre}}</span></p>
+                        <p><strong>Nombre:</strong> <span id="{{$index}}-name">{{record.name}}</span></p>
                         <p><strong>Tipo</strong> <span id="{{$index}}-tipo">{{record.tipo}}</span></p>
                         <p><strong>Calificacion</strong> <span id="{{$index}}-calificacion">{{record.calificacion}}</span></p>
                         <p><strong>Precio</strong> <span id="{{$index}}-precio">{{record.precio}}</span></p>
                         <p><strong>Descripcion</strong> <span id="{{$index}}-descripcion">{{record.descripcion}}</span></p>
                         <p><strong>Lugar</strong> <span id="{{$index}}-lugar">{{record.lugar}}</span></p>
+                        <p><strong>Fecha inicio</strong> <span id="{{$index}}-fechaInicio">{{record.fechaInicio}}</span></p>
+                        <p><strong>Fecha fin</strong> <span id="{{$index}}-fechaFin">{{record.fechaFin}}</span></p>
+
                     </div>
                     <p class="text-center">
                         <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Editar</button>
@@ -34,10 +37,10 @@
             </alert>
             <fieldset>
                 <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-                <div class="form-group col-md-12" ng-class="{'has-success': form.nombre.$valid && form.nombre.$dirty, 'has-error': form.nombre.$invalid && (form.nombre.$dirty || form.$submitted)}" >
-                    <label for="nombre" class="col-md-2 control-label">Nombre</label>
+                <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                    <label for="name" class="col-md-2 control-label">Nombre</label>
                     <div class="col-md-10">
-                        <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" required />
+                        <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" required />
                     </div>
                 </div>
                 <div class="form-group col-md-12" ng-class="{'has-success': form.tipo.$valid && form.tipo.$dirty, 'has-error': form.tipo.$invalid && (form.tipo.$dirty || form.$submitted)}" >
@@ -68,6 +71,18 @@
                     <label for="lugar" class="col-md-2 control-label">Lugar</label>
                     <div class="col-md-10">
                         <input id="lugar" name="lugar" class="form-control" type="text" ng-model="currentRecord.lugar" required />
+                    </div>
+                </div>
+                 <div class="form-group col-md-12" ng-class="{'has-success': form.fechaInicio.$valid && form.fechaInicio.$dirty, 'has-error': form.fechaInicio.$invalid && (form.fechaInicio.$dirty || form.$submitted)}" >
+                    <label for="lugar" class="col-md-2 control-label">Fecha inicio</label>
+                    <div class="col-md-10">
+                        <input id="fechaInicio" name="fechaInicio" class="form-control" type="text" ng-model="currentRecord.fechaInicio" required />
+                    </div>
+                </div>
+                 <div class="form-group col-md-12" ng-class="{'has-success': form.fechaFin.$valid && form.fechaFin.$dirty, 'has-error': form.fechaFin.$invalid && (form.fechaFin.$dirty || form.$submitted)}" >
+                    <label for="lugar" class="col-md-2 control-label">Fecha fin</label>
+                    <div class="col-md-10">
+                        <input id="fechaFin" name="fechaFin" class="form-control" type="text" ng-model="currentRecord.fechaFin" required />
                     </div>
                 </div>
             </fieldset>

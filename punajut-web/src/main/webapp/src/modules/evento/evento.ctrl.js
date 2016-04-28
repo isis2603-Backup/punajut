@@ -9,18 +9,14 @@
     mod.controller("eventoCtrl", ["$scope", "eventoService", function ($scope, svc) {
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
-                nombre: '' /* Tipo String */,
+                name: '' /* Tipo String */,
                 tipo: '' /* Tipo String */,
                 calificacion: '' /* Tipo Double */,
                 precio: '' /* Tipo Double */,
                 descripcion: '' /* Tipo String */,
                 lugar: '' /* Tipo String */,
-
-
-
-
-                comentario: '' /* Tipo String */
-
+                fechaInicio: '' /* Tipo String */,
+                fechaFin: '' /* Tipo String */
             };
 
             $scope.records = [];

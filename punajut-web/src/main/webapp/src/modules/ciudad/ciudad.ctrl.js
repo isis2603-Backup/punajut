@@ -4,7 +4,7 @@
     mod.controller("ciudadCtrl", ["$scope", "ciudadService", function ($scope, svc) {
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
-                nombre: '' /* Tipo String */,
+                name: '' /* Tipo String */,
                 descripcion: '' /* Tipo String */,
                 clima: '' /* Tipo String */,
                 longitud: '' /* Tipo Long */,

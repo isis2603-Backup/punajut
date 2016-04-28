@@ -20,6 +20,8 @@ public class EventoDTO
 
     private Long id;
 
+    private String name;
+
     private String tipo;
 
     private double calificacion;
@@ -56,6 +58,7 @@ public class EventoDTO
     /**
      * Constructor con parametros
      * @param pId
+     * @param name
      * @param tipo
      * @param calificacion
      * @param precio
@@ -66,11 +69,12 @@ public class EventoDTO
      * @param pFechaInicial
      * @param pFechaFinal
      */
-     public EventoDTO(Long pId, String tipo ,double calificacion, double precio,String descripcion,
+     public EventoDTO(Long pId, String name, String tipo ,double calificacion, double precio,String descripcion,
              String lugar, Date pFechaInicial, Date pFechaFinal)
     {
         super();
         id = pId;
+        this.name = name;
         this.tipo = tipo;
         this.calificacion = calificacion;
         this.precio = precio;
@@ -96,6 +100,14 @@ public class EventoDTO
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTipo() {
@@ -175,7 +187,7 @@ public class EventoDTO
      */
     @Override
     public String toString() {
-        return "{ id : " + getId() + ", tipo : \"" + getTipo() + ", calificacion : \"" + getCalificacion() + ", precio : \"" + getPrecio() + ", descripcion : \"" + getDescripcion() + ", lugar : \"" + getLugar() + ", fechaInicial : \"" + getFechaInicial() +  ", fechaFinal : \"" + getFechaFinal()+ "\" }";
+        return "{ id : " + getId() + ", nombre : \"" + getName() + ", tipo : \"" + getTipo() + ", calificacion : \"" + getCalificacion() + ", precio : \"" + getPrecio() + ", descripcion : \"" + getDescripcion() + ", lugar : \"" + getLugar() + ", fechaInicial : \"" + getFechaInicial() +  ", fechaFinal : \"" + getFechaFinal()+ "\" }";
     }
 
 

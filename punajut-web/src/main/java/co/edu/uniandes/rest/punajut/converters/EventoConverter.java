@@ -30,6 +30,7 @@ import java.util.List;
         if (entity != null) {
             EventoDTO dto = new EventoDTO();
             dto.setId(entity.getId());
+            dto.setName(entity.getName());
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
@@ -78,6 +79,7 @@ import java.util.List;
         if (entity != null) {
             EventoDTO dto = new EventoDTO();
             dto.setId(entity.getId());
+            dto.setName(entity.getName());
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
@@ -106,6 +108,7 @@ import java.util.List;
         if (dto != null) {
             EventoEntity entity = new EventoEntity();
             entity.setId(dto.getId());
+            entity.setName(dto.getName());
             entity.setCalificacion(dto.getCalificacion());
             entity.setDescripcion(dto.getDescripcion());
             entity.setLugar(dto.getLugar());
