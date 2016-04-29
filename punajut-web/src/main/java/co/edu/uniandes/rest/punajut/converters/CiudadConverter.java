@@ -8,16 +8,18 @@ import java.util.List;
 public abstract class CiudadConverter {
 
     /**
-     * Constructor privado para evitar la creación del constructor implícito de Java
+     * Constructor privado para evitar la creación del constructor implícito de
+     * Java
+     *
      * @generated
      */
     private CiudadConverter() {
     }
 
     /**
-     * Realiza la conversión de CiudadEntity a CiudadDTO.
-     * Se invoca cuando otra entidad tiene una referencia a CiudadEntity.
-     * Entrega únicamente los atributos propios de la entidad.
+     * Realiza la conversión de CiudadEntity a CiudadDTO. Se invoca cuando otra
+     * entidad tiene una referencia a CiudadEntity. Entrega únicamente los
+     * atributos propios de la entidad.
      *
      * @param entity instancia de CiudadEntity a convertir
      * @return instancia de CiudadDTO con los datos recibidos por parámetro
@@ -40,9 +42,9 @@ public abstract class CiudadConverter {
     }
 
     /**
-     * Realiza la conversión de CiudadDTO a CiudadEntity Se invoca cuando otro DTO
-     * tiene una referencia a CiudadDTO Convierte únicamente el ID ya que es el
-     * único atributo necesario para guardar la relación en la base de datos
+     * Realiza la conversión de CiudadDTO a CiudadEntity Se invoca cuando otro
+     * DTO tiene una referencia a CiudadDTO Convierte únicamente el ID ya que es
+     * el único atributo necesario para guardar la relación en la base de datos
      *
      * @param dto instancia de CiudadDTO a convertir
      * @return instancia de CiudadEntity con los datos recibidos por parámetro
@@ -60,8 +62,8 @@ public abstract class CiudadConverter {
     }
 
     /**
-     * Convierte una instancia de CiudadEntity a CiudadDTO Se invoca cuando se desea
-     * consultar la entidad y sus relaciones muchos a uno o uno a uno
+     * Convierte una instancia de CiudadEntity a CiudadDTO Se invoca cuando se
+     * desea consultar la entidad y sus relaciones muchos a uno o uno a uno
      *
      * @param entity instancia de CiudadEntity a convertir
      * @return Instancia de CiudadDTO con los datos recibidos por parámetro
@@ -85,8 +87,8 @@ public abstract class CiudadConverter {
 
     /**
      * Convierte una instancia de CiudadDTO a CiudadEntity Se invoca cuando se
-     * necesita convertir una instancia de CiudadDTO con los atributos propios de
-     * la entidad y con las relaciones uno a uno o muchos a uno
+     * necesita convertir una instancia de CiudadDTO con los atributos propios
+     * de la entidad y con las relaciones uno a uno o muchos a uno
      *
      * @param dto instancia de CiudadDTO a convertir
      * @return Instancia de CiudadEntity creada a partir de los datos de dto
@@ -109,8 +111,8 @@ public abstract class CiudadConverter {
     }
 
     /**
-     * Convierte instancias de CiudadEntity a CiudadDTO incluyendo sus relaciones
-     * Uno a muchos y Muchos a muchos
+     * Convierte instancias de CiudadEntity a CiudadDTO incluyendo sus
+     * relaciones Uno a muchos y Muchos a muchos
      *
      * @param entity Instancia de CiudadEntity a convertir
      * @return Instancia de CiudadDTO con los datos recibidos por parámetro
@@ -126,8 +128,8 @@ public abstract class CiudadConverter {
     }
 
     /**
-     * Convierte una instancia de CiudadDTO a CiudadEntity.
-     * Incluye todos los atributos de CiudadEntity.
+     * Convierte una instancia de CiudadDTO a CiudadEntity. Incluye todos los
+     * atributos de CiudadEntity.
      *
      * @param dto Instancia de CiudadDTO a convertir
      * @return Instancia de CiudadEntity con los datos recibidos por parámetro
@@ -143,9 +145,9 @@ public abstract class CiudadConverter {
     }
 
     /**
-     * Convierte una colección de instancias de CiudadEntity a CiudadDTO. Para cada
-     * instancia de CiudadEntity en la lista, invoca basicEntity2DTO y añade el
-     * nuevo CiudadDTO a una nueva lista
+     * Convierte una colección de instancias de CiudadEntity a CiudadDTO. Para
+     * cada instancia de CiudadEntity en la lista, invoca basicEntity2DTO y
+     * añade el nuevo CiudadDTO a una nueva lista
      *
      * @param entities Colección de entidades a convertir
      * @return Collección de instancias de CiudadDTO

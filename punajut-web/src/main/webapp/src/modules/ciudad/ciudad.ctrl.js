@@ -4,11 +4,11 @@
     mod.controller("ciudadCtrl", ["$scope", "ciudadService", function ($scope, svc) {
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
-                nombre: '' /* Tipo String */,
+                name: '' /* Tipo String */,
                 descripcion: '' /* Tipo String */,
                 clima: '' /* Tipo String */,
                 longitud: '' /* Tipo Long */,
-                latitud: '' /* Tipo Long */,
+                latitud: '' /* Tipo Long */
             };
 
             $scope.records = [];
@@ -55,13 +55,17 @@
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.showEventosMode = false;
+
+
+
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
             };
 
             //Ejemplo alerta
-            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de atención", "warning");
+            showMessage("Bienvenido!, Para agregar una ciudad, presione el botón Crear ciudad", "warning");
 
             this.createRecord = function () {
                 $scope.$broadcast("pre-create", $scope.currentRecord);
@@ -85,6 +89,7 @@
                     $scope.records = response.data;
                     $scope.currentRecord = {};
                     self.editMode = false;
+
                     return response;
                 }, responseError);
             };
@@ -96,9 +101,14 @@
             };
 
             this.deleteRecord = function (record) {
+                this.showEventosMode = false;
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
+            };
+
+            this.showEventos = function () {
+                this.showEventosMode = true;
             };
 
             this.fetchRecords();

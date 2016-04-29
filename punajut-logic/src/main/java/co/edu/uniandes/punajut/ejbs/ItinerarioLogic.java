@@ -6,8 +6,10 @@
 package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
+import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
 import java.util.List;
@@ -32,24 +34,28 @@ public class ItinerarioLogic implements IItinerarioLogic
     @Inject
     private IVisitaCiudadLogic visitaCiudad;
 
+    @Inject
+    private IViajeroLogic viajeroLogic;
+
     @Override
-    public List<ItinerarioEntity> getItinerarios() {
+    public List<ItinerarioEntity> getItinerarios(Long idViajero) throws BusinessLogicException{
         logger.info("Inicia proceso de consultar todos los itinerarios");
-        List<ItinerarioEntity> itinerarios = persistence.findAll();
-        logger.info("Termina proceso de consultar todos los itinerarios");
+        ViajeroEntity v = viajeroLogic.getViajero(idViajero);
+        List<ItinerarioEntity> itinerarios = v.getItiverarios();
+        logger.info("Termina proceso de consultar todos los itinerarios de un viajero");
         return itinerarios;
     }
 
 
     @Override
-    public ItinerarioEntity getItinerario(Long id) throws BusinessLogicException {
-        logger.log(Level.INFO, "Inicia proceso de consultar itinerario con id={0}", id);
-        ItinerarioEntity itinerario = persistence.find(id);
+    public ItinerarioEntity getItinerario(Long idItinerario, Long idViajero) throws BusinessLogicException {
+        logger.log(Level.INFO, "Inicia proceso de consultar itinerario con id={0}", idItinerario);
+        ItinerarioEntity itinerario = persistence.find(idItinerario, idViajero);
         if (itinerario == null) {
-            logger.log(Level.SEVERE, "El itinerario con el id {0} no existe", id);
+            logger.log(Level.SEVERE, "El itinerario con el id {0} no existe", idItinerario);
             throw new BusinessLogicException("El itinerario solicitado no existe");
         }
-        logger.log(Level.INFO, "Termina proceso de consultar itinerario con id={0}", id);
+        logger.log(Level.INFO, "Termina proceso de consultar itinerario con id={0}", idItinerario);
         return itinerario;
     }
 

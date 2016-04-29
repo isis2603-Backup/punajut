@@ -5,6 +5,7 @@
         "usuarioModule",
         "itinerarioModule",
         "ciudadModule",
+        "eventoModule",
         "ngMessages"
     ]);
 
@@ -46,6 +47,13 @@
                         controller: "visitaCiudadCtrl",
                         controllerAs: "ctrl",
                         templateUrl: "src/modules/visitaCiudad/visitaCiudadCrear.tpl.html"
+                    })
+
+                    .state('evento', {
+                        url: '/evento',
+                        controller: "eventoCtrl",
+                        controllerAs: "ctrl",
+                        templateUrl: "src/modules/evento/evento.tpl.html"
                     });
         }]);
 })(window.angular);

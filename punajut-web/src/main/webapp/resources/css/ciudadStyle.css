@@ -9,23 +9,36 @@ and open the template in the editor.
 */
 
 /* Remove the navbar's default rounded borders and increase the bottom margin */
-    .navbar {
-      margin-bottom: 20px;
-      border-radius: 0;
-    }
+.navbar {
+    margin-bottom: 20px;
+    border-radius: 0;
+}
 
-    /* Remove the jumbotron's default bottom margin */
-     .jumbotron {
-      padding: 20px;
-    }
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+    margin-bottom: 20px;
+    padding: 20px;
+}
 
-    /* Add a gray background color and some padding to the footer */
-    footer {
-	  background-color: #f2f2f2;
-      padding: 25px;
-    }
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+    padding: 25px;
+}
 
-    .instrucciones {
-          padding: 20px;
-    }
+.instrucciones {
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#separador {
+    text-align: center;
+    color: white;
+}
+
+#headingCiudad {
+    text-align: center;
+}
+
 

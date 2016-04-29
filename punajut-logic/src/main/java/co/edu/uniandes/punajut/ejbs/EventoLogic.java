@@ -34,10 +34,10 @@ public class EventoLogic implements IEventoLogic{
 
     @Override
     public List<EventoEntity> getEventos() {
-        logger.info("Inicia proceso de consultar todos los autores");
-        List<EventoEntity> authors = persistence.findAll();
-        logger.info("Termina proceso de consultar todos los autores");
-        return authors;
+        logger.info("Inicia proceso de consultar todos los eventos");
+        List<EventoEntity> eventos = persistence.findAll();
+        logger.info("Termina proceso de consultar todos los eventos");
+        return eventos;
     }
 
     @Override

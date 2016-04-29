@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.rest.punajut.dtos;
 
-import java.util.ArrayList;
-
 /**
  * Objeto de transferencia de datos de Ciudades.
  *
@@ -88,6 +86,7 @@ public class CiudadDTO {
 
     /**
      * Cambia el id de la ciudad por el que llega como parametro
+     *
      * @param id Id ciudad
      */
     public void setId(Long id) {
@@ -103,6 +102,7 @@ public class CiudadDTO {
 
     /**
      * Cambia el nombre de la ciudad por el que llega como parametro
+     *
      * @param name Nombre ciudad
      */
     public void setName(String name) {
@@ -111,6 +111,7 @@ public class CiudadDTO {
 
     /**
      * Retorna la descripcion de la ciudad
+     *
      * @return descripcion
      */
     public String getDescripcion() {
@@ -119,6 +120,7 @@ public class CiudadDTO {
 
     /**
      * Cambia la descripcion de la ciudad por lo que llega como parametro
+     *
      * @param descripcion Nombre ciudad
      */
     public void setDescripcion(String descripcion) {
@@ -127,6 +129,7 @@ public class CiudadDTO {
 
     /**
      * Retorna la descripcion del clima de la ciudad
+     *
      * @return clima
      */
     public String getClima() {
@@ -134,7 +137,9 @@ public class CiudadDTO {
     }
 
     /**
-     * Cambia la descripcion del clima de la ciudad por la que llega como parametro
+     * Cambia la descripcion del clima de la ciudad por la que llega como
+     * parametro
+     *
      * @param clima Clima ciudad
      */
     public void setClima(String clima) {
@@ -143,6 +148,7 @@ public class CiudadDTO {
 
     /**
      * Retorna la longitud de la ciudad
+     *
      * @return longitud
      */
     public Long getLongitud() {
@@ -151,6 +157,7 @@ public class CiudadDTO {
 
     /**
      * Cambia la longitud de la ciudad por la que llega como parametro
+     *
      * @param longitud Longitud ciudad
      */
     public void setLongitud(Long longitud) {
@@ -159,6 +166,7 @@ public class CiudadDTO {
 
     /**
      * Retorna la latitud de la ciudad
+     *
      * @return latitud
      */
     public Long getLatitud() {
@@ -167,6 +175,7 @@ public class CiudadDTO {
 
     /**
      * Cambia la latitud de la ciudad por la que llega como parametro
+     *
      * @param latitud Latitud ciudad
      */
     public void setLatitud(Long latitud) {
@@ -178,6 +187,6 @@ public class CiudadDTO {
      */
     @Override
     public String toString() {
-        return "{ id : " + getId() + ", nombre : \"" + getName() + ", descripcion : \"" + getDescripcion()+ ", clima : \"" + getClima()+ ", longitud : \"" + getLongitud()+ ", latitud : \"" + getLatitud()+ "\" }";
+        return "{ id : " + getId() + ", nombre : \"" + getName() + ", descripcion : \"" + getDescripcion() + ", clima : \"" + getClima() + ", longitud : \"" + getLongitud() + ", latitud : \"" + getLatitud() + "\" }";
     }
 }

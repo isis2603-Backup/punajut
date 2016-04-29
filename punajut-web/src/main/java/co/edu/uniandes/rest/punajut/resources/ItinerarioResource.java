@@ -55,9 +55,9 @@ public class ItinerarioResource {
      * @throws ItinerarioLogicException excepción retornada por la lógica
      */
     @GET
-    public List<ItinerarioDTO> getItinerarios(@PathParam("idViajero") Long idViajero) throws ItinerarioLogicException{
+    public List<ItinerarioDTO> getItinerarios(@PathParam("idViajero") Long idViajero) throws ItinerarioLogicException, BusinessLogicException{
         logger.info("Se ejecuta método getItinerarios");
-        List<ItinerarioEntity> itinerarios = itinerarioLogic.getItinerarios();
+        List<ItinerarioEntity> itinerarios = itinerarioLogic.getItinerarios(idViajero);
         return ItinerarioConverter.listEntity2DTO(itinerarios);
     }
 
@@ -65,16 +65,17 @@ public class ItinerarioResource {
      * Obtiene un  itinerario
      *
      * @param id identificador del itinerario
+     * @param idViajero
      * @return itinerario encontrada
      * @throws ItinerarioLogicException cuando el itinerario no existe
      */
-    @GET
+    @GET      
     @Path("{id: \\d+}")
-    public ItinerarioDTO getItinerario(@PathParam("id") Long id)
+    public ItinerarioDTO getItinerario(@PathParam("id") Long id,@PathParam("idViajero") Long idViajero)
     {
         ItinerarioEntity itinerario;
         try{
-         itinerario= itinerarioLogic.getItinerario(id);
+         itinerario= itinerarioLogic.getItinerario(id, idViajero);
         }
         catch(BusinessLogicException ex)
         {
@@ -111,15 +112,15 @@ public class ItinerarioResource {
      * suministrado
      */
     @PUT
-    @Path("{id: \\d+}")
-    public ItinerarioDTO updateItinerario(@PathParam("id") Long id,  ItinerarioDTO itinerario) throws ItinerarioLogicException {
+    @Path("{idItinerario: \\d+}")
+    public ItinerarioDTO updateItinerario(@PathParam("idItinerario") Long id,  ItinerarioDTO itinerario,@PathParam("idViajero") Long idV) throws ItinerarioLogicException {
 
         logger.log(Level.INFO, "Se ejecuta método updateItinerario con id={0}", id);
         ItinerarioEntity entity = ItinerarioConverter.fullDTO2Entity(itinerario);
         entity.setId(id);
         ItinerarioEntity oldEntity;
         try{
-        oldEntity= itinerarioLogic.getItinerario(id);
+        oldEntity= itinerarioLogic.getItinerario(id,idV);
         }
         catch (BusinessLogicException ex){
             logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);

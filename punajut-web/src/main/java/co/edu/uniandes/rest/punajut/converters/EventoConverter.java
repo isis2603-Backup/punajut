@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.punajut.converters;
-import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import java.util.ArrayList;
@@ -31,12 +30,15 @@ import java.util.List;
         if (entity != null) {
             EventoDTO dto = new EventoDTO();
             dto.setId(entity.getId());
+            dto.setName(entity.getName());
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-            dto.setOpiniones(entity.getOpiniones());
+//            dto.setOpiniones(entity.getOpiniones());
             dto.setTipo(entity.getTipo());
             dto.setPrecio(entity.getPrecio());
+            dto.setFechaInicial(entity.getFechaInicial());
+            dto.setFechaFinal(entity.getFechaFinal());
 
 
             return dto;
@@ -77,12 +79,15 @@ import java.util.List;
         if (entity != null) {
             EventoDTO dto = new EventoDTO();
             dto.setId(entity.getId());
+            dto.setName(entity.getName());
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-            dto.setOpiniones(entity.getOpiniones());
+//            dto.setOpiniones(entity.getOpiniones());
             dto.setTipo(entity.getTipo());
             dto.setPrecio(entity.getPrecio());
+            dto.setFechaInicial(entity.getFechaInicial());
+            dto.setFechaFinal(entity.getFechaFinal());
 
             return dto;
         } else {
@@ -103,12 +108,15 @@ import java.util.List;
         if (dto != null) {
             EventoEntity entity = new EventoEntity();
             entity.setId(dto.getId());
+            entity.setName(dto.getName());
             entity.setCalificacion(dto.getCalificacion());
             entity.setDescripcion(dto.getDescripcion());
             entity.setLugar(dto.getLugar());
-            entity.setOpiniones(dto.getOpiniones());
+//            entity.setOpiniones(dto.getOpiniones());
             entity.setTipo(dto.getTipo());
             entity.setPrecio(dto.getPrecio());
+            entity.setFechaInicial(dto.getFechaInicial());
+            entity.setFechaFinal(dto.getFechaFinal());
 
             return entity;
         } else {

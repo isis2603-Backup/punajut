@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
-
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,11 +21,11 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ItinerarioPersistence {
-        private static final Logger logger = Logger.getLogger(ItinerarioPersistence.class.getName());
+
+    private static final Logger logger = Logger.getLogger(ItinerarioPersistence.class.getName());
 
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
-
 
     public ItinerarioEntity create(ItinerarioEntity entity) {
         logger.info("Creando un nuevo itinerario");
@@ -45,15 +45,20 @@ public class ItinerarioPersistence {
         em.remove(entity);
     }
 
-    public ItinerarioEntity find(Long id) {
-        logger.log(Level.INFO, "Consultando itinerario con id={0}", id);
-        return em.find(ItinerarioEntity.class, id);
+    public ItinerarioEntity find(Long idItinerario, Long idViajero)
+    {
+        logger.log(Level.INFO, "Consultando itinerario con id={0}", idItinerario);
+        TypedQuery<ItinerarioEntity> q = em.createQuery("select p from ItinerarioEntity p where (p.itinerario.id = :idItinerario) and (p.id = :idViajero)", ItinerarioEntity.class);
+        q.setParameter("idItinerario", idItinerario);
+        q.setParameter("idViajero", idViajero);
+        return q.getSingleResult();
     }
 
-        public List<ItinerarioEntity> findAll() {
+    public List<ItinerarioEntity> findAll() {
         logger.info("Consultando todos los itinerarioss");
         Query q = em.createQuery("select u from ItinerarioEntity u");
         return q.getResultList();
     }
+
 
 }
