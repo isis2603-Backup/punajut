@@ -5,8 +5,14 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
+import co.edu.uniandes.punajut.api.IItinerarioLogic;
+import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
+import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
+import co.edu.uniandes.punajut.persistence.VisitaCiudadPersistence;
+import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,19 +34,51 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     @Inject
     private EventoViajeroPersistence persistence;
 
+    @Inject
+    private IViajeroLogic viajeroLogic;
+
+    @Inject
+    private IItinerarioLogic itinerarioLogic;
+
+    @Inject
+    private VisitaCiudadPersistence persistenceVisitaCiudad;
+
     @Override
-    public List<EventoViajeroEntity> getEventoViajeros() {
+    public List<EventoViajeroEntity> getEventosViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad) throws BusinessLogicException
+    {
         logger.info("Inicia proceso de consultar todos los evento viajero");
-        List<EventoViajeroEntity> eventos = persistence.findAll();
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero no existe");
+
+        if(itinerarioLogic.getItinerario(idItinerario) == null)
+            throw new IllegalArgumentException("El itinerario no existe");
+
+        logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
+        VisitaCiudadEntity visitaCiudadEntity = persistenceVisitaCiudad.find(idVisitaCiudad, idItinerario);
+        List<EventoViajeroEntity> eventos = null;
+        if(visitaCiudadEntity != null)
+        {
+            eventos = visitaCiudadEntity.getEventosViajero();
+        }
         logger.info("Termina proceso de consultar todos los evento viajero");
         return eventos;
     }
 
     @Override
-    public EventoViajeroEntity getEventoViajero(Long idEvento) {
-         logger.log(Level.INFO, "Inicia proceso de consultar el evento viajero con id={0}", idEvento);
+    public EventoViajeroEntity getEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, Long idEvento) throws BusinessLogicException
+    {
+        logger.log(Level.INFO, "Inicia proceso de consultar el evento viajero con id={0}", idEvento);
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero no existe");
+
+        if(itinerarioLogic.getItinerario(idItinerario) == null)
+            throw new IllegalArgumentException("El itinerario no existe");
+
         EventoViajeroEntity evento = persistence.find(idEvento);
-        if (evento == null) {
+        if (evento == null)
+        {
             logger.log(Level.SEVERE, "El evento viajero con el id {0} no existe", idEvento);
             throw new IllegalArgumentException("El evento viajero solicitado no existe");
         }
@@ -48,21 +86,26 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         return evento;
     }
 
-//    @Override
-//    public EventoViajeroEntity crearEventoPersonalizado(EventoViajeroEntity e)
-//    {
-//        logger.info("Inicia proceso de creación de evento personalizado");
-//        persistence.create(e);
-//        logger.info("Termina proceso de creación de evento personalizado");
-//        return e;
-//    }
-
     @Override
-    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e)
+    public EventoViajeroEntity updateEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, EventoViajeroEntity e) throws BusinessLogicException
     {
-         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", e.getId());
-        EventoViajeroEntity newEntity = persistence.update(e);
-        logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", e.getId());
+        logger.log(Level.INFO, "Inicia proceso de actualizar el evento viajero con id={0}", e.getId());
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero no existe");
+
+        if(itinerarioLogic.getItinerario(idItinerario) == null)
+            throw new IllegalArgumentException("El itinerario no existe");
+
+        logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
+        VisitaCiudadEntity visitaCiudadEntity = persistenceVisitaCiudad.find(idVisitaCiudad, idItinerario);
+
+        EventoViajeroEntity newEntity = null;
+        if(visitaCiudadEntity != null)
+        {
+            newEntity = persistence.update(e);
+            logger.log(Level.INFO, "Termina proceso de actualizar el evento viajero con id con id={0}", e.getId());
+        }
         return newEntity;
     }
 
@@ -75,10 +118,24 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     }
 
     @Override
-    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e)
+    public EventoViajeroEntity createEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, EventoViajeroEntity e) throws BusinessLogicException
     {
         logger.info("Inicia proceso de agregar un evento viajero");
-        persistence.create(e);
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero no existe");
+
+        if(itinerarioLogic.getItinerario(idItinerario) == null)
+            throw new IllegalArgumentException("El itinerario no existe");
+
+        logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
+        VisitaCiudadEntity visitaCiudadEntity = persistenceVisitaCiudad.find(idVisitaCiudad, idItinerario);
+
+        if(visitaCiudadEntity != null)
+        {
+           e.setVisitaCiudad(visitaCiudadEntity);
+           persistence.create(e);
+        }
+
         logger.info("Termina proceso de agregar un evento viajero");
         return e;
     }

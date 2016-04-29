@@ -47,42 +47,71 @@ public class EventoViajeroResource
 
 	/**
 	 * Obtiene el listado de eventos a los cuales el viajero asistirÃ¡ en la ciudad
+         * @param idViajero
+         * @param idItinerario
+         * @param idVisitaCiudad
 	 * @return lista de eventos
 	 * @throws ItinerarioLogicException excepciÃ³n retornada por la lÃ³gica
 	 */
     @GET
-    public List<EventoViajeroDTO> getEventosViajero() throws ItinerarioLogicException
+    public List<EventoViajeroDTO> getEventosViajero(@PathParam("idViajero") Long idViajero, @PathParam("idItinerario") Long idItinerario, @PathParam("idVisitaCiudad") Long idVisitaCiudad) throws ItinerarioLogicException
     {
         logger.info("Se ejecuta mÃ©todo getEventosViajero");
-        return EventoViajeroConverter.listEntity2DTO(eventoViajeroLogic.getEventoViajeros());
+        List<EventoViajeroEntity> eventosViajero = null;
+        try
+        {
+            eventosViajero = eventoViajeroLogic.getEventosViajero(idViajero, idItinerario, idVisitaCiudad);
+        }
+        catch (BusinessLogicException ex)
+        {
+            Logger.getLogger(EventoViajeroResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return EventoViajeroConverter.listEntity2DTO(eventosViajero);
     }
 
     /**
      * Obtiene una evento de la lista del viajero
-     * @param id identificador del evento
+     * @param idViajero
+     * @param idItinerario
+     * @param idVisitaCiudad
+     * @param idEventoViajero identificador del evento
      * @return evento encontrada
      * @throws ItinerarioLogicException cuando el evento no existe
      */
     @GET
     @Path("{id: \\d+}")
-    public EventoViajeroDTO getEventoViajero(@PathParam("id") Long id) throws ItinerarioLogicException
+    public EventoViajeroDTO getEventoViajero(@PathParam("idViajero") Long idViajero, @PathParam("idItinerario") Long idItinerario, @PathParam("idVisitaCiudad") Long idVisitaCiudad, @PathParam("id") Long idEventoViajero) throws ItinerarioLogicException
     {
-        return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.getEventoViajero(id));
+        EventoViajeroEntity eventoViajero = null;
+        try
+        {
+            eventoViajero = eventoViajeroLogic.getEventoViajero(idViajero, idItinerario, idVisitaCiudad, idEventoViajero);
+        }
+        catch (BusinessLogicException ex)
+        {
+            Logger.getLogger(EventoViajeroResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return EventoViajeroConverter.fullEntity2DTO(eventoViajero);
     }
 
     /**
      * Agrega un evento a la lista del viajero
      * @param evento evento a agregar
      * @return datos del evento a agregar
+     * @param idViajero
+     * @param idItinerario
+     * @param idVisitaCiudad
+     * @param evento
+     * @return eventoViajeroDTO
      */
     @POST
-    public EventoViajeroDTO createEventoViajero(EventoViajeroDTO evento)
+    public EventoViajeroDTO createEventoViajero(@PathParam("idViajero") Long idViajero, @PathParam("idItinerario") Long idItinerario, @PathParam("idVisitaCiudad") Long idVisitaCiudad, EventoViajeroDTO evento)
     {
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
         EventoViajeroEntity newEntity;
         try
         {
-            newEntity = eventoViajeroLogic.createEventoViajero(entity);
+            newEntity = eventoViajeroLogic.createEventoViajero(idViajero, idItinerario, idVisitaCiudad, entity);
         }
 
         catch (BusinessLogicException ex)
@@ -96,23 +125,27 @@ public class EventoViajeroResource
 
     /**
      * Actualiza los datos de un evento en la lista del viajero
+     * @param idViajero
      * @param id identificador del evento a modificar
+     * @param idItinerario
      * @param evento evento a modificar
+     * @param idVisitaCiudad
      * @return datos del evento modificado
      * @throws ItinerarioLogicException cuando no existe una evento con el id suministrado
      */
     @PUT
     @Path("{id: \\d+}")
-    public EventoViajeroDTO updateEventoViajero(@PathParam("id") Long id, EventoViajeroDTO evento) throws ItinerarioLogicException {
+    public EventoViajeroDTO updateEventoViajero(@PathParam("idViajero") Long idViajero, @PathParam("idItinerario") Long idItinerario, @PathParam("idVisitaCiudad") Long idVisitaCiudad, @PathParam("id") Long id, EventoViajeroDTO evento) throws ItinerarioLogicException {
         logger.log(Level.INFO, "Se ejecuta método updateEventoViajero con id={0}", id);
 
         EventoViajeroEntity entity = EventoViajeroConverter.fullDTO2Entity(evento);
         entity.setId(id);
-        EventoViajeroEntity oldEntity = eventoViajeroLogic.getEventoViajero(id);
-        entity.setEvento(oldEntity.getEvento());
+
         try
         {
-            return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.updateEventoViajero(entity));
+            EventoViajeroEntity oldEntity = eventoViajeroLogic.getEventoViajero(idViajero, idItinerario, idVisitaCiudad, id);
+            entity.setEvento(oldEntity.getEvento());
+            return EventoViajeroConverter.fullEntity2DTO(eventoViajeroLogic.updateEventoViajero(idViajero, idItinerario, idVisitaCiudad, entity));
         }
 
         catch (BusinessLogicException ex)

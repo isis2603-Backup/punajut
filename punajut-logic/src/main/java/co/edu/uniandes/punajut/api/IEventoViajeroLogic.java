@@ -13,13 +13,13 @@ import java.util.List;
  */
 public interface IEventoViajeroLogic
 {
-    public List<EventoViajeroEntity> getEventoViajeros();
+    public List<EventoViajeroEntity> getEventosViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad)throws BusinessLogicException;
 
-    public EventoViajeroEntity getEventoViajero(Long idEvento);
+    public EventoViajeroEntity getEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, Long idEvento)throws BusinessLogicException;
 
-    public EventoViajeroEntity createEventoViajero(EventoViajeroEntity e) throws BusinessLogicException;
+    public EventoViajeroEntity createEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, EventoViajeroEntity e) throws BusinessLogicException;
 
-    public EventoViajeroEntity updateEventoViajero(EventoViajeroEntity e) throws BusinessLogicException;
+    public EventoViajeroEntity updateEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, EventoViajeroEntity e) throws BusinessLogicException;
 
     public void deleteEventoViajero(Long idEvento);
 

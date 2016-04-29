@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 
 /**
@@ -54,5 +55,12 @@ public class VisitaCiudadPersistence {
         logger.info("Consultando todas las visitas");
         Query q = em.createQuery("select u from VisitaCiudadEntity u");
         return q.getResultList();
+    }
+
+    public VisitaCiudadEntity find(Long idVisitaCiudad, Long idItinerario) {
+        TypedQuery<VisitaCiudadEntity> q = em.createQuery("select p from VisitaCiudadEntity p where (p.itinerario.id = :idItinerario) and (p.id = :idVisitaCiudad)", VisitaCiudadEntity.class);
+        q.setParameter("idVisitaCiudad", idVisitaCiudad);
+        q.setParameter("idItinerario", idItinerario);
+        return q.getSingleResult();
     }
 }
