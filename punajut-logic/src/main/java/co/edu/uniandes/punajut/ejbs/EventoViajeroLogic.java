@@ -51,7 +51,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(viajeroLogic.getViajero(idViajero) == null)
             throw new IllegalArgumentException("El viajero no existe");
 
-        if(itinerarioLogic.getItinerario(idItinerario) == null)
+        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario no existe");
 
         logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
@@ -73,7 +73,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(viajeroLogic.getViajero(idViajero) == null)
             throw new IllegalArgumentException("El viajero no existe");
 
-        if(itinerarioLogic.getItinerario(idItinerario) == null)
+        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario no existe");
 
         EventoViajeroEntity evento = persistence.find(idEvento);
@@ -94,7 +94,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(viajeroLogic.getViajero(idViajero) == null)
             throw new IllegalArgumentException("El viajero no existe");
 
-        if(itinerarioLogic.getItinerario(idItinerario) == null)
+        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario no existe");
 
         logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
@@ -124,7 +124,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(viajeroLogic.getViajero(idViajero) == null)
             throw new IllegalArgumentException("El viajero no existe");
 
-        if(itinerarioLogic.getItinerario(idItinerario) == null)
+        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario no existe");
 
         logger.info("Inicia proceso de buscar la visita ciudad con el id dado");
