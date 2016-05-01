@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -20,15 +21,42 @@ import javax.persistence.OneToMany;
 @Entity
 public class CiudadEntity extends BaseEntity implements Serializable {
 
+    //-------------------------------------------------------------------------------
+    // Atributos
+    //-------------------------------------------------------------------------------
+
+    /**
+     * Descripcion de la ciudad
+     */
     private String descripcion;
+
+    /**
+     * Clima de la ciudad
+     */
     private String clima;
+
+    /**
+     * Longitud de la ciudad
+     */
     private Long longitud;
+
+    /**
+     * Latitud de la ciudad
+     */
     private Long latitud;
 
+    /**
+     * Eventos de la ciudad
+     */
     @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EventoEntity> eventos = new ArrayList<>();
 
+    //--------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
+
     /**
+     * Retorna la descripcion de la ciudad
      * @return descripcion
      */
     public String getDescripcion() {
@@ -36,6 +64,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Cambia la descripcion de la ciudad por lo que llega como parametro
      * @param descripcion La nueva descripcion
      */
     public void setDescripcion(String descripcion) {
@@ -43,6 +72,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Retorna el clima de la ciudad
      * @return clima
      */
     public String getClima() {
@@ -50,6 +80,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Cambia el clima de la ciudad por lo que llega como parametro
      * @param clima El nuevo clima
      */
     public void setClima(String clima) {
@@ -57,6 +88,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Retorna la longitud de la ciudad
      * @return longitud
      */
     public Long getLongitud() {
@@ -64,6 +96,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Cambia la longitud de la ciudad por lo que llega como parametro
      * @param longitud la nueva longitud
      */
     public void setLongitud(Long longitud) {
@@ -71,6 +104,7 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Retorna la latitud de la ciudad
      * @return latitud
      */
     public Long getLatitud() {
@@ -78,18 +112,37 @@ public class CiudadEntity extends BaseEntity implements Serializable {
     }
 
     /**
+     * Cambia la latitud de la ciudad por lo que llega como parametro
      * @param latitud Nueva latitud
      */
     public void setLatitud(Long latitud) {
         this.latitud = latitud;
     }
 
+    /**
+     * Retorna los eventos de la ciudad
+     * @return eventos
+     */
     public List<EventoEntity> getEventos() {
         return eventos;
     }
 
+    /**
+     * Cambia los eventos de la ciudad por lo que llega como parametro
+     * @param eventos
+     */
     public void setEventos(List<EventoEntity> eventos) {
         this.eventos = eventos;
+    }
+
+    /**
+     * Compara dos CiudadEntity
+     * @param entity Ciudad a comparar
+     * @return true si son iguales, false en caso contrario
+     */
+    public boolean equals(CiudadEntity entity)
+    {
+        return this.equals(entity);
     }
 
 }

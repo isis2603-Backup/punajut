@@ -25,7 +25,16 @@ import javax.inject.Inject;
 @Stateless
 public class CiudadLogic implements ICiudadLogic {
 
+    //--------------------------------------------------------------------------------
+    // Constantes
+    //--------------------------------------------------------------------------------
     private static final Logger LOGGER = Logger.getLogger(CiudadLogic.class.getName());
+
+    private final static String EVENTO_NO_EXISTE = "El evento no existe";
+
+    //--------------------------------------------------------------------------------
+    // Atributos
+    //--------------------------------------------------------------------------------
 
     @Inject
     private CiudadPersistence persistence;
@@ -35,6 +44,10 @@ public class CiudadLogic implements ICiudadLogic {
 
     @Inject
     private EventoPersistence eventoPersistence;
+
+    //--------------------------------------------------------------------------------
+    // Metodos
+    //--------------------------------------------------------------------------------
 
     @Override
     public List<CiudadEntity> getCiudades() {
@@ -99,7 +112,7 @@ public class CiudadLogic implements ICiudadLogic {
         EventoEntity eventoEntity = eventoPersistence.find(eventoId);
 
         if (eventoEntity == null) {
-            throw new IllegalArgumentException("El evento no existe");
+            throw new IllegalArgumentException(EVENTO_NO_EXISTE);
         }
         int index = eventos.indexOf(eventoEntity);
         if (index >= 0) {
@@ -113,7 +126,7 @@ public class CiudadLogic implements ICiudadLogic {
         CiudadEntity ciudadEntity = getCiudad(ciudadId);
         EventoEntity eventoEntity = eventoPersistence.find(eventoId);
         if (eventoEntity == null) {
-            throw new IllegalArgumentException("El evento no existe");
+            throw new IllegalArgumentException(EVENTO_NO_EXISTE);
         }
 
         ciudadEntity.getEventos().add(eventoEntity);
@@ -127,7 +140,7 @@ public class CiudadLogic implements ICiudadLogic {
 
         EventoEntity eventoEntity = eventoPersistence.find(eventoId);
         if (eventoEntity == null) {
-            throw new IllegalArgumentException("El evento no existe");
+            throw new IllegalArgumentException(EVENTO_NO_EXISTE);
         }
         ciudadEntity.getEventos().remove(eventoEntity);
     }
