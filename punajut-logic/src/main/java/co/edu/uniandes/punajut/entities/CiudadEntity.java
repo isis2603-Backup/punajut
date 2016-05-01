@@ -135,20 +135,4 @@ public class CiudadEntity extends BaseEntity implements Serializable {
         this.eventos = eventos;
     }
 
-    @Override
-    public boolean equals(Object entity){
-        return this.equals(entity);
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.descripcion);
-        hash = 71 * hash + Objects.hashCode(this.clima);
-        hash = 71 * hash + Objects.hashCode(this.longitud);
-        hash = 71 * hash + Objects.hashCode(this.latitud);
-        hash = 71 * hash + Objects.hashCode(this.eventos);
-        return hash;
-    }
-
 }
