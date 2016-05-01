@@ -30,7 +30,7 @@ public class CiudadLogic implements ICiudadLogic {
     //--------------------------------------------------------------------------------
     private static final Logger LOGGER = Logger.getLogger(CiudadLogic.class.getName());
 
-    private final static String EVENTO_NO_EXISTE = "El evento no existe";
+    private static final String EVENTO_NO_EXISTE = "El evento no existe";
 
     //--------------------------------------------------------------------------------
     // Atributos
