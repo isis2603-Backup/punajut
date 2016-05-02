@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author r.cardenas11
  */
- public class EventoConverter
+ public abstract class EventoConverter
  {
     private EventoConverter(){
         }

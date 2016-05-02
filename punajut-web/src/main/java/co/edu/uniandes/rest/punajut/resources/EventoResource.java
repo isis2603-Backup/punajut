@@ -37,6 +37,7 @@ import javax.ws.rs.core.Response;
 @Path("eventos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+
 @RequestScoped
 public class EventoResource {
 
