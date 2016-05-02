@@ -30,8 +30,6 @@ public class EventoDTO
 
     private  String descripcion;
 
-//    private String[] opiniones ;
-
     private String lugar;
 
 //    private CiudadDTO ciudad;
@@ -79,7 +77,6 @@ public class EventoDTO
         this.calificacion = calificacion;
         this.precio = precio;
         this.descripcion = descripcion;
-//        this.opiniones = opiniones;
         this.lugar = lugar;
 //        ciudad = pCiudad;
         fechaInicial = pFechaInicial;
@@ -141,14 +138,6 @@ public class EventoDTO
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-//    public String[] getOpiniones() {
-//        return opiniones;
-//    }
-//
-//    public void setOpiniones(String[] opiniones) {
-//        this.opiniones = opiniones;
-//    }
 
     public String getLugar() {
         return lugar;

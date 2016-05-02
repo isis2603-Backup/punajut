@@ -150,7 +150,7 @@ public class CiudadResource {
      */
     @GET
     @Path("{id: \\d+}/eventos/{eventoId: \\d+}")
-    public EventoDTO getEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) throws Exception {
+    public EventoDTO getEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) throws BusinessLogicException {
         EventoEntity evento = ciudadLogic.getEvento(ciudadId, eventoId);
         return EventoConverter.fullEntity2DTO(evento);
     }
@@ -207,7 +207,7 @@ public class CiudadResource {
      */
     @DELETE
     @Path("{id: \\d+}/eventos/{ciudadId: \\d+}")
-    public void removeEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) throws Exception {
+    public void removeEventos(@PathParam("ciudadId") Long ciudadId, @PathParam("eventoId") Long eventoId) throws BusinessLogicException {
         ciudadLogic.removeEvento(ciudadId, eventoId);
     }
 }
