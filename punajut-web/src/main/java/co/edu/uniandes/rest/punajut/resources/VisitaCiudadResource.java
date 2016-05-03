@@ -18,6 +18,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
+import co.edu.uniandes.punajut.ejbs.ItinerarioLogic;
+import co.edu.uniandes.punajut.ejbs.ViajeroLogic;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.converters.VisitaCiudadConverter;
@@ -37,6 +40,12 @@ public class VisitaCiudadResource
     @Inject
     IVisitaCiudadLogic visitaLogic;
 
+    @Inject
+    ViajeroLogic viajeroLogic;
+
+    @Inject
+    ItinerarioLogic itinerarioLogic;
+
     private static final Logger logger = Logger.getLogger(ItinerarioResource.class.getName());
 
 
@@ -55,21 +64,26 @@ public class VisitaCiudadResource
 
     /**
      * Obtiene una visita ciudad
-     * @param id identificador de la visita ciudad
+     * @param idVisita identificador de la visita ciudad
+     * @param idViajero
+     * @param idItinerario
      * @return visita ciudad encontrada
      * @throws VisitaCiudadLogicException cuando la visita ciudad no existe
      */
     @GET
     @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/{idVisita: \\d+}")
-    public VisitaCiudadDTO getVisitaCiudad(@PathParam("id") Long id) throws VisitaCiudadLogicException
+    public VisitaCiudadDTO getVisitaCiudad(@PathParam("idViajero")long idViajero,
+            @PathParam("idItinerario") long idItinerario,@PathParam("idVisita") Long idVisita) throws VisitaCiudadLogicException, BusinessLogicException
     {
-        VisitaCiudadDTO visita = null;
-        try {
-            return VisitaCiudadConverter.fullEntity2DTO(visitaLogic.getVisitaCiudad(id));
-        } catch (BusinessLogicException e) {
-            e.printStackTrace();
-        }
-        return visita;
+        VisitaCiudadDTO dto = null;
+
+        ViajeroEntity viajero = viajeroLogic.getViajero(idViajero);
+
+
+        VisitaCiudadEntity visita = visitaLogic.getVisitaCiudad(idVisita);
+        dto = VisitaCiudadConverter.fullEntity2DTO(visita);
+
+        return dto;
     }
 
     /**
