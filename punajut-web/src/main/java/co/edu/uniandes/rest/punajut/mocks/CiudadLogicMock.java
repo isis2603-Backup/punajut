@@ -25,7 +25,9 @@ import javax.inject.Named;
 public class CiudadLogicMock {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(CiudadLogicMock.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(CiudadLogicMock.class.getName());
+
+    private final static String NO_EXISTE_LA_CIUDAD = "No existe una ciudad con ese id";
 
     // listado de ciudades
     private static ArrayList<CiudadDTO> ciudades;
@@ -44,11 +46,11 @@ public class CiudadLogicMock {
         }
 
         // indica que se muestren todos los mensajes
-        logger.setLevel(Level.INFO);
+        LOGGER.setLevel(Level.INFO);
 
         // muestra información
-        logger.info("Inicializa la lista de ciudades");
-        logger.info("ciudades" + ciudades);
+        LOGGER.info("Inicializa la lista de ciudades");
+        LOGGER.info("ciudades" + ciudades);
     }
 
     /**
@@ -59,11 +61,11 @@ public class CiudadLogicMock {
      */
     public List<CiudadDTO> getCiudades() throws CiudadLogicException {
         if (ciudades == null) {
-            logger.severe("Error interno: no hay ciudades.");
+            LOGGER.severe("Error interno: no hay ciudades.");
             throw new CiudadLogicException("Error interno: no hay ciudades.");
         }
 
-        logger.info("retornando todas las ciudades");
+        LOGGER.info("retornando todas las ciudades");
         return ciudades;
     }
 
@@ -75,19 +77,19 @@ public class CiudadLogicMock {
      * @throws CiudadLogicException cuando la ciudad no existe
      */
     public CiudadDTO getCiudad(Long id) throws CiudadLogicException {
-        logger.info("recibiendo solicitud de la ciudad con id " + id);
+        LOGGER.info("recibiendo solicitud de la ciudad con id " + id);
 
         // busca la ciudad con el id suministrado
         for (CiudadDTO ciudad : ciudades) {
             if (Objects.equals(ciudad.getId(), id)) {
-                logger.info("retornando ciudad " + ciudad);
+                LOGGER.info("retornando ciudad " + ciudad);
                 return ciudad;
             }
         }
 
         // si no encuentra la ciudad
-        logger.severe("No existe una ciudad con ese id");
-        throw new CiudadLogicException("No existe una ciudad con ese id");
+        LOGGER.severe(NO_EXISTE_LA_CIUDAD);
+        throw new CiudadLogicException(NO_EXISTE_LA_CIUDAD);
     }
 
     /**
@@ -99,7 +101,7 @@ public class CiudadLogicMock {
      * @return ciudad agregada
      */
     public CiudadDTO createCiudad(CiudadDTO nuevaCiudad) throws CiudadLogicException {
-        logger.info("recibiendo solicitud de agregar ciudad " + nuevaCiudad);
+        LOGGER.info("recibiendo solicitud de agregar ciudad " + nuevaCiudad);
 
         // la nueva ciudad tiene id ?
         if (nuevaCiudad.getId() != null) {
@@ -107,7 +109,7 @@ public class CiudadLogicMock {
             for (CiudadDTO com : ciudades) {
                 // si existe una ciudad con ese id
                 if (Objects.equals(com.getId(), nuevaCiudad.getId())) {
-                    logger.severe("Ya existe una ciudad con ese id");
+                    LOGGER.severe("Ya existe una ciudad con ese id");
                     throw new CiudadLogicException("Ya existe una ciudad con ese id");
                 }
             }
@@ -116,7 +118,7 @@ public class CiudadLogicMock {
         } else {
 
             // genera un id para la ciudad
-            logger.info("Generando id para la nueva ciudad");
+            LOGGER.info("Generando id para la nueva ciudad");
             long newId = 1;
             for (CiudadDTO com : ciudades) {
                 if (newId <= com.getId()) {
@@ -127,7 +129,7 @@ public class CiudadLogicMock {
         }
 
         // agrega la ciudad
-        logger.info("agregando ciudad " + nuevaCiudad);
+        LOGGER.info("agregando ciudad " + nuevaCiudad);
         ciudades.add(nuevaCiudad);
         return nuevaCiudad;
     }
@@ -142,7 +144,7 @@ public class CiudadLogicMock {
      * suministrado
      */
     public CiudadDTO updateCiudad(Long id, CiudadDTO ciudadModificada) throws CiudadLogicException {
-        logger.info("recibiendo solictud de modificar ciudad " + ciudadModificada);
+        LOGGER.info("recibiendo solictud de modificar ciudad " + ciudadModificada);
 
         // busca la ciudad con el id suministrado
         for (CiudadDTO ciudad : ciudades) {
@@ -153,13 +155,13 @@ public class CiudadLogicMock {
                 ciudad.setName(ciudadModificada.getName());
 
                 // retorna la ciudad modificada
-                logger.info("Modificando ciudad " + ciudad);
+                LOGGER.info("Modificando ciudad " + ciudad);
                 return ciudad;
             }
         }
 
         // no encontró la ciudad con ese id ?
-        logger.severe("No existe una ciudad con ese id");
+        LOGGER.severe(NO_EXISTE_LA_CIUDAD);
         throw new CiudadLogicException("No existe una ciudad con ese id");
     }
 
@@ -171,21 +173,21 @@ public class CiudadLogicMock {
      * suministrado
      */
     public void deleteCiudad(Long id) throws CiudadLogicException {
-        logger.info("recibiendo solictud de eliminar ciudad con id " + id);
+        LOGGER.info("recibiendo solictud de eliminar ciudad con id " + id);
 
         // busca la ciudad con el id suministrado
         for (CiudadDTO c : ciudades) {
             if (Objects.equals(c.getId(), id)) {
 
                 // elimina la ciudad
-                logger.info("eliminando ciudad " + c);
+                LOGGER.info("eliminando ciudad " + c);
                 ciudades.remove(c);
                 return;
             }
         }
 
         // no encontró la ciudad con ese id ?
-        logger.severe("No existe una ciudad con ese id");
-        throw new CiudadLogicException("No existe una ciudad con ese id");
+        LOGGER.severe(NO_EXISTE_LA_CIUDAD);
+        throw new CiudadLogicException(NO_EXISTE_LA_CIUDAD);
     }
 }
