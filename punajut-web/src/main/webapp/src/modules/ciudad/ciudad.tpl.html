@@ -153,8 +153,15 @@
 
     </div>
 
-    <footer class="container-fluid text-center">
-        <p>GoTravel</p>
-    </footer>
-
+    <div id="childs" ng-show="ctrl.editMode" class="col-md-6">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{active: tab === 'eventos'}">
+                <a href ng-click="ctrl.changeTab('eventos')">Eventos</a>
+            </li>
+        </ul>
+        <!-- Aquí incluye el template del modulo de eventos e indica el controlador correspondiente -->
+        <div ng-show="tab === 'eventos'">
+            <div ng-controller="eventoCtrl as ctrl" ng-include="'src/modules/evento/evento.tpl.html'"></div>
+        </div>
+    </div>
 </div>

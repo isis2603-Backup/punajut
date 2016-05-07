@@ -25,9 +25,9 @@ import javax.inject.Named;
 public class CiudadLogicMock {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger LOGGER = Logger.getLogger(CiudadLogicMock.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CiudadLogicMock.class.getName());
 
-    private final static String NO_EXISTE_LA_CIUDAD = "No existe una ciudad con ese id";
+    private static final String NO_EXISTE_LA_CIUDAD = "No existe una ciudad con ese id";
 
     // listado de ciudades
     private static ArrayList<CiudadDTO> ciudades;
