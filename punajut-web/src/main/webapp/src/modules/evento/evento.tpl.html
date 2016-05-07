@@ -18,6 +18,7 @@
                         <p><strong>Lugar</strong> <span id="{{$index}}-lugar">{{record.lugar}}</span></p>
                         <p><strong>Fecha inicio</strong> <span id="{{$index}}-fechaInicio">{{record.fechaInicio}}</span></p>
                         <p><strong>Fecha fin</strong> <span id="{{$index}}-fechaFin">{{record.fechaFin}}</span></p>
+                        <p><strong>Ciudad</strong>{{nombreCiudad}}</p>
 
                     </div>
                     <p class="text-center">
@@ -100,15 +101,5 @@
             <button id="save-evento" type="submit" form="evento-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Agregar</button>
             <button id="cancel-evento" type="button" form="evento-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancelar</button>
         </form>
-    </div>
-    <div id="childs" ng-show="ctrl.editMode" class="col-md-6">
-        <ul class="nav nav-tabs">
-            <li role="presentation" ng-class="{active: tab === 'ciudades'}">
-                <a href ng-click="ctrl.changeTab('ciudades')">Ciudades</a>
-            </li>
-        </ul>
-        <div ng-show="tab === 'ciudades'">
-            <div ng-include="'src/modules/evento/evento.ciudades.html'"></div>
-        </div>
     </div>
 </div>

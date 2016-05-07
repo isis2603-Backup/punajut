@@ -1,0 +1,40 @@
+<div ng-show="tab === 'eventos' && refId" ng-controller="eventosCtrl as ctrl">
+    <div id="eventos-header">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#eventos-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Eventos</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="eventos-navbar">
+                    <button id="select-eventos" class="btn btn-default navbar-btn" ng-click="ctrl.showList()"><span class="glyphicon glyphicon-check"></span> Seleccionar</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="record in records">
+                    <td>{{record.name}}</td>
+                    <td><button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.removeEvento($index)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
