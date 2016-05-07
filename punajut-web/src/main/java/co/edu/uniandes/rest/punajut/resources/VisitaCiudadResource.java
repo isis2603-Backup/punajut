@@ -6,6 +6,8 @@
 package co.edu.uniandes.rest.punajut.resources;
 
 
+import co.edu.uniandes.punajut.api.IItinerarioLogic;
+import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.rest.punajut.dtos.VisitaCiudadDTO;
 import co.edu.uniandes.rest.punajut.exceptions.VisitaCiudadLogicException;
 import java.util.List;
@@ -18,8 +20,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
-import co.edu.uniandes.punajut.ejbs.ItinerarioLogic;
-import co.edu.uniandes.punajut.ejbs.ViajeroLogic;
 import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
@@ -41,10 +41,10 @@ public class VisitaCiudadResource
     IVisitaCiudadLogic visitaLogic;
 
     @Inject
-    ViajeroLogic viajeroLogic;
+    IViajeroLogic viajeroLogic;
 
     @Inject
-    ItinerarioLogic itinerarioLogic;
+    IItinerarioLogic itinerarioLogic;
 
     private static final Logger logger = Logger.getLogger(ItinerarioResource.class.getName());
 
@@ -80,6 +80,7 @@ public class VisitaCiudadResource
         ViajeroEntity viajero = viajeroLogic.getViajero(idViajero);
 
 
+
         VisitaCiudadEntity visita = visitaLogic.getVisitaCiudad(idVisita);
         dto = VisitaCiudadConverter.fullEntity2DTO(visita);
 
@@ -93,6 +94,7 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando ya existe una visita ciudad con el id suministrado
      */
     @POST
+    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas")
     public VisitaCiudadDTO createVisitaCiudad(VisitaCiudadDTO visita) throws VisitaCiudadLogicException
     {
         logger.info("Se ejecuta método createVisitaCiudad");
