@@ -12,7 +12,6 @@
 //import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 //import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 //import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
-//import com.gs.collections.impl.list.fixed.ArrayAdapter;
 //import java.util.ArrayList;
 //import java.util.List;
 //import java.util.logging.Level;

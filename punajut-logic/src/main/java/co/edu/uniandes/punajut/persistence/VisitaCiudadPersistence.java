@@ -57,7 +57,7 @@ public class VisitaCiudadPersistence {
         return q.getResultList();
     }
 
-    public VisitaCiudadEntity find(Long idVisitaCiudad, Long idItinerario) {
+    public VisitaCiudadEntity find(Long idViajero, Long idVisitaCiudad, Long idItinerario) {
         TypedQuery<VisitaCiudadEntity> q = em.createQuery("select p from VisitaCiudadEntity p where (p.itinerario.id = :idItinerario) and (p.id = :idVisitaCiudad)", VisitaCiudadEntity.class);
         q.setParameter("idVisitaCiudad", idVisitaCiudad);
         q.setParameter("idItinerario", idItinerario);
