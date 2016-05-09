@@ -1,0 +1,40 @@
+<div ng-show="tab === 'ciudades' && refId" ng-controller="ciudadesCtrl as ctrl">
+    <div id="ciudades-header">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ciudades-navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand">Ciudades</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="ciudades-navbar">
+                    <button id="select-ciudades" class="btn btn-default navbar-btn" ng-click="ctrl.showList()"><span class="glyphicon glyphicon-check"></span> Seleccionar</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-sm-12">
+        <div ng-repeat="record in records">
+            <div class="col-md-4 col-sm-6 col-lg-3 well">
+                <div class="caption" >
+                    <p><strong>Nombre:</strong> {{record.name}}</p>
+                    <p><strong>Descripcion:</strong> {{record.descripcion}}</p>
+                    <p><strong>Clima:</strong> {{record.clima}}</p>
+                    <p><strong>Longitud:</strong> {{record.longitud}}</p>
+                    <p><strong>Latitud:</strong> {{record.latitud}}</p>
+                </div>
+                <p class="text-center">
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.removeCiudad($index)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

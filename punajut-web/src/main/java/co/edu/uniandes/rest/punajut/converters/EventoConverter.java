@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author r.cardenas11
  */
- public class EventoConverter
+ public abstract class EventoConverter
  {
     private EventoConverter(){
         }
@@ -34,7 +34,6 @@ import java.util.List;
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-//            dto.setOpiniones(entity.getOpiniones());
             dto.setTipo(entity.getTipo());
             dto.setPrecio(entity.getPrecio());
             dto.setFechaInicial(entity.getFechaInicial());
@@ -83,7 +82,6 @@ import java.util.List;
             dto.setCalificacion(entity.getCalificacion());
             dto.setDescripcion(entity.getDescripcion());
             dto.setLugar(entity.getLugar());
-//            dto.setOpiniones(entity.getOpiniones());
             dto.setTipo(entity.getTipo());
             dto.setPrecio(entity.getPrecio());
             dto.setFechaInicial(entity.getFechaInicial());
@@ -112,7 +110,6 @@ import java.util.List;
             entity.setCalificacion(dto.getCalificacion());
             entity.setDescripcion(dto.getDescripcion());
             entity.setLugar(dto.getLugar());
-//            entity.setOpiniones(dto.getOpiniones());
             entity.setTipo(dto.getTipo());
             entity.setPrecio(dto.getPrecio());
             entity.setFechaInicial(dto.getFechaInicial());

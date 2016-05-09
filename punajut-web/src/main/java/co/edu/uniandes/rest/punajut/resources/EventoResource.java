@@ -9,9 +9,6 @@ import co.edu.uniandes.punajut.api.IEventoLogic;
 import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
-import co.edu.uniandes.rest.punajut.exceptions.ItinerarioLogicException;
-import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
-//import co.edu.uniandes.rest.punajut.mocks.EventoLogicMock;
 import co.edu.uniandes.rest.punajut.converters.EventoConverter;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,7 +19,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -37,10 +33,11 @@ import javax.ws.rs.core.Response;
 @Path("eventos")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+
 @RequestScoped
 public class EventoResource {
 
-    private static final Logger logger = Logger.getLogger(EventoResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EventoResource.class.getName());
 
     @Inject
     IEventoLogic eventoLogic;
@@ -68,7 +65,7 @@ public class EventoResource {
         try {
             return EventoConverter.fullEntity2DTO(eventoLogic.getEvento(id));
         } catch (BusinessLogicException ex) {
-            logger.log(Level.SEVERE, "El evento no existe", ex);
+            LOGGER.log(Level.SEVERE, "El evento no existe", ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.NOT_FOUND);
         }
     }

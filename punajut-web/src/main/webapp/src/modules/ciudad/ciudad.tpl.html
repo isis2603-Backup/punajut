@@ -153,8 +153,15 @@
 
     </div>
 
-    <footer class="container-fluid text-center">
-        <p>GoTravel</p>
-    </footer>
+    <div id="childs" ng-show="ctrl.editMode" class="col-md-6">
+        <ul class="nav nav-tabs">
+            <li ng-show="currentRecord.id" role="presentation" ng-class="{active: tab === 'eventos'}">
+                <a href ng-click="ctrl.changeTab('eventos')">Eventos</a>
+            </li>
+        </ul>
+        <!-- Aquí se necesita el template de la selección de los eventos a la ciudad -->
+        <div ng-include="'src/modules/ciudad/ciudad.eventos.html'">
+        </div>
 
+    </div>
 </div>

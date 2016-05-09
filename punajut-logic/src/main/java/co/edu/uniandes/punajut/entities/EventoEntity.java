@@ -8,11 +8,8 @@ package co.edu.uniandes.punajut.entities;
 import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,8 +34,6 @@ public class EventoEntity extends BaseEntity implements Serializable
     private Double precio;
 
     private  String descripcion;
-
-//    private String[] opiniones ;
 
     private String lugar;
 
@@ -85,14 +80,6 @@ public class EventoEntity extends BaseEntity implements Serializable
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-//    public String[] getOpiniones() {
-//        return opiniones;
-//    }
-//
-//    public void setOpiniones(String[] opiniones) {
-//        this.opiniones = opiniones;
-//    }
 
     public String getLugar() {
         return lugar;

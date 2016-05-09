@@ -20,11 +20,12 @@ body {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    height: 500px;
 }
 
 .text-vertical-center h1 {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-size: 4.5em;
     font-weight: 700;
 }

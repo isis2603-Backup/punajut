@@ -119,12 +119,7 @@ public abstract class CiudadConverter {
      * @generated
      */
     public static CiudadDTO fullEntity2DTO(CiudadEntity entity) {
-        if (entity != null) {
-            CiudadDTO dto = basicEntity2DTO(entity);
-            return dto;
-        } else {
-            return null;
-        }
+        return basicEntity2DTO(entity);
     }
 
     /**
@@ -136,12 +131,7 @@ public abstract class CiudadConverter {
      * @generated
      */
     public static CiudadEntity fullDTO2Entity(CiudadDTO dto) {
-        if (dto != null) {
-            CiudadEntity entity = basicDTO2Entity(dto);
-            return entity;
-        } else {
-            return null;
-        }
+        return basicDTO2Entity(dto);
     }
 
     /**

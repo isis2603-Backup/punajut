@@ -1,7 +1,7 @@
 (function (ng) {
     var mod = ng.module("ciudadModule");
 
-    mod.controller("ciudadCtrl", ["$scope", "ciudadService", function ($scope, svc) {
+    mod.controller("ciudadCtrl", ["$scope", "ciudadService", "eventoService", function ($scope, svc) {
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
                 name: '' /* Tipo String */,
@@ -106,6 +106,13 @@
                     self.fetchRecords();
                 }, responseError);
             };
+
+            function updateEventos(event, args) {
+                $scope.currentRecord.eventos = args;
+            }
+            ;
+
+            $scope.$on('updateEventos', updateEventos);
 
             this.showEventos = function () {
                 this.showEventosMode = true;

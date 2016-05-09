@@ -155,7 +155,7 @@
                 var id = parseInt(url.split('/')[2]);
                 $log.debug(id);
                 var responseObj;
-                ng.forEach(records, function (value, key) {
+                ng.forEach(records, function (value) {
                     if (value.id === id) {
                         responseObj = value.eventos;
                     }
