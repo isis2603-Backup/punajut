@@ -57,9 +57,10 @@ public class VisitaCiudadResource
 	 */
     @GET
     @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/")
-    public List<VisitaCiudadDTO> getVisitasCiudades() throws VisitaCiudadLogicException
+    public List<VisitaCiudadDTO> getVisitasCiudades(@PathParam("idViajero") Long idViajero,
+            @PathParam("idItinerario")Long idItinerario) throws VisitaCiudadLogicException
     {
-        return VisitaCiudadConverter.listEntity2DTO(visitaLogic.getVisitasCiudades());
+        return VisitaCiudadConverter.listEntity2DTO(visitaLogic.getVisitasCiudades(idViajero, idItinerario));
     }
 
     /**
@@ -81,7 +82,7 @@ public class VisitaCiudadResource
 
 
 
-        VisitaCiudadEntity visita = visitaLogic.getVisitaCiudad(idVisita);
+        VisitaCiudadEntity visita = visitaLogic.getVisitaCiudad(idViajero, idItinerario, idVisita);
         dto = VisitaCiudadConverter.fullEntity2DTO(visita);
 
         return dto;
@@ -111,13 +112,14 @@ public class VisitaCiudadResource
      */
     @PUT
     @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/{idVisita: \\d+}")
-    public VisitaCiudadDTO updateVisitaCiudad(@PathParam("id") Long id, VisitaCiudadDTO visita) throws VisitaCiudadLogicException {
+    public VisitaCiudadDTO updateVisitaCiudad(@PathParam("idViajero") Long idViajero,@PathParam("idItinerario") Long idItinerario,
+            @PathParam("idVisita") Long id, VisitaCiudadDTO visita) throws VisitaCiudadLogicException {
         logger.log(Level.INFO, "Se ejecuta método updateVisitaCiudad con id={0}", id);
         VisitaCiudadEntity entity = VisitaCiudadConverter.fullDTO2Entity(visita);
         entity.setId(id);
         VisitaCiudadEntity oldEntity;
         try{
-            oldEntity= visitaLogic.getVisitaCiudad(id);
+            oldEntity= visitaLogic.getVisitaCiudad(idViajero, idItinerario, id);
             entity.setFechaInicio(oldEntity.getFechaInicio());
             entity.setFechaFin(oldEntity.getFechaFin());
             entity.setEventosViajero(oldEntity.getEventosViajero());
