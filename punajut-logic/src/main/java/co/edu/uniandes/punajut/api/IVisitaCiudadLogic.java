@@ -16,9 +16,9 @@ import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
  */
 public interface IVisitaCiudadLogic {
 
-    public List<VisitaCiudadEntity> getVisitasCiudades();
+    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario);
 
-    public VisitaCiudadEntity getVisitaCiudad(Long id) throws BusinessLogicException;
+    public VisitaCiudadEntity getVisitaCiudad(Long idViajero, Long idItineraio, Long id) throws BusinessLogicException;
 
     public VisitaCiudadEntity createVisitaCiudad(VisitaCiudadEntity entity);
 

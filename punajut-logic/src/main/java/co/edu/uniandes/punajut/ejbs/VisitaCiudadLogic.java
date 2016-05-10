@@ -38,7 +38,7 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     private EventoViajeroPersistence eventoPersistence;
 
     @Override
-    public List<VisitaCiudadEntity> getVisitasCiudades() {
+    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario) {
          logger.info("Inicia proceso de consultar todos los itinerarios");
         List<VisitaCiudadEntity> visitas = persistence.findAll();
         logger.info("Termina proceso de consultar todos los itinerarios");
@@ -46,7 +46,7 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     }
 
     @Override
-    public VisitaCiudadEntity getVisitaCiudad(Long id) throws BusinessLogicException {
+    public VisitaCiudadEntity getVisitaCiudad(Long idViajero, Long idItinerario, Long id) throws BusinessLogicException {
          logger.log(Level.INFO, "Inicia proceso de consultar visita ciudad con id={0}", id);
         VisitaCiudadEntity visita = persistence.find(id);
         if (visita == null) {
