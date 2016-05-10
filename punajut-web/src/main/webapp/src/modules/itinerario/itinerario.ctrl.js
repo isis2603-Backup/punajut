@@ -1,20 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 (function (ng) {
+
     var mod = ng.module("itinerarioModule");
+      console.log("llega1");
 
     mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
+
+            console.log("llega2");
+
             $scope.currentRecord = {
-                id: undefined /* Tipo Long */,
-                nombre: '' /* Tipo String */,
-                descripcion: '' /* Tipo String */,
-                clima: '' /* Tipo String */,
-                longitud: '' /* Tipo Long */,
-                latitud: '' /* Tipo Long */,
-                eventos: [] /* Coleccion de eventos */
+                name: '' /* Tipo String */,
+                fechaInicio: '',
+                fechaFin: ''
             };
 
             $scope.records = [];
@@ -61,21 +57,42 @@
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.showEventosMode = false;
+
+            /* Escucha de evento cuando se selecciona un registro maestro.
+             * args corresponde a currentRecord del controlador padre
+             */
+            function onEdit(event, args) {
+                $scope.refId = args.id;
+                if (args.id) {
+                    $scope.records = [];
+                    svc.getRecords(args.id).then(function (response) {
+                        $scope.records = response.data;
+                    }, responseError);
+                }
+            }
+
+            $scope.$on("post-edit", onEdit);
+
+
+
 
             this.changeTab = function (tab) {
                 $scope.tab = tab;
             };
 
             //Ejemplo alerta
-            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de atención", "warning");
+            showMessage("Bienvenido!, Para agregar un itinerario, presione el botón Crear ciudad", "warning");
 
             this.createRecord = function () {
+                $scope.$broadcast("pre-create", $scope.currentRecord);
                 this.editMode = true;
                 $scope.currentRecord = {};
                 $scope.$broadcast("post-create", $scope.currentRecord);
             };
 
             this.editRecord = function (record) {
+                $scope.$broadcast("pre-edit", $scope.currentRecord);
                 return svc.fetchRecord(record.id).then(function (response) {
                     $scope.currentRecord = response.data;
                     self.editMode = true;
@@ -85,7 +102,7 @@
             };
 
             this.fetchRecords = function () {
-                return svc.fetchRecords().then(function (response) {
+                return svc.getRecords($scope.refId).then(function (response) {
                     $scope.records = response.data;
                     $scope.currentRecord = {};
                     self.editMode = false;
@@ -100,9 +117,21 @@
             };
 
             this.deleteRecord = function (record) {
+                this.showEventosMode = false;
                 return svc.deleteRecord(record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
+            };
+
+            function updateEventos(event, args) {
+                $scope.currentRecord.eventos = args;
+            }
+            ;
+
+            $scope.$on('updateEventos', updateEventos);
+
+            this.showEventos = function () {
+                this.showEventosMode = true;
             };
 
             this.fetchRecords();

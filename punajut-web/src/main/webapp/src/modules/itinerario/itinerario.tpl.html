@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <div style="border-bottom:1px solid #000;">
         <div style = "display:inline-block"><h1>Itinerario 1- Ciudades</h1></div>
         <div style = "display:inline-block; align:right"><h4>Desde 24/04/2015 Hasta 28/04/2015</h4></div>
@@ -11,26 +11,129 @@
     </ul>
     <div ng-hide="ctrl.editMode">
         <div class="col-sm-12">
-            <div ng-repeat="record in records">
-                <div class="col-md-4 col-sm-6 col-lg-3 well">
-                    <div class="col-md-12">
-                        <div class="img-thumbnail" id="image" ng-if="record.image">
-                            <a ng-href="{{record.image}}" target="_blank"><img class="img-responsive" style="height: 20vmax;" ng-src="{{record.image}}" alt="{{record.image}}"></a>
-                        </div>
-                    </div>
-                    <div class="caption" >
-                        <p><strong>Name:</strong> <span id="{{$index}}-name">{{record.name}}</span></p>
-                    </div>
-                    <p class="text-center">
-                        <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-                        <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+            <table border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+                <tr ng-repeat="itinerario in itinerarios">
+                    <td><span id="{{$index}}-id">{{itinerario.id}}</span></td>
+                    <td><span id="{{$index}}-name">{{itinerario.name}}</span></td>
+                    <td><span id="{{$index}}-description">{{itinerario.email}}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div ng-show="ctrl.editMode" class="col-md-6 well">
+        <form novalidate name="form" id="persona-form" role="form" ng-submit="form.$valid && ctrl.saveRecord()">
+            <fieldset>
+                <input id="id" class="form-control" type="hidden" ng-model="currentRecord.name"/>
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name"  />
+                </div>
+                <label for="email" class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" id="email" name="email" class="form-control" ng-model="currentRecord.email" />
+                    </p>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <button ng-hide="ctrl.editMode" class="btn btn-default navbar-btn" ng-click="ctrl.createRecord()">Agregar persona</button>
+    <button id="save-task" type="submit" form="persona-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span>Guardar</button>
+
+
+
+</div>-->
+
+<div id="prize-header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#prize-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Itinerarios</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="prize-navbar">
+                <button id="create-prize" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Create</button>
+                <button id="refresh-prize" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
+                <button id="save-prize" type="submit" form="prize-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Save</button>
+                <button id="cancel-prize" type="button" form="prize-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+<div ng-hide="ctrl.editMode" class="col-md-12">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Organization</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.name}}</td>
+                <td id="{{$index}}-organization">{{record.organization}}</td>
+                <td id="{{$index}}-date">{{record.date | date}}</td>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div ng-show="ctrl.editMode" class="col-md-12 well">
+    <form novalidate name="form" id="prize-form" role="form" ng-submit="form.$valid && ctrl.saveRecord()">
+        <alert ng-messages="form.$error" type="danger" close="" ng-hide="!form.$error.required">
+            <div ng-message="required">
+                Please, Fill the required field!
+            </div>
+        </alert>
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="name" class="col-md-2 control-label">Name</label>
+                <div class="col-md-10">
+                    <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': !form.date.$error.required && form.date.$dirty, 'has-error': form.date.$error.required && (form.date.$dirty || form.$submitted)}">
+                <label for="date" class="col-md-2 control-label">Fecha Inicio:</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" id="date" name="date" class="form-control" ng-model="currentRecord.fechaInicio" datepicker-popup is-open="opened" readonly required />
+                        <span class="input-group-btn">
+                            <button type="button" id="date-datepicker" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+                        </span>
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-    <button id="create-itinerario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Agregar ciudad</button>
-    <button id="create-itinerario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span> Boton</button>
-
-
+            <div class="form-group col-md-12" ng-class="{'has-success': !form.date.$error.required && form.date.$dirty, 'has-error': form.date.$error.required && (form.date.$dirty || form.$submitted)}">
+                <label for="date2" class="col-md-2 control-label">Fecha Fin:</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" id="date2" name="date2" class="form-control" ng-model="currentRecord.fechaFin" datepicker-popup is-open="opened" readonly required />
+                        <span class="input-group-btn">
+                            <button type="button" id="date-datepicker2" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>
