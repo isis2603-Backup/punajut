@@ -21,7 +21,7 @@ public interface IEventoViajeroLogic
 
     public EventoViajeroEntity updateEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, EventoViajeroEntity e) throws BusinessLogicException;
 
-    public void deleteEventoViajero(Long idEvento);
+    public void deleteEventoViajero(Long idViajero, Long idItinerario, Long idVisitaCiudad, Long idEvento)throws BusinessLogicException;
 
 }
 
