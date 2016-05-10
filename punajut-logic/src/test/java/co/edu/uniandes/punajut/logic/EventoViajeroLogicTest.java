@@ -9,6 +9,8 @@
 //import co.edu.uniandes.punajut.ejbs.EventoViajeroLogic;
 //import co.edu.uniandes.punajut.entities.EventoEntity;
 //import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
+//import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+//import co.edu.uniandes.punajut.entities.ViajeroEntity;
 //import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 //import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 //import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
@@ -51,7 +53,10 @@
 //
 //    private List<EventoViajeroEntity> data = new ArrayList<>();
 //    private List<EventoEntity> eventosData = new ArrayList<>();
+//
 //    private List<VisitaCiudadEntity> visitasCiudadData = new ArrayList<>();
+//    private List<ItinerarioEntity> itinerariosData = new ArrayList<>();
+//    private List<ViajeroEntity> viajerosEntity = new ArrayList<>();
 //
 //    @Deployment
 //    public static JavaArchive createDeployment() {
@@ -111,14 +116,18 @@
 //        }
 //    }
 //
+//
 //    @Test
 //    public void createEventoViajeroTest()
 //    {
 //        try
 //        {
 //            EventoViajeroEntity entity = factory.manufacturePojo(EventoViajeroEntity.class);
+//            Long idVisitaCiudad = entity.getVisitaCiudad().getId();
+//            Long idItinerario = null;
+//            Long idViajero = null;
 //
-//            EventoViajeroEntity result = eventoViajeroLogic.createEventoViajero(entity);
+//            EventoViajeroEntity result = eventoViajeroLogic.createEventoViajero(idViajero, idItinerario, idVisitaCiudad, entity);
 //            EventoViajeroEntity resp = em.find(EventoViajeroEntity.class, result.getId());
 //
 //            Assert.assertNotNull(result);

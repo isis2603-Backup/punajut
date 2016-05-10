@@ -51,7 +51,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
-        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idVisitaCiudad);
+        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
          if(visitaCiudad == null)
             throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
@@ -70,7 +70,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
-        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idVisitaCiudad);
+        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
             throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
@@ -103,7 +103,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario no existe");
 
-        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idVisitaCiudad);
+        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
             throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
@@ -136,7 +136,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
-        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idVisitaCiudad);
+        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
             throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
@@ -167,7 +167,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
-        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idVisitaCiudad);
+        VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
             throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
