@@ -13,6 +13,7 @@ import co.edu.uniandes.punajut.entities.CiudadEntity;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
+import co.edu.uniandes.punajut.persistence.CiudadPersistence;
 import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
 import co.edu.uniandes.punajut.persistence.VisitaCiudadPersistence;
 import java.util.List;
@@ -40,6 +41,9 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
 
     @Inject
     IItinerarioLogic itinerarioLogic;
+
+    @Inject
+    CiudadPersistence ciudadPersistence;
 
 //    @Inject
 //    private EventoViajeroPersistence eventoPersistence;
@@ -85,6 +89,7 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
         entity.setItinerario(itinerario);
+        itinerario.getVisitasCiudades().add(entity);
         persistence.create(entity);
         logger.info("Termina proceso de creación de una visita ciudad");
         return entity;
@@ -122,29 +127,37 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
         if(itinerario == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
-        boolean existe = false;
+        VisitaCiudadEntity visita = null;
         for (VisitaCiudadEntity v : itinerario.getVisitasCiudades()) {
             if(Objects.equals(id, v.getId()))
-                existe = true;
+                visita = v;
         }
-        if(!existe) throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
+        if(visita == null) throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
+        itinerario.getVisitasCiudades().remove(visita);
         persistence.delete(id);
         logger.log(Level.INFO, "Termina proceso de borrar una visita ciudad con id={0}", id);
     }
 
     @Override
-    public CiudadEntity addCiudad(Long ciudadID) throws BusinessLogicException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CiudadEntity addCiudad(Long idViajero, Long idItinerario,Long id, Long ciudadID) throws BusinessLogicException {
+        VisitaCiudadEntity visita = getVisitaCiudad(idViajero, idItinerario, id);
+        CiudadEntity ciudad = ciudadPersistence.find(ciudadID);
+        if(ciudad == null)
+            throw new IllegalArgumentException("la ciudad con el id dado no existe");
+        visita.setCiudad(ciudad);
+        return ciudad;
     }
 
     @Override
-    public List<CiudadEntity> replaceCiudad(long ciudadID) throws BusinessLogicException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public CiudadEntity getCiudad(long idCiudad) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CiudadEntity getCiudad(Long idViajero, Long idItinerario,Long id, Long ciudadID) throws BusinessLogicException{
+        CiudadEntity ciudadActual = getVisitaCiudad(idViajero, idItinerario, id).getCiudad();
+        CiudadEntity ciudadP = ciudadPersistence.find(ciudadID);
+         if(ciudadP == null)
+            throw new IllegalArgumentException("la ciudad con el id dado no existe");
+         if(ciudadActual.equals(ciudadP)) {
+             return ciudadP;
+         }
+        throw new IllegalArgumentException("La ciudad no esta asociada a ala visita ciudad");
     }
 
 

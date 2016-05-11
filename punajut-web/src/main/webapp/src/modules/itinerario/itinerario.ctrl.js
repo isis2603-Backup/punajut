@@ -81,22 +81,19 @@
                 $scope.tab = tab;
             };
 
-            //Ejemplo alerta
-            showMessage("Bienvenido!, Para agregar un itinerario, presione el botón Crear ciudad", "warning");
-
             this.createRecord = function () {
-                $scope.$broadcast("pre-create", $scope.currentRecord);
+//                $scope.$broadcast("pre-create", $scope.currentRecord);
                 this.editMode = true;
                 $scope.currentRecord = {};
-                $scope.$broadcast("post-create", $scope.currentRecord);
+//                $scope.$broadcast("post-create", $scope.currentRecord);
             };
 
             this.editRecord = function (record) {
-                $scope.$broadcast("pre-edit", $scope.currentRecord);
-                return svc.fetchRecord(record.id).then(function (response) {
+//                $scope.$broadcast("pre-edit", $scope.currentRecord);
+                return svc.getRecord($scope.refId,record.id).then(function (response) {
                     $scope.currentRecord = response.data;
                     self.editMode = true;
-                    $scope.$broadcast("post-edit", $scope.currentRecord);
+//                    $scope.$broadcast("post-edit", $scope.currentRecord);
                     return response;
                 }, responseError);
             };
@@ -111,14 +108,14 @@
             };
 
             this.saveRecord = function () {
-                return svc.saveRecord($scope.currentRecord).then(function () {
+                return svc.saveRecord($scope.refId,$scope.currentRecord).then(function () {
                     self.fetchRecords();
                 }, responseError);
             };
 
             this.deleteRecord = function (record) {
                 this.showEventosMode = false;
-                return svc.deleteRecord(record.id).then(function () {
+                return svc.deleteRecord($scope.refId,record.id).then(function () {
                     self.fetchRecords();
                 }, responseError);
             };

@@ -6,7 +6,7 @@
         "itinerarioModule",
         "ciudadModule",
         "eventoModule",
-//        "eventoViajeroModule",
+        //"eventoViajeroModule",
         "ngMessages"
     ]);
 

@@ -20,7 +20,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     private String password;
     private String name;
     private String lastName;
-    private String extraInfo;
+    private String description;
     private Integer age;
     private String email;
     private String nickname;
@@ -91,14 +91,14 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
      * @return the extraInfo
      */
     public String getExtraInfo() {
-        return extraInfo;
+        return description;
     }
 
     /**
-     * @param extraInfo the extraInfo to set
+     * @param description the extraInfo to set
      */
-    public void setExtraInfo(String extraInfo) {
-        this.extraInfo = extraInfo;
+    public void setExtraInfo(String description) {
+        this.description = description;
     }
 
     /**

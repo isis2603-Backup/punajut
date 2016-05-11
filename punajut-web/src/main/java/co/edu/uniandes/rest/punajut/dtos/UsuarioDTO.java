@@ -16,10 +16,11 @@ public class UsuarioDTO {
     private String name;
     private String lastName;
     private String nickname;
-    private String extraInfo;
+    private String description;
     private int age;
     private long id;
     private String email;
+    private String image;
 
     /**
      * Constructor por defecto
@@ -34,21 +35,22 @@ public class UsuarioDTO {
      * @param password
      * @param lastName
      * @param nickname
-     * @param extraInfo
+     * @param description
      * @param age
      * @param email
      * @param name nombre de la ciudad
      */
-    public UsuarioDTO(String password, String name, String lastName, String nickname, String extraInfo, int age, int id, String email) {
+    public UsuarioDTO(String password, String name, String lastName, String nickname, String description, int age, int id, String email,String image) {
         super();
         this.password = password;
         this.name = name;
         this.lastName = lastName;
         this.nickname = nickname;
-        this.extraInfo = extraInfo;
+        this.description = description;
         this.age = age;
         this.email = email;
         this.id = id;
+        this.image = image;
     }
 
     public UsuarioDTO(long l, String bogota) {
@@ -111,18 +113,32 @@ public class UsuarioDTO {
         this.nickname = nickname;
     }
 
+        /**
+     * @return image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param nickname the nickname to set
+     */
+    public void setImage(String image) {
+        this.image= image;
+    }
+
     /**
      * @return the extraInfo
      */
     public String getExtraInfo() {
-        return extraInfo;
+        return description;
     }
 
     /**
-     * @param extraInfo the extraInfo to set
+     * @param description the extraInfo to set
      */
-    public void setExtraInfo(String extraInfo) {
-        this.extraInfo = extraInfo;
+    public void setExtraInfo(String description) {
+        this.description = description;
     }
 
     /**

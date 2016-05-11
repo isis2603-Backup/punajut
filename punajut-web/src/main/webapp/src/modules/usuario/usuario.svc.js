@@ -49,6 +49,10 @@
                 }
             };
 
+            this.updateRecord = function (viajeroId,viajero) {
+                return $http.put(context + "/" + viajeroId,viajero);
+            };
+
             /**
              * Hace una petición DELETE a /books/:id para eliminar un book
              * @param {number} id identificador de la instancia de book a eliminar

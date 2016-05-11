@@ -30,11 +30,11 @@
                 return $http.delete(context + "/" + viajeroId + "/itinerarios/" + itinerarioId);
             };
 
-            this.saveRecord = function(itinerarioId, itinerario){
+            this.saveRecord = function(viajeroId, itinerario){
                 if(itinerario.id){
-                    return this.updatePrize(itinerarioId, itinerario.id, itinerario);
+                    return this.updateRecord(viajeroId, itinerario.id, itinerario);
                 }else{
-                    return this.createPrize(itinerarioId, itinerario);
+                    return this.createRecord(viajeroId, itinerario);
                 }
             };
 

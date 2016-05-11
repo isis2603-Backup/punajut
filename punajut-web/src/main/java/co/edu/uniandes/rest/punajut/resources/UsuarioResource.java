@@ -83,9 +83,17 @@ public class UsuarioResource {
     }
 
     @PUT
-    @Path("{nickname: \\d+}")
-    public UsuarioDTO updateCity() throws UsuarioLogicException {
-        return null;
+    @Path("{id: \\d+}")
+    public UsuarioDTO updateCity(@PathParam("id") Long id, UsuarioDTO dto) throws UsuarioLogicException, BusinessLogicException {
+
+        LOGGER.log(Level.INFO, "Se ejecuta método updateBook con id={0}", id);
+        ViajeroEntity entity = UsuarioConverter.fullDTO2Entity(dto);
+        entity.setId(id);
+        ViajeroEntity oldEntity = usuarioLogic.getViajero(id);
+
+        entity.setEventos(oldEntity.getItiverarios());
+        ViajeroEntity savedBook = usuarioLogic.updateViajero(entity);
+        return UsuarioConverter.fullEntity2DTO(savedBook);
 
     }
 

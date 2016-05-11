@@ -6,12 +6,14 @@
 package co.edu.uniandes.rest.punajut.dtos;
 import java.util.Date;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
  *
- * @author ls.hernandez10
+ * @author ra.angel10
  */
+@XmlRootElement
 public class VisitaCiudadDTO
 {
     private Long id;

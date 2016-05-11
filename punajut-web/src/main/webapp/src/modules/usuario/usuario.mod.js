@@ -5,7 +5,9 @@
  */
 (function (ng) {
     var mod = ng.module("usuarioModule", ["ui.bootstrap"]);
-    mod.constant("usuarioContext", "api/usuario");
+                      console.log("mod viajero");
+
+    mod.constant("usuarioContext", "api/viajeros");
 
 })(window.angular);
 

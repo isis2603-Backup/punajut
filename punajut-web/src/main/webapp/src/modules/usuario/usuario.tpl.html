@@ -18,11 +18,12 @@
                 <button id="refresh-usuario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.fetchRecords()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
                 <button id="save-usuario" type="submit" form="usuario-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode"><span class="glyphicon glyphicon-save"></span> Sign in</button>
                 <button id="cancel-usuario" type="button" form="usuario-form" class="btn btn-default navbar-btn" ng-show="ctrl.editMode" ng-click="form.$setPristine(); ctrl.fetchRecords();"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <button id="create-usuario" class="btn btn-default navbar-btn" ng-hide="ctrl.editMode" ng-click="ctrl.createRecord()"><span class="glyphicon glyphicon-plus"></span>Actualizar</button>
+
             </div>
         </div>
     </nav>
 </div>
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
 <div ng-hide="ctrl.editMode">
     <div class="col-sm-12">
         <div ng-repeat="record in records">
@@ -34,41 +35,15 @@
                 </div>
                 <div class="caption" >
                     <p><strong>id:</strong> <span id="{{$index}}-id">{{record.id}}</span></p>
-                    <p><strong>nickName:</strong> <span id="{{$index}}-nickName">{{record.nickName}}</span></p>
+                    <p><strong>name:</strong> <span id="{{$index}}-nickName">{{record.name}}</span></p>
                     <p><strong>Description:</strong> <span id="{{$index}}-description">{{record.description}}</span></p>
                     <p><strong>email:</strong> <span id="{{$index}}-email">{{record.email}}</span></p>
+
                 </div>
                 <p class="text-center">
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ng-click="ctrl.editRecord(record)"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
                 </p>
-
-                <!-- END SIDEBAR BUTTONS -->
-                <!-- SIDEBAR MENU -->
-                <div class="profile-usermenu">
-                    <ul class="nav">
-                        <li class="active">
-                            <a ui-sref="CrearIt">
-                                <em class="glyphicon glyphicon-home"></em>
-                                Crear Itinerario </a>
-                        </li>
-                        <li>
-                            <a ui-sref="itinerarios">
-                                <em class="glyphicon glyphicon-user"></em>
-                                Itinerario</a>
-                        </li>
-                        <li>
-                            <a ui-sref="foroMain">
-                                <em class="glyphicon glyphicon-ok"></em>
-                                Foro </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <em class="glyphicon glyphicon-flag"></em>
-                                Help </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END MENU -->
 
             </div>
         </div>
@@ -128,4 +103,17 @@
             </div>
         </fieldset>
     </form>
+</div>
+<div id="childs" ng-show="ctrl.editMode" class="col-md-6">
+    <ul class="nav nav-tabs">
+        <li ng-show="currentRecord.id" role="presentation" ng-class="{active: tab === 'itinerarios'}">
+            <a href ng-click="ctrl.changeTab('itinerarios')">Itinerario</a>
+        </li>
+    </ul>
+
+    <div ng-show="tab === 'itinerarios'">
+        <div ng-controller="itinerarioCtrl as ctrl" ng-include="'src/modules/itinerario/itinerario.tpl.html'">
+        </div>
+    </div>
+
 </div>
