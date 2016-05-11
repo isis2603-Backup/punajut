@@ -46,6 +46,7 @@ public class VisitaCiudadEntity extends BaseEntity implements Serializable{
     private List<EventoViajeroEntity> eventosViajero = new ArrayList<>();
 
     @ManyToOne
+    @PodamExclude
     private ItinerarioEntity itinerario;
 
     public ItinerarioEntity getItinerario() {
