@@ -31,11 +31,11 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     @Inject
     private EventoViajeroPersistence persistence;
 
-    @Inject
-    private IViajeroLogic viajeroLogic;
-
-    @Inject
-    private IItinerarioLogic itinerarioLogic;
+//    @Inject
+//    private IViajeroLogic viajeroLogic;
+//
+//    @Inject
+//    private IItinerarioLogic itinerarioLogic;
 
     @Inject
     private IVisitaCiudadLogic visitaCiudadLogic;
@@ -45,11 +45,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.info("Inicia proceso de consultar todos los evento viajero");
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
-
-        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
-            throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
          if(visitaCiudad == null)
@@ -64,11 +59,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.log(Level.INFO, "Inicia proceso de consultar el evento viajero con id={0}", idEvento);
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
-
-        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
-            throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
@@ -97,11 +87,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.log(Level.INFO, "Inicia proceso de actualizar el evento viajero con id={0}", e.getId());
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero no existe");
-
-        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
-            throw new IllegalArgumentException("El itinerario no existe");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
@@ -130,11 +115,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.log(Level.INFO, "Inicia proceso de borrar un evento viajero con id={0}", idEvento);
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
-
-        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
-            throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)
@@ -161,11 +141,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.info("Inicia proceso de agregar un evento viajero");
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
-
-        if(itinerarioLogic.getItinerario(idItinerario, idViajero) == null)
-            throw new IllegalArgumentException("El itinerario con el id dado no existe");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
         if(visitaCiudad == null)

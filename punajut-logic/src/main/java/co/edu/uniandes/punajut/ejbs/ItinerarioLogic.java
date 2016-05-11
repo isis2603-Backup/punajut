@@ -31,8 +31,8 @@ public class ItinerarioLogic implements IItinerarioLogic
     @Inject
     private ItinerarioPersistence persistence;
 
-    @Inject
-    private IVisitaCiudadLogic visitaCiudad;
+//    @Inject
+//    private IVisitaCiudadLogic visitaCiudad;
 
     @Inject
     private IViajeroLogic viajeroLogic;

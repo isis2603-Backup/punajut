@@ -35,24 +35,19 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     @Inject
     private VisitaCiudadPersistence persistence;
 
-    @Inject
-    ICiudadLogic ciudadLogic;
-
-    @Inject
-    IViajeroLogic viajeroLogic;
+//    @Inject
+//    ICiudadLogic ciudadLogic;
 
     @Inject
     IItinerarioLogic itinerarioLogic;
 
-    @Inject
-    private EventoViajeroPersistence eventoPersistence;
+//    @Inject
+//    private EventoViajeroPersistence eventoPersistence;
 
     @Override
     public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario) throws BusinessLogicException{
        logger.info("Inicia proceso de consultar todos las visita ciudad");
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
         ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
         if( itinerario == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
@@ -63,9 +58,6 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     @Override
     public VisitaCiudadEntity getVisitaCiudad(Long idViajero, Long idItinerario, Long id) throws BusinessLogicException {
          logger.log(Level.INFO, "Inicia proceso de consultar visita ciudad con id={0}", id);
-
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
         ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
         if(itinerario == null)
             throw new IllegalArgumentException("El itinerario con el id dado no existe");
@@ -86,8 +78,6 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     public VisitaCiudadEntity createVisitaCiudad(Long idViajero, Long idItinerario,VisitaCiudadEntity entity) throws BusinessLogicException{
         logger.info("Inicia proceso de creación de una visita ciudad");
 
-       if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
 
         ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
 
@@ -105,8 +95,6 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     public VisitaCiudadEntity updateVisitaCiudad(Long idViajero, Long idItinerario,VisitaCiudadEntity entity) throws BusinessLogicException{
         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", entity.getId());
 
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
 
         ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
 
@@ -128,8 +116,6 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     @Override
     public void deleteVisitaCiudad(Long idViajero, Long idItinerario,Long id) throws BusinessLogicException{
         logger.log(Level.INFO, "Inicia proceso de borrar una visita ciudad con id={0}", id);
-        if(viajeroLogic.getViajero(idViajero) == null)
-            throw new IllegalArgumentException("El viajero con el id dado no existe");
 
         ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
 

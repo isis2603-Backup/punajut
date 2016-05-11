@@ -35,7 +35,7 @@ import javax.ws.rs.core.Response;
  *
  * @author mi.arevalo10
  */
-@Path("/viajero/{idViajero}/itinerarios")
+@Path("/viajero/{idViajero:\\d+}/itinerarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
@@ -69,7 +69,7 @@ public class ItinerarioResource {
      * @return itinerario encontrada
      * @throws ItinerarioLogicException cuando el itinerario no existe
      */
-    @GET      
+    @GET
     @Path("{id: \\d+}")
     public ItinerarioDTO getItinerario(@PathParam("id") Long id,@PathParam("idViajero") Long idViajero)
     {
