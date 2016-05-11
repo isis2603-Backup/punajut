@@ -126,9 +126,22 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     }
 
     @Override
-    public void deleteVisitaCiudad(Long idViajero, Long idItineraio,Long id) {
+    public void deleteVisitaCiudad(Long idViajero, Long idItinerario,Long id) throws BusinessLogicException{
         logger.log(Level.INFO, "Inicia proceso de borrar una visita ciudad con id={0}", id);
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero con el id dado no existe");
 
+        ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
+
+        if(itinerario == null)
+            throw new IllegalArgumentException("El itinerario con el id dado no existe");
+
+        boolean existe = false;
+        for (VisitaCiudadEntity v : itinerario.getVisitasCiudades()) {
+            if(Objects.equals(id, v.getId()))
+                existe = true;
+        }
+        if(!existe) throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
         persistence.delete(id);
         logger.log(Level.INFO, "Termina proceso de borrar una visita ciudad con id={0}", id);
     }
