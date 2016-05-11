@@ -5,55 +5,63 @@
 
     var mod = ng.module("eventoViajeroModule");
 
-    mod.service("eventoViajeroService", ["$http", "eventoViajeroContext", function ($http, context) {
+    mod.service("eventoViajeroService", ["$http", "Context", function ($http, context) {
             /**
-             * Obtener la lista de task.
-             * Hace una petición GET con $http a /tasks para obtener la lista
+             * Obtener la lista de eventos viajero.
+             * Hace una petición GET con $http a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero para obtener la lista
              * @returns {promise} promise para leer la respuesta del servidor}
-             * Devuelve una lista de objetos de task con sus atributos
+             * Devuelve una lista de objetos de eventos viajero con sus atributos
              */
-            this.fetchRecords = function () {
-                return $http.get(context);
+            this.getEventosViajero = function (viajeroId, itinerarioId, visitaCiudadId)
+            {
+                return $http.get(context + "/" + viajeroId + "/itinerarios/" + itinerarioId + "/visitas/" + visitaCiudadId + "/eventosViajero");
             };
 
             /**
-             * Obtener un registro de tasks.
-             * Hace una petición GET a /tasks/:id para obtener
-             * los datos de un registro específico de tasks
+             * Obtener un registro de eventos viajero.
+             * Hace una petición GET a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero/:id para obtener
+             * los datos de un registro específico de evento viajero
              * @param {number} id del registro a obtener
              * @returns {promise} promise para leer la respuesta del servidor
-             * Devuelve un objeto de task con sus atributos
+             * Devuelve un objeto de evento viajero con sus atributos
              */
-            this.fetchRecord = function (id) {
-                return $http.get(context + "/" + id);
+            this.getEventoViajero = function (viajeroId, itinerarioId, visitaCiudadId, eventoViajeroId)
+            {
+                return $http.get(context + "/" + viajeroId + "/itinerarios/" + itinerarioId + "/visitas/" + visitaCiudadId + "/eventosViajero/" + eventoViajeroId);
             };
 
             /**
-             * Guardar un registro de task.
-             * Si currentRecord tiene la propiedad id, hace un PUT a /task/:id con los
-             * nuevos datos de la instancia de task.
-             * Si currentRecord no tiene la propiedad id, se hace un POST a /task
-             * para crear el nuevo registro de task
-             * @param {object} currentRecord instancia de task a guardar/actualizar
+             * Guardar un registro de eventos viajero.
+             * Si currentRecord tiene la propiedad id, hace un PUT a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero/:id con los
+             * nuevos datos de la instancia de un evento viajero.
+             * Si currentRecord no tiene la propiedad id, se hace un POST a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero
+             * para crear el nuevo registro deun evento viajero
+             * @param {object} currentRecord instancia de un evento viajero a guardar/actualizar
              * @returns {promise} promise para leer la respuesta del servidor
-             * Devuelve un objeto de task con sus datos incluyendo el id
+             * Devuelve un objeto de evento viajero con sus datos incluyendo el id
              */
-            this.saveRecord = function (currentRecord) {
-                if (currentRecord.id) {
-                    return $http.put(context + "/" + currentRecord.id, currentRecord);
-                } else {
-                    return $http.post(context, currentRecord);
+            this.saveEventoViajero = function (viajeroId, itinerarioId, visitaCiudadId, currentRecord)
+            {
+                if (currentRecord.id)
+                {
+                    return $http.put(context + "/" + viajeroId + "/itinerarios/" + itinerarioId + "/visitas/" + visitaCiudadId + "/eventosViajero/" + currentRecord.id, currentRecord);
+                }
+
+                else
+                {
+                    return $http.post(context + "/" + viajeroId + "/itinerarios/" + itinerarioId + "/visitas/" + visitaCiudadId + "/eventosViajero", currentRecord);
                 }
             };
 
             /**
-             * Hace una petición DELETE a /task/:id para eliminar una task
-             * @param {number} id identificador de la instancia de task a eliminar
+             * Hace una petición DELETE a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero/:id para eliminar un evento viajero
+             * @param {number} id identificador de la instancia del evento viajero a eliminar
              * @returns {promise} promise para leer la respuesta del servidor
              * No devuelve datos.
              */
-            this.deleteRecord = function (id) {
-                return $http.delete(context + "/" + id);
+            this.deleteEventoViajero = function (viajeroId, itinerarioId, visitaCiudadId, eventoViajeroId)
+            {
+                    return $http.delete(context + "/" + viajeroId + "/itinerarios/" + itinerarioId + "/visitas/" + visitaCiudadId + "/eventosViajero/" + eventoViajeroId);
             };
         }]);
 })(window.angular);

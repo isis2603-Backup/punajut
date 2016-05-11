@@ -1,4 +1,4 @@
-// src/modules/eventoViajero/evenoViajero.mock.js
+// src/modules/task/task.mock.js
 // "Mock" del servicio. Simula el funcionamiento del servicio
 // durante la ejecución de las pruebas
 
@@ -15,7 +15,7 @@
              * api/(cualquierpalabra)/(numero)
              * ej: api/tasks/1
              */
-            var recordUrl = new RegExp('api/eventoViajero/([0-9]+)');
+            var recordUrl = new RegExp('api/tasks/([0-9]+)');
 
             /*
              * @type Array
@@ -26,7 +26,7 @@
                     name:'musicl',
                     city:'monteria',
                     address:'diag 19 ',
-                    descripion:'solo'}];
+                    description:'solo'}];
 
             function getQueryParams(url) {
                 var vars = {}, hash;

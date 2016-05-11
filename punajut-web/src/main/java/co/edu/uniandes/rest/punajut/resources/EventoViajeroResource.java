@@ -33,7 +33,7 @@ import javax.ws.rs.core.Response;
  *
  * @author ls.hernandez10
  */
-@Path("/viajeros/{idViajero}/itinerarios/{idItinerario}/visitasCiudad/{idVisitaCiudad}/eventosViajero")
+@Path("/viajeros/{idViajero}/itinerarios/{idItinerario}/visitas/{idVisitaCiudad}/eventosViajero")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped

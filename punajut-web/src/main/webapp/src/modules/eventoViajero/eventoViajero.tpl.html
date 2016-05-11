@@ -1,58 +1,16 @@
-<div class = "container" ng-controller="eventoViajeroCtrl">
-    <div class = col-md-12>
-        <h3 align = "center">Evento</h3>
-        <!--Aqui se cargan las fotos-->
+<!--
+  src/modules/task/task.tpl.html
+  Plantilla usada por el módulo de Personas
+-->
+<div class = col-md-12>
+    <h3 align = "center">Nuevo Evento Personalizado</h3>
+  <form ng-submit="agregar()">
+        <!--Fechas-->
         <div class = "col-md-6">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                  <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                  <div class="item active">
-                    <img src="img_chania.jpg" alt="Chania">
-                  </div>
-
-                  <div class="item">
-                    <img src="img_chania2.jpg" alt="Chania">
-                  </div>
-
-                  <div class="item">
-                    <img src="img_flower.jpg" alt="Flower">
-                  </div>
-
-                  <div class="item">
-                    <img src="img_flower2.jpg" alt="Flower">
-                  </div>
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-
-        <div class = "col-md-6">
-
-            <!--Datos del evento-->
-            <form ng-submit="agregar()">
-
-                <!--Fechas-->
-                <div class ="col-md-6">
+            <div class ="col-md-6">
                     <label>Fecha Inicio: </label>
                         <div class='input-group date' id='from'>
-                            <input id="date" name="date" class="form-control" type='text' class="form-control" required ng-model="fechaInicial"/>
+                            <input id="date" name="date" class="form-control" type='text' class="form-control" required ng-model="currentRecord.fechaInicial"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -61,7 +19,7 @@
                 <div class ="col-md-6">
                     <label>Fecha Fin: </label>
                         <div class='input-group date' id='from'>
-                            <input id="date" name="date" class="form-control" type='text' class="form-control" required ng-model="fechaFinal"/>
+                            <input id="date" name="date" class="form-control" type='text' class="form-control" required ng-model="currentRecord.fechaFinal"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -69,28 +27,62 @@
                 </div>
                     <div class="col-md-12">
                         <label class="formulario" for="nombre">Nombre </label>
-                        <input class="espacio" type="text" placeholder="Nombre del evento" id="nombre" required ng-model="nombre"><br>
+                        <input class="espacio" type="text" placeholder="Nombre del evento" id="nombre" required ng-model="currentRecord.nombre"><br>
                     </div>
 
                     <div class="col-md-12">
                         <label class="formulario" for ="ciudad">Ciudad </label>
-                        <input class="espacio" type="text" placeholder="Ciudad del evento" id="ciudad" required ng-model="ciudad"><br>
+                        <input class="espacio" type="text" placeholder="Ciudad del evento" id="ciudad" required ng-model="currentRecord.ciudad"><br>
                     </div>
 
                     <div class="col-md-12">
                         <label class="formulario" for="direccion">Dirección </label>
-                        <input class="espacio" type="text" placeholder="Dirección del evento" id="direccion" required ng-model="direccion"><br>
+                        <input class="espacio" type="text" placeholder="Dirección del evento" id="direccion" required ng-model="currentRecord.direccion"><br>
                     </div>
 
                     <div class="col-md-12">
                         <label class="formulario" for="descripcion">Descripción </label>
-                        <input class="espacio grande" type="text" placeholder="Descripción del evento" id ="descripcion" ng-model="descripcion"><br>
+                        <input class="espacio grande" type="text" placeholder="Descripción del evento" id ="descripcion" ng-model="currentRecord.descripcion"><br>
                     </div>
 
                     <button type="submit" class="crear">Crear evento</button>
-                </form>
         </div>
 
-    </div>
-</div>
+    </form>
 
+    <!-- TODO: Crear el contenido de la planilla -->
+    <table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Direccion</th>
+        <th>Descripcion</th>
+    </tr>
+        <tr ng-repeat="tarea in records">
+            <td>
+                <label ng-model="tarea.id">{{tarea.id}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.date1">{{tarea.date1}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.date2">{{tarea.date2}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.name">{{tarea.name}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.city">{{tarea.city}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.address">{{tarea.address}}</label>
+            </td>
+            <td>
+                <label ng-model="tarea.description">{{tarea.description}}</label>
+            </td>
+        </tr>
+    </table>
+</div>
