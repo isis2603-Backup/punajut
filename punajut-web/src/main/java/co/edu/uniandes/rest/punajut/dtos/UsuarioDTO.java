@@ -7,9 +7,11 @@ package co.edu.uniandes.rest.punajut.dtos;
 
 /**
  * Objeto de transferencia de datos de Ciudades.
+ *
  * @author Asistente
  */
 public class UsuarioDTO {
+
     private String password;
     private String name;
     private String lastName;
@@ -23,10 +25,12 @@ public class UsuarioDTO {
      * Constructor por defecto
      */
     public UsuarioDTO() {
-	}
+        //Constructor por defecto
+    }
 
     /**
      * Constructor con parámetros.
+     *
      * @param password
      * @param lastName
      * @param nickname
@@ -36,22 +40,22 @@ public class UsuarioDTO {
      * @param name nombre de la ciudad
      */
     public UsuarioDTO(String password, String name, String lastName, String nickname, String extraInfo, int age, int id, String email) {
-		super();
-		this.password = password;
-		this.name = name;
-                this.lastName = lastName;
-                this.nickname = nickname;
-                this.extraInfo = extraInfo;
-                this.age = age;
-                this.email = email;
-                this.id = id;
-	}
+        super();
+        this.password = password;
+        this.name = name;
+        this.lastName = lastName;
+        this.nickname = nickname;
+        this.extraInfo = extraInfo;
+        this.age = age;
+        this.email = email;
+        this.id = id;
+    }
 
     public UsuarioDTO(long l, String bogota) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-	/**
+    /**
      * @return the id
      */
     public String getPassword() {
@@ -78,6 +82,7 @@ public class UsuarioDTO {
     public void setName(String name) {
         this.name = name;
     }
+
     /**
      * @return the lastname
      */
@@ -91,6 +96,7 @@ public class UsuarioDTO {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     /**
      * @return the nickname
      */
@@ -104,6 +110,7 @@ public class UsuarioDTO {
     public void setNickName(String nickname) {
         this.nickname = nickname;
     }
+
     /**
      * @return the extraInfo
      */
@@ -117,6 +124,7 @@ public class UsuarioDTO {
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
     }
+
     /**
      * @return the age
      */
@@ -164,6 +172,6 @@ public class UsuarioDTO {
      */
     @Override
     public String toString() {
-    	return "{ id : " + getPassword() + ", name : \"" + getName() + "\" , lastName : \"" + getLastName() + "\", nickname : \"" + getNickName() + "\", ExtraInfo : \"" + getExtraInfo() + "\", age : \"" + getAge() + "\", email : \"" + getEmail() + "\"}" ;
+        return "{ id : " + getPassword() + ", name : \"" + getName() + "\" , lastName : \"" + getLastName() + "\", nickname : \"" + getNickName() + "\", ExtraInfo : \"" + getExtraInfo() + "\", age : \"" + getAge() + "\", email : \"" + getEmail() + "\"}";
     }
 }

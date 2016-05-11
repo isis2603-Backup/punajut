@@ -14,14 +14,14 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
-
 @Entity
 public class ViajeroEntity extends BaseEntity implements Serializable {
+
     private String password;
     private String name;
     private String lastName;
     private String extraInfo;
-    private Integer  age;
+    private Integer age;
     private String email;
     private String nickname;
 
@@ -29,7 +29,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     @PodamExclude
     private List<ItinerarioEntity> itinerarios = new ArrayList<>();
 
-/**
+    /**
      * @return the nickname
      */
     public String getNickName() {
@@ -60,6 +60,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     /**
      * @return the name
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -67,9 +68,11 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     /**
      * @param name the name to set
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
+
     /**
      * @return the lastname
      */
@@ -97,6 +100,7 @@ public class ViajeroEntity extends BaseEntity implements Serializable {
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
     }
+
     /**
      * @return the age
      */

@@ -11,13 +11,11 @@ import java.util.Date;
  *
  * @author r.cardenas11
  */
-public class EventoDTO
-{
+public class EventoDTO {
 
     //-----------------------------------------------------------
     // Atributos
     //-----------------------------------------------------------
-
     private Long id;
 
     private String name;
@@ -28,11 +26,9 @@ public class EventoDTO
 
     private double precio;
 
-    private  String descripcion;
+    private String descripcion;
 
     private String lugar;
-
-//    private CiudadDTO ciudad;
 
     //Fecha y hora en que comienza el evento
     private Date fechaInicial;
@@ -40,21 +36,19 @@ public class EventoDTO
     //Fecha y hora en que finaliza el evento
     private Date fechaFinal;
 
-
     //-----------------------------------------------------------
     // Constructores
     //-----------------------------------------------------------
     /**
      * Constructor por defecto
      */
-    public EventoDTO()
-    {
-
+    public EventoDTO() {
+        //Constructor por defecto
     }
-
 
     /**
      * Constructor con parametros
+     *
      * @param pId
      * @param name
      * @param tipo
@@ -67,9 +61,8 @@ public class EventoDTO
      * @param pFechaInicial
      * @param pFechaFinal
      */
-     public EventoDTO(Long pId, String name, String tipo ,double calificacion, double precio,String descripcion,
-             String lugar, Date pFechaInicial, Date pFechaFinal)
-    {
+    public EventoDTO(Long pId, String name, String tipo, double calificacion, double precio, String descripcion,
+            String lugar, Date pFechaInicial, Date pFechaFinal) {
         super();
         id = pId;
         this.name = name;
@@ -83,14 +76,9 @@ public class EventoDTO
         fechaFinal = pFechaFinal;
     }
 
-
-
-
-
     //-----------------------------------------------------------
     // Metodos
     //-----------------------------------------------------------
-
     public Long getId() {
         return id;
     }
@@ -147,14 +135,6 @@ public class EventoDTO
         this.lugar = lugar;
     }
 
-//    public CiudadDTO getCiudad() {
-//        return ciudad;
-//    }
-//
-//    public void setCiudad(CiudadDTO ciudad) {
-//        this.ciudad = ciudad;
-//    }
-
     public Date getFechaInicial() {
         return fechaInicial;
     }
@@ -176,8 +156,7 @@ public class EventoDTO
      */
     @Override
     public String toString() {
-        return "{ id : " + getId() + ", nombre : \"" + getName() + ", tipo : \"" + getTipo() + ", calificacion : \"" + getCalificacion() + ", precio : \"" + getPrecio() + ", descripcion : \"" + getDescripcion() + ", lugar : \"" + getLugar() + ", fechaInicial : \"" + getFechaInicial() +  ", fechaFinal : \"" + getFechaFinal()+ "\" }";
+        return "{ id : " + getId() + ", nombre : \"" + getName() + ", tipo : \"" + getTipo() + ", calificacion : \"" + getCalificacion() + ", precio : \"" + getPrecio() + ", descripcion : \"" + getDescripcion() + ", lugar : \"" + getLugar() + ", fechaInicial : \"" + getFechaInicial() + ", fechaFinal : \"" + getFechaFinal() + "\" }";
     }
-
 
 }
