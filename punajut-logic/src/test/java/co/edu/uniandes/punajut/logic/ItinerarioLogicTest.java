@@ -8,6 +8,7 @@ package co.edu.uniandes.punajut.logic;
 import co.edu.uniandes.punajut.api.IItinerarioLogic;
 import co.edu.uniandes.punajut.ejbs.ItinerarioLogic;
 import co.edu.uniandes.punajut.entities.ItinerarioEntity;
+import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.ItinerarioPersistence;
@@ -48,9 +49,11 @@ public class ItinerarioLogicTest {
     @Inject
     private UserTransaction utx;
 
-    private List<ItinerarioEntity> data = new ArrayList<ItinerarioEntity>();
+    private List<ItinerarioEntity> data = new ArrayList<>();
 
     private List<VisitaCiudadEntity> visitasData = new ArrayList<>();
+
+    private List<ViajeroEntity> viajerosData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -84,12 +87,20 @@ public class ItinerarioLogicTest {
       private void clearData() {
         em.createQuery("delete from ItinerarioEntity").executeUpdate();
         em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
+        em.createQuery("delete from ViajeroEntity").executeUpdate();
     }
 
     private void insertData() {
+
+        for (int i = 0; i < 3; i++) {
+            ViajeroEntity entity = factory.manufacturePojo(ViajeroEntity.class);
+
+            em.persist(entity);
+            viajerosData.add(entity);
+        }
         for (int i = 0; i < 3; i++) {
             ItinerarioEntity entity = factory.manufacturePojo(ItinerarioEntity.class);
-
+            entity.setViajero(viajerosData.get(i));
             em.persist(entity);
             data.add(entity);
         }
@@ -100,6 +111,7 @@ public class ItinerarioLogicTest {
             em.persist(entity);
             visitasData.add(entity);
         }
+
     }
 
 
@@ -119,43 +131,43 @@ public class ItinerarioLogicTest {
             Assert.assertEquals(entity.getFechaFin(), resp.getFechaFin());
 
        }
-//        @Test
-//    public void getItinerariosTest() {
-//        List<ItinerarioEntity> resultList;
-//        try {
-//            resultList = itinerarioLogic.getItinerarios(1L);
-//                    List<ItinerarioEntity> expectedList = em.createQuery("SELECT u from ItinerarioEntity u").getResultList();
-//        Assert.assertEquals(expectedList.size(), resultList.size());
-//        for (ItinerarioEntity expected : expectedList) {
-//            boolean found = false;
-//            for (ItinerarioEntity result : resultList) {
-//                if (result.getId().equals(expected.getId())) {
-//                    found = true;
-//                }
-//            }
-//            Assert.assertTrue(found);
-//        }
-//        } catch (BusinessLogicException ex) {
-//            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//    }
-//
-//    @Test
-//    public void getItinerarioTest() {
-//        try {
-//            ItinerarioEntity result = itinerarioLogic.getItinerario(data.get(0).getId(),1L);
-//
-//            ItinerarioEntity expected = em.find(ItinerarioEntity.class, data.get(0).getId());
-//
-//            Assert.assertNotNull(expected);
-//            Assert.assertNotNull(result);
-//            Assert.assertEquals(expected.getId(), result.getId());
-//            Assert.assertEquals(expected.getName(), result.getName());
-//        } catch (BusinessLogicException ex) {
-//            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+        @Test
+    public void getItinerariosTest() {
+        List<ItinerarioEntity> resultList;
+        try {
+            resultList = itinerarioLogic.getItinerarios(1L);
+                    List<ItinerarioEntity> expectedList = em.createQuery("SELECT u from ItinerarioEntity u").getResultList();
+        Assert.assertEquals(expectedList.size(), resultList.size());
+        for (ItinerarioEntity expected : expectedList) {
+            boolean found = false;
+            for (ItinerarioEntity result : resultList) {
+                if (result.getId().equals(expected.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Test
+    public void getItinerarioTest() {
+        try {
+            ItinerarioEntity result = itinerarioLogic.getItinerario(data.get(0).getId(),viajerosData.get(0).getId());
+
+            ItinerarioEntity expected = em.find(ItinerarioEntity.class, data.get(0).getId());
+
+            Assert.assertNotNull(expected);
+            Assert.assertNotNull(result);
+            Assert.assertEquals(expected.getId(), result.getId());
+            Assert.assertEquals(expected.getName(), result.getName());
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Test
     public void updateItinerarioTest() {
