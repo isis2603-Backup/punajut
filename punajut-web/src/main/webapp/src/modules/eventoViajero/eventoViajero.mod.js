@@ -7,6 +7,6 @@
   var mod = ng.module("eventoViajeroModule", ["ui.bootstrap"]);
 
   // define una constante usada por el servicio y el mock del servicio
-  mod.constant("Context", "api/viajeros");
+  mod.constant("eventoViajeroContext", "api/viajeros");
 
 })(window.angular);

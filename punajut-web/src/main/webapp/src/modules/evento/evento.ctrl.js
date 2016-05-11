@@ -5,8 +5,11 @@
  */
 (function (ng) {
     var mod = ng.module("eventoModule");
+    console.log("llega ctrl evento");
 
     mod.controller("eventoCtrl", ["$scope", "eventoService", function ($scope, svc) {
+               console.log("llega ctrl evento2");
+
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
                 name: '' /* Tipo String */,

@@ -60,26 +60,41 @@ public class ItinerarioLogic implements IItinerarioLogic
     }
 
     @Override
-    public ItinerarioEntity createItinerario(ItinerarioEntity entity) {
-        logger.info("Inicia proceso de creación de un itinerario");
-        persistence.create(entity);
-        logger.info("Termina proceso de creación de un itinerario");
-        return entity;
+    public ItinerarioEntity createItinerario(Long idViajero,ItinerarioEntity itinerario) {
+        try {
+            logger.info("Inicia proceso de creación de un itinerario");
+            ViajeroEntity viajero = viajeroLogic.getViajero(idViajero);
+            itinerario.setViajero(viajero);
+            itinerario = persistence.create(itinerario);
+            logger.info("Termina proceso de creación de un itinerario");
+
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ItinerarioLogic.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return itinerario;
     }
 
     @Override
-    public ItinerarioEntity updateItinerario(ItinerarioEntity entity) {
-        logger.log(Level.INFO, "Inicia proceso de actualizar itinerario con id={0}", entity.getId());
-        ItinerarioEntity newEntity = persistence.update(entity);
-        logger.log(Level.INFO, "Termina proceso de actualizar itinerario con id={0}", entity.getId());
+    public ItinerarioEntity updateItinerario(Long idViajero, ItinerarioEntity itinerario) {
+        try {
+            logger.log(Level.INFO, "Inicia proceso de actualizar itinerario con id={0}", itinerario.getId());
+            ViajeroEntity viajero = viajeroLogic.getViajero(idViajero);
+            itinerario.setViajero(viajero);
+            logger.log(Level.INFO, "Termina proceso de actualizar itinerario con id={0}", itinerario.getId());
+
+        } catch (BusinessLogicException ex) {
+            Logger.getLogger(ItinerarioLogic.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         ItinerarioEntity newEntity = persistence.update(itinerario);
         return newEntity;
     }
 
     @Override
-    public void deleteItinerario(Long id) {
-        logger.log(Level.INFO, "Inicia proceso de borrar itinerario con id={0}", id);
-        persistence.delete(id);
-        logger.log(Level.INFO, "Termina proceso de borrar itinerario con id={0}", id);
+    public void deleteItinerario(Long idViajero, Long idItinerario) throws Exception{
+        logger.log(Level.INFO, "Inicia proceso de borrar itinerario con id={0}", idItinerario);
+        ItinerarioEntity old = getItinerario(idItinerario, idViajero);
+        persistence.delete(old.getId());
+        logger.log(Level.INFO, "Termina proceso de borrar itinerario con id={0}", idItinerario);
     }
 
 }

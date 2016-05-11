@@ -26,8 +26,8 @@
                 return $http.put(context + "/" + viajeroId + "/itinerarios/" + itinerarioId, itinerario);
             };
 
-            this.deleteRecord = function (itinerarioId, itinerarioId) {
-                return $http.delete(context + "/" + itinerarioId + "/itinerarios/" + itinerarioId);
+            this.deleteRecord = function (viajeroId, itinerarioId) {
+                return $http.delete(context + "/" + viajeroId + "/itinerarios/" + itinerarioId);
             };
 
             this.saveRecord = function(itinerarioId, itinerario){

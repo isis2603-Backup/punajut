@@ -1,7 +1,7 @@
 (function (ng) {
 
     var mod = ng.module("itinerarioModule");
-      console.log("llega1");
+  console.log("llega ctrl itinerario");
 
     mod.controller("itinerarioCtrl", ["$scope", "itinerarioService", function ($scope, svc) {
 

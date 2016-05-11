@@ -1,7 +1,9 @@
 (function (ng) {
     var mod = ng.module("ciudadModule");
-
+console.log("llega ctrl ciudad");
     mod.controller("ciudadCtrl", ["$scope", "ciudadService", "eventoService", function ($scope, svc) {
+            console.log("llega ctrl ciudad2");
+
             $scope.currentRecord = {
                 id: undefined /* Tipo Long */,
                 name: '' /* Tipo String */,

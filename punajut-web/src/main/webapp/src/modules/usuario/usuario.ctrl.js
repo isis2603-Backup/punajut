@@ -7,8 +7,12 @@
 (function (ng) {
 
     var mod = ng.module("usuarioModule");
+      console.log("llega ctrl usuario");
+
 
     mod.controller("usuarioCtrl", ["$scope", "usuarioService", function ($scope, svc) {
+                  console.log("llega ctrl usuario2");
+
            //Se almacenan todas las alertas
             $scope.alerts = [];
             $scope.currentRecord = {};

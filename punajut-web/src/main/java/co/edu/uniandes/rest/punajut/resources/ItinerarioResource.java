@@ -35,7 +35,7 @@ import javax.ws.rs.core.Response;
  *
  * @author mi.arevalo10
  */
-@Path("/viajero/{idViajero:\\d+}/itinerarios")
+@Path("/viajeros/{idViajero: \\d+}/itinerarios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
@@ -95,10 +95,10 @@ public class ItinerarioResource {
      * suministrado
      */
     @POST
-    public ItinerarioDTO createItinerario(ItinerarioDTO itinerario) throws ItinerarioLogicException {
+    public ItinerarioDTO createItinerario(@PathParam("idViajero") Long idViajero,ItinerarioDTO itinerario) throws ItinerarioLogicException {
         logger.info("Se ejecuta método createItinerario");
         ItinerarioEntity entity = ItinerarioConverter.fullDTO2Entity(itinerario);
-        ItinerarioEntity newEntity = itinerarioLogic.createItinerario(entity);
+        ItinerarioEntity newEntity = itinerarioLogic.createItinerario(idViajero, entity);
 
         return ItinerarioConverter.fullEntity2DTO(newEntity);
     }
@@ -129,7 +129,7 @@ public class ItinerarioResource {
         entity.setFechaInicio(oldEntity.getFechaInicio());
         entity.setFechaFin(oldEntity.getFechaFin());
 
-        ItinerarioEntity savedItinerario = itinerarioLogic.updateItinerario(entity);
+        ItinerarioEntity savedItinerario = itinerarioLogic.updateItinerario(id,entity);
         return ItinerarioConverter.fullEntity2DTO(savedItinerario);
 
 
@@ -145,10 +145,10 @@ public class ItinerarioResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteItinerario(@PathParam("id") Long id) throws ItinerarioLogicException
+    public void deleteItinerario(@PathParam("idViajero") Long idViajero, @PathParam("id") Long idItinerario) throws ItinerarioLogicException, Exception
     {
-        logger.log(Level.INFO, "Se ejecuta método deleteBook con id={0}", id);
-        itinerarioLogic.deleteItinerario(id);
+        logger.log(Level.INFO, "Se ejecuta método deleteItinerario con id={0}", idItinerario);
+        itinerarioLogic.deleteItinerario(idViajero,idItinerario);
 
     }
 

@@ -5,9 +5,12 @@
 
   // es parte del módulo "taskModule"
   var mod = ng.module("eventoViajeroModule");
+  console.log("llega ctrl eventoViajero");
 
   // crea el controlador con dependencias a $scope y a taskService
   mod.controller("eventoViajeroCtrl", ["$scope", "eventoViajeroService", function ($scope, svc) {
+            console.log("llega ctrl eventoViajero2");
+
 
     // TODO: define los atributos en el scope
     $scope.currentRecord = {};

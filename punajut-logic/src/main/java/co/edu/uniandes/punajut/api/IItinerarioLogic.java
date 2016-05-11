@@ -17,7 +17,7 @@ public interface IItinerarioLogic
 {
     public List<ItinerarioEntity> getItinerarios(Long idViajero) throws BusinessLogicException;
     public ItinerarioEntity getItinerario(Long idItinerario, Long idViajero) throws BusinessLogicException;
-    public ItinerarioEntity createItinerario(ItinerarioEntity entity);
-    public ItinerarioEntity updateItinerario(ItinerarioEntity entity);
-    public void deleteItinerario(Long id);
+    public ItinerarioEntity createItinerario(Long idViajero, ItinerarioEntity entity);
+    public ItinerarioEntity updateItinerario(Long idViajero, ItinerarioEntity entity);
+    public void deleteItinerario(Long idViajero, Long idItinerario) throws Exception;
 }
