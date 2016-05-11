@@ -14,6 +14,7 @@ public abstract class CiudadConverter {
      * @generated
      */
     private CiudadConverter() {
+        //Constructor por defecto
     }
 
     /**

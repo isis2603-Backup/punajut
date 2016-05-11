@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,9 +12,7 @@
             var ignore_regexp = new RegExp('^((?!api).)*$');
             /*
              * @type RegExp
-             * recordUrl acepta cualquier url con el formato 
-             * api/(cualquierpalabra)/(numero)
-             * ej: api/books/1
+             * recordUrl acepta cualquier url con el formato api/(cualquierpalabra)/(numero)ej: api/books/1
              */
             var recordUrl = new RegExp('api/usuario/([0-9]+)');
 
@@ -22,9 +20,7 @@
              * @type Array
              * records: Array con un libro por defecto
              */
-            var records = [
-               
-            ];
+            var records = [];
 
             function getQueryParams(url) {
                 var vars = {}, hash;
@@ -43,9 +39,7 @@
 
             /*
              * Esta funcion se ejecuta al invocar una solicitud GET a la url "api/books"
-             * Obtiene los parámetros de consulta "queryParams" para establecer 
-             * la pagina y la maxima cantida de records. Con los anteriores parametros 
-             * se realiza la simulacion de la paginacion.
+             * Obtiene los parámetros de consulta "queryParams" para establecer la pagina y la maxima cantida de records. Con los anteriores parametros se realiza la simulacion de la paginacion.
              * Response: 200 -> Status ok, array de libros y los headers.
              */
             $httpBackend.whenGET('api/usuario').respond(function (method, url) {
@@ -82,8 +76,7 @@
             /*
              * Esta funcion se ejecuta al invocar una solicitud POST a la url "api/books"
              * Obtiene el record de libro desde el cuerpo de la peticion
-             * Genera un id aleatorio y lo asocia al record de libro y lo guarda en el 
-             * array de records.
+             * Genera un id aleatorio y lo asocia al record de libro y lo guarda en el array de records.
              * Response: 201 -> Status created, record -> libro y ningún header.
              */
             $httpBackend.whenPOST('api/usuario').respond(function (method, url, data) {
@@ -114,8 +107,7 @@
              * Esta funcion se ejecuta al invocar una solicitud PUT a la url "api/books/[numero]"
              * Obtiene el id del la url y el record de libro desde el cuerpo de la peticion
              * Busca y reemplaza el anterior registro por el enviado en el cuerpo de la solicitud
-             * Response: 204, no retorna ningun dato ni headers. 
-             * 
+             * Response: 204, no retorna ningun dato ni headers.
              */
             $httpBackend.whenPUT(recordUrl).respond(function (method, url, data) {
                 var id = parseInt(url.split('/').pop());

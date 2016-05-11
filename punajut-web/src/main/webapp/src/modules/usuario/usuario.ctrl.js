@@ -9,7 +9,7 @@
     var mod = ng.module("usuarioModule");
 
     mod.controller("usuarioCtrl", ["$scope", "usuarioService", function ($scope, svc) {
-           //Se almacenan todas las alertas
+            //Se almacenan todas las alertas
             $scope.alerts = [];
             $scope.currentRecord = {};
             $scope.records = [];
@@ -66,7 +66,7 @@
             };
 
             //Ejemplo alerta
-            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de información","info");
+            showMessage("Bienvenido!, Esto es un ejemplo para mostrar un mensaje de información", "info");
 
 
             /*
@@ -124,9 +124,9 @@
              * Muestra el template de la lista de records al finalizar la operación saveRecord
              */
             this.saveRecord = function () {
-                    return svc.saveRecord($scope.currentRecord).then(function () {
-                        self.fetchRecords();
-                    }, responseError);
+                return svc.saveRecord($scope.currentRecord).then(function () {
+                    self.fetchRecords();
+                }, responseError);
             };
 
             /*

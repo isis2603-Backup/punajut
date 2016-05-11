@@ -2,10 +2,8 @@ package co.edu.uniandes.rest.punajut.resources;
 
 import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.punajut.entities.ViajeroEntity;
-import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.converters.UsuarioConverter;
-import co.edu.uniandes.rest.punajut.converters.VisitaCiudadConverter;
 import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
 import co.edu.uniandes.rest.punajut.exceptions.UsuarioLogicException;
 
@@ -26,7 +24,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
-
 @Path("viajeros")
 @Produces("application/json")
 @RequestScoped
@@ -35,8 +32,7 @@ public class UsuarioResource {
     @Inject
     IViajeroLogic usuarioLogic;
 
-    private static final Logger logger = Logger.getLogger(ItinerarioResource.class.getName());
-
+    private static final Logger LOGGER = Logger.getLogger(ItinerarioResource.class.getName());
 
     /**
      * Obtiene el listado de personas.
@@ -46,7 +42,7 @@ public class UsuarioResource {
      */
     @GET
     public List<UsuarioDTO> getUsuarios() throws UsuarioLogicException {
-        logger.info("Se ejecuta método getViajero");
+        LOGGER.info("Se ejecuta método getViajero");
         List<ViajeroEntity> viajeros = usuarioLogic.getViajero();
         return UsuarioConverter.listEntity2DTO(viajeros);
     }
@@ -62,12 +58,10 @@ public class UsuarioResource {
     @Path("{id: \\d+}")
     public UsuarioDTO getUusario(@PathParam("id") long id) throws BusinessLogicException {
         ViajeroEntity itinerario;
-        try{
-         itinerario= usuarioLogic.getViajero(id);
-        }
-        catch(BusinessLogicException ex)
-        {
-            logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
+        try {
+            itinerario = usuarioLogic.getViajero(id);
+        } catch (BusinessLogicException ex) {
+            LOGGER.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
         }
 
@@ -106,7 +100,7 @@ public class UsuarioResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteUsuario(@PathParam("id") long id) throws UsuarioLogicException {
-        logger.log(Level.INFO, "Se ejecuta método deleteViajero con id={0}", id);
+        LOGGER.log(Level.INFO, "Se ejecuta método deleteViajero con id={0}", id);
         usuarioLogic.deleteViajero(id);
     }
 

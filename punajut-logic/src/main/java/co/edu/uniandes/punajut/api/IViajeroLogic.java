@@ -6,16 +6,13 @@
 package co.edu.uniandes.punajut.api;
 
 import co.edu.uniandes.punajut.entities.ViajeroEntity;
-import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import java.util.List;
-import javax.inject.Named;
 
 /**
  *
  * @author ja.poveda10
  */
-
 public interface IViajeroLogic {
 
     public List<ViajeroEntity> getViajero();
