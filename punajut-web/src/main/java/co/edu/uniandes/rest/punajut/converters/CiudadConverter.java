@@ -7,6 +7,10 @@ import java.util.List;
 
 public abstract class CiudadConverter {
 
+    //-------------------------------------------------------------------------------
+    // Constructor
+    //-------------------------------------------------------------------------------
+
     /**
      * Constructor privado para evitar la creación del constructor implícito de
      * Java
@@ -14,7 +18,12 @@ public abstract class CiudadConverter {
      * @generated
      */
     private CiudadConverter() {
+        //Constructor por defecto
     }
+
+    //-------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
 
     /**
      * Realiza la conversión de CiudadEntity a CiudadDTO. Se invoca cuando otra

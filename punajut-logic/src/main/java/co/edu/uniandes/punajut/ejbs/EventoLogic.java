@@ -72,6 +72,7 @@ public class EventoLogic implements IEventoLogic{
         LOGGER.log(Level.INFO, "Inicia proceso de borrar evento con id={0}", id);
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar evento con id={0}", id);
+        
     }
 
 }

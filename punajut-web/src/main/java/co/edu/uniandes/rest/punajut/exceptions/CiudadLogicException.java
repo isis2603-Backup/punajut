@@ -16,6 +16,7 @@ public class CiudadLogicException extends Exception {
      * Constructor por defecto
      */
     public CiudadLogicException() {
+        //Constructor por defecto
     }
 
     /**

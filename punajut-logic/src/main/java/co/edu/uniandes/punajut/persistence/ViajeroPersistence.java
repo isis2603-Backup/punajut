@@ -14,40 +14,39 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
 @Stateless
 public class ViajeroPersistence {
 
-    private static final Logger logger = Logger.getLogger(ViajeroPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ViajeroPersistence.class.getName());
 
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
     public ViajeroEntity create(ViajeroEntity entity) {
-        logger.info("Creando una viajero nueva");
+        LOGGER.info("Creando una viajero nueva");
         em.persist(entity);
-        logger.info("viajero creada");
+        LOGGER.info("viajero creada");
         return entity;
     }
 
     public ViajeroEntity update(ViajeroEntity entity) {
-        logger.log(Level.INFO, "Actualizando viajero con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando viajero con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        logger.log(Level.INFO, "Borrando viajero con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando viajero con id={0}", id);
         ViajeroEntity entity = em.find(ViajeroEntity.class, id);
         em.remove(entity);
     }
 
     public ViajeroEntity find(Long id) {
-        logger.log(Level.INFO, "Consultando viajero con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando viajero con id={0}", id);
         return em.find(ViajeroEntity.class, id);
     }
 
     public List<ViajeroEntity> findAll() {
-        logger.info("Consultando todas los viajeros");
+        LOGGER.info("Consultando todas los viajeros");
         Query q = em.createQuery("select u from ViajeroEntity u");
         return q.getResultList();
     }

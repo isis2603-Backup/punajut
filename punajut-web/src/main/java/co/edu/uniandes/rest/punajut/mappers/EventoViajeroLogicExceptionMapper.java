@@ -13,19 +13,20 @@ import javax.ws.rs.ext.ExceptionMapper;
  *
  * @author ls.hernandez10
  */
-public class EventoViajeroLogicExceptionMapper implements ExceptionMapper<EventoViajeroLogicException>{
+public class EventoViajeroLogicExceptionMapper implements ExceptionMapper<EventoViajeroLogicException> {
 
     /**
      * Generador de una respuesta a partir de una excepción
+     *
      * @param ex excecpión a convertir a una respuesta REST
      */
     @Override
     public Response toResponse(EventoViajeroLogicException ex) {
         return Response
-				.status(Response.Status.NOT_FOUND)	// estado HTTP 404
-				.entity(ex.getMessage())			// mensaje adicional
-				.type("text/plain")
-				.build();
+                .status(Response.Status.NOT_FOUND) // estado HTTP 404
+                .entity(ex.getMessage()) // mensaje adicional
+                .type("text/plain")
+                .build();
     }
 
 }

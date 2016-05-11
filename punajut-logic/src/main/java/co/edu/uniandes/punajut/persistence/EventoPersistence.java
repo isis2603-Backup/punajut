@@ -19,14 +19,23 @@ import javax.persistence.PersistenceContext;
  * @author r.cardenas11
  */
 @Stateless
-public class EventoPersistence
-{
-   private static final Logger LOGGER = Logger.getLogger(EventoPersistence.class.getName());
+public class EventoPersistence {
+
+    //-------------------------------------------------------------------------------
+    // Atributos
+    //-------------------------------------------------------------------------------
+    /**
+     * Logger
+     */
+    private static final Logger LOGGER = Logger.getLogger(EventoPersistence.class.getName());
 
     @PersistenceContext(unitName = "PunajutPU")
     protected EntityManager em;
 
-     public EventoEntity create(EventoEntity entity) {
+    //-------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
+    public EventoEntity create(EventoEntity entity) {
         LOGGER.info("Creando un evento nuevo");
         em.persist(entity);
         LOGGER.info("Evento creado");
@@ -38,13 +47,13 @@ public class EventoPersistence
         return em.find(EventoEntity.class, id);
     }
 
-     public List<EventoEntity> findAll() {
+    public List<EventoEntity> findAll() {
         LOGGER.info("Consultando todos los eventos");
         Query q = em.createQuery("select u from EventoEntity u");
         return q.getResultList();
     }
 
-     public EventoEntity update(EventoEntity entity) {
+    public EventoEntity update(EventoEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando evento con id={0}", entity.getId());
         return em.merge(entity);
     }

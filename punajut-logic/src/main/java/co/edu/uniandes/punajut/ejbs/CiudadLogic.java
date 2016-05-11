@@ -28,8 +28,15 @@ public class CiudadLogic implements ICiudadLogic {
     //--------------------------------------------------------------------------------
     // Constantes
     //--------------------------------------------------------------------------------
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = Logger.getLogger(CiudadLogic.class.getName());
 
+
+    /**
+     * Constante que indica un error
+     */
     private static final String EVENTO_NO_EXISTE = "El evento no existe";
 
     //--------------------------------------------------------------------------------

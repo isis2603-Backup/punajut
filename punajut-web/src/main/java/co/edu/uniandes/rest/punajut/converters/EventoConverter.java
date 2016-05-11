@@ -1,26 +1,35 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package co.edu.uniandes.rest.punajut.converters;
+
 import co.edu.uniandes.punajut.entities.EventoEntity;
 import co.edu.uniandes.rest.punajut.dtos.EventoDTO;
 import java.util.ArrayList;
 import java.util.List;
- /**
+
+/**
  *
  * @author r.cardenas11
  */
- public abstract class EventoConverter
- {
-    private EventoConverter(){
-        }
+public abstract class EventoConverter {
 
+    //-------------------------------------------------------------------------------
+    // Constructor
+    //-------------------------------------------------------------------------------
+    private EventoConverter() {
+        //Constructor por defecto
+    }
+
+    //-------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
     /**
-     * Realiza la conversión de EventoEntity a EventoDTO.
-     * Se invoca cuando otra entidad tiene una referencia a EventoEntity.
-     * Entrega únicamente los atributos proprios de la entidad.
+     * Realiza la conversión de EventoEntity a EventoDTO. Se invoca cuando otra
+     * entidad tiene una referencia a EventoEntity. Entrega únicamente los
+     * atributos proprios de la entidad.
      *
      * @param entity instancia de EventoEntity a convertir
      * @return instancia de EventoDTO con los datos recibidos por parámetro
@@ -39,16 +48,16 @@ import java.util.List;
             dto.setFechaInicial(entity.getFechaInicial());
             dto.setFechaFinal(entity.getFechaFinal());
 
-
             return dto;
         } else {
             return null;
         }
     }
+
     /**
-     * Realiza la conversión de EventoDTO a EventoEntity Se invoca cuando otro DTO
-     * tiene una referencia a EventoDTO Convierte únicamente el ID ya que es el
-     * único atributo necesario para guardar la relación en la base de datos
+     * Realiza la conversión de EventoDTO a EventoEntity Se invoca cuando otro
+     * DTO tiene una referencia a EventoDTO Convierte únicamente el ID ya que es
+     * el único atributo necesario para guardar la relación en la base de datos
      *
      * @param dto instancia de EventoDTO a convertir
      * @return instancia de EventoEntity con los datos recibidos por parámetro
@@ -65,10 +74,9 @@ import java.util.List;
         }
     }
 
-
     /**
-     * Convierte una instancia de EventoEntity a EventoDTO Se invoca cuando se desea
-     * consultar la entidad y sus relaciones muchos a uno o uno a uno
+     * Convierte una instancia de EventoEntity a EventoDTO Se invoca cuando se
+     * desea consultar la entidad y sus relaciones muchos a uno o uno a uno
      *
      * @param entity instancia de EventoEntity a convertir
      * @return Instancia de EventoDTO con los datos recibidos por parámetro
@@ -95,8 +103,8 @@ import java.util.List;
 
     /**
      * Convierte una instancia de EventoDTO a EventoEntity Se invoca cuando se
-     * necesita convertir una instancia de EventoDTO con los atributos propios de
-     * la entidad y con las relaciones uno a uno o muchos a uno
+     * necesita convertir una instancia de EventoDTO con los atributos propios
+     * de la entidad y con las relaciones uno a uno o muchos a uno
      *
      * @param dto instancia de EventoDTO a convertir
      * @return Instancia de EventoEntity creada a partir de los datos de dto
@@ -122,48 +130,38 @@ import java.util.List;
     }
 
     /**
-     * Convierte instancias de EventoEntity a EventoDTO incluyendo sus relaciones
-     * Uno a muchos y Muchos a muchos
+     * Convierte instancias de EventoEntity a EventoDTO incluyendo sus
+     * relaciones Uno a muchos y Muchos a muchos
      *
      * @param entity Instancia de EventoEntity a convertir
      * @return Instancia de EventoDTO con los datos recibidos por parámetro
      * @generated
      */
     public static EventoDTO fullEntity2DTO(EventoEntity entity) {
-        if (entity != null) {
-            EventoDTO dto = basicEntity2DTO(entity);
-            return dto;
-        } else {
-            return null;
-        }
+        return basicEntity2DTO(entity);
     }
 
     /**
-     * Convierte una instancia de EventoDTO a EventoEntity.
-     * Incluye todos los atributos de EventoEntity.
+     * Convierte una instancia de EventoDTO a EventoEntity. Incluye todos los
+     * atributos de EventoEntity.
      *
      * @param dto Instancia de EventoDTO a convertir
      * @return Instancia de EventoEntity con los datos recibidos por parámetro
      * @generated
      */
     public static EventoEntity fullDTO2Entity(EventoDTO dto) {
-        if (dto != null) {
-            EventoEntity entity = basicDTO2Entity(dto);
-           return entity;
-        } else {
-            return null;
-        }
+        return basicDTO2Entity(dto);
     }
 
     /**
-     * Convierte una colección de instancias de EventoEntity a EventoDTO. Para cada
-     * instancia de EventoEntity en la lista, invoca basicEntity2DTO y añade el
-     * nuevo EventoDTO a una nueva lista
+     * Convierte una colección de instancias de EventoEntity a EventoDTO. Para
+     * cada instancia de EventoEntity en la lista, invoca basicEntity2DTO y
+     * añade el nuevo EventoDTO a una nueva lista
      *
      * @param entities Colección de entidades a convertir
      * @return Collección de instancias de EventoDTO
      * @generated
-    */
+     */
     public static List<EventoDTO> listEntity2DTO(List<EventoEntity> entities) {
         List<EventoDTO> dtos = new ArrayList<EventoDTO>();
         if (entities != null) {

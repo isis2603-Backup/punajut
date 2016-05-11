@@ -45,13 +45,12 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.info("Inicia proceso de consultar todos los evento viajero");
 
-
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-         if(visitaCiudad == null)
-            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
+
+        List<EventoViajeroEntity> eventosViajero = visitaCiudad.getEventosViajero();
 
         logger.info("Termina proceso de consultar todos los evento viajero");
-        return visitaCiudad.getEventosViajero();
+        return eventosViajero;
     }
 
     @Override
@@ -61,8 +60,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
 
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-        if(visitaCiudad == null)
-            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
         EventoViajeroEntity eventoViajero = null;
         boolean existeEventoViajero = false;
@@ -87,10 +84,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.log(Level.INFO, "Inicia proceso de actualizar el evento viajero con id={0}", e.getId());
 
-
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-        if(visitaCiudad == null)
-            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
         boolean existeEventoViajero = false;
         for( EventoViajeroEntity ev : visitaCiudad.getEventosViajero())
@@ -117,8 +111,6 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
 
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-        if(visitaCiudad == null)
-            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
 
         boolean existeEventoViajero = false;
         for( EventoViajeroEntity e : visitaCiudad.getEventosViajero())
@@ -141,11 +133,8 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
     {
         logger.info("Inicia proceso de agregar un evento viajero");
 
-
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-        if(visitaCiudad == null)
-            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
-
+        
          e.setVisitaCiudad(visitaCiudad);
          persistence.create(e);
 
