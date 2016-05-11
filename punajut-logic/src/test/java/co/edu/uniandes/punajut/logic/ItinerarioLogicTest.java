@@ -148,7 +148,7 @@ public class ItinerarioLogicTest {
             Assert.assertTrue(found);
         }
         } catch (BusinessLogicException ex) {
-            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
     }
