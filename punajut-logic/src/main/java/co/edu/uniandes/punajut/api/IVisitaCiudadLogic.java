@@ -16,15 +16,15 @@ import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
  */
 public interface IVisitaCiudadLogic {
 
-    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario);
+    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario) throws BusinessLogicException;
 
     public VisitaCiudadEntity getVisitaCiudad(Long idViajero, Long idItineraio, Long id) throws BusinessLogicException;
 
-    public VisitaCiudadEntity createVisitaCiudad(VisitaCiudadEntity entity);
+    public VisitaCiudadEntity createVisitaCiudad(Long idViajero, Long idItineraio,VisitaCiudadEntity entity)throws BusinessLogicException;
 
-    public VisitaCiudadEntity updateVisitaCiudad(VisitaCiudadEntity entity);
+    public VisitaCiudadEntity updateVisitaCiudad(Long idViajero, Long idItineraio,VisitaCiudadEntity entity)throws BusinessLogicException;
 
-    public void deleteVisitaCiudad(Long id);
+    public void deleteVisitaCiudad(Long idViajero, Long idItineraio,Long id)throws BusinessLogicException;
 
     public CiudadEntity addCiudad(Long ciudadID) throws BusinessLogicException;
 

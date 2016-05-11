@@ -6,13 +6,17 @@
 package co.edu.uniandes.punajut.ejbs;
 
 import co.edu.uniandes.punajut.api.ICiudadLogic;
+import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
+import co.edu.uniandes.punajut.api.IItinerarioLogic;
 import co.edu.uniandes.punajut.entities.CiudadEntity;
+import co.edu.uniandes.punajut.entities.ItinerarioEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
 import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.punajut.persistence.EventoViajeroPersistence;
 import co.edu.uniandes.punajut.persistence.VisitaCiudadPersistence;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Inject;
@@ -35,47 +39,96 @@ public class VisitaCiudadLogic implements IVisitaCiudadLogic{
     ICiudadLogic ciudadLogic;
 
     @Inject
+    IViajeroLogic viajeroLogic;
+
+    @Inject
+    IItinerarioLogic itinerarioLogic;
+
+    @Inject
     private EventoViajeroPersistence eventoPersistence;
 
     @Override
-    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario) {
-         logger.info("Inicia proceso de consultar todos los itinerarios");
-        List<VisitaCiudadEntity> visitas = persistence.findAll();
-        logger.info("Termina proceso de consultar todos los itinerarios");
-        return visitas;
+    public List<VisitaCiudadEntity> getVisitasCiudades(Long idViajero, Long idItinerario) throws BusinessLogicException{
+       logger.info("Inicia proceso de consultar todos las visita ciudad");
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero con el id dado no existe");
+        ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
+        if( itinerario == null)
+            throw new IllegalArgumentException("El itinerario con el id dado no existe");
+        logger.info("Termina proceso de consultar todos las visitas ciudades");
+        return itinerario.getVisitasCiudades();
     }
 
     @Override
     public VisitaCiudadEntity getVisitaCiudad(Long idViajero, Long idItinerario, Long id) throws BusinessLogicException {
          logger.log(Level.INFO, "Inicia proceso de consultar visita ciudad con id={0}", id);
-        VisitaCiudadEntity visita = persistence.find(id);
-        if (visita == null) {
-            logger.log(Level.SEVERE, "La visita ciudad con el id {0} no existe", id);
-            throw new BusinessLogicException("La visita ciudad solicitada no existe");
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero con el id dado no existe");
+        ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
+        if(itinerario == null)
+            throw new IllegalArgumentException("El itinerario con el id dado no existe");
+
+        VisitaCiudadEntity visitaCiudad = null;
+        for (VisitaCiudadEntity v : itinerario.getVisitasCiudades()) {
+            if(Objects.equals(v.getId(), id))
+                visitaCiudad = v;
         }
-        logger.log(Level.INFO, "Termina proceso de consultar visita ciudad con id={0}", id);
-        return visita;
+        if(visitaCiudad == null)
+            throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
+
+        logger.log(Level.INFO, "Termina el proceso de consultar la visita ciudad con id={0}", id);
+        return visitaCiudad;
     }
 
     @Override
-    public VisitaCiudadEntity createVisitaCiudad(VisitaCiudadEntity entity) {
+    public VisitaCiudadEntity createVisitaCiudad(Long idViajero, Long idItinerario,VisitaCiudadEntity entity) throws BusinessLogicException{
         logger.info("Inicia proceso de creación de una visita ciudad");
+
+       if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero con el id dado no existe");
+
+        ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
+
+        if(itinerario == null)
+            throw new IllegalArgumentException("El itinerario con el id dado no existe");
+
+        entity.setItinerario(itinerario);
         persistence.create(entity);
         logger.info("Termina proceso de creación de una visita ciudad");
         return entity;
+
     }
 
     @Override
-    public VisitaCiudadEntity updateVisitaCiudad(VisitaCiudadEntity entity) {
+    public VisitaCiudadEntity updateVisitaCiudad(Long idViajero, Long idItinerario,VisitaCiudadEntity entity) throws BusinessLogicException{
         logger.log(Level.INFO, "Inicia proceso de actualizar ciudad con id={0}", entity.getId());
+
+        if(viajeroLogic.getViajero(idViajero) == null)
+            throw new IllegalArgumentException("El viajero con el id dado no existe");
+
+        ItinerarioEntity itinerario = itinerarioLogic.getItinerario(idItinerario, idViajero);
+
+        if(itinerario == null)
+            throw new IllegalArgumentException("El itinerario con el id dado no existe");
+
+        boolean existe = false;
+        for (VisitaCiudadEntity v : itinerario.getVisitasCiudades()) {
+            if(Objects.equals(entity.getId(), v.getId()))
+                existe = true;
+        }
+        if(!existe) throw new IllegalArgumentException("La visita ciudad con el id dado no existe");
+
         VisitaCiudadEntity newEntity = persistence.update(entity);
         logger.log(Level.INFO, "Termina proceso de actualizar ciudad con id={0}", entity.getId());
         return newEntity;
     }
 
     @Override
-    public void deleteVisitaCiudad(Long id) {
+    public void deleteVisitaCiudad(Long idViajero, Long idItineraio,Long id) {
         logger.log(Level.INFO, "Inicia proceso de borrar una visita ciudad con id={0}", id);
+
         persistence.delete(id);
         logger.log(Level.INFO, "Termina proceso de borrar una visita ciudad con id={0}", id);
     }

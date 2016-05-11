@@ -26,15 +26,20 @@ import co.edu.uniandes.punajut.exceptions.BusinessLogicException;
 import co.edu.uniandes.rest.punajut.converters.VisitaCiudadConverter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author ra.angel10
  */
-@Path("visitaCiudad")
-@Produces("application/json")
+@Path("viajeros/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+@RequestScoped
 public class VisitaCiudadResource
 {
     @Inject
@@ -56,9 +61,8 @@ public class VisitaCiudadResource
 	 * @throws VisitaCiudadLogicException excepción retornada por la lógica
 	 */
     @GET
-    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/")
     public List<VisitaCiudadDTO> getVisitasCiudades(@PathParam("idViajero") Long idViajero,
-            @PathParam("idItinerario")Long idItinerario) throws VisitaCiudadLogicException
+            @PathParam("idItinerario")Long idItinerario) throws VisitaCiudadLogicException, BusinessLogicException
     {
         return VisitaCiudadConverter.listEntity2DTO(visitaLogic.getVisitasCiudades(idViajero, idItinerario));
     }
@@ -72,9 +76,9 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando la visita ciudad no existe
      */
     @GET
-    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/{idVisita: \\d+}")
-    public VisitaCiudadDTO getVisitaCiudad(@PathParam("idViajero")long idViajero,
-            @PathParam("idItinerario") long idItinerario,@PathParam("idVisita") Long idVisita) throws VisitaCiudadLogicException, BusinessLogicException
+    @Path("{idVisita: \\d+}")
+    public VisitaCiudadDTO getVisitaCiudad(@PathParam("idViajero")Long idViajero,
+            @PathParam("idItinerario") Long idItinerario,@PathParam("idVisita") Long idVisita) throws VisitaCiudadLogicException, BusinessLogicException
     {
         VisitaCiudadDTO dto = null;
 
@@ -95,12 +99,12 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando ya existe una visita ciudad con el id suministrado
      */
     @POST
-    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas")
-    public VisitaCiudadDTO createVisitaCiudad(VisitaCiudadDTO visita) throws VisitaCiudadLogicException
+    public VisitaCiudadDTO createVisitaCiudad(@PathParam("idViajero")Long idViajero,
+            @PathParam("idItinerario") Long idItinerario,VisitaCiudadDTO visita) throws VisitaCiudadLogicException,BusinessLogicException
     {
         logger.info("Se ejecuta método createVisitaCiudad");
        VisitaCiudadEntity entity = VisitaCiudadConverter.fullDTO2Entity(visita);
-       return VisitaCiudadConverter.fullEntity2DTO(visitaLogic.createVisitaCiudad(entity));
+       return VisitaCiudadConverter.fullEntity2DTO(visitaLogic.createVisitaCiudad(idViajero, idItinerario, entity));
     }
 
     /**
@@ -111,9 +115,9 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando no existe una visita ciudad con el id suministrado
      */
     @PUT
-    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/{idVisita: \\d+}")
+    @Path("{idVisita: \\d+}")
     public VisitaCiudadDTO updateVisitaCiudad(@PathParam("idViajero") Long idViajero,@PathParam("idItinerario") Long idItinerario,
-            @PathParam("idVisita") Long id, VisitaCiudadDTO visita) throws VisitaCiudadLogicException {
+            @PathParam("idVisita") Long id, VisitaCiudadDTO visita) throws VisitaCiudadLogicException, BusinessLogicException {
         logger.log(Level.INFO, "Se ejecuta método updateVisitaCiudad con id={0}", id);
         VisitaCiudadEntity entity = VisitaCiudadConverter.fullDTO2Entity(visita);
         entity.setId(id);
@@ -128,7 +132,7 @@ public class VisitaCiudadResource
             logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);
             throw new WebApplicationException(ex.getLocalizedMessage(), ex, Response.Status.BAD_REQUEST);
         }
-        VisitaCiudadEntity savedVisitaCiudad = visitaLogic.updateVisitaCiudad(entity);
+        VisitaCiudadEntity savedVisitaCiudad = visitaLogic.updateVisitaCiudad(idViajero, idItinerario, entity);
         return VisitaCiudadConverter.fullEntity2DTO(savedVisitaCiudad);
     }
 
@@ -138,8 +142,9 @@ public class VisitaCiudadResource
      * @throws VisitaCiudadLogicException cuando no existe una visita ciudad con el id suministrado
      */
     @DELETE
-    @Path("viajero/{idViajero: \\d+}/itinerarios/{idItinerario: \\d+}/visitas/{idVisita: \\d+}")
-    public void deleteVisitaCiudad(@PathParam("id") Long id) throws VisitaCiudadLogicException {
-    	visitaLogic.deleteVisitaCiudad(id);
+    @Path("{idVisita: \\d+}")
+    public void deleteVisitaCiudad(@PathParam("idViajero")Long idViajero,
+            @PathParam("idItinerario") Long idItinerario, @PathParam("idVisita") Long id) throws VisitaCiudadLogicException, BusinessLogicException {
+    	visitaLogic.deleteVisitaCiudad(idViajero, idItinerario, id);
     }
 }
