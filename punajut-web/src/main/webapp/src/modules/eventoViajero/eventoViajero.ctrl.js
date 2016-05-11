@@ -1,31 +1,36 @@
-
+// src/modules/task/task.ctrl.js
+// Controlador para el módulo de tareas
 
 (function (ng) {
 
-  // es parte del módulo "eventoViajeroModule"
+  // es parte del módulo "taskModule"
   var mod = ng.module("eventoViajeroModule");
 
-  // crea el controlador con dependencias a $scope y a eventoViajeroService
+  // crea el controlador con dependencias a $scope y a taskService
   mod.controller("eventoViajeroCtrl", ["$scope", "eventoViajeroService", function ($scope, svc) {
 
-   $scope.records = [];
+    // TODO: define los atributos en el scope
+    $scope.currentRecord = {};
+  $scope.records = [];
 
 
     // TODO: define funciones que son invocadas desde la pantalla
     // y que usan funciones definidas en el servicio
   $scope.agregar = function ()
   {
-      var eventoViajero = {date1: $scope.fechaInicial, date2: $scope.fechaFinal, name: $scope.nombre, city: $scope.ciudad, address: $scope.direccion, description:$scope.descripcion};
-      $scope.records.push(eventoViajero);
-      console.log("llegaaaaaaaaaaaaaaaaaaaaaaaaa");
-      $scope.date1='';
-      $scope.date2='';
-      $scope.name='';
-      $scope.city='';
-      $scope.address='';
-      $scope.description='';
- //     svc.saveRecord(eventoViajero);
- //     this.fetchRecords();
+      var tarea = {name: $scope.currentRecord.nombre,
+          city: $scope.currentRecord.ciudad,
+          address: $scope.currentRecord.direccion,
+          description:$scope.currentRecord.descripcion,
+          date1:$scope.currentRecord.fechaInicial,
+          date2:$scope.currentRecord.fechaFinal};
+    //  $scope.records.push(tarea);
+//      $scope.id='';
+//      $scope.nombre='';
+//      $scope.descripcion='';
+//      $scope.fecha='';
+      svc.saveRecord(tarea);
+      this.fetchRecords();
   };
 
 

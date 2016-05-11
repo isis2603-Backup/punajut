@@ -6,6 +6,7 @@
         "itinerarioModule",
         "ciudadModule",
         "eventoModule",
+        "eventoViajeroModule",
         "ngMessages"
     ]);
 
@@ -54,6 +55,13 @@
                         controller: "eventoCtrl",
                         controllerAs: "ctrl",
                         templateUrl: "src/modules/evento/evento.tpl.html"
+                    })
+
+                    .state('eventoViajero', {
+                        url: '/eventoViajero',
+                        controller: "eventoViajeroCtrl",
+                        controllerAs: "ctrl",
+                        templateUrl: "src/modules/eventoViajero/eventoViajero.tpl.html"
                     });
         }]);
 })(window.angular);
