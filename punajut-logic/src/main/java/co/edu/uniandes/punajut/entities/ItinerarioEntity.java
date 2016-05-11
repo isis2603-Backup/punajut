@@ -9,8 +9,12 @@ import co.edu.uniandes.csw.crud.api.podam.strategy.DateStrategy;
 import javax.persistence.Entity;
 import co.edu.uniandes.csw.crud.spi.entity.BaseEntity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -35,6 +39,10 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaFin;
+
+    @OneToMany(mappedBy = "itinerario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @PodamExclude
+    private List<VisitaCiudadEntity> visitasCiudades = new ArrayList<>();
 
 
 
@@ -66,6 +74,16 @@ public class ItinerarioEntity extends BaseEntity implements Serializable
     public void setViajero(ViajeroEntity v)
     {
         viajero = v;
+    }
+
+    public List<VisitaCiudadEntity> getVisitasCiudades()
+    {
+        return visitasCiudades;
+    }
+
+    public void setVisistasCiudades(List<VisitaCiudadEntity> vs)
+    {
+        visitasCiudades = vs;
     }
 
 }

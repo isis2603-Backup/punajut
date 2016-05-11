@@ -106,16 +106,17 @@ public abstract class UsuarioConverter {
      */
     private static ViajeroEntity basicDTO2Entity(UsuarioDTO dto) {
         if (dto != null) {
+             System.out.print("entró el basic");
             ViajeroEntity entity = new ViajeroEntity();
-            dto.setId(entity.getId());
-            dto.setId(entity.getId());
-            dto.setNickName(entity.getNickName());
-            dto.setName(entity.getName());
-            dto.setLastName(entity.getLastName());
-            dto.setAge(entity.getAge());
-            dto.setEmail(entity.getEmail());
-            dto.setExtraInfo(entity.getExtraInfo());
-            dto.setPassword(entity.getPassword());
+            System.out.print(entity.getId());
+            entity.setId(dto.getId());
+            entity.setName(dto.getName());
+            entity.setExtraInfo(dto.getExtraInfo());
+            entity.setNickName(dto.getNickName());
+            entity.setLastName(dto.getLastName());
+            entity.setAge(dto.getAge());
+            entity.setEmail(dto.getEmail());
+            entity.setPassword(entity.getPassword());
             return entity;
         } else {
             return null;
@@ -152,6 +153,7 @@ public abstract class UsuarioConverter {
      */
     public static ViajeroEntity fullDTO2Entity(UsuarioDTO dto) {
         if (dto != null) {
+            System.out.print("antes del basic");
             ViajeroEntity entity = basicDTO2Entity(dto);
             //entity.setEventosViajero(EventoConverter.listDTO2Entity(dto.getEventosViajero()));
             return entity;
