@@ -26,9 +26,7 @@ public interface IVisitaCiudadLogic {
 
     public void deleteVisitaCiudad(Long idViajero, Long idItineraio,Long id)throws BusinessLogicException;
 
-    public CiudadEntity addCiudad(Long ciudadID) throws BusinessLogicException;
+    public CiudadEntity addCiudad(Long idViajero, Long idItineraio,Long id,Long ciudadID) throws BusinessLogicException;
 
-    public List<CiudadEntity> replaceCiudad(long ciudadID) throws BusinessLogicException;
-
-    public CiudadEntity getCiudad(long idCiudad);
+    public CiudadEntity getCiudad(Long idViajero, Long idItineraio,Long id,Long ciudadID) throws BusinessLogicException;
 }
