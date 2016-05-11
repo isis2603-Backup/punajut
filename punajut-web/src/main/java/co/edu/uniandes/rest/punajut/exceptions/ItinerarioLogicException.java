@@ -9,9 +9,9 @@ package co.edu.uniandes.rest.punajut.exceptions;
  *
  * @author mi.arevalo10
  */
-public class ItinerarioLogicException extends Exception
-{
-    	public ItinerarioLogicException(String message) {
-		super(message);
-	}
+public class ItinerarioLogicException extends Exception {
+
+    public ItinerarioLogicException(String message) {
+        super(message);
+    }
 }

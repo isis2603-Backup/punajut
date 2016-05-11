@@ -16,10 +16,16 @@ import java.util.List;
  */
 public abstract class EventoConverter {
 
+    //-------------------------------------------------------------------------------
+    // Constructor
+    //-------------------------------------------------------------------------------
     private EventoConverter() {
         //Constructor por defecto
     }
 
+    //-------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
     /**
      * Realiza la conversión de EventoEntity a EventoDTO. Se invoca cuando otra
      * entidad tiene una referencia a EventoEntity. Entrega únicamente los

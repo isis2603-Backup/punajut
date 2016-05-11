@@ -77,8 +77,6 @@ public class UsuarioResource {
      */
     @POST
     public UsuarioDTO createCity(UsuarioDTO city) throws UsuarioLogicException {
-
-        System.out.print(city.getName());
         ViajeroEntity entity = UsuarioConverter.fullDTO2Entity(city);
 
         return UsuarioConverter.fullEntity2DTO(usuarioLogic.createViajero(entity));
@@ -86,7 +84,7 @@ public class UsuarioResource {
 
     @PUT
     @Path("{nickname: \\d+}")
-    public UsuarioDTO updateCity(UsuarioDTO user) throws UsuarioLogicException {
+    public UsuarioDTO updateCity() throws UsuarioLogicException {
         return null;
 
     }

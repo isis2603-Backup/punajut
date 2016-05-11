@@ -71,7 +71,6 @@ public class EventoDTO {
         this.precio = precio;
         this.descripcion = descripcion;
         this.lugar = lugar;
-//        ciudad = pCiudad;
         fechaInicial = pFechaInicial;
         fechaFinal = pFechaFinal;
     }

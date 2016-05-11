@@ -27,7 +27,7 @@ import javax.inject.Named;
 public class ItinerarioLogicMock {
 
     // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(ItinerarioLogicMock.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(ItinerarioLogicMock.class.getName());
 
     // listado de itinerarios
     private static ArrayList<ItinerarioDTO> itinerarios;
@@ -51,11 +51,11 @@ public class ItinerarioLogicMock {
             }
 
             // indica que se muestren todos los mensajes
-            logger.setLevel(Level.INFO);
+            LOGGER.setLevel(Level.INFO);
 
             // muestra información
-            logger.info("Inicializa la lista de itinerarios");
-            logger.info("itinerarios" + itinerarios);
+            LOGGER.info("Inicializa la lista de itinerarios");
+            LOGGER.info("itinerarios" + itinerarios);
         } catch (ParseException ex) {
             Logger.getLogger(ItinerarioLogicMock.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,11 +69,11 @@ public class ItinerarioLogicMock {
      */
     public List<ItinerarioDTO> getItinerarios() throws ItinerarioLogicException {
         if (itinerarios == null) {
-            logger.severe("Error interno: lista de itinerarios no existe.");
+            LOGGER.severe("Error interno: lista de itinerarios no existe.");
             throw new ItinerarioLogicException("Error interno: lista de ciudades no existe.");
         }
 
-        logger.info("retornando todos los itinerarios");
+        LOGGER.info("retornando todos los itinerarios");
         return itinerarios;
     }
 
@@ -85,18 +85,18 @@ public class ItinerarioLogicMock {
      * @throws ItinerarioLogicException cuando el itinerario no existe
      */
     public ItinerarioDTO getItinerario(Long id) throws ItinerarioLogicException {
-        logger.info("recibiendo solicitud de itinerario con id " + id);
+        LOGGER.info("recibiendo solicitud de itinerario con id " + id);
 
         // busca la ciudad con el id suministrado
         for (ItinerarioDTO itinerario : itinerarios) {
-            if (Objects.equals( itinerario.getId(), id)) {
-                logger.info("retornando itinerario" + itinerario);
+            if (Objects.equals(itinerario.getId(), id)) {
+                LOGGER.info("retornando itinerario" + itinerario);
                 return itinerario;
             }
         }
 
         // si no encuentra el itinerario
-        logger.severe("No existe itinerario con ese id");
+        LOGGER.severe("No existe itinerario con ese id");
         throw new ItinerarioLogicException("No existe itinerario con ese id");
     }
 
@@ -109,7 +109,7 @@ public class ItinerarioLogicMock {
      * @return itinerario agregada
      */
     public ItinerarioDTO createItinerario(ItinerarioDTO pItinerario) throws ItinerarioLogicException {
-        logger.info("recibiendo solicitud de agregar itinerario " + pItinerario);
+        LOGGER.info("recibiendo solicitud de agregar itinerario " + pItinerario);
 
         // el nueva itinerario tiene id ?
         if (pItinerario.getId() != null) {
@@ -117,7 +117,7 @@ public class ItinerarioLogicMock {
             for (ItinerarioDTO itinerario : itinerarios) {
                 // si existe un itinerario con ese id
                 if (Objects.equals(itinerario.getId(), pItinerario.getId())) {
-                    logger.severe("Ya existe un itinerario con ese id");
+                    LOGGER.severe("Ya existe un itinerario con ese id");
                     throw new ItinerarioLogicException("Ya existe un itinerario con ese id");
                 }
             }
@@ -126,7 +126,7 @@ public class ItinerarioLogicMock {
         } else {
 
             // genera un id para el itineraio
-            logger.info("Generando id para el nuevo itinerario");
+            LOGGER.info("Generando id para el nuevo itinerario");
             long newId = 1;
             for (ItinerarioDTO itinerario : itinerarios) {
                 if (newId <= itinerario.getId()) {
@@ -137,7 +137,7 @@ public class ItinerarioLogicMock {
         }
 
         // agrega el itinerario
-        logger.info("agregando itinerario " + pItinerario);
+        LOGGER.info("agregando itinerario " + pItinerario);
         itinerarios.add(pItinerario);
 
         return pItinerario;
@@ -153,7 +153,7 @@ public class ItinerarioLogicMock {
      * suministrado
      */
     public ItinerarioDTO updateItinerario(Long id, ItinerarioDTO pIt) throws ItinerarioLogicException {
-        logger.info("recibiendo solictud de modificar itinerario " + pIt);
+        LOGGER.info("recibiendo solictud de modificar itinerario " + pIt);
 
         // busca el itinerario con el id suministrado
         for (ItinerarioDTO itinerario : itinerarios) {
@@ -164,13 +164,13 @@ public class ItinerarioLogicMock {
                 itinerario.setName(pIt.getName());
 
                 // retorna el itinerario modificado
-                logger.info("Modificando itinerario " + itinerario);
+                LOGGER.info("Modificando itinerario " + itinerario);
                 return itinerario;
             }
         }
 
         // no encontró el itinerario con ese id ?
-        logger.severe("No existe un itinerario con ese id");
+        LOGGER.severe("No existe un itinerario con ese id");
         throw new ItinerarioLogicException("No existe un itinerario con ese id");
     }
 
@@ -182,21 +182,21 @@ public class ItinerarioLogicMock {
      * suministrado
      */
     public void deleteItinerario(Long id) throws ItinerarioLogicException {
-        logger.info("recibiendo solictud de eliminar itinerario con id " + id);
+        LOGGER.info("recibiendo solictud de eliminar itinerario con id " + id);
 
         // busca el itinerario con el id suministrado
         for (ItinerarioDTO itinerario : itinerarios) {
             if (Objects.equals(itinerario.getId(), id)) {
 
                 // elimina el itinerario
-                logger.info("eliminando itinerario " + itinerario);
+                LOGGER.info("eliminando itinerario " + itinerario);
                 itinerarios.remove(itinerario);
                 return;
             }
         }
 
         // no encontró el itinerario con ese id ?
-        logger.severe("No existe un itinerario con ese id");
+        LOGGER.severe("No existe un itinerario con ese id");
         throw new ItinerarioLogicException("No existe un itinerario con ese id");
     }
 }

@@ -16,6 +16,10 @@ import java.util.List;
  */
 public abstract class UsuarioConverter {
 
+    //-------------------------------------------------------------------------------
+    // Constructor
+    //-------------------------------------------------------------------------------
+
     /**
      * Constructor privado para evitar la creación del constructor implícito de
      * Java
@@ -25,6 +29,10 @@ public abstract class UsuarioConverter {
     private UsuarioConverter() {
         //Constructor por defecto
     }
+
+    //-------------------------------------------------------------------------------
+    // Metodos
+    //-------------------------------------------------------------------------------
 
     /**
      * Realiza la conversión de VisitaCiudadEntity a VisitaCiudadDTO. Se invoca
@@ -116,9 +124,7 @@ public abstract class UsuarioConverter {
      */
     private static ViajeroEntity basicDTO2Entity(UsuarioDTO dto) {
         if (dto != null) {
-            System.out.print("entró el basic");
             ViajeroEntity entity = new ViajeroEntity();
-            System.out.print(entity.getId());
             entity.setId(dto.getId());
             entity.setName(dto.getName());
             entity.setExtraInfo(dto.getExtraInfo());
@@ -144,7 +150,6 @@ public abstract class UsuarioConverter {
      */
     public static UsuarioDTO fullEntity2DTO(ViajeroEntity entity) {
         return basicEntity2DTO(entity);
-        //dto.setEventosViajero(EventoConverter.listEntity2DTO(entity.getEventosViajero()));
     }
 
     /**
@@ -157,9 +162,7 @@ public abstract class UsuarioConverter {
      * @generated
      */
     public static ViajeroEntity fullDTO2Entity(UsuarioDTO dto) {
-        System.out.print("antes del basic");
         return basicDTO2Entity(dto);
-        //entity.setEventosViajero(EventoConverter.listDTO2Entity(dto.getEventosViajero()));
     }
 
     /**

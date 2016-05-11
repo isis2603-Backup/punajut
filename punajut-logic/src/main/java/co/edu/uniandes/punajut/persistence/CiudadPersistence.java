@@ -25,6 +25,9 @@ public class CiudadPersistence {
     // Atributos
     //-------------------------------------------------------------------------------
 
+    /**
+     * Logger
+     */
     private static final Logger LOGGER = Logger.getLogger(CiudadPersistence.class.getName());
 
     @PersistenceContext(unitName = "PunajutPU")
