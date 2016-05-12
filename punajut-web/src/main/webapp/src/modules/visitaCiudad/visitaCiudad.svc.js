@@ -5,9 +5,9 @@
  */
 (function (ng) {
 
-    var mod = ng.module("bookModule");
+    var mod = ng.module("visitaCiudadModule");
 
-    mod.service("visitaCiudadService", ["$http", "context", function ($http, context) {
+    mod.service("visitaCiudadService", ["$http", "visitaCiudadContext", function ($http, context) {
             /**
              * Obtener la lista de visitas ciudades.
              * Hace una petición GET con $http a /visitasCiudades para obtener la lista
@@ -56,9 +56,11 @@
              * @returns {promise} promise para leer la respuesta del servidor
              * No devuelve datos.
              */
-            this.deleteRecord = function (id) {
+            this.deleteRecord = function (idViajero, idItinerario, id) {
                 return $http.delete(context + "/" + idViajero + "/itinerarios/" + idItinerario + "/visitas/" + id);
             };
+
+
 
             /**
              * Hace una petición GET a /books/:id/authors para obtener la colección
@@ -67,9 +69,9 @@
              * @returns {promise} promise para leer la respuesta del servidor
              * Devuelve un array de objetos de authors.
              */
-            this.getAuthors = function (id) {
-                return $http.get(context + "/" + id + "/authors");
-            };
+//            this.getAuthors = function (id) {
+//                return $http.get(context + "/" + id + "/authors");
+//            };
 
             /**
              * Hace una petición PUT a /books/:id/authors para reemplazar los
@@ -79,9 +81,9 @@
              * @returns {promise} promise para leer la respuesta del servidor
              * Devuelve un array de objetos de authors con los nuevos autores
              */
-            this.replaceAuthors = function (bookId, authors) {
-                return $http.put(context + "/" + bookId + "/authors", authors);
-            };
+//            this.replaceAuthors = function (bookId, authors) {
+//                return $http.put(context + "/" + bookId + "/authors", authors);
+//            };
 
             /**
              * Hace una petición DELETE a /books/:id/authors/:id para remover
@@ -91,9 +93,9 @@
              * @returns {promise} promise para leer la respuesta del servidor
              * No devuelve datos.
              */
-            this.removeAuthor = function (bookId, authorId) {
-                return $http.delete(context + "/" + bookId + "/authors/" + authorId);
-            };
+//            this.removeAuthor = function (bookId, authorId) {
+//                return $http.delete(context + "/" + bookId + "/authors/" + authorId);
+//            };
 
         }]);
 

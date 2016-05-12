@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" ng-controller="visitaCiudadCtrl">
     <div class="row">
         <h1 id="title">Itinerario 1 - <small>Agregar Ciudad</small></h1>
         <div id="linea"></div>
@@ -8,7 +8,7 @@
         <form class="form-inline" role="form">
             <div class="form-group col-md-4">
                 <label for="fechaInicio">Desde</label>
-                <input type='text' class="form-control" id='fechaInicio' placeholder="Fecha fin"/>
+                <input type='text' class="form-control" id='fechaInicio' placeholder="Fecha fin" ng-model="currentRecord.fechaInicio"/>
             </div>
             <script type="text/javascript">
                 $(function () {
@@ -17,7 +17,7 @@
             </script>
             <div class="form-group col-md-4">
                 <label for="fechaFin">Hasta</label>
-                <input type='text' class="form-control" id='fechaFin' placeholder="Fecha inicio" />
+                <input type='text' class="form-control" id='fechaFin' placeholder="Fecha inicio" ng-model='currentRecord.fechaFin'/>
             </div>
             <script type="text/javascript">
                 $(function () {
@@ -60,14 +60,14 @@
         <form class="form-inline">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Busca tu destino"/>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" ng-click="mostrarDestino()">
                     <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 </button>
             </div>
         </form>
     </div>
     <br>
-    <div class="row col-md-12">
+    <div class="row col-md-12" ng-hide="ctrl.showCity">
         <h1 id="title-destino">DESTINO: <small>Ciudad 1</small></h1>
         <div id="info-destino">
             placeholder

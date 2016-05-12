@@ -126,7 +126,8 @@ public class VisitaCiudadResource
             oldEntity= visitaLogic.getVisitaCiudad(idViajero, idItinerario, id);
             entity.setFechaInicio(oldEntity.getFechaInicio());
             entity.setFechaFin(oldEntity.getFechaFin());
-            entity.setEventosViajero(oldEntity.getEventosViajero());
+            entity.setCiudad(oldEntity.getCiudad());
+            entity.setItinerario(oldEntity.getItinerario());
         }
         catch (BusinessLogicException ex){
             logger.log(Level.SEVERE, ex.getLocalizedMessage(), ex);

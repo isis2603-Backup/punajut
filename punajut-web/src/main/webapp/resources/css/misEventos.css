@@ -1,0 +1,25 @@
+
+.evento {
+	width: 15%;
+	height: 25%;
+}
+
+.texto-evento ,.but-evento, .foto-evento{
+	width: 100%;
+}
+
+.nombre-evento {
+	top: 0;
+	left: 0;
+	position: absolute;
+	color: #FFFFFF;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.imagen {
+	position: relative;
+}

@@ -5,6 +5,6 @@
  */
  (function (ng) {
     var mod = ng.module("visitaCiudadModule", ["ui.bootstrap"]);
-    mod.constant("context", "api/viajeros");
+    mod.constant("visitaCiudadContext", "api/viajeros");
 
 })(window.angular);

@@ -89,9 +89,10 @@ public class EventoViajeroLogicTest
     private void clearData() {
         em.createQuery("delete from EventoViajeroEntity").executeUpdate();
         em.createQuery("delete from EventoEntity").executeUpdate();
+        em.createQuery("delete from CiudadEntity").executeUpdate();
         em.createQuery("delete from VisitaCiudadEntity").executeUpdate();
-        em.createQuery("delete from ViajeroEntity").executeUpdate();
         em.createQuery("delete from ItinerarioEntity").executeUpdate();
+        em.createQuery("delete from ViajeroEntity").executeUpdate();
     }
 
     private void insertData()
