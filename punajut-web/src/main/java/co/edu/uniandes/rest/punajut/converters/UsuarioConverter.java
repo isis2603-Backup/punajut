@@ -9,6 +9,8 @@ import co.edu.uniandes.punajut.entities.ViajeroEntity;
 import co.edu.uniandes.rest.punajut.dtos.UsuarioDTO;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,10 +18,11 @@ import java.util.List;
  */
 public abstract class UsuarioConverter {
 
+    private static final Logger LOGGER = Logger.getLogger(UsuarioConverter.class.getName());
+
     //-------------------------------------------------------------------------------
     // Constructor
     //-------------------------------------------------------------------------------
-
     /**
      * Constructor privado para evitar la creación del constructor implícito de
      * Java
@@ -33,7 +36,6 @@ public abstract class UsuarioConverter {
     //-------------------------------------------------------------------------------
     // Metodos
     //-------------------------------------------------------------------------------
-
     /**
      * Realiza la conversión de VisitaCiudadEntity a VisitaCiudadDTO. Se invoca
      * cuando otra entidad tiene una referencia a VisitaCiudadEntity. Entrega
@@ -133,6 +135,8 @@ public abstract class UsuarioConverter {
             entity.setAge(dto.getAge());
             entity.setEmail(dto.getEmail());
             entity.setPassword(entity.getPassword());
+            LOGGER.log(Level.INFO, dto.getExtraInfo(), dto.getPassword());
+            LOGGER.log(Level.INFO, entity.getExtraInfo(), entity.getPassword());
             return entity;
         } else {
             return null;

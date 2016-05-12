@@ -148,7 +148,7 @@ public class ItinerarioLogicTest {
             Assert.assertTrue(found);
         }
         } catch (BusinessLogicException ex) {
-            
+
         }
 
     }
@@ -186,14 +186,14 @@ public class ItinerarioLogicTest {
     }
 
 //    @Test
-//    public void deleteItinerarioTest() {
+//    public void deleteItinerarioTest() throws BusinessLogicException {
 //        ItinerarioEntity entity = data.get(1);
 //        try {
 //            itinerarioLogic.deleteItinerario(viajerosData.get(0).getId(),entity.getId());
 //        } catch (Exception ex) {
 //            Logger.getLogger(ItinerarioLogicTest.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-//        ItinerarioEntity expected = em.find(ItinerarioEntity.class, entity.getId());
+//        ItinerarioEntity expected = itinerarioLogic.getItinerario(viajerosData.get(0).getId(), entity.getId());
 //        Assert.assertNull(expected);
 //    }
 

@@ -32,7 +32,7 @@ public class UsuarioResource {
     @Inject
     IViajeroLogic usuarioLogic;
 
-    private static final Logger LOGGER = Logger.getLogger(ItinerarioResource.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UsuarioResource.class.getName());
 
     /**
      * Obtiene el listado de personas.
@@ -50,7 +50,7 @@ public class UsuarioResource {
     /**
      * Obtiene una ciudad
      *
-     * @param nickname identificador del usuario
+     * @param id identificador del usuario
      * @return usuario encontrada
      * @throws co.edu.uniandes.punajut.exceptions.BusinessLogicException
      */
@@ -78,7 +78,7 @@ public class UsuarioResource {
     @POST
     public UsuarioDTO createCity(UsuarioDTO city) throws UsuarioLogicException {
         ViajeroEntity entity = UsuarioConverter.fullDTO2Entity(city);
-
+        LOGGER.log(Level.INFO, city.getExtraInfo(), city.getPassword());
         return UsuarioConverter.fullEntity2DTO(usuarioLogic.createViajero(entity));
     }
 

@@ -53,9 +53,11 @@ public class ItinerarioPersistence {
     public ItinerarioEntity find(Long idItinerario, Long idViajero)
     {
         logger.log(Level.INFO, "Consultando itinerario con id={0}", idItinerario);
+        logger.log(Level.INFO, "Consultando viajero con id={0}", idViajero);
         TypedQuery<ItinerarioEntity> q = em.createQuery("select p from ItinerarioEntity p where (p.viajero.id = :idViajero) and (p.id = :idItinerario)", ItinerarioEntity.class);
         q.setParameter("idItinerario", idItinerario);
         q.setParameter("idViajero", idViajero);
+
         return q.getSingleResult();
     }
 

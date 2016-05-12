@@ -28,14 +28,6 @@
                         templateUrl: "src/modules/usuario/usuario.tpl.html"
                     })
 
-                    .state('itinerario', {
-                        url: '/itinerario',
-                        controller: "itinerarioCtrl",
-                        controllerAs: "ctrl",
-                        templateUrl: "src/modules/itinerario/itinerario.tpl.html"
-
-                    })
-
                     .state('ciudad', {
                         url: '/ciudad',
                         controller: "ciudadCtrl",

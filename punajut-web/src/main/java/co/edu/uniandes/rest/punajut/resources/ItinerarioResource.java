@@ -116,6 +116,7 @@ public class ItinerarioResource {
     public ItinerarioDTO updateItinerario(@PathParam("idItinerario") Long id,  ItinerarioDTO itinerario,@PathParam("idViajero") Long idV) throws ItinerarioLogicException {
 
         logger.log(Level.INFO, "Se ejecuta método updateItinerario con id={0}", id);
+        logger.log(Level.INFO, "Viajero con id={0}", idV);
         ItinerarioEntity entity = ItinerarioConverter.fullDTO2Entity(itinerario);
         entity.setId(id);
         ItinerarioEntity oldEntity;

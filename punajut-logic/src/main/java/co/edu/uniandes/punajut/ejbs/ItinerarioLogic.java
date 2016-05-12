@@ -51,6 +51,7 @@ public class ItinerarioLogic implements IItinerarioLogic
     public ItinerarioEntity getItinerario(Long idItinerario, Long idViajero) throws BusinessLogicException {
         logger.log(Level.INFO, "Inicia proceso de consultar itinerario con id={0}", idItinerario);
         ItinerarioEntity itinerario = persistence.find(idItinerario, idViajero);
+        logger.log(Level.INFO, "Pasó aquí");
         if (itinerario == null) {
             logger.log(Level.SEVERE, "El itinerario con el id {0} no existe", idItinerario);
             throw new BusinessLogicException("El itinerario solicitado no existe");
