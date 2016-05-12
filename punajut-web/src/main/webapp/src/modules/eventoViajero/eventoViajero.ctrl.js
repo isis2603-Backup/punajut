@@ -1,67 +1,138 @@
-// src/modules/task/task.ctrl.js
-// Controlador para el módulo de tareas
+
 
 (function (ng) {
 
-  // es parte del módulo "taskModule"
   var mod = ng.module("eventoViajeroModule");
-  console.log("llega ctrl eventoViajero");
 
-  // crea el controlador con dependencias a $scope y a taskService
-  mod.controller("eventoViajeroCtrl", ["$scope", "eventoViajeroService", function ($scope, svc) {
-            console.log("llega ctrl eventoViajero2");
-
-
-    // TODO: define los atributos en el scope
-    $scope.currentRecord = {};
-  $scope.records = [];
-
-
-    // TODO: define funciones que son invocadas desde la pantalla
-    // y que usan funciones definidas en el servicio
-  $scope.agregar = function ()
+  mod.controller("eventoViajeroCtrl", ["$scope", "eventoViajeroService", function ($scope, svc)
   {
-      var tarea = {name: $scope.currentRecord.nombre,
-          city: $scope.currentRecord.ciudad,
-          address: $scope.currentRecord.direccion,
-          description:$scope.currentRecord.descripcion,
-          date1:$scope.currentRecord.fechaInicial,
-          date2:$scope.currentRecord.fechaFinal};
-    //  $scope.records.push(tarea);
-//      $scope.id='';
-//      $scope.nombre='';
-//      $scope.descripcion='';
-//      $scope.fecha='';
-      svc.saveRecord(tarea);
-      this.fetchRecords();
-  };
-
-
-
-          /*
-             * Funcion fetchRecords consulta el servicio svc.fetchRecords con el fin de consultar
-             * todos los registros del modulo book.
-             * Guarda los registros en la variable $scope.records
-             * Muestra el template de la lista de records.
-             */
-
-            this.fetchRecords = function () {
-                return svc.fetchRecords().then(function (response) {
-                    $scope.records = response.data;
-                    $scope.currentRecord = {};
-                    return response;
-                });
+            $scope.currentRecord = {
+                fechaInicial: '',
+                fechaFinal: '',
+                nombre: '',
+                ciudad: '',
+                direccion: '',
+                descripcion: ''
             };
 
+            $scope.records = [];
+            $scope.alerts = [];
+
+            $scope.today = function () {
+                $scope.value = new Date();
+            };
+
+            $scope.clear = function () {
+                $scope.value = null;
+            };
+
+            $scope.open = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+
+                $scope.opened = true;
+            };
+
+            //Alertas
+            this.closeAlert = function (index) {
+                $scope.alerts.splice(index, 1);
+            };
+
+            function showMessage(msg, type) {
+                var types = ["info", "danger", "warning", "success"];
+                if (types.some(function (rc) {
+                    return type === rc;
+                })) {
+                    $scope.alerts.push({type: type, msg: msg});
+                }
+            }
+
+            this.showError = function (msg) {
+                showMessage(msg, "danger");
+            };
+
+            var self = this;
+            function responseError(response) {
+                self.showError(response.data);
+            }
 
             //Variables para el controlador
             this.readOnly = false;
             this.editMode = false;
+            this.showEventosMode = false;
 
-            /*
-             * Funcion fetchRecords consulta todos los registros del módulo book en base de datos
-             * para desplegarlo en el template de la lista.
+            /* Escucha de evento cuando se selecciona un registro maestro.
+             * args corresponde a currentRecord del controlador padre
              */
+            function onEdit(event, args) {
+                $scope.refId = args.id;
+                if (args.id) {
+                    $scope.records = [];
+                    svc.getRecords(args.id).then(function (response) {
+                        $scope.records = response.data;
+                    }, responseError);
+                }
+            }
+
+            $scope.$on("post-edit", onEdit);
+
+
+
+
+            this.changeTab = function (tab) {
+                $scope.tab = tab;
+            };
+
+            this.createRecord = function () {
+//                $scope.$broadcast("pre-create", $scope.currentRecord);
+                this.editMode = true;
+                $scope.currentRecord = {};
+//                $scope.$broadcast("post-create", $scope.currentRecord);
+            };
+
+            this.editRecord = function (record) {
+//                $scope.$broadcast("pre-edit", $scope.currentRecord);
+                return svc.getRecord($scope.refId,record.id).then(function (response) {
+                    $scope.currentRecord = response.data;
+                    self.editMode = true;
+//                    $scope.$broadcast("post-edit", $scope.currentRecord);
+                    return response;
+                }, responseError);
+            };
+
+            this.fetchRecords = function () {
+                return svc.getRecords($scope.refId).then(function (response) {
+                    $scope.records = response.data;
+                    $scope.currentRecord = {};
+                    self.editMode = false;
+                    return response;
+                }, responseError);
+            };
+
+            this.saveRecord = function () {
+                return svc.saveEventoViajero($scope.refId,$scope.currentRecord).then(function () {
+                    self.fetchRecords();
+                }, responseError);
+            };
+
+            this.deleteRecord = function (record) {
+                this.showEventosMode = false;
+                return svc.deleteEventoViajero($scope.refId,record.id).then(function () {
+                    self.fetchRecords();
+                }, responseError);
+            };
+
+            function updateEventos(event, args) {
+                $scope.currentRecord.eventos = args;
+            }
+            ;
+
+            $scope.$on('updateEventos', updateEventos);
+
+            this.showEventos = function () {
+                this.showEventosMode = true;
+            };
+
             this.fetchRecords();
 
   }]);

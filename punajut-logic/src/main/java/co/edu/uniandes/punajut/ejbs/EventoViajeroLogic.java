@@ -5,8 +5,6 @@
  */
 package co.edu.uniandes.punajut.ejbs;
 import co.edu.uniandes.punajut.api.IEventoViajeroLogic;
-import co.edu.uniandes.punajut.api.IItinerarioLogic;
-import co.edu.uniandes.punajut.api.IViajeroLogic;
 import co.edu.uniandes.punajut.api.IVisitaCiudadLogic;
 import co.edu.uniandes.punajut.entities.EventoViajeroEntity;
 import co.edu.uniandes.punajut.entities.VisitaCiudadEntity;
@@ -46,6 +44,8 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         logger.info("Inicia proceso de consultar todos los evento viajero");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
+
+        logger.info("Se encontró la visita ciudad");
 
         List<EventoViajeroEntity> eventosViajero = visitaCiudad.getEventosViajero();
 
@@ -121,6 +121,7 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
             }
         }
 
+
         if(!existeEventoViajero)
             throw new IllegalArgumentException("No existe un evento viajero con el id dado");
 
@@ -134,9 +135,14 @@ public class EventoViajeroLogic implements IEventoViajeroLogic
         logger.info("Inicia proceso de agregar un evento viajero");
 
         VisitaCiudadEntity visitaCiudad = visitaCiudadLogic.getVisitaCiudad(idViajero, idItinerario, idVisitaCiudad);
-        
+
+        //Se le asigna una visita ciudad al evento viajero
          e.setVisitaCiudad(visitaCiudad);
-         persistence.create(e);
+
+        //Se agrega el evento viajero a la lista de eventos viajero de visita ciudad
+        visitaCiudad.getEventosViajero().add(e);
+
+        persistence.create(e);
 
         logger.info("Termina proceso de agregar un evento viajero");
         return e;

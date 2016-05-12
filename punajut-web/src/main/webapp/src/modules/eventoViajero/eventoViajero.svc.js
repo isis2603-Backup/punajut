@@ -1,11 +1,10 @@
-// src/modules/task/task.svc.js
-// Servicio para el Modulo de Tareas
 
 (function (ng) {
 
     var mod = ng.module("eventoViajeroModule");
 
-    mod.service("eventoViajeroService", ["$http", "Context", function ($http, context) {
+    mod.service("eventoViajeroService", ["$http", "eventoViajeroContext", function ($http, context)
+    {
             /**
              * Obtener la lista de eventos viajero.
              * Hace una petición GET con $http a /viajeros/:idViajero/itinerarios/:idItinerario/visitas/:idVisitaCiudad/eventosViajero para obtener la lista
